@@ -1,0 +1,103 @@
+import React, { useState } from "react";
+import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade, Modal, Row, Col, Dropdown, DropdownButton } from "react-bootstrap";
+
+import { connect } from "react-redux";
+import {
+  adjustItemQty,
+  removeFromCart,
+} from "../../../redux/Shopping/shopping-actions";
+
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
+const CartItem = ({ item, adjustQty, removeFromCart }) => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  
+  const [input, setInput] = useState(item.qty);
+
+  const [open, setOpen] = React.useState(false);
+
+  const show = () => {
+    setOpen(true)
+  }
+
+  const handleClick = (id) => {
+    setTimeout(()=> {
+      show()
+
+      removeFromCart(id)
+    },1000)
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const onChangeHandler = (e) => {
+    setInput(e.target.value);
+    adjustQty(item.id, e.target.value);
+  };
+
+  return (
+    <div className="main">
+
+      <div className="container">
+        <img
+          className="main"
+          src={item.img}
+          alt={item.title}
+          style={{ width: '30%' }}
+        />
+        <div className="main">
+          <h4 className="main">{item.title}</h4>
+          <p className="main">{item.description}</p>
+          <p className="main">$ {item.price}</p>
+        </div>
+        <div className="main">
+          <div className="main">
+            <label htmlFor="qty">Qty</label>
+            <input
+              min="1"
+              type="number"
+              id="qty"
+              name="qty"
+              value={input}
+              onChange={onChangeHandler}
+            />
+          </div>
+          <button
+            onClick={() => {handleClick(item.id)}}
+            className="main"
+          >
+            <img
+              src="https://icons8.com/icon/oLaG9clB6mWZ/delete"
+            />
+          </button>
+        </div>
+
+        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+            Product already remove from your cart.
+          </Alert>
+        </Snackbar>
+      </div>
+    </div>
+  );
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    adjustQty: (id, value) => dispatch(adjustItemQty(id, value)),
+    removeFromCart: (id) => dispatch(removeFromCart(id)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(CartItem);

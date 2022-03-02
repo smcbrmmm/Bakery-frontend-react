@@ -1,31 +1,42 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade, Card, Row, Col, Table } from "react-bootstrap";
-import NavbarCom from './NavbarComponent'
-
+import NavbarCom from '../Navbar/NavbarComponent'
+import axios from "axios";
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
+import OrderDetail from './OrderDetail/OrderDetail'
 
+export default function Orders() {
 
-class MenuComponent extends React.Component {
+    const [order, setOrder] = useState([]);
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            open: true,
-            showOrderDetail: true
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await axios(
+                'http://localhost:8090/api/order/order',
+            );
+            setOrder(result.data)
         };
-    }
 
-    showOrderDetail = () => {
-        this.setState({ showOrderDetail: !this.state.showOrderDetail })
-    }
+        fetchData()
 
-    render() {
+    }, []);
 
-        return (
-            <div className="MenuComponent">
-                <NavbarCom />
+
+    const [open, setOpen] = useState(true);
+    const [showOrderDetail, setShowOrderDetail] = useState(true);
+
+
+
+    return (
+        <div className="page-container">
+            <NavbarCom />
+
+            {/* <Button onClick={() => console.log(order)}> but  </Button> */}
+
+            
+
+            <div className='content-wrap'>
                 <Container>
                     <h1 className="main" style={{ textAlign: 'center' }}>  Order Status </h1>
                     <Row>
@@ -40,18 +51,15 @@ class MenuComponent extends React.Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>15234</td>
-                                        <td>22/1/2022 - 13:54</td>
-                                        <td onClick={this.showOrderDetail}> Waiting for payment.</td>
-                                    </tr>
-
+                                        {order.map((order) => (
+                                            <OrderDetail key={order.orderId} order={order} />
+                                        ))}
                                 </tbody>
                             </Table>
                         </Col>
                         <Col>
-                            <div hidden={this.state.showOrderDetail}>
-                                <h3 className="main" style={{ textAlign: 'left', marginLeft: '2rem' }}> Order  <Button  variant="danger" size="sm"> Cancel </Button> </h3>
+                            <div hidden={showOrderDetail}>
+                                <h3 className="main" style={{ textAlign: 'left', marginLeft: '2rem' }}> Order  <Button variant="danger" size="sm"> Cancel </Button> </h3>
                                 <Row>
                                     <Col>
                                         <h3 className="order-detail" > Menu </h3>
@@ -99,18 +107,18 @@ class MenuComponent extends React.Component {
                                     </Col>
                                     <Col>
                                         <Row>
-                                        <Col>
-                                        <h1 className="order-detail" style={{textAlign:'left'}} > Total  </h1>
-                                        <h1 className="order-detail" style={{textAlign:'left'}} > Shipping  </h1>
-                                        <h1 className="order-detail" style={{textAlign:'left'}} > Sum  </h1>
-                                        </Col>
-                                        <Col>
-                                        <h1 className="order-detail" style={{textAlign:'right'}} > 110  </h1>
-                                        <h1 className="order-detail" style={{textAlign:'right'}} > 40  </h1>
-                                        <h1 className="order-detail" style={{textAlign:'right'}} > 150  </h1>
-                                        </Col>
-                                        <Col>
-                                        </Col>
+                                            <Col>
+                                                <h1 className="order-detail" style={{ textAlign: 'left' }} > Total  </h1>
+                                                <h1 className="order-detail" style={{ textAlign: 'left' }} > Shipping  </h1>
+                                                <h1 className="order-detail" style={{ textAlign: 'left' }} > Sum  </h1>
+                                            </Col>
+                                            <Col>
+                                                <h1 className="order-detail" style={{ textAlign: 'right' }} > 110  </h1>
+                                                <h1 className="order-detail" style={{ textAlign: 'right' }} > 40  </h1>
+                                                <h1 className="order-detail" style={{ textAlign: 'right' }} > 150  </h1>
+                                            </Col>
+                                            <Col>
+                                            </Col>
                                         </Row>
                                     </Col>
                                 </Row>
@@ -122,7 +130,7 @@ class MenuComponent extends React.Component {
                                         <Form.Control type="file" style={{ width: '70%' }} />
                                         <Button size="sm"> Upload </Button>
                                     </Form.Group>
-                                   
+
                                 </div>
 
 
@@ -135,9 +143,9 @@ class MenuComponent extends React.Component {
                     </Row>
                 </Container>
             </div>
-        )
-    }
+        </div>
+    )
+
 
 }
 
-export default MenuComponent;

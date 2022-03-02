@@ -1,20 +1,26 @@
 import React, { Component, useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade, Card, Row, Col, Modal } from "react-bootstrap";
-import NavbarCom from './NavbarComponent'
+import NavbarCom from '../Navbar/NavbarComponent'
 
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import axios from "axios";
 
-export default function MenuComponent() {
+import { connect } from 'react-redux'
+
+const mapStateToProps = state => {
+    return {
+        products : state.shop.products
+    }
+}
+
+const MenuComponent = ({products}) => {
 
     const [pastry, setPastry] = useState(false);
     const [roastedPastry, setRoastedPastry] = useState(true);
     const [riceCracker, setRiceCracker] = useState(true);
 
     const [menu, setPastryMenu] = useState({ pastry: [] , roasted : [] , riceCracker : [] })
-    // const [roastedPastrMenu, setPastryMenu] = useState([])
-    // const [riceCrackerMenu, setPastryMenu] = useState([])
     const user = JSON.parse(localStorage.getItem('user'));
 
     useEffect(() => {
@@ -48,12 +54,12 @@ export default function MenuComponent() {
     }
 
     return (
-        <div className="App">
+        <div className="page-container">
+            <div className="content-wrap">
             <NavbarCom />
             <Container>
                 <h1 className="main" style={{ textAlign: 'center' }}>  Mymom Bakery's Menu </h1>
             </Container>
-
             <Container style={{ marginTop: '4rem' }}>
                 <Row>
                     <Col sm={3}>
@@ -167,9 +173,9 @@ export default function MenuComponent() {
                     </Col>
                 </Row>
             </Container>
+            </div>
         </div>
     )
-
-
 }
 
+export default connect(mapStateToProps)(MenuComponent)

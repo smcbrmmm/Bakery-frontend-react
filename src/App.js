@@ -1,21 +1,78 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Style/App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Signin from './components/LoginComponent';
-import Profile from './components/Profile';
+import Footer from './components/Footer/Footer'
+import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade, Row, Col, Card } from "react-bootstrap";
+import NavbarCom from './components/Navbar/NavbarComponent'
 
-function App() {
+// Redux
+import { connect } from "react-redux";
+
+import {
+  setProductList
+} from "./redux/Shopping/shopping-actions";
+
+function App( {setProductList}) {
   const token = localStorage.getItem('accessToken');
 
-  if(!token) {
-    return <Signin />
-  }
-
   return (
-    <div className="wrapper">
+    <div className="page-container">
+      <div className='content-wrap'>
+        <NavbarCom />
+        <Container>
+          <h1 hidden="true" className="main" style={{ textAlign: 'center' }}>  Mymom Bakery </h1>
 
+          <Carousel className="carousel-home"
+            style={{ width: '80%', justifyContent: 'center', marginLeft: 'auto', marginRight: 'auto' , marginTop : '3%' }}>
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                src='https://www.wildgrainsbakery.com/wp-content/uploads/2020/08/Untitled-18.jpg'
+                alt="First slide"
+                style={{ width: '400px' }, { height: '500px' }}
+              />
+              <Carousel.Caption>
+                <h3 className="carousel-text">Mymom bakery I</h3>
+                <p className="carousel-text" ></p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                src='https://www.wildgrainsbakery.com/wp-content/uploads/2020/08/Untitled-18.jpg'
+                alt="Second slide"
+                style={{ width: '400px' }, { height: '500px' }}
+              />
+              <Carousel.Caption>
+                <h3 className="carousel-text" >Mymom bakery II</h3>
+                <p className="carousel-text" ></p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                src='https://www.wildgrainsbakery.com/wp-content/uploads/2020/08/Untitled-18.jpg'
+                alt="Third slide"
+                style={{ width: '400px' }, { height: '500px' }}
+              />
+
+              <Carousel.Caption>
+                <h3 className="carousel-text">Mymom bakery III</h3>
+                <p className="carousel-text"></p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          </Carousel>
+        </Container>
+
+      </div>
     </div>
   );
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    setProductList : data => dispatch(setProductList(data))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App)

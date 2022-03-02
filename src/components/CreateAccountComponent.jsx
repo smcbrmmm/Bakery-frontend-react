@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Row, Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade , Modal} from "react-bootstrap";
-import NavbarCom from './NavbarComponent'
+import NavbarCom from './Navbar/NavbarComponent'
 
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import axios from "axios";
