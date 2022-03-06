@@ -13,7 +13,7 @@ import Address from './Address/Address'
 import AddLocationIcon from '@mui/icons-material/AddLocation';
 import NavbarCom from '../Navbar/NavbarComponent'
 import axios from "axios";
-import Avatar from '@mui/material/Avatar';
+// import Avatar from '@mui/material/Avatar';
 
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
@@ -134,7 +134,7 @@ export default function Profile() {
             <Col>
               <div hidden={edit} >
                 <h2> Detail <Button color='error' size='large'> Edit </Button> </h2>
-                <Avatar alt="Remy Sharp" src={user.img} sx={{ width: 200, height: 200 }} />
+                {/* <Avatar alt="Remy Sharp" src={user.img} sx={{ width: 200, height: 200 }} /> */}
                 <h4> Name : {user.name} </h4>
                 <h4> Email : {user.email} </h4>
               </div>
