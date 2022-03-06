@@ -45,7 +45,7 @@ const Products = ({ products, setProductList }) => {
 
     useEffect(() => {
         // Update the document title using the browser API
-        fetch('http://f4c3-2001-44c8-440d-9067-f860-d0e1-1d4f-76f6.ngrok.io/api/products/allProducts', {
+        fetch('https://f4c3-2001-44c8-440d-9067-f860-d0e1-1d4f-76f6.ngrok.io/api/products/allProducts', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
