@@ -5,14 +5,27 @@ import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdow
 const OrderDetail = ({ order }) => {
     const user = JSON.parse(localStorage.getItem('user'));
 
+    const [infoOrder, setInfoOrder] = useState([]);
+
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const result = await axios(
+    //             'http://localhost:8090/api/order/order',
+    //         );
+
+    //         setInfoOrder(result.data)
+    //     };
+
+    //     fetchData()
+
+    // }, []);
+
     return (
-        
-            <tr>
-                <td> {order.orderId}</td>
-                <td> # </td>
-                <td>{order.status}</td>
-            </tr>
-        
+
+        <div>
+            <h3 style={{textAlign:'center'}}> {order.orderId} # {order.status} </h3>
+        </div>
+
     );
 };
 

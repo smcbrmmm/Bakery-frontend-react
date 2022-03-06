@@ -20,22 +20,24 @@ import RestaurantMenuOutlinedIcon from '@mui/icons-material/RestaurantMenuOutlin
 import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
 import Tooltip from '@mui/material/Tooltip';
 import LoginIcon from '@mui/icons-material/Login';
-
+import DehazeIcon from '@mui/icons-material/Dehaze';
 import LineLoginComponent from "../Login/LineLoginComponent";
+
+import MediaQuery from 'react-responsive'
 
 const liff = window.liff
 
 async function loginUser(credentials) {
     console.log(credentials)
-    return fetch('http://localhost:8090/api/users/signin', {
+    return fetch('http://localhost:8090/api/user/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email: credentials.username , password : credentials.password })
+        body: JSON.stringify({ email: credentials.username, password: credentials.password })
     })
         .then(data => data.json())
-    
+
 }
 
 function SigninModal(props) {
@@ -176,95 +178,148 @@ const NavbarComponent = ({ cart }) => {
 
 
     return (
+
         <div className="App">
-            <Navbar className="nav" bg="dark">
-                <Nav
-                    className="me-auto my-2 my-lg-0"
-                    style={{ maxHeight: '100px' }, { marginLeft: '5rem' }}
-                    navbarScroll>
-                    <Navbar.Brand href="#home">
-                        <Link to='/' className="linkTo"><h2 className="nav-menu" style={{ textAlign: 'left' , color : 'white' }}> Mymom Bakery
 
-                        </h2></Link>
-                    </Navbar.Brand>
-                </Nav>
-                <Nav className="color-nav" style={{ maxHeight: '100px' }, { marginRight: '5rem' }}>
-                    {/* <Nav.Link href="/">  <h4 className="nav-menu">Home</h4>  </Nav.Link> */}
-                    <Nav  >
-                        <Link to="/">
-                            <Tooltip title="Home">
-                                <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
-                                    <HomeIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
-                                </IconButton>
-                            </Tooltip>
-                        </Link>
+            <MediaQuery minWidth={1224}>
+                <Navbar className="nav" bg="dark">
+                    <Nav
+                        className="me-auto my-2 my-lg-0"
+                        style={{ maxHeight: '100px' }}
+                        navbarScroll>
+                        <Navbar.Brand href="#home">
+                            <Link to='/' className="linkTo"><h2 className="nav-menu" style={{ textAlign: 'left', color: 'white' }}> Mymom Bakery
+
+                            </h2></Link>
+                        </Navbar.Brand>
                     </Nav>
-                    <Nav >
-                        <Link to="/products">
-                            <Tooltip title="Menu">
-                                <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
-                                    <RestaurantMenuOutlinedIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
-                                </IconButton>
-                            </Tooltip>
-                        </Link>
-                    </Nav>
+                    <Nav className="color-nav" style={{ maxHeight: '100px' }}>
+                        {/* <Nav.Link href="/">  <h4 className="nav-menu">Home</h4>  </Nav.Link> */}
+                        <Nav  >
+                            <Link to="/">
+                                <Tooltip title="Home">
+                                    <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
+                                        <HomeIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                    </IconButton>
+                                </Tooltip>
+                            </Link>
+                        </Nav>
+                        <Nav >
+                            <Link to="/products">
+                                <Tooltip title="Menu">
+                                    <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
+                                        <RestaurantMenuOutlinedIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                    </IconButton>
+                                </Tooltip>
 
-                    <Nav>
-                        <Link to="/contactus">
-                            <Tooltip title="Contract Us">
-                                <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
-                                    <PermContactCalendarIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
-                                </IconButton>
-                            </Tooltip>
-                        </Link>
-                    </Nav>
-                    <Nav hidden={!user}>
-                        <Link to="/cart"  >
-                            <Tooltip title="Cart ">
-                                <IconButton aria-label="cart" size="large" className="nav-menu"  >
-                                    <StyledBadge badgeContent={cartCount} color="warning">
-                                        <ShoppingCartIcon sx={{ fontSize: 30 }}  style={{ fill: "white" }} />
-                                    </StyledBadge>
-                                </IconButton>
-                            </Tooltip>
-                        </Link>
-                    </Nav>
-                    <Nav hidden={!user} >
-                        <IconButton color="primary" aria-label="upload picture" component="span" id="basic-button"
-                            aria-controls={open ? 'basic-menu' : undefined}
-                            aria-haspopup="true"
-                            aria-expanded={open ? 'true' : undefined}
-                            onClick={handleClick}>
-                            <AccountCircleIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
-                        </IconButton>
+                            </Link>
+                        </Nav>
 
-                        <Menu
-                            id="basic-menu"
-                            anchorEl={anchorEl}
-                            open={open}
-                            onClose={handleClose}
-                            MenuListProps={{
-                                'aria-labelledby': 'basic-button',
-                            }}
-                        >
-                            <MenuItem component={Link} onClick={handleClose} to="/profile">Account</MenuItem>
-                            <MenuItem component={Link} to="/order" onClick={handleClose}>Order Status</MenuItem>
-                            <MenuItem onClick={handleLogout}>Sign out</MenuItem>
-                        </Menu>
-                    </Nav>
-
-
-
-                    <Nav hidden={user} onClick={() => setSigntinModalShow(true)}>
-                        <Tooltip title="Login">
-                            <IconButton aria-label="cart" size="large" className="nav-menu" >
-                                <LoginIcon sx={{ fontSize: 30 }} style={{ fill: "white" }}/>
+                        <Nav>
+                            <Link to="/contactus">
+                                <Tooltip title="Contract Us">
+                                    <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
+                                        <PermContactCalendarIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                    </IconButton>
+                                </Tooltip>
+                            </Link>
+                        </Nav>
+                        <Nav hidden={!user}>
+                            <Link to="/cart"  >
+                                <Tooltip title="Cart ">
+                                    <IconButton aria-label="cart" size="large" className="nav-menu"  >
+                                        <StyledBadge badgeContent={cartCount} color="warning">
+                                            <ShoppingCartIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                        </StyledBadge>
+                                    </IconButton>
+                                </Tooltip>
+                            </Link>
+                        </Nav>
+                        <Nav hidden={!user} >
+                            <IconButton color="primary" aria-label="upload picture" component="span" id="basic-button"
+                                aria-controls={open ? 'basic-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={open ? 'true' : undefined}
+                                onClick={handleClick}>
+                                <AccountCircleIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
                             </IconButton>
-                        </Tooltip>
-                    </Nav>
 
-                </Nav>
-            </Navbar>
+                            <Menu
+                                id="basic-menu"
+                                anchorEl={anchorEl}
+                                open={open}
+                                onClose={handleClose}
+                                MenuListProps={{
+                                    'aria-labelledby': 'basic-button',
+                                }}
+                            >
+                                <MenuItem component={Link} onClick={handleClose} to="/profile">Account</MenuItem>
+                                <MenuItem component={Link} to="/order" onClick={handleClose}>Order Status</MenuItem>
+                                <MenuItem onClick={handleLogout}>Sign out</MenuItem>
+                            </Menu>
+                        </Nav>
+
+
+
+                        <Nav hidden={user} onClick={() => setSigntinModalShow(true)}>
+                            <Tooltip title="Login">
+                                <IconButton aria-label="cart" size="large" className="nav-menu" >
+                                    <LoginIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                </IconButton>
+                            </Tooltip>
+                        </Nav>
+
+                    </Nav>
+                </Navbar>
+            </MediaQuery>
+
+            <MediaQuery maxWidth={1224}>
+                <Navbar className="nav" bg="dark">
+                    <Nav
+                        className="me-auto my-2 my-lg-0"
+                        style={{ maxHeight: '100px' }}
+                        navbarScroll>
+                        <Navbar.Brand href="#home">
+                            <Link to='/' className="linkTo"><h2 className="nav-menu" style={{ textAlign: 'left', color: 'white' , fontSize:'14px' }}> Mymom Bakery
+
+                            </h2></Link>
+                        </Navbar.Brand>
+                    </Nav>
+                    <Nav className="color-nav" style={{ maxHeight: '100px' }}>
+
+                        <Nav  >
+                            <IconButton color="primary" aria-label="upload picture" component="span" id="basic-button"
+                                aria-controls={open ? 'basic-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={open ? 'true' : undefined}
+                                onClick={handleClick}>
+                                <DehazeIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                            </IconButton>
+
+                            <Menu
+                                id="basic-menu"
+                                anchorEl={anchorEl}
+                                open={open}
+                                onClose={handleClose}
+                                MenuListProps={{
+                                    'aria-labelledby': 'basic-button',
+                                }}
+                                >
+                                <MenuItem component={Link} onClick={handleClose} to="/">Home</MenuItem>
+                                <MenuItem onClick={() => setSigntinModalShow(true)} >Login</MenuItem>
+                                <MenuItem component={Link} onClick={handleClose} to="/products">Menu</MenuItem>
+                                <MenuItem component={Link} onClick={handleClose} to="/contactus">Contact Us</MenuItem>
+                                <MenuItem component={Link} onClick={handleClose} to="/cart">Cart</MenuItem>
+                                <MenuItem component={Link} to="/order" onClick={handleClose}>Order Status</MenuItem>
+                                <MenuItem onClick={handleLogout}>Sign out</MenuItem>
+                            </Menu>
+                        </Nav>
+
+
+
+                    </Nav>
+                </Navbar>
+            </MediaQuery>
 
             <SigninModal show={signinModalShow}
                 onHide={() => setSigntinModalShow(false)}
@@ -273,7 +328,7 @@ const NavbarComponent = ({ cart }) => {
             <signupModalShow show={signupModalShow}
                 onHide={() => setSignupModalShow(false)}
             />
-        </div>
+        </div >
     )
 
 

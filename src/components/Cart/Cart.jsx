@@ -12,16 +12,28 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-async function order(orderDetail) {
+async function order(orderDetail , cart , user) {
     console.log(orderDetail)
-    return fetch('http://localhost:8090/api/order/save', {
+    fetch('http://localhost:8090/api/order/save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ userId: 1, addressId: orderDetail.addressId, status: "Waiting for payment" })
+        body: JSON.stringify({ userId: user.id, addressId: orderDetail.addressId, status: "Waiting for payment" })
+    }).then(() => {
+        for (var i = 0; i < cart.length; i++) {
+            fetch('http://localhost:8090/api/orderDetail/save', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    productId : cart[i].id , productPrice : cart[i].price , productQty : cart[i].qty , userId : orderDetail.userId
+                })
+            })
+        }
     })
-    // .then(data => data.json())
+
 
 }
 
@@ -42,11 +54,11 @@ const Cart = ({ cart }) => {
             userId,
             addressId,
             status
-        });
+        } , cart , user);
 
         setTimeout(() => {
             window.location.href = "/order";
-        }, 3000);
+        }, 1000);
 
     }
 
@@ -168,17 +180,19 @@ const Cart = ({ cart }) => {
                         <Col sm={4}>
                             <div className="mb-4">
                                 <div>
-                                <Form.Select aria-label="Default select example" style={{ width: '61%' , display:'flex' }} onChange={handleSelect} required >
-                                    <option value="default">Choose your shipping place.</option>
 
-                                    {address.map((address) => (
-                                        <option value={address.place}  > {address.place} </option>
-                                    ))}
-                                </Form.Select>
+                                    <h5> Select your address for shipping.</h5>
+                                    <Form.Select aria-label="Default select example" style={{ width: '61%', display: 'flex' }} onChange={handleSelect} required >
+                                        <option value="default">Choose your shipping place.</option>
 
-                                <Button className="mt-1" size="small" onClick={()=> window.location.href = "/profile"}>
-                                     Add your new address.
-                                </Button>
+                                        {address.map((address) => (
+                                            <option value={address.place}  > {address.place} </option>
+                                        ))}
+                                    </Form.Select>
+
+                                    <Button className="mt-1" size="small" onClick={() => window.location.href = "/profile"}>
+                                        Add your new address.
+                                    </Button>
                                 </div>
 
 

@@ -22,7 +22,7 @@ import MuiAlert from '@mui/material/Alert';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-  });
+});
 
 async function deleteAddress(addressDetail) {
     console.log(addressDetail)
@@ -36,7 +36,24 @@ async function deleteAddress(addressDetail) {
         })
     })
     // .then(data => data.json())
+}
 
+async function updateAddress(addressDetail) {
+
+    console.log(addressDetail)
+
+    return fetch('http://localhost:8090/api/address/update', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            place: addressDetail.place, houseNumber: addressDetail.houseNumber, address: addressDetail.addesses,
+            recieverName: addressDetail.recieverName, recieverTel: addressDetail.recieverTel,
+            province: addressDetail.province, postal: addressDetail.postal, addressId: addressDetail.addressId
+        })
+    })
+    // .then(data => data.json())
 }
 
 export default function Address({ address, no }) {
@@ -48,13 +65,13 @@ export default function Address({ address, no }) {
     const [place, setPlace] = useState(address.place)
     const [recieverName, setRecieverName] = useState(address.recieverName)
     const [recieverTel, setRecieverTel] = useState(address.recieverTel)
-    const [house_no, setHouseNo] = useState(address.houseNumber)
+    const [houseNumber, setHouseNo] = useState(address.houseNumber)
     const [province, setProvince] = useState(address.province)
     const [postal, setPostal] = useState(address.postal)
     const [addesses, setAddesses] = useState(address.address)
     const [addressId, setAddressId] = useState(address.addressId)
 
-    const [conAddress , setConAddress] = useState(address)
+    const [conAddress, setConAddress] = useState(address)
 
     const [submit, setSubmit] = useState(false);
 
@@ -63,13 +80,13 @@ export default function Address({ address, no }) {
     const handleClick = () => {
         setOpenAlert(true);
     };
-  
+
     const handleClose = (event, reason) => {
-      if (reason === 'clickaway') {
-        return;
-      }
-  
-      setOpenAlert(false);
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenAlert(false);
     };
 
     function handleChange(e) {
@@ -86,6 +103,18 @@ export default function Address({ address, no }) {
         // e.preventDefault();
         const response = await deleteAddress({
             addressId
+        });
+
+        setTimeout(() => {
+            window.location.href = "/profile";
+        }, 2000);
+
+    }
+
+    const handleEdit = async e => {
+
+        const response = await updateAddress({
+            place, houseNumber, addesses, province, postal, recieverName, recieverTel, addressId
         });
 
         setTimeout(() => {
@@ -238,7 +267,7 @@ export default function Address({ address, no }) {
                             <Form.Control type="text" onChange={e => { setPostal(e.target.value) }} defaultValue={conAddress.postal} />
                         </Form.Group>
                         <div className="d-grid gap-2">
-                            <Button variant="primary" size="lg" type="submit">
+                            <Button variant="primary" size="lg" onClick={handleEdit}>
                                 Confirm.
                             </Button>
 
@@ -261,7 +290,7 @@ export default function Address({ address, no }) {
                     <h5> Delete this address.</h5>
 
                     <Button variant='danger' style={{ display: 'block', marginLeft: 'auto' }}
-                        onClick={() => {handleSubmit() ; handleClick()}}
+                        onClick={() => { handleSubmit(); handleClick() }}
                     > Delete</Button>
                 </Modal.Body>
             </Modal>
