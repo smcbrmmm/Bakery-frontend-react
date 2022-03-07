@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 
 async function loginUser(credentials) {
-  return fetch('http://localhost:8090/api/users/signin', {
+  return fetch('https://7daf-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/users/signin', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -30,7 +30,7 @@ export default function LoginComponent({ setToken }) {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        'http://localhost:8090/api/customer',
+        'https://7daf-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/customer',
       );
       setUser({
         users: result.data

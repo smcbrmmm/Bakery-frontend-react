@@ -306,10 +306,11 @@ const NavbarComponent = ({ cart }) => {
                                 }}
                                 >
                                 <MenuItem component={Link} onClick={handleClose} to="/">Home</MenuItem>
-                                <MenuItem component={Link} onClick={handleClose} to="/lineloginmobile" >Login</MenuItem>
+                                <MenuItem hidden={!user} component={Link} onClick={handleClose} to="/lineloginmobile" >Login</MenuItem>
                                 <MenuItem component={Link} onClick={handleClose} to="/products">Menu</MenuItem>
                                 <MenuItem component={Link} onClick={handleClose} to="/contactus">Contact Us</MenuItem>
                                 <MenuItem component={Link} onClick={handleClose} to="/cart">Cart</MenuItem>
+                                <MenuItem component={Link} onClick={handleClose} to="/profile">Profile</MenuItem>
                                 <MenuItem component={Link} to="/order" onClick={handleClose}>Order Status</MenuItem>
                                 <MenuItem onClick={handleLogout}>Sign out</MenuItem>
                             </Menu>

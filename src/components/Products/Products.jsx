@@ -16,7 +16,7 @@ import { useMediaQuery } from 'react-responsive'
 
 async function addProduct(product) {
     console.log(product)
-    return fetch('http://localhost:8090/api/products/insert', {
+    return fetch('https://7daf-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/products/insert', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
