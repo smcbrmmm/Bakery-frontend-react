@@ -56,7 +56,7 @@ export default function LineLogin() {
 
       const fetchData = async () => {
         const result = await axios(
-          'http://localhost:8090/api/user/isHave/' + liff.getDecodedIDToken().email,
+          'https://176f-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/user/isHave/' + liff.getDecodedIDToken().email,
         );
         setId(result.data)
       };
