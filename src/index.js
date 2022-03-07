@@ -13,6 +13,7 @@ import Cart from './components/Cart/Cart'
 import Footer from './components/Footer/Footer'
 import reportWebVitals from './reportWebVitals';
 import Responsive from './components/Responsive'
+import LineLoginMobile from './components/Login/LineLoginMobile'
 
 import { BrowserRouter, Router, Route, Link, Routes } from 'react-router-dom'
 import ReactDOM, { render } from 'react-dom';
@@ -35,6 +36,7 @@ ReactDOM.render(
         <Route path="/products" element={<Products />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/responsive" element={<Responsive />}></Route>
+        <Route path="/lineloginmobile" element={<LineLoginMobile />}></Route>
       </Routes>
     </BrowserRouter>
 

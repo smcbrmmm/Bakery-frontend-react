@@ -28,7 +28,7 @@ async function isHave(email) {
 }
 
 
-export default function LineLogin() {
+export default function LineLoginMobile() {
 
   const navigate = useNavigate();
 
@@ -108,14 +108,9 @@ export default function LineLogin() {
 
       <header className="App-header">
 
-      <MediaQuery minWidth={1224}>
-            
-      </MediaQuery>
-
 
         <div className="support">
-          <h1> {accessToken} </h1>
-          <h1> {email}</h1>
+          <h1> ไอกาก </h1>
         </div>
 
         <Button onClick={redirect}> Confirm </Button>

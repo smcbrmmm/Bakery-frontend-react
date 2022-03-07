@@ -306,7 +306,7 @@ const NavbarComponent = ({ cart }) => {
                                 }}
                                 >
                                 <MenuItem component={Link} onClick={handleClose} to="/">Home</MenuItem>
-                                <MenuItem onClick={() => setSigntinModalShow(true)} >Login</MenuItem>
+                                <MenuItem component={Link} onClick={handleClose} to="/lineloginmobile" >Login</MenuItem>
                                 <MenuItem component={Link} onClick={handleClose} to="/products">Menu</MenuItem>
                                 <MenuItem component={Link} onClick={handleClose} to="/contactus">Contact Us</MenuItem>
                                 <MenuItem component={Link} onClick={handleClose} to="/cart">Cart</MenuItem>
