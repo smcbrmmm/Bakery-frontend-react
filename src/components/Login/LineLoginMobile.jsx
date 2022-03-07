@@ -5,117 +5,126 @@ import { useNavigate } from 'react-router-dom';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import NavbarCom from '../Navbar/NavbarComponent'
 import axios from "axios";
-const liff = window.liff
-import MediaQuery from 'react-responsive'
 
+import MediaQuery from 'react-responsive'
+import { set } from "mongoose";
+
+const liff = window.liff
 
 async function isHave(email) {
-  console.log(email)
-  return fetch('http://localhost:8090/api/user/isHave/' + email, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    // body: JSON.stringify({ 
-    //   userId: user.id, addressId: orderDetail.addressId, status: "Waiting for payment" 
-    // })
+    console.log(email)
+    return fetch('http://localhost:8090/api/user/isHave/' + email, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        // body: JSON.stringify({ 
+        //   userId: user.id, addressId: orderDetail.addressId, status: "Waiting for payment" 
+        // })
 
-  })
-  .then(data => data.json())
-  .then(data => console.log(data))
+    })
+        .then(data => data.json())
+        .then(data => console.log(data))
 
-  
+
 }
 
 
 export default function LineLoginMobile() {
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const [name, setName] = useState();
-  const [accessToken, setAccessToken] = useState();
-  const [email, setEmail] = useState();
-  const [id , setId] = useState();
-
-  var user = {
-    id: 3,
-    name: "Samut Chouybumrung",
-    email: "samut.c@ku.th"
-  }
-
-  useEffect(() => {
-    liff.init({ liffId: '1656735773-AvMkVePR' })
-      .catch(err => { throw err });
-
-      <MediaQuery minWidth={1224}>
-            
-      </MediaQuery>
+    const [name, setName] = useState();
+    const [accessToken, setAccessToken] = useState();
+    const [email, setEmail] = useState();
+    const [id, setId] = useState();
+    const [round, setRound] = useState(0);
 
 
-    // if (liff.isLoggedIn()) {
-    //   const getProfile = liff.getProfile();
-    //   const getDecodedIDToken = liff.getDecodedIDToken();
-    //   const getAccessToken = liff.getAccessToken();
+    var user = {
+        id: 3,
+        name: "Samut Chouybumrung",
+        email: "samut.c@ku.th"
+    }
 
-    //   setName(liff.getProfile.displayName)
-    //   setAccessToken(liff.getAccessToken)
-    //   // setEmail(liff.getDecodedIDToken().email)
+    useEffect(() => {
 
-    //   const fetchData = async () => {
-    //     const result = await axios(
-    //       'http://localhost:8090/api/user/isHave/' + liff.getDecodedIDToken().email,
-    //     );
-    //     setId(result.data)
-    //   };
-  
-    //   fetchData();
+        liff.init({ liffId: '1656735773-AvMkVePR' })
+            .then(() => {
+                if (liff.isLoggedIn()) {
 
-    //   // setTimeout(() => {
-    //   //   localStorage.setItem('accessToken', accessToken);
-    //   //   localStorage.setItem('user', JSON.stringify(user));
-    //   //   window.location.href = "/order";
-    //   // }, 3000);
-    // }
-    // else {
-    //   liff.login();
-    // }
+                    const getProfile = liff.getProfile();
+                    const getDecodedIDToken = liff.getDecodedIDToken();
+                    const getAccessToken = liff.getAccessToken();
 
-  }, [])
+                    setName(liff.getProfile.displayName)
+                    setAccessToken(liff.getAccessToken)
+                    setEmail(liff.getDecodedIDToken().email)
 
-  const redirect = e => {
+                } else {
+                    liff.login();
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            })
 
-    if(id === 0 ) {
-      window.location.href = "/products";
+
+    }, [round])
+
+
+    useEffect(() => {
+
+        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('user', JSON.stringify(user));
+        window.location.href = "/order";
+
+    }, [accessToken])
+
+    const click = e => {
+        setRound(1);
+    }
+
+    const redirect = e => {
+
+        window.location.href = "/home";
+
+        setTimeout(() => {
+            window.location.href = "/lineloginmobile";
+        }, 1000);
+
+
+
+
+        // localStorage.setItem('accessToken', accessToken);
+        // localStorage.setItem('user', JSON.stringify(user));
+        // window.location.href = "/order";
+
+        // setTimeout(() => {
+        //     window.location.href = "/order";
+        // }, 1000);
+
     }
 
 
+    return (
+        <div className="App">
 
-    // localStorage.setItem('accessToken', accessToken);
-    // localStorage.setItem('user', JSON.stringify(user));
-    // window.location.href = "/order";
+            <NavbarCom />
 
-    // setTimeout(() => {
-    //     window.location.href = "/order";
-    // }, 1000);
-
-}
+            <header className="App-header">
 
 
-  return (
-    <div className="App">
+                <div className="support">
 
-      <NavbarCom />
+                    <Button onClick={click} hidden={accessToken} > Login </Button>
 
-      <header className="App-header">
+                    <h1> {accessToken} </h1>
+                </div>
 
-
-        <div className="support">
-          <h1> ไอกาก </h1>
+                <Button onClick={redirect}> Confirm </Button>
+            </header>
         </div>
-
-        <Button onClick={redirect}> Confirm </Button>
-      </header>
-    </div>
-  )
+    )
 
 }
