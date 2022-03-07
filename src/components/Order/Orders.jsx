@@ -28,6 +28,11 @@ export default function Orders() {
     const [open, setOpen] = useState(true);
     const [showOrderDetail, setShowOrderDetail] = useState(true);
 
+    const onClick= () => {
+        console.log(order)
+        console.log(user.id)
+    }
+
 
 
     return (
@@ -45,11 +50,14 @@ export default function Orders() {
 
                             {order.map((order) => (
                                 user.id === order.userId ?
-                                    <OrderDetail key={order.orderId} order={order} /> : null
+                                    <OrderDetail key={order.orderId} order={order} /> 
+                                    : null
                             ))}
 
                             
                 </Container>
+
+                <Button onClick={onClick}> order </Button>
             </div>
         </div>
     )
