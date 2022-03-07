@@ -45,33 +45,33 @@ export default function LineLogin() {
     liff.init({ liffId: '1656735773-AvMkVePR' })
       .catch(err => { throw err });
 
-    if (liff.isLoggedIn()) {
-      const getProfile = liff.getProfile();
-      const getDecodedIDToken = liff.getDecodedIDToken();
-      const getAccessToken = liff.getAccessToken();
+    // if (liff.isLoggedIn()) {
+    //   const getProfile = liff.getProfile();
+    //   const getDecodedIDToken = liff.getDecodedIDToken();
+    //   const getAccessToken = liff.getAccessToken();
 
-      setName(liff.getProfile.displayName)
-      setAccessToken(liff.getAccessToken)
-      // setEmail(liff.getDecodedIDToken().email)
+    //   setName(liff.getProfile.displayName)
+    //   setAccessToken(liff.getAccessToken)
+    //   // setEmail(liff.getDecodedIDToken().email)
 
-      const fetchData = async () => {
-        const result = await axios(
-          'https://176f-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/user/isHave/' + liff.getDecodedIDToken().email,
-        );
-        setId(result.data)
-      };
+    //   const fetchData = async () => {
+    //     const result = await axios(
+    //       'http://localhost:8090/api/user/isHave/' + liff.getDecodedIDToken().email,
+    //     );
+    //     setId(result.data)
+    //   };
   
-      fetchData();
+    //   fetchData();
 
-      // setTimeout(() => {
-      //   localStorage.setItem('accessToken', accessToken);
-      //   localStorage.setItem('user', JSON.stringify(user));
-      //   window.location.href = "/order";
-      // }, 3000);
-    }
-    else {
-      liff.login();
-    }
+    //   // setTimeout(() => {
+    //   //   localStorage.setItem('accessToken', accessToken);
+    //   //   localStorage.setItem('user', JSON.stringify(user));
+    //   //   window.location.href = "/order";
+    //   // }, 3000);
+    // }
+    // else {
+    //   liff.login();
+    // }
 
   }, [])
 
