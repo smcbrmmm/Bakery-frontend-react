@@ -26,13 +26,13 @@ async function isHaveEmail(email) {
 }
 
 async function login(user) {
-    console.log(user)
-    return fetch('https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/user/loginbyline', {
+    
+    return fetch('https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/user/loginbyline' + user.email, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email: user.email})
+        // body: JSON.stringify({ email: user.email})
     })
         .then(data => data.json())
 }
