@@ -50,14 +50,6 @@ export default function Orders() {
                             
                 </Container>
 
-                <Button onClick={onClick}> 
-                
-                            
-                
-                </Button>
-
-
-
             </div>
         </div>
     )
