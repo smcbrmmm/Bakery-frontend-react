@@ -79,7 +79,7 @@ export default function LineLoginMobile() {
 
         if (isHave === 0 && typeof isHave !== 'undefined') {
             console.log(email)
-            setSigntinModalShow(true)
+            
             console.log("no account")
         } else if (isHave !== 0 && typeof isHave !== 'undefined') {
             console.log("has account")
@@ -93,6 +93,7 @@ export default function LineLoginMobile() {
 
 
     const click = e => {
+        setSigntinModalShow(true)
         setRound(1);
     }
 
@@ -122,7 +123,7 @@ export default function LineLoginMobile() {
             <NavbarCom />
 
             <div className="support">
-                <Button onClick={click} hidden={accessToken} > Login </Button>
+                <Button onClick={click} hidden={accessToken} > Create your account. </Button>
                 {/* <h1> {accessToken} </h1> */}
             </div>
 
