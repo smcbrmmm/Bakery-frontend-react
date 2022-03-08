@@ -90,7 +90,7 @@ export default function SignupLine({ email, signinModal }) {
 
 
                             <div className="d-grid gap-2">
-                                <Button variant="primary" size="lg" onClick={submit} >
+                                <Button variant="primary" size="lg" onClick={handleSubmit} >
                                     Sign up
                                 </Button>
                             </div>
