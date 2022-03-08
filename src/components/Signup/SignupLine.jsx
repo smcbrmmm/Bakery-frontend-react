@@ -7,18 +7,14 @@ import MediaQuery from 'react-responsive'
 
 async function signup(user) {
     console.log(user)
-    //     return fetch('https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/products/insert', {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json'
-    //       },
-    //       body: JSON.stringify({
-    //         title: product.productName , name : product.productName , price : product.price , qty : product.qty , img : "https://www.mychineserecipes.com/wp-content/uploads/2020/06/Egg-Yolk-Lotus-Paste-Pastry-Recipe.jpg" 
-    //         , description : product.description , tag : product.tag
-    //       })
-    //     })
-    //     .then(data => data.json())
-    // }
+    return fetch('https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/user/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: user.email, password: user.password  , name : user.name})
+    })
+        .then(data => data.json())
 }
 
 
@@ -26,20 +22,43 @@ async function signup(user) {
 export default function SignupLine({ email, signinModal }) {
 
 
+
     const [name, setName] = useState();
     const [password, setPassword] = useState();
     const [cfPassword, setCfPassword] = useState();
 
-    const submit = e => {
+    // const submit = e => {
 
-        const response = signup({
-            email, password, cfPassword
-        })
+    //     const response = signup({
+    //         email, password, cfPassword
+    //     })
 
-        console.log(name)
-        console.log(password)
-        console.log(cfPassword)
+    //     console.log(name)
+    //     console.log(password)
+    //     console.log(cfPassword)
+    // }
+
+
+    const handleSubmit = async e => {
+        e.preventDefault();
+        const response = await signup({
+            email,password,name
+        });
+        if ('accessToken' in response) {
+            swal("Success", response.message, "success", {
+                buttons: false,
+                timer: 2000,
+            })
+                .then((value) => {
+                    localStorage.setItem('accessToken', response['accessToken']);
+                    localStorage.setItem('user', JSON.stringify(response['user']));
+                    window.location.href = "/order";
+                });
+        } else {
+            swal("Failed", response.message, "error");
+        }
     }
+
 
     return (
 
