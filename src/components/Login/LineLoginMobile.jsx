@@ -189,7 +189,7 @@ export default function LineLoginMobile() {
 
             <SigninModal show={signinModalShow}
                 onHide={() => setSigntinModalShow(false)}
-                email={email}
+                email={email} isHave={isHave}
             />
 
         </div>
