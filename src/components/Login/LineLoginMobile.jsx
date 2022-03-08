@@ -96,22 +96,22 @@ export default function LineLoginMobile() {
             // localStorage.setItem('user', JSON.stringify(user));
             // window.location.href = "/order";
             console.log(email)
-            const response = login({
+            const response = await login({
                 email
             });
-            if ('accessToken' in response) {
-                swal("Success", response.message, "success", {
-                    buttons: false,
-                    timer: 2000,
-                })
-                    .then((value) => {
-                        localStorage.setItem('accessToken', response['accessToken']);
-                        localStorage.setItem('user', JSON.stringify(response['user']));
-                        window.location.href = "/order";
-                    });
-            } else {
-                swal("Failed", response.message, "error");
-            }
+            // if ('accessToken' in response) {
+            //     swal("Success", response.message, "success", {
+            //         buttons: false,
+            //         timer: 2000,
+            //     })
+            //         .then((value) => {
+            //             localStorage.setItem('accessToken', response['accessToken']);
+            //             localStorage.setItem('user', JSON.stringify(response['user']));
+            //             window.location.href = "/order";
+            //         });
+            // } else {
+            //     swal("Failed", response.message, "error");
+            // }
         }
 
     }, [accessToken])
