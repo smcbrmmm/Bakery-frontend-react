@@ -28,6 +28,53 @@ async function isHaveEmail(email) {
 
 }
 
+function SigninModal(props) {
+
+    const [username, setUserName] = useState();
+    const [password, setPassword] = useState();
+
+    return (
+        <Modal className="cart-modal"
+            {...props}
+            aria-labelledby="contained-modal-title-vcenter"
+        >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Sign in
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+
+                <Form className="formSignin" >
+                    <Form.Group className="signinInput mb-3" controlId="formBasicEmail" >
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control type="email" placeholder=""  />
+                        <Form.Text className="text-muted">
+                            We'll never share your email with anyone else.
+                        </Form.Text>
+                    </Form.Group>
+                    <Form.Group className="signinInput mb-3" controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="" />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                        <Form.Check type="checkbox" label="Remember me" />
+                    </Form.Group>
+                    <div className="d-grid gap-2">
+                        <Button variant="primary" size="lg" type="submit">
+                            Sign in
+                        </Button>
+                        <Button variant="success" size="lg">
+                            Sign in with Line. <img src="https://img.icons8.com/color/34/000000/line-me.png" />
+                        </Button>
+
+                    </div>
+                </Form>
+            </Modal.Body>
+        </Modal>
+    );
+}
+
 
 export default function LineLoginMobile() {
 
@@ -39,7 +86,7 @@ export default function LineLoginMobile() {
     const [id, setId] = useState();
     const [round, setRound] = useState(0);
     const [isHave , setIsHave] = useState();
-
+    const [signinModalShow, setSigntinModalShow] = useState(false);
 
     var user = {
         id: 3,
@@ -63,10 +110,7 @@ export default function LineLoginMobile() {
                     isHaveEmail(liff.getDecodedIDToken().email)
                     .then(data => setIsHave(data))
                     .then(() => setAccessToken(liff.getAccessToken) )
-
-                
-                
-                
+  
                 } else {
                     liff.login();
                 }
@@ -75,15 +119,13 @@ export default function LineLoginMobile() {
                 console.log(err);
             })
 
-
     }, [round])
 
 
     useEffect(() => {
 
-        console.log(typeof isHave)
-
         if(isHave === 0 && typeof isHave !== 'undefined') {
+            setSigntinModalShow(true)
             console.log("no account")
         }else if(isHave !== 0 && typeof isHave !== 'undefined'){
             console.log("has account")
@@ -92,11 +134,9 @@ export default function LineLoginMobile() {
             window.location.href = "/order";
         }
 
-            
-
     }, [accessToken])
 
-    
+
 
     const click = e => {
         setRound(1);
@@ -141,6 +181,11 @@ export default function LineLoginMobile() {
 
                 <Button onClick={redirect}> Confirm </Button>
             </header>
+
+            <SigninModal show={signinModalShow}
+                onHide={() => setSigntinModalShow(false)}
+            />
+
         </div>
     )
 
