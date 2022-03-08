@@ -13,7 +13,7 @@ const liff = window.liff
 
 async function isHave(email) {
     console.log(email)
-    return fetch('http://localhost:8090/api/user/isHave/' + email, {
+    return fetch('https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/user/isHave/' + email, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

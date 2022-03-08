@@ -14,7 +14,7 @@ export default function Orders() {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                'https://7daf-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/order/order',
+                'https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/order/order',
             );
 
             setOrder(result.data)

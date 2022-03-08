@@ -16,7 +16,7 @@ import { useMediaQuery } from 'react-responsive'
 
 async function addProduct(product) {
     console.log(product)
-    return fetch('https://7daf-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/products/insert', {
+    return fetch('https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/products/insert', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ const Products = ({ products, setProductList }) => {
 
     useEffect(() => {
         // Update the document title using the browser API
-        fetch('https://7daf-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/products/allProducts', {
+        fetch('https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/products/allProducts', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
