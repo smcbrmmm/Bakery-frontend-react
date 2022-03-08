@@ -16,22 +16,22 @@ export default function SignupLine({ email, signinModal }) {
                 <div>
                     <Form className="formSignin" >
                         <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
-                            <Form.Label>Product name</Form.Label>
+                            <Form.Label>Email</Form.Label>
                             <Form.Control type="text" value={email} />
                         </Form.Group>
                         <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
-                            <Form.Label>Price</Form.Label>
-                            <Form.Control type="number" />
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control type="text"/>
                         </Form.Group>
                         <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control as="textarea" />
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" />
+                        </Form.Group>
+                        <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                            <Form.Label>Confirm Password</Form.Label>
+                            <Form.Control as="password" />
                         </Form.Group>
 
-                        <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
-                            <Form.Label>Quantity</Form.Label>
-                            <Form.Control type="number" />
-                        </Form.Group>
 
                         <div className="d-grid gap-2">
                             <Button variant="primary" size="lg"  >
