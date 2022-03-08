@@ -28,6 +28,11 @@ export default function SignupLine({ email, signinModal }) {
     const [cfPassword, setCfPassword] = useState();
 
     const submit = e => {
+
+        const response = signup({
+            email , password , cfPassword
+        })
+
         console.log(name)
         console.log(password)
         console.log(cfPassword)
