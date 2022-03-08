@@ -61,7 +61,6 @@ export default function LineLoginMobile() {
                     setEmail(liff.getDecodedIDToken().email)
 
                     isHaveEmail(liff.getDecodedIDToken().email)
-                    .then(data => data.json())
                     .then(data => setIsHave(data))
                     .then(() => setAccessToken(liff.getAccessToken) )
 
