@@ -29,7 +29,7 @@ export default function SignupLine({ email, signinModal }) {
                         </Form.Group>
                         <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                             <Form.Label>Confirm Password</Form.Label>
-                            <Form.Control as="password" />
+                            <Form.Control type="password" />
                         </Form.Group>
 
 
