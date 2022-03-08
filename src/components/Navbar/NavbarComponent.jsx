@@ -305,6 +305,7 @@ const NavbarComponent = ({ cart }) => {
                                     'aria-labelledby': 'basic-button',
                                 }}
                                 >
+                                    
                                 <MenuItem component={Link} onClick={handleClose} to="/">Home</MenuItem>
                                 <MenuItem hidden={user} component={Link} onClick={handleClose} to="/lineloginmobile" >Login</MenuItem>
                                 <MenuItem component={Link} onClick={handleClose} to="/products">Menu</MenuItem>
