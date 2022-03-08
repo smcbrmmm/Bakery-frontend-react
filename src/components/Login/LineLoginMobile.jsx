@@ -28,7 +28,7 @@ async function isHaveEmail(email) {
 
 }
 
-function SigninModal({ props , email }) {
+function SigninModal({ props }) {
 
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
@@ -182,7 +182,7 @@ export default function LineLoginMobile() {
                 <Button onClick={redirect}> Confirm </Button>
             </header>
 
-            <SigninModal show={signinModalShow} props={email} email={email}
+            <SigninModal show={signinModalShow}
                 onHide={() => setSigntinModalShow(false)}
             />
 
