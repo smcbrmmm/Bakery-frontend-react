@@ -79,7 +79,7 @@ export default function LineLoginMobile() {
 
         if (isHave === 0 && typeof isHave !== 'undefined') {
             console.log(email)
-            
+
             console.log("no account")
         } else if (isHave !== 0 && typeof isHave !== 'undefined') {
             console.log("has account")
@@ -118,23 +118,18 @@ export default function LineLoginMobile() {
 
 
     return (
-        <div className="App">
+        <div className="page-container">
 
             <NavbarCom />
 
-            <div className="support">
+            <div className="content-wrap">
                 <Button onClick={click} hidden={accessToken} > Create your account. </Button>
-                {/* <h1> {accessToken} </h1> */}
+                
+
+                <Signup signinModal={signinModal} email={email}>
+                </Signup>
+
             </div>
-
-            <Signup signinModal={signinModal} email={email}>
-
-            </Signup>
-
-
-
-
-
 
         </div>
     )
