@@ -1,29 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade, Modal, Row, Col, Dropdown, DropdownButton } from "react-bootstrap";
 import './OrderDetail.css'
+import axios from "axios";
+import InfoOfOrderDetail from "./InfoOfOrderDetail/InfoOfOrderDetail"
 
 const OrderDetail = ({ order }) => {
+
     const user = JSON.parse(localStorage.getItem('user'));
     const [signinModalShow, setSigntinModalShow] = useState(false);
     const [infoOrder, setInfoOrder] = useState([]);
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const result = await axios(
-    //             'http://localhost:8090/api/order/order',
-    //         );
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await axios(
+                'https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
+            );
+            setInfoOrder(result.data)
+        };
 
-    //         setInfoOrder(result.data)
-    //     };
+        fetchData()
 
-    //     fetchData()
+    }, []);
 
-    // }, []);
+    const check = () => {
+        console.log(infoOrder)
+    }
 
     return (
 
         <div>
-            <h3 className="orderDetail" style={{ textAlign: 'center' }}  onClick={() => setSigntinModalShow(true)} > {order.orderId} # {order.status} </h3>
+            <h3 className="orderDetail" style={{ textAlign: 'center' }} onClick={() => setSigntinModalShow(true)} > {order.orderId} # {order.status} </h3>
+
 
 
             <Modal className="cart-modal" show={signinModalShow}
@@ -37,7 +44,10 @@ const OrderDetail = ({ order }) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h1> samut </h1>
+                    {infoOrder.map((infoOrder) => (
+                         <InfoOfOrderDetail key={infoOrder.orderId} infoOrder={infoOrder} /> 
+                    ))}
+                    {/* <Button onClick={check}> Click </Button> */}
                 </Modal.Body>
             </Modal>
 
