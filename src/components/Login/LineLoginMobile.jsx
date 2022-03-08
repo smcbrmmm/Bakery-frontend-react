@@ -62,9 +62,9 @@ export default function LineLoginMobile() {
                     setEmail(liff.getDecodedIDToken().email)
 
                     setIsHave(isHave(liff.getDecodedIDToken().email))
-                    .then(() => {
-                        console.log(isHave(liff.getDecodedIDToken().email))
-                    })
+                    
+                    console.log(isHave(liff.getDecodedIDToken().email))
+                    
                 
                 
                 } else {
@@ -81,7 +81,7 @@ export default function LineLoginMobile() {
 
     useEffect(() => {
 
-        
+        console.log(isHave)        
         
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('user', JSON.stringify(user));
