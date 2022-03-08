@@ -127,7 +127,7 @@ export default function LineLoginMobile() {
                 {/* <h1> {accessToken} </h1> */}
             </div>
 
-            <Signup hidden={!signinModalShow} email={email}>
+            <Signup hidden={true} email={email}>
 
             </Signup>
 
