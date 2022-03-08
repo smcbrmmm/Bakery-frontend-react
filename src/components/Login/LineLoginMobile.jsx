@@ -28,7 +28,7 @@ async function isHaveEmail(email) {
 
 }
 
-function SigninModal({ props }) {
+function SigninModal({ props , email }) {
 
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
@@ -50,7 +50,7 @@ function SigninModal({ props }) {
                 <Form className="formSignin" >
                     <Form.Group className="signinInput mb-3" controlId="formBasicEmail" >
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" placeholder="" value={props}  />
+                        <Form.Control type="email" placeholder="" value={email}  />
                     </Form.Group>
                     <Form.Group className="signinInput mb-3" controlId="formBasicEmail" >
                         <Form.Label>Email</Form.Label>
@@ -182,7 +182,7 @@ export default function LineLoginMobile() {
                 <Button onClick={redirect}> Confirm </Button>
             </header>
 
-            <SigninModal show={signinModalShow} props={email}
+            <SigninModal show={signinModalShow} props={email} email={email}
                 onHide={() => setSigntinModalShow(false)}
             />
 
