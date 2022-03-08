@@ -92,7 +92,7 @@ export default function LineLoginMobile() {
 
 
     const click = e => {
-        setSigninModal(false)
+        setSigninModal(true)
         setRound(1);
     }
 
