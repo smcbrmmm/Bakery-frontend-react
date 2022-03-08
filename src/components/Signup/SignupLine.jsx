@@ -7,16 +7,14 @@ import NavbarCom from '../Navbar/NavbarComponent'
 export default function SignupLine( {email}) {
     
     return (
-        <div className="page-container">
-            <NavbarCom />
-
-            <div className='content-wrap'>
+            
+            <div>
                 
                 Line
                 {email}
 
             </div>
-        </div>
+
     )
 
 
