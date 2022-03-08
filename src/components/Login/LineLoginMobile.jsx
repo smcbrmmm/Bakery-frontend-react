@@ -58,13 +58,14 @@ export default function LineLoginMobile() {
                     const getAccessToken = liff.getAccessToken();
 
                     setName(liff.getProfile.displayName)
-                    setAccessToken(liff.getAccessToken)
                     setEmail(liff.getDecodedIDToken().email)
 
                     isHaveEmail(liff.getDecodedIDToken().email)
+                    .then(data => data.json())
                     .then(data => setIsHave(data))
-                    
-                    
+                    .then(() => setAccessToken(liff.getAccessToken) )
+
+                
                 
                 
                 } else {
