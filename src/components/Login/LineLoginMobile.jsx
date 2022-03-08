@@ -123,17 +123,21 @@ export default function LineLoginMobile() {
 
             <div className="content-wrap">
 
-                <MediaQuery minWidth={1224}>
-                    <Button onClick={click} hidden={accessToken} > Create your account. </Button>
-                    <Signup signinModal={signinModal} email={email}>
-                    </Signup>
-                </MediaQuery>
-                
-                <MediaQuery maxWidth={1224}>
-                    {/* <Button onClick={click} hidden={accessToken} > Create your account. </Button> */}
-                    <Signup signinModal={signinModal} email={email}>
-                    </Signup>
-                </MediaQuery>
+                <div hidden={isHave>0 ? true : false}>
+                    <MediaQuery minWidth={1224}>
+                        <Button onClick={click} hidden={accessToken} > Create your account. </Button>
+                        <Signup signinModal={signinModal} email={email}>
+                        </Signup>
+                    </MediaQuery>
+
+                    <MediaQuery maxWidth={1224}>
+                        {/* <Button onClick={click} hidden={accessToken} > Create your account. </Button> */}
+                        <Signup signinModal={signinModal} email={email}>
+                        </Signup>
+                    </MediaQuery>
+                </div>
+
+
 
 
             </div>
