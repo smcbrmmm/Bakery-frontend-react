@@ -79,9 +79,7 @@ export default function LineLoginMobile() {
 
         if (isHave === 0 && typeof isHave !== 'undefined') {
             console.log(email)
-
             console.log("no account")
-            window.location.reload();
         } else if (isHave !== 0 && typeof isHave !== 'undefined') {
             console.log("has account")
             localStorage.setItem('accessToken', accessToken);
