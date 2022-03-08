@@ -50,7 +50,7 @@ function SigninModal({ props }) {
                 <Form className="formSignin" >
                     <Form.Group className="signinInput mb-3" controlId="formBasicEmail" >
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" placeholder="" value={props.email}  />
+                        <Form.Control type="email" placeholder="" value={props}  />
                     </Form.Group>
                     <Form.Group className="signinInput mb-3" controlId="formBasicEmail" >
                         <Form.Label>Email</Form.Label>
