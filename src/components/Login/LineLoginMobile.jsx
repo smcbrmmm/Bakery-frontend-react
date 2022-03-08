@@ -83,9 +83,9 @@ export default function LineLoginMobile() {
 
         console.log(typeof isHave)
 
-        if(isHave === 0 ) {
+        if(isHave === 0 && typeof isHave !== 'undefined') {
             console.log("no account")
-        }else{
+        }else if(isHave !== 0 && typeof isHave !== 'undefined'){
             console.log("has account")
         }
 
