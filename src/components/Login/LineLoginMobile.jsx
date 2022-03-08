@@ -83,6 +83,13 @@ export default function LineLoginMobile() {
 
         console.log(typeof isHave)
 
+        if(isHave === 0 ) {
+            console.log("no account")
+        }else{
+            console.log("has account")
+        }
+
+
         // if(isHave !== "0"){
         //     localStorage.setItem('accessToken', accessToken);
         //     localStorage.setItem('user', JSON.stringify(user));
