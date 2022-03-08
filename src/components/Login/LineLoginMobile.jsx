@@ -23,9 +23,18 @@ async function isHaveEmail(email) {
 
     })
         .then(data => data.json())
+}
 
-
-
+async function login(user) {
+    console.log(user)
+    return fetch('https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/user/loginbyline', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: user.email})
+    })
+        .then(data => data.json())
 }
 
 
@@ -82,10 +91,26 @@ export default function LineLoginMobile() {
             console.log(email)
             console.log("no account")
         } else if (isHave !== 0 && typeof isHave !== 'undefined') {
-            console.log(isHave)
-            localStorage.setItem('accessToken', accessToken);
-            localStorage.setItem('user', JSON.stringify(user));
-            window.location.href = "/order";
+            // console.log(isHave)
+            // localStorage.setItem('accessToken', accessToken);
+            // localStorage.setItem('user', JSON.stringify(user));
+            // window.location.href = "/order";
+            const response = login({
+                email
+            });
+            if ('accessToken' in response) {
+                swal("Success", response.message, "success", {
+                    buttons: false,
+                    timer: 2000,
+                })
+                    .then((value) => {
+                        localStorage.setItem('accessToken', response['accessToken']);
+                        localStorage.setItem('user', JSON.stringify(response['user']));
+                        window.location.href = "/order";
+                    });
+            } else {
+                swal("Failed", response.message, "error");
+            }
         }
 
     }, [accessToken])
