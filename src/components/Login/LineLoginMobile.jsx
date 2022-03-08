@@ -85,7 +85,7 @@ export default function LineLoginMobile() {
             console.log(isHave)
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('user', JSON.stringify(user));
-            // window.location.href = "/order";
+            window.location.href = "/order";
         }
 
     }, [accessToken])
