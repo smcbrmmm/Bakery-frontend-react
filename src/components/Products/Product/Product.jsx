@@ -14,6 +14,7 @@ import {
   loadCurrentItem,
   addToCart,
 } from "../../../redux/Shopping/shopping-actions";
+import { Segment } from "@mui/icons-material";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -33,7 +34,7 @@ async function deleteProduct(product) {
   // .then(data => data.json())
 }
 
-const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
+const Product = ({ product, addToCart, loadCurrentItem, hid , i}) => {
   const user = JSON.parse(localStorage.getItem('user'));
 
   const [role, setRole] = useState(1);
@@ -78,6 +79,8 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
   }
 
   return (
+
+    
     <Col className="main" hidden={hid}>
       <Card style={{ width: '18rem', display: 'flex', marginBottom: '1rem' }}>
         {/* <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
@@ -93,7 +96,8 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
           <h5 style={{ fontSize: '18px' }}> {product.price} Baht</h5>
           <Button hidden={!user || product.qty === 0} variant="primary" onClick={() => { addToCart(product.id); handleClickAdd() }}>Add to Cart</Button>
           <Button hidden={!user || !(product.qty === 0)} disabled variant="secondary" onClick={() => { addToCart(product.id); handleClick() }}>Out of Stock</Button>
-          <h5 className="mt-2" style={{ fontSize: '14px' }}> Remaining : {product.qty}
+          <h5 className="mt-2" style={{ fontSize: '14px' }}> Remaining : {product.qty}</h5>
+          <h5 className="mt-2" style={{ fontSize: '14px' }}> i : {i}
           </h5>
 
           <div style={{ display: 'flex', marginLeft: 'auto', marginRight: '0' }}>
@@ -137,6 +141,8 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
       </Snackbar>
 
     </Col>
+    
+    
   );
 };
 

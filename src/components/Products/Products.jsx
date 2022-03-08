@@ -43,6 +43,9 @@ const Products = ({ products, setProductList }) => {
     const [selectedFile, setSelectedFile] = useState()
     const [preview, setPreview] = useState()
     const [files, setFile] = useState([]);
+    var no_pastry = 1;
+    var no_roastPastry = 1;
+    var no_riceCracker = 1;
 
 
     useEffect(() => {
@@ -140,12 +143,13 @@ const Products = ({ products, setProductList }) => {
 
                             <Row>
                                 {products.map((product) => (
+                                    
                                     product.tag === "Pastry"
-                                        ? (<Product key={product.id} product={product} hid={pastry} />)
+                                        ? (<Product key={product.id} product={product} hid={pastry} i={no_pastry++} />)
                                         : product.tag === "Roasted Pastry"
-                                            ? (<Product key={product.id} product={product} hid={roastedPastry} />)
+                                            ? (<Product key={product.id} product={product} hid={roastedPastry} i={no_roastPastry++} />)
                                             : product.tag === "Rice Cracker"
-                                                ? (<Product key={product.id} product={product} hid={riceCracker} />)
+                                                ? (<Product key={product.id} product={product} hid={riceCracker} i={no_riceCracker++} />)
                                                 : null
                                 ))}
                             </Row>
