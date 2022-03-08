@@ -56,9 +56,9 @@ const Cart = ({ cart }) => {
             status
         } , cart , user);
 
-        setTimeout(() => {
-            window.location.href = "/order";
-        }, 1000);
+        // setTimeout(() => {
+        //     window.location.href = "/order";
+        // }, 1000);
 
     }
 
