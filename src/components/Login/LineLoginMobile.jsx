@@ -11,7 +11,7 @@ import { set } from "mongoose";
 
 const liff = window.liff
 
-async function isHave(email) {
+async function isHaveEmail(email) {
     return fetch('https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/user/isHave/' + email, {
         method: 'GET',
         headers: {
@@ -61,9 +61,9 @@ export default function LineLoginMobile() {
                     setAccessToken(liff.getAccessToken)
                     setEmail(liff.getDecodedIDToken().email)
 
-                    setIsHave(isHave(liff.getDecodedIDToken().email))
+                    setIsHave(isHaveEmail(liff.getDecodedIDToken().email))
                     
-                    console.log(isHave(liff.getDecodedIDToken().email))
+                    console.log(isHaveEmail(liff.getDecodedIDToken().email))
                     
                 
                 
