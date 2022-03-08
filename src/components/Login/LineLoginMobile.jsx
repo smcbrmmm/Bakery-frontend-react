@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade } from "react-bootstrap";
+import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade , Modal} from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import NavbarCom from '../Navbar/NavbarComponent'
