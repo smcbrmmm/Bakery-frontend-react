@@ -12,7 +12,6 @@ import { set } from "mongoose";
 const liff = window.liff
 
 async function isHave(email) {
-    console.log(email)
     return fetch('https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/user/isHave/' + email, {
         method: 'GET',
         headers: {
@@ -39,6 +38,7 @@ export default function LineLoginMobile() {
     const [email, setEmail] = useState();
     const [id, setId] = useState();
     const [round, setRound] = useState(0);
+    const [isHave , setIsHave] = useState();
 
 
     var user = {
@@ -61,8 +61,12 @@ export default function LineLoginMobile() {
                     setAccessToken(liff.getAccessToken)
                     setEmail(liff.getDecodedIDToken().email)
 
-                    console.log(isHave(liff.getDecodedIDToken().email))
-
+                    setIsHave(isHave(liff.getDecodedIDToken().email))
+                    .then(() => {
+                        console.log(isHave(liff.getDecodedIDToken().email))
+                    })
+                
+                
                 } else {
                     liff.login();
                 }
@@ -77,6 +81,7 @@ export default function LineLoginMobile() {
 
     useEffect(() => {
 
+        console.log(s)
         
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('user', JSON.stringify(user));
