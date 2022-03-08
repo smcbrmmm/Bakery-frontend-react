@@ -9,11 +9,11 @@ export default function SignupLine({ email, signinModal }) {
     return (
 
         <div hidden={!signinModal}>
+
             <Container>
+                <h1 style={{ textAlign: 'center' }}> Create your Account</h1>
 
-                <h3> Create your Account</h3>
-
-                <div style={{width:'70%'}}>
+                <div style={{ width: '40%' }}>
                     <Form className="formSignin" >
                         <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                             <Form.Label>Product name</Form.Label>
