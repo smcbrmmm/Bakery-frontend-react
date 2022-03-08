@@ -4,11 +4,11 @@ import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdow
 import NavbarCom from '../Navbar/NavbarComponent'
 
 
-export default function SignupLine({ email }) {
+export default function SignupLine({ email , signinModal }) {
 
     return (
 
-        <div>
+        <div hidden={!signinModal}>
             <Container>
                 <Form className="formSignin" >
                     <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >

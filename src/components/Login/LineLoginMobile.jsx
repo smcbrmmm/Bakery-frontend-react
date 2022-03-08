@@ -39,7 +39,7 @@ export default function LineLoginMobile() {
     const [id, setId] = useState();
     const [round, setRound] = useState(0);
     const [isHave, setIsHave] = useState();
-    const [signinModalShow, setSigntinModalShow] = useState(false);
+    const [signinModal, setSigninModal] = useState(false);
 
     var user = {
         id: 3,
@@ -93,7 +93,7 @@ export default function LineLoginMobile() {
 
 
     const click = e => {
-        setSigntinModalShow(true)
+        setSigninModal(true)
         setRound(1);
     }
 
@@ -127,7 +127,7 @@ export default function LineLoginMobile() {
                 {/* <h1> {accessToken} </h1> */}
             </div>
 
-            <Signup hidden={true} email={email}>
+            <Signup signinModal={signinModal} email={email}>
 
             </Signup>
 
