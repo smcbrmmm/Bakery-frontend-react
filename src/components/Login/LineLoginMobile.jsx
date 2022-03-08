@@ -32,6 +32,9 @@ function SigninModal(props) {
 
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
+    const [checkPassword, setCheckPassword] = useState();
+    const [name , setName] = useState();
+
 
     return (
         <Modal className="cart-modal"
@@ -40,18 +43,14 @@ function SigninModal(props) {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Sign in
+                    Sign up
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-
                 <Form className="formSignin" >
                     <Form.Group className="signinInput mb-3" controlId="formBasicEmail" >
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" placeholder=""  />
-                        <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
-                        </Form.Text>
+                        <Form.Control type="email" placeholder="" value={props.email}  />
                     </Form.Group>
                     <Form.Group className="signinInput mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
@@ -62,10 +61,7 @@ function SigninModal(props) {
                     </Form.Group>
                     <div className="d-grid gap-2">
                         <Button variant="primary" size="lg" type="submit">
-                            Sign in
-                        </Button>
-                        <Button variant="success" size="lg">
-                            Sign in with Line. <img src="https://img.icons8.com/color/34/000000/line-me.png" />
+                            Sign up
                         </Button>
 
                     </div>
