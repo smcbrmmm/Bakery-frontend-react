@@ -99,12 +99,11 @@ export default function LineLoginMobile() {
             const response = login({
                 email
             })
-            .then(data => console.log(data))
             .then(data => {
+                console.log(data.accessToken)
                 
-                    console.log(data.accessToken)
+            })
 
-            });
             // if ('accessToken' in response) {
             //     swal("Success", response.message, "success", {
             //         buttons: false,
