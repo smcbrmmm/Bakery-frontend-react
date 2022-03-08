@@ -100,8 +100,8 @@ export default function LineLoginMobile() {
                 email
             })
             .then(data => {
-                console.log(data.accessToken)
-                
+                localStorage.setItem('accessToken', data.accessToken);
+                localStorage.setItem('user', JSON.stringify(data.user));
             })
 
             // if ('accessToken' in response) {
