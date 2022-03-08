@@ -123,10 +123,19 @@ export default function LineLoginMobile() {
             <NavbarCom />
 
             <div className="content-wrap">
-                <Button onClick={click} hidden={true} > Create your account. </Button>
+
+                <MediaQuery maxWidth={1224}>
+                    <Button onClick={click} hidden={accessToken} > Create your account. </Button>
+                    <Signup signinModal={signinModal} email={email}>
+                    </Signup>
+                </MediaQuery>
                 
-                <Signup signinModal={signinModal} email={email}>
-                </Signup>
+                <MediaQuery minWidth={1224}>
+                    {/* <Button onClick={click} hidden={accessToken} > Create your account. </Button> */}
+                    <Signup signinModal={signinModal} email={email}>
+                    </Signup>
+                </MediaQuery>
+
 
             </div>
 

@@ -14,6 +14,8 @@ import {
 
 import { useMediaQuery } from 'react-responsive'
 
+import MediaQuery from 'react-responsive'
+
 async function addProduct(product) {
     console.log(product)
     return fetch('https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/products/insert', {
