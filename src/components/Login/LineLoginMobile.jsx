@@ -96,7 +96,7 @@ export default function LineLoginMobile() {
             // localStorage.setItem('user', JSON.stringify(user));
             // window.location.href = "/order";
             console.log(email)
-            const response = await login({
+            const response = login({
                 email
             });
             // if ('accessToken' in response) {
