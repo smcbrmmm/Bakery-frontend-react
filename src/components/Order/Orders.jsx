@@ -28,13 +28,6 @@ export default function Orders() {
     const [open, setOpen] = useState(true);
     const [showOrderDetail, setShowOrderDetail] = useState(true);
 
-    const onClick= () => {
-        console.log(order)
-        console.log(user.id)
-    }
-
-
-
     return (
         <div className="page-container">
             <NavbarCom />
@@ -57,7 +50,14 @@ export default function Orders() {
                             
                 </Container>
 
-                <Button onClick={onClick}> order </Button>
+                <Button onClick={onClick}> 
+                
+                            
+                
+                </Button>
+
+
+
             </div>
         </div>
     )
