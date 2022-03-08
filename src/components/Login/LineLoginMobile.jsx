@@ -81,13 +81,15 @@ export default function LineLoginMobile() {
 
     useEffect(() => {
 
-        if(isHave !== 0){
-            localStorage.setItem('accessToken', accessToken);
-            localStorage.setItem('user', JSON.stringify(user));
-            window.location.href = "/order";
-        }else{
-            console.log("no account")
-        }       
+        console.log(isHave)
+
+        // if(isHave !== 0){
+        //     localStorage.setItem('accessToken', accessToken);
+        //     localStorage.setItem('user', JSON.stringify(user));
+        //     window.location.href = "/order";
+        // }else{
+        //     console.log("no account")
+        // }       
         
 
     }, [accessToken])
