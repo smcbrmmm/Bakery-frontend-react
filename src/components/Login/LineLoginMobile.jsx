@@ -75,9 +75,13 @@ export default function LineLoginMobile() {
 
     useEffect(() => {
 
+        // isHave(email);
+
+        console.log(email)
+
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('user', JSON.stringify(user));
-        window.location.href = "/order";
+        // window.location.href = "/order";
 
     }, [accessToken])
 
