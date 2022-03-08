@@ -27,7 +27,7 @@ async function isHaveEmail(email) {
 
 async function login(user) {
     
-    return fetch('https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/user/loginbyline' + user.email, {
+    return fetch('https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/user/loginbyline/' + user.email, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
