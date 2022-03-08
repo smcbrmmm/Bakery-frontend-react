@@ -8,7 +8,7 @@ export default function SignupLine({ email, signinModal }) {
 
     return (
 
-        <div hidden={!signinModal}>
+        <div>
 
             <Container>
                 <h1 className=""> Create your Account</h1>
