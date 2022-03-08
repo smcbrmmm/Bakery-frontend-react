@@ -28,12 +28,16 @@ async function isHaveEmail(email) {
 
 }
 
-function SigninModal({ props }) {
+function SigninModal(props) {
 
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
     const [checkPassword, setCheckPassword] = useState();
     const [name , setName] = useState();
+
+    useEffect(() => {
+        console.log(props)
+    }, [])
 
 
     return (
