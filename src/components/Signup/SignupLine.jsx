@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade, Card, Row, Col, Table } from "react-bootstrap";
 import NavbarCom from '../Navbar/NavbarComponent'
-
+import './Signup.css'
 
 export default function SignupLine({ email, signinModal }) {
 
@@ -11,9 +11,9 @@ export default function SignupLine({ email, signinModal }) {
         <div hidden={!signinModal}>
 
             <Container>
-                <h1 style={{ textAlign: 'center' }}> Create your Account</h1>
+                <h1 className=""> Create your Account</h1>
 
-                <div style={{ width: '40%' }}>
+                <div className="signup">
                     <Form className="formSignin" >
                         <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                             <Form.Label>Product name</Form.Label>
