@@ -59,7 +59,8 @@ export default function LineLoginMobile() {
 
                     setName(liff.getProfile.displayName)
                     setAccessToken(liff.getAccessToken)
-                    
+                    setEmail(liff.getDecodedIDToken().email)
+
                     console.log(isHave(liff.getDecodedIDToken().email))
 
                 } else {
@@ -76,10 +77,7 @@ export default function LineLoginMobile() {
 
     useEffect(() => {
 
-        // isHave(email);
-
-        console.log(email)
-
+        
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('user', JSON.stringify(user));
         // window.location.href = "/order";
