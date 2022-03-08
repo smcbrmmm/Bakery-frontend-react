@@ -23,7 +23,7 @@ async function isHaveEmail(email) {
 
     })
         .then(data => data.json())
-        .then(data => console.log(data))
+
 
 
 }
@@ -61,9 +61,9 @@ export default function LineLoginMobile() {
                     setAccessToken(liff.getAccessToken)
                     setEmail(liff.getDecodedIDToken().email)
 
-                    setIsHave(isHaveEmail(liff.getDecodedIDToken().email))
+                    isHaveEmail(liff.getDecodedIDToken().email)
+                    .then(data => console.log(data))
                     
-                    console.log(isHaveEmail(liff.getDecodedIDToken().email))
                     
                 
                 
