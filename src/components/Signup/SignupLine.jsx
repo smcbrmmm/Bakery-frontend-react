@@ -18,6 +18,7 @@ async function signup(user) {
 //     })
 //     .then(data => data.json())
 // }
+}
 
 export default function SignupLine({ email, signinModal }) {
 
