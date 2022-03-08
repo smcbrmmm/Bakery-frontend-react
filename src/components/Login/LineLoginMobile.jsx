@@ -81,10 +81,10 @@ export default function LineLoginMobile() {
             console.log(email)
             console.log("no account")
         } else if (isHave !== 0 && typeof isHave !== 'undefined') {
-            console.log("has account")
+            console.log(isHave)
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('user', JSON.stringify(user));
-            window.location.href = "/order";
+            // window.location.href = "/order";
         }
 
     }, [accessToken])
