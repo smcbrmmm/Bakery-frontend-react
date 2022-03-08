@@ -81,7 +81,7 @@ export default function LineLoginMobile() {
 
     useEffect(() => {
 
-        console.log(s)
+        
         
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('user', JSON.stringify(user));
