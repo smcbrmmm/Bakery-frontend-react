@@ -4,16 +4,40 @@ import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdow
 import NavbarCom from '../Navbar/NavbarComponent'
 
 
-export default function SignupLine( {email}) {
-    
-    return (
-            
-            <div>
-                
-                Line
-                {email}
+export default function SignupLine({ email }) {
 
-            </div>
+    return (
+
+        <div>
+
+            <Form className="formSignin" >
+                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                    <Form.Label>Product name</Form.Label>
+                    <Form.Control type="text" value={email} />
+                </Form.Group>
+                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                    <Form.Label>Price</Form.Label>
+                    <Form.Control type="number"  />
+                </Form.Group>
+                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control as="textarea"  />
+                </Form.Group>
+
+                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                    <Form.Label>Quantity</Form.Label>
+                    <Form.Control type="number"  />
+                </Form.Group>
+
+                <div className="d-grid gap-2">
+                    <Button variant="primary" size="lg"  >
+                        Sign up 
+                    </Button>
+
+                </div>
+            </Form>
+
+        </div>
 
     )
 
