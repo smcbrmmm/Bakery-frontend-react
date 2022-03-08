@@ -87,19 +87,16 @@ export default function LineLoginMobile() {
             console.log("no account")
         }else if(isHave !== 0 && typeof isHave !== 'undefined'){
             console.log("has account")
+            localStorage.setItem('accessToken', accessToken);
+            localStorage.setItem('user', JSON.stringify(user));
+            window.location.href = "/order";
         }
 
-
-        // if(isHave !== "0"){
-        //     localStorage.setItem('accessToken', accessToken);
-        //     localStorage.setItem('user', JSON.stringify(user));
-        //     window.location.href = "/order";
-        // }else{
-        //     console.log("no account")
-        // }       
-        
+            
 
     }, [accessToken])
+
+    
 
     const click = e => {
         setRound(1);
