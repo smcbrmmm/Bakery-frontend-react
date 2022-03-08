@@ -13,7 +13,7 @@ export default function SignupLine({ email, signinModal }) {
             <Container>
                 <h1 className=""> Create your Account</h1>
 
-                <div className="signup">
+                <div>
                     <Form className="formSignin" >
                         <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                             <Form.Label>Product name</Form.Label>
