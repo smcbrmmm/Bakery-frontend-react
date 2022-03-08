@@ -78,6 +78,7 @@ export default function LineLoginMobile() {
     useEffect(() => {
 
         if (isHave === 0 && typeof isHave !== 'undefined') {
+            setSigninModal(true)
             console.log(email)
             console.log("no account")
         } else if (isHave !== 0 && typeof isHave !== 'undefined') {
@@ -92,7 +93,6 @@ export default function LineLoginMobile() {
 
 
     const click = e => {
-        setSigninModal(true)
         setRound(1);
     }
 
@@ -125,7 +125,7 @@ export default function LineLoginMobile() {
 
                 <div hidden={isHave>0 ? true : false}>
                     <MediaQuery minWidth={1224}>
-                        <Button onClick={click} hidden={accessToken} > Create your account. </Button>
+                        <Button onClick={click} hidden={accessToken} > LOGIN </Button>
                         <Signup signinModal={signinModal} email={email}>
                         </Signup>
                     </MediaQuery>
