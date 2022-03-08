@@ -52,6 +52,10 @@ function SigninModal(props) {
                         <Form.Label>Email</Form.Label>
                         <Form.Control type="email" placeholder="" value={props.email}  />
                     </Form.Group>
+                    <Form.Group className="signinInput mb-3" controlId="formBasicEmail" >
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control type="email" placeholder="" value={"samut"}  />
+                    </Form.Group>
                     <Form.Group className="signinInput mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="" />
@@ -178,7 +182,7 @@ export default function LineLoginMobile() {
                 <Button onClick={redirect}> Confirm </Button>
             </header>
 
-            <SigninModal show={signinModalShow}
+            <SigninModal show={signinModalShow} props={email}
                 onHide={() => setSigntinModalShow(false)}
             />
 
