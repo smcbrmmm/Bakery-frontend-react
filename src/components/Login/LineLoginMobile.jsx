@@ -101,9 +101,9 @@ export default function LineLoginMobile() {
             })
             .then(data => console.log(data))
             .then(data => {
-                if ('accessToken' in data){
+                
                     console.log(data.accessToken)
-                }
+
             });
             // if ('accessToken' in response) {
             //     swal("Success", response.message, "success", {
