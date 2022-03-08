@@ -129,6 +129,7 @@ export default function LineLoginMobile() {
     useEffect(() => {
 
         if(isHave === 0 && typeof isHave !== 'undefined') {
+            console.log(email)
             setSigntinModalShow(true)
             console.log("no account")
         }else if(isHave !== 0 && typeof isHave !== 'undefined'){
