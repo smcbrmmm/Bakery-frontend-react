@@ -171,11 +171,11 @@ const Products = ({ products, setProductList }) => {
                                 {products.map((product) => (
 
                                     product.tag === "Pastry"
-                                        ? (<Product key={product.id} product={product} hid={pastry} i={no_pastry++} />)
+                                        ? (<Product key={product.id} product={product} hid={pastry}  />)
                                         : product.tag === "Roasted Pastry"
-                                            ? (<Product key={product.id} product={product} hid={roastedPastry} i={no_roastPastry++} />)
+                                            ? (<Product key={product.id} product={product} hid={roastedPastry} />)
                                             : product.tag === "Rice Cracker"
-                                                ? (<Product key={product.id} product={product} hid={riceCracker} i={no_riceCracker++} />)
+                                                ? (<Product key={product.id} product={product} hid={riceCracker}  />)
                                                 : null
                                 ))}
                             </Row>

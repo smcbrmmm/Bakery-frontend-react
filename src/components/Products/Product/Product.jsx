@@ -34,7 +34,7 @@ async function deleteProduct(product) {
   // .then(data => data.json())
 }
 
-const Product = ({ product, addToCart, loadCurrentItem, hid , i}) => {
+const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
   const user = JSON.parse(localStorage.getItem('user'));
 
   const [role, setRole] = useState(1);
@@ -97,8 +97,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid , i}) => {
           <Button hidden={!user || product.qty === 0} variant="primary" onClick={() => { addToCart(product.id); handleClickAdd() }}>Add to Cart</Button>
           <Button hidden={!user || !(product.qty === 0)} disabled variant="secondary" onClick={() => { addToCart(product.id); handleClick() }}>Out of Stock</Button>
           <h5 className="mt-2" style={{ fontSize: '14px' }}> Remaining : {product.qty}</h5>
-          <h5 className="mt-2" style={{ fontSize: '14px' }}> i : {i}
-          </h5>
+
 
           <div style={{ display: 'flex', marginLeft: 'auto', marginRight: '0' }}>
             <div className="button-admin">

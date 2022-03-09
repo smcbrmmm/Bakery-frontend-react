@@ -236,6 +236,13 @@ const NavbarComponent = ({ cart }) => {
                             </Link>
                         </Nav>
                         <Nav hidden={!user} >
+
+                            <IconButton color="primary" aria-label="upload picture" component="span" id="basic-button">
+                                <StyledBadge badgeContent={cartCount} color="warning">
+                                    <ShoppingCartIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                </StyledBadge>
+                            </IconButton>
+
                             <IconButton color="primary" aria-label="upload picture" component="span" id="basic-button"
                                 aria-controls={open ? 'basic-menu' : undefined}
                                 aria-haspopup="true"
@@ -280,7 +287,7 @@ const NavbarComponent = ({ cart }) => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll>
                         <Navbar.Brand href="#home">
-                            <Link to='/' className="linkTo"><h2 className="nav-menu" style={{ textAlign: 'left', color: 'white' , fontSize:'14px' }}> Mymom Bakery
+                            <Link to='/' className="linkTo"><h2 className="nav-menu" style={{ textAlign: 'left', color: 'white', fontSize: '14px' }}> Mymom Bakery
 
                             </h2></Link>
                         </Navbar.Brand>
@@ -304,8 +311,8 @@ const NavbarComponent = ({ cart }) => {
                                 MenuListProps={{
                                     'aria-labelledby': 'basic-button',
                                 }}
-                                >
-                                    
+                            >
+
                                 <MenuItem component={Link} onClick={handleClose} to="/">Home</MenuItem>
                                 <MenuItem hidden={user} component={Link} onClick={handleClose} to="/lineloginmobile" >Login</MenuItem>
                                 <MenuItem component={Link} onClick={handleClose} to="/products">Menu</MenuItem>
