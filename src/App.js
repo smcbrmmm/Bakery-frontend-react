@@ -31,7 +31,7 @@ function App({ setProductList }) {
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src='https://www.img.in.th/images/368a9969251123806f5ffa95b26d5223.jpg'
+                  src='https://www.wildgrainsbakery.com/wp-content/uploads/2020/08/Untitled-18.jpg'
                   alt="First slide"
                   style={{ width: '400px', height: '500px' }}
                 />
@@ -43,7 +43,7 @@ function App({ setProductList }) {
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src='https://www.img.in.th/images/324c2d03d06b65cc90e69e818ed74be6.jpg'
+                  src='https://www.wildgrainsbakery.com/wp-content/uploads/2020/08/Untitled-18.jpg'
                   alt="Second slide"
                   style={{ width: '400px', height: '500px' }}
                 />
@@ -55,7 +55,7 @@ function App({ setProductList }) {
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src='https://www.img.in.th/images/cca1d9241921ca676e2c0f1856e26d1b.jpg'
+                  src='https://www.wildgrainsbakery.com/wp-content/uploads/2020/08/Untitled-18.jpg'
                   alt="Third slide"
                   style={{ width: '400px' , height: '500px' }}
                 />
@@ -100,8 +100,7 @@ function App({ setProductList }) {
                   className="d-block w-100"
                   src='https://www.wildgrainsbakery.com/wp-content/uploads/2020/08/Untitled-18.jpg'
                   alt="Third slide"
-                  style={{ width: '400px' , height: '500px' }}
-                />
+                  style={{ width: '400px' , height: '500px' }}/>
 
                 <Carousel.Caption>
                   <h3 className="carousel-text">Mymom bakery III</h3>

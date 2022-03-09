@@ -168,7 +168,7 @@ export default function LineLoginMobile() {
                             <Signup signinModal={signinModal} email={email}>
                             </Signup>
                         </div>
-                        <div hidden={email === ""}>
+                        <div hidden={!(email === "")}>
                             <Signup signinModal={signinModal} email={email}>
                             </Signup>
                         </div>

@@ -20,14 +20,34 @@ import MuiAlert from '@mui/material/Alert';
 
 
 
-export default function InfoOfOrderDetail({infoOrder}) {
+export default function InfoOfOrderDetail({ infoOrder }) {
 
+    const [price , setPrice] = useState();
 
     return (
         <div className="main">
 
-            <h1> {infoOrder.title}</h1>
-            <br></br>
+            <Row style={{textAlign:'center'}}>
+                <Col>
+                    <h4> Menu</h4>
+                    <img src={infoOrder.img} width="70%" />
+                    <h5> {infoOrder.title}</h5>
+                </Col>
+                <Col>
+                    <h4> Quantity </h4>
+                    <h5> {infoOrder.productQty}  </h5>
+                </Col>
+                <Col>
+                    <h4> Price </h4>
+                    <h5> {infoOrder.productPrice * infoOrder.productQty}  </h5>
+                </Col>
+
+            </Row>
+
+            {/* <h1> {infoOrder.title}</h1>
+
+            <img src={infoOrder.img} width="30%"/>
+            <br></br> */}
 
 
         </div>
