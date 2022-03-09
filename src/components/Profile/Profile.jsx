@@ -134,7 +134,7 @@ export default function Profile() {
             <Row>
               <Col>
                 <div hidden={edit} >
-                  <h2> Detail <Button color='error' size='large'> Edit </Button> </h2>
+                  <h2> Detail  </h2>
                   {/* <Avatar alt="Remy Sharp" src={user.img} sx={{ width: 200, height: 200 }} /> */}
                   <h4> Name : {user.name} </h4>
                   <h4> Email : {user.email} </h4>
@@ -154,12 +154,12 @@ export default function Profile() {
           <MediaQuery maxWidth={1224}>
 
             <div hidden={edit} >
-              <h2> Detail <Button color='error' size='large'> Edit </Button> </h2>
+              <h2> Detail  </h2>
               {/* <Avatar alt="Remy Sharp" src={user.img} sx={{ width: 200, height: 200 }} /> */}
               <h4> Name : {user.name} </h4>
               <h4> Email : {user.email} </h4>
             </div>
-
+            <hr></hr>
 
             <div hidden={edit} >
               <h2> Address <Button color='success' size='large' onClick={() => setSigntinModalShow(true)}> Add <AddLocationIcon /> </Button> </h2>
