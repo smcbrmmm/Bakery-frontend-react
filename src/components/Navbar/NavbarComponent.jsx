@@ -29,7 +29,7 @@ const liff = window.liff
 
 async function loginUser(credentials) {
     console.log(credentials)
-    return fetch('https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/user/login', {
+    return fetch('https://e226-2405-9800-b600-698c-6999-9220-373e-e462.ngrok.io/api/user/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -176,6 +176,7 @@ const NavbarComponent = ({ cart }) => {
         setCartCount(count);
     }, [cart, cartCount]);
 
+    const text = "Mymom \n Bakery"
 
     return (
 
@@ -188,9 +189,9 @@ const NavbarComponent = ({ cart }) => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll>
                         <Navbar.Brand href="#home">
-                            <Link to='/' className="linkTo"><h2 className="nav-menu" style={{ textAlign: 'left', color: 'white' }}> Mymom Bakery
-
-                            </h2></Link>
+                            <Link to='/' className="linkTo">
+                                <h2 className="nav-menu" style={{ textAlign: 'left', color: 'white' }}> {text} </h2>
+                            </Link>
                         </Navbar.Brand>
                     </Nav>
                     <Nav className="color-nav" style={{ maxHeight: '100px' }}>
@@ -241,7 +242,7 @@ const NavbarComponent = ({ cart }) => {
                             <Link to="/order"  >
                                 <Tooltip title="Order Status">
                                     <IconButton aria-label="cart" size="large" className="nav-menu"  >
-                                            <ListAltIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                        <ListAltIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
                                     </IconButton>
                                 </Tooltip>
                             </Link>
@@ -293,9 +294,9 @@ const NavbarComponent = ({ cart }) => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll>
                         <Navbar.Brand href="#home">
-                            <Link to='/' className="linkTo"><h2 className="nav-menu" style={{ textAlign: 'left', color: 'white', fontSize: '14px' }}> Mymom Bakery
-
-                            </h2></Link>
+                            <Link to='/' className="linkTo">
+                                <h2 className="nav-menu" style={{ textAlign: 'left', color: 'white', fontSize: '14px' }}> Mymom \nBakery</h2>
+                            </Link>
                         </Navbar.Brand>
                     </Nav>
                     <Nav className="color-nav" style={{ maxHeight: '100px' }}>
@@ -318,15 +319,15 @@ const NavbarComponent = ({ cart }) => {
                                 </IconButton>
                             </Link>
 
-                            
+
                             <Link to="/order" hidden={!user} >
                                 <Tooltip title="Order Status">
                                     <IconButton color="primary" aria-label="upload picture" component="span" >
-                                            <ListAltIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                        <ListAltIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
                                     </IconButton>
                                 </Tooltip>
                             </Link>
-                        
+
 
                             <IconButton color="primary" aria-label="upload picture" component="span" id="basic-button"
                                 aria-controls={open ? 'basic-menu' : undefined}

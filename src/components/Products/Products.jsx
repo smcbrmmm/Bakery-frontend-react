@@ -59,12 +59,20 @@ const Products = ({ products, setProductList }) => {
         })
             .then(data => data.json())
             .then(data => setProductList(data))
+
+        window.addEventListener("scroll", toggleVisibility);
+
     }, []);
+
+
+
+
+
 
     const handleInsertProduct = async e => {
 
         const response = await addProduct({
-            productName, price, tag, description, qty , postImage
+            productName, price, tag, description, qty, postImage
         });
 
         setTimeout(() => {
@@ -124,6 +132,7 @@ const Products = ({ products, setProductList }) => {
         });
     };
 
+
     const handleFileUpload = async (e) => {
         const file = e.target.files[0];
         const base64 = await convertToBase64(file);
@@ -142,7 +151,22 @@ const Products = ({ products, setProductList }) => {
     const [description, setDescription] = useState();
     const [qty, setQty] = useState();
 
-    //////////
+    const [isVisible, setIsVisible] = useState(false);
+
+    const toggleVisibility = () => {
+        if (window.pageYOffset > 50) {
+            setIsVisible(true);
+        } else {
+            setIsVisible(false);
+        }
+    };
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
 
 
     return (
@@ -171,11 +195,11 @@ const Products = ({ products, setProductList }) => {
                                 {products.map((product) => (
 
                                     product.tag === "Pastry"
-                                        ? (<Product key={product.id} product={product} hid={pastry}  />)
+                                        ? (<Product key={product.id} product={product} hid={pastry} />)
                                         : product.tag === "Roasted Pastry"
                                             ? (<Product key={product.id} product={product} hid={roastedPastry} />)
                                             : product.tag === "Rice Cracker"
-                                                ? (<Product key={product.id} product={product} hid={riceCracker}  />)
+                                                ? (<Product key={product.id} product={product} hid={riceCracker} />)
                                                 : null
                                 ))}
                             </Row>
@@ -215,7 +239,7 @@ const Products = ({ products, setProductList }) => {
                                         label="Image"
                                         name="myFile"
                                         accept=".jpeg, .png, .jpg"
-                                        onChange={(e) => {handleFileUpload(e) ; onSelectFile(e)}}
+                                        onChange={(e) => { handleFileUpload(e); onSelectFile(e) }}
                                     />
                                 </div>
                             </Col>
@@ -260,6 +284,11 @@ const Products = ({ products, setProductList }) => {
                     </Modal.Body>
                 </Modal>
             </div>
+            {isVisible &&
+                <div onClick={scrollToTop}>
+                    <img src='https://i.postimg.cc/44Ytsk8Z/top-arrow-emoj.png' alt='Go to top' />
+                </div>}
+
 
         </div>
     );
