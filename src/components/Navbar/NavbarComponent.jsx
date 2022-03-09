@@ -289,7 +289,7 @@ const NavbarComponent = ({ cart }) => {
                     <Nav className="color-nav" style={{ maxHeight: '100px' }}>
 
                         <Nav  >
-                            <Link to="/products">
+                            <Link to="/products" hidden={!user}>
                                 <Tooltip title="Menu">
                                     <IconButton color="primary" aria-label="upload picture" component="span" >
                                         <RestaurantMenuOutlinedIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
@@ -298,7 +298,7 @@ const NavbarComponent = ({ cart }) => {
 
                             </Link>
 
-                            <Link to="/cart"  >
+                            <Link to="/cart" hidden={!user}  >
                                 <IconButton color="primary" aria-label="upload picture" component="span" id="basic-button">
                                     <StyledBadge badgeContent={cartCount} color="warning">
                                         <ShoppingCartIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
