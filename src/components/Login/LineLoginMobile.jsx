@@ -164,7 +164,11 @@ export default function LineLoginMobile() {
 
                     <MediaQuery maxWidth={1224}>
                         {/* <Button onClick={click} hidden={accessToken} > Create your account. </Button> */}
-                        <div hidden={email !== "" ? true : false}>
+                        <div hidden={email !== ""}>
+                            <Signup signinModal={signinModal} email={email}>
+                            </Signup>
+                        </div>
+                        <div hidden={email === ""}>
                             <Signup signinModal={signinModal} email={email}>
                             </Signup>
                         </div>
