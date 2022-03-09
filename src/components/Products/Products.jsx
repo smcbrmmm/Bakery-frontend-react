@@ -18,17 +18,18 @@ import MediaQuery from 'react-responsive'
 
 async function addProduct(product) {
     console.log(product)
-    return fetch('https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/products/insert', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        title: product.productName , name : product.productName , price : product.price , qty : product.qty , img : "https://www.mychineserecipes.com/wp-content/uploads/2020/06/Egg-Yolk-Lotus-Paste-Pastry-Recipe.jpg" 
-        , description : product.description , tag : product.tag
-      })
+    return fetch('https://e226-2405-9800-b600-698c-6999-9220-373e-e462.ngrok.io/api/products/insert', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            title: product.productName, name: product.productName, price: product.price, qty: product.qty
+            , img: product.postImage.myFile
+            , description: product.description, tag: product.tag
+        })
     })
-    .then(data => data.json())
+        .then(data => data.json())
 }
 
 
@@ -50,7 +51,7 @@ const Products = ({ products, setProductList }) => {
 
     useEffect(() => {
         // Update the document title using the browser API
-        fetch('https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/products/allProducts', {
+        fetch('https://e226-2405-9800-b600-698c-6999-9220-373e-e462.ngrok.io/api/products/allProducts', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -63,7 +64,7 @@ const Products = ({ products, setProductList }) => {
     const handleInsertProduct = async e => {
 
         const response = await addProduct({
-            productName, price, tag, description, qty
+            productName, price, tag, description, qty , postImage
         });
 
         setTimeout(() => {
@@ -106,6 +107,31 @@ const Products = ({ products, setProductList }) => {
         console.log(files)
     }
 
+    const [postImage, setPostImage] = useState({
+        myFile: "",
+    });
+
+    const convertToBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload = () => {
+                resolve(fileReader.result);
+            };
+            fileReader.onerror = (error) => {
+                reject(error);
+            };
+        });
+    };
+
+    const handleFileUpload = async (e) => {
+        const file = e.target.files[0];
+        const base64 = await convertToBase64(file);
+        setPostImage({ ...postImage, myFile: base64 });
+        console.log(postImage.myFile.length)
+
+    };
+
     const isDesktopOrLaptop = useMediaQuery({
         query: '(min-width: 1224px)'
     })
@@ -141,9 +167,9 @@ const Products = ({ products, setProductList }) => {
                                     onClick={() => setAddProductModal(true)}> Insert </Button>
                             </h2>
 
-                            <Row>
+                            <Row lg={3}>
                                 {products.map((product) => (
-                                    
+
                                     product.tag === "Pastry"
                                         ? (<Product key={product.id} product={product} hid={pastry} i={no_pastry++} />)
                                         : product.tag === "Roasted Pastry"
@@ -183,7 +209,14 @@ const Products = ({ products, setProductList }) => {
                                     )
                                 })}
                                 <div className="mt-5">
-                                    <input type='file' onChange={onSelectFile} />
+                                    {/* <input type='file' onChange={onSelectFile} /> */}
+                                    <input
+                                        type="file"
+                                        label="Image"
+                                        name="myFile"
+                                        accept=".jpeg, .png, .jpg"
+                                        onChange={(e) => {handleFileUpload(e) ; onSelectFile(e)}}
+                                    />
                                 </div>
                             </Col>
                             <Col>

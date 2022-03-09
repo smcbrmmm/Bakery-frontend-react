@@ -22,7 +22,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 async function deleteProduct(product) {
   console.log(product)
-  return fetch('https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/products/delete', {
+  return fetch('https://e226-2405-9800-b600-698c-6999-9220-373e-e462.ngrok.io/api/products/delete', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -74,7 +74,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid , i}) => {
 
     setTimeout(() => {
       window.location.href = "/products";
-    }, 2000);
+    }, 1000);
 
   }
 

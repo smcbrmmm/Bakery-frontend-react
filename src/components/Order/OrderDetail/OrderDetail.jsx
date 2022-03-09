@@ -13,7 +13,7 @@ const OrderDetail = ({ order }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                'https://c5bd-2405-9800-b600-698c-5cad-e267-7f49-51f7.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
+                'https://e226-2405-9800-b600-698c-6999-9220-373e-e462.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
             );
             setInfoOrder(result.data)
         };
