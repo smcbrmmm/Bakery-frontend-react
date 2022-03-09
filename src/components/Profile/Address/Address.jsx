@@ -77,6 +77,8 @@ export default function Address({ address, no }) {
 
     const [openAlert, setOpenAlert] = React.useState(false);
 
+    const [openAlertEdit, setOpenAlertEdit] = React.useState(false);
+
     const handleClick = () => {
         setOpenAlert(true);
     };
@@ -119,7 +121,7 @@ export default function Address({ address, no }) {
 
         setTimeout(() => {
             window.location.href = "/profile";
-        }, 2000);
+        }, 1000);
 
     }
 
@@ -267,7 +269,7 @@ export default function Address({ address, no }) {
                             <Form.Control type="text" onChange={e => { setPostal(e.target.value) }} defaultValue={conAddress.postal} />
                         </Form.Group>
                         <div className="d-grid gap-2">
-                            <Button variant="primary" size="lg" onClick={handleEdit}>
+                            <Button variant="primary" size="lg" onClick={() => { handleEdit() ; setOpenAlertEdit(true)}}>
                                 Confirm.
                             </Button>
 
@@ -298,6 +300,12 @@ export default function Address({ address, no }) {
             <Snackbar open={openAlert} autoHideDuration={3000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
                     Address already deleted.
+                </Alert>
+            </Snackbar>
+
+            <Snackbar open={openAlertEdit} autoHideDuration={3000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="info" sx={{ width: '100%' }}>
+                    Address already edited.
                 </Alert>
             </Snackbar>
 
