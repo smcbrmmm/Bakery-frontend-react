@@ -159,7 +159,7 @@ export default function Profile() {
               <h4> Name : {user.name} </h4>
               <h4> Email : {user.email} </h4>
             </div>
-            <hr></hr>
+            <hr className='hr'></hr>
 
             <div hidden={edit} >
               <h2> Address <Button color='success' size='large' onClick={() => setSigntinModalShow(true)}> Add <AddLocationIcon /> </Button> </h2>

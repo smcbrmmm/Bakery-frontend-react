@@ -11,3 +11,7 @@
 .address {
     font-size: 17px;
 }
+
+.hr {
+    border: 1px solid red;
+}
