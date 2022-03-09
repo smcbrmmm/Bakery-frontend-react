@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Col, Row, Container, Carousel, Navbar, Form, FormControl, Nav, NavDropdown, Fade, Modal , Button } from "react-bootstrap";
+import { Col, Row, Container, Carousel, Navbar, Form, FormControl, Nav, NavDropdown, Fade, Modal, Button } from "react-bootstrap";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -17,7 +17,7 @@ import axios from "axios";
 
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-
+import MediaQuery from 'react-responsive'
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -94,7 +94,7 @@ export default function Profile() {
   const [openAlert, setOpenAlert] = React.useState(false);
 
   const handleClick = () => {
-      setOpenAlert(true);
+    setOpenAlert(true);
   };
 
   const handleClose = (event, reason) => {
@@ -130,25 +130,45 @@ export default function Profile() {
         <div className='container'>
           <h1> Profile  </h1>
 
-          <Row>
-            <Col>
-              <div hidden={edit} >
-                <h2> Detail <Button color='error' size='large'> Edit </Button> </h2>
-                {/* <Avatar alt="Remy Sharp" src={user.img} sx={{ width: 200, height: 200 }} /> */}
-                <h4> Name : {user.name} </h4>
-                <h4> Email : {user.email} </h4>
-              </div>
-            </Col>
-            <Col>
-              <div hidden={edit} >
-                <h2> Address <Button color='success' size='large' onClick={() => setSigntinModalShow(true)}> Add <AddLocationIcon /> </Button> </h2>
-                {address.map((address) => (
-                  <Address key={address.id} address={address} no={no++} />
-                ))}
-              </div>
-            </Col>
-          </Row>
+          <MediaQuery minWidth={1224}>
+            <Row>
+              <Col>
+                <div hidden={edit} >
+                  <h2> Detail <Button color='error' size='large'> Edit </Button> </h2>
+                  {/* <Avatar alt="Remy Sharp" src={user.img} sx={{ width: 200, height: 200 }} /> */}
+                  <h4> Name : {user.name} </h4>
+                  <h4> Email : {user.email} </h4>
+                </div>
+              </Col>
+              <Col>
+                <div hidden={edit} >
+                  <h2> Address <Button color='success' size='large' onClick={() => setSigntinModalShow(true)}> Add <AddLocationIcon /> </Button> </h2>
+                  {address.map((address) => (
+                    <Address key={address.id} address={address} no={no++} />
+                  ))}
+                </div>
+              </Col>
+            </Row>
+          </MediaQuery>
 
+          <MediaQuery maxWidth={1224}>
+
+            <div hidden={edit} >
+              <h2> Detail <Button color='error' size='large'> Edit </Button> </h2>
+              {/* <Avatar alt="Remy Sharp" src={user.img} sx={{ width: 200, height: 200 }} /> */}
+              <h4> Name : {user.name} </h4>
+              <h4> Email : {user.email} </h4>
+            </div>
+
+
+            <div hidden={edit} >
+              <h2> Address <Button color='success' size='large' onClick={() => setSigntinModalShow(true)}> Add <AddLocationIcon /> </Button> </h2>
+              {address.map((address) => (
+                <Address key={address.id} address={address} no={no++} />
+              ))}
+            </div>
+
+          </MediaQuery>
         </div>
       </div>
 
@@ -275,7 +295,7 @@ export default function Profile() {
               <Form.Control type="text" onChange={e => { setPostal(e.target.value) }} />
             </Form.Group>
             <div className="d-grid gap-2">
-              <Button variant="primary" size="lg" onClick={() => {handleSubmit() ; handleClick()}}>
+              <Button variant="primary" size="lg" onClick={() => { handleSubmit(); handleClick() }}>
                 Confirm.
               </Button>
 
@@ -292,6 +312,6 @@ export default function Profile() {
       </Snackbar>
 
 
-    </div>
+    </div >
   );
 }
