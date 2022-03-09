@@ -22,7 +22,7 @@ import Tooltip from '@mui/material/Tooltip';
 import LoginIcon from '@mui/icons-material/Login';
 import DehazeIcon from '@mui/icons-material/Dehaze';
 import LineLoginComponent from "../Login/LineLoginComponent";
-
+import ListAltIcon from '@mui/icons-material/ListAlt';
 import MediaQuery from 'react-responsive'
 
 const liff = window.liff
@@ -235,6 +235,18 @@ const NavbarComponent = ({ cart }) => {
                                 </Tooltip>
                             </Link>
                         </Nav>
+
+
+                        <Nav hidden={!user}>
+                            <Link to="/order"  >
+                                <Tooltip title="Order Status">
+                                    <IconButton aria-label="cart" size="large" className="nav-menu"  >
+                                            <ListAltIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                    </IconButton>
+                                </Tooltip>
+                            </Link>
+                        </Nav>
+
                         <Nav hidden={!user} >
 
                             <IconButton color="primary" aria-label="upload picture" component="span" id="basic-button"
@@ -305,6 +317,16 @@ const NavbarComponent = ({ cart }) => {
                                     </StyledBadge>
                                 </IconButton>
                             </Link>
+
+                            <Nav hidden={!user}>
+                            <Link to="/order"  >
+                                <Tooltip title="Order Status">
+                                    <IconButton aria-label="cart" size="large" className="nav-menu"  >
+                                            <ListAltIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                    </IconButton>
+                                </Tooltip>
+                            </Link>
+                        </Nav>
 
                             <IconButton color="primary" aria-label="upload picture" component="span" id="basic-button"
                                 aria-controls={open ? 'basic-menu' : undefined}
