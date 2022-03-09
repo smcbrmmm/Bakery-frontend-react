@@ -321,7 +321,7 @@ const NavbarComponent = ({ cart }) => {
                             
                             <Link to="/order" hidden={!user} >
                                 <Tooltip title="Order Status">
-                                    <IconButton aria-label="cart" size="large" className="nav-menu"  >
+                                    <IconButton color="primary" aria-label="upload picture" component="span" >
                                             <ListAltIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
                                     </IconButton>
                                 </Tooltip>
