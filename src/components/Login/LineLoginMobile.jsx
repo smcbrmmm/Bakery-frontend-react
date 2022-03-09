@@ -44,7 +44,7 @@ export default function LineLoginMobile() {
 
     const [name, setName] = useState();
     const [accessToken, setAccessToken] = useState();
-    const [email, setEmail] = useState();
+    const [email, setEmail] = useState("");
     const [id, setId] = useState();
     const [round, setRound] = useState(0);
     const [isHave, setIsHave] = useState();
@@ -164,7 +164,7 @@ export default function LineLoginMobile() {
 
                     <MediaQuery maxWidth={1224}>
                         {/* <Button onClick={click} hidden={accessToken} > Create your account. </Button> */}
-                        <div hidden={isHave > 0 ? true : false}>
+                        <div hidden={email !== "" ? true : false}>
                             <Signup signinModal={signinModal} email={email}>
                             </Signup>
                         </div>
