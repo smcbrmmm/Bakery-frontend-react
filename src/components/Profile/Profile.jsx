@@ -83,6 +83,7 @@ export default function Profile() {
 
   const [open, setOpen] = useState(false);
   let no = 1;
+  let no_mobile = 1;
 
   const [place, setPlace] = useState(address.place)
   const [recieverName, setRecieverName] = useState(address.recieverName)
@@ -166,7 +167,7 @@ export default function Profile() {
             <div hidden={edit} >
               <h2> Address <Button color='success' size='large' onClick={() => setSigntinModalShow(true)}> Add <AddLocationIcon /> </Button> </h2>
               {address.map((address) => (
-                <Address key={address.id} address={address} no={no++} />
+                <Address key={address.id} address={address} no={no_mobile++} />
               ))}
             </div>
 
