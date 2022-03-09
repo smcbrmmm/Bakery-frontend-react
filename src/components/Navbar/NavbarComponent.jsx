@@ -268,7 +268,7 @@ const NavbarComponent = ({ cart }) => {
                                 }}
                             >
                                 <MenuItem component={Link} onClick={handleClose} to="/profile">Account</MenuItem>
-                                <MenuItem component={Link} to="/order" onClick={handleClose}>Order Status</MenuItem>
+                                {/* <MenuItem component={Link} to="/order" onClick={handleClose}>Order Status</MenuItem> */}
                                 <MenuItem onClick={handleLogout}>Sign out</MenuItem>
                             </Menu>
                         </Nav>
@@ -347,13 +347,13 @@ const NavbarComponent = ({ cart }) => {
                                 }}
                             >
 
-                                <MenuItem component={Link} onClick={handleClose} to="/">Home</MenuItem>
+                                {/* <MenuItem component={Link} onClick={handleClose} to="/">Home</MenuItem> */}
                                 <MenuItem hidden={user} component={Link} onClick={handleClose} to="/lineloginmobile" >Login</MenuItem>
-                                <MenuItem component={Link} onClick={handleClose} to="/products">Menu</MenuItem>
+                                {/* <MenuItem component={Link} onClick={handleClose} to="/products">Menu</MenuItem> */}
                                 <MenuItem component={Link} onClick={handleClose} to="/contactus">Contact Us</MenuItem>
-                                <MenuItem hidden={!user} component={Link} onClick={handleClose} to="/cart">Cart</MenuItem>
+                                {/* <MenuItem hidden={!user} component={Link} onClick={handleClose} to="/cart">Cart</MenuItem> */}
                                 <MenuItem hidden={!user} component={Link} onClick={handleClose} to="/profile">Profile</MenuItem>
-                                <MenuItem hidden={!user} component={Link} to="/order" onClick={handleClose}>Order Status</MenuItem>
+                                {/* <MenuItem hidden={!user} component={Link} to="/order" onClick={handleClose}>Order Status</MenuItem> */}
                                 <MenuItem hidden={!user} onClick={handleLogout}>Sign out</MenuItem>
                             </Menu>
                         </Nav>
