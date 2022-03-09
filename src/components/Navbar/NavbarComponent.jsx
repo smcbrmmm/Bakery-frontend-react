@@ -291,7 +291,7 @@ const NavbarComponent = ({ cart }) => {
                         <Nav  >
                             <Link to="/products">
                                 <Tooltip title="Menu">
-                                    <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
+                                    <IconButton color="primary" aria-label="upload picture" component="span" >
                                         <RestaurantMenuOutlinedIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
                                     </IconButton>
                                 </Tooltip>
