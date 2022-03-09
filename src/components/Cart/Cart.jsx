@@ -251,7 +251,7 @@ const Cart = ({ cart }) => {
                     </Row>
                     <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
                         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                            Order had been save.
+                            Order has been saved.
                         </Alert>
                     </Snackbar>
                 </Container>

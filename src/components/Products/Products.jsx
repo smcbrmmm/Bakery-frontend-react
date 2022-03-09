@@ -203,8 +203,15 @@ const Products = ({ products, setProductList }) => {
                                                 : null
                                 ))}
                             </Row>
+                            {isVisible &&
+                                <div onClick={scrollToTop}>
+                                    <img src='https://i.postimg.cc/44Ytsk8Z/top-arrow-emoj.png' alt='Go to top' style={{ display :'block' , marginLeft : 'auto' , marginRight: '1rem' }} />
+                                </div>}
                         </Col>
                     </Row>
+
+
+
                 </Container>
 
                 <Modal className="cart-modal" show={addProductModal}
@@ -283,11 +290,9 @@ const Products = ({ products, setProductList }) => {
                         </Row>
                     </Modal.Body>
                 </Modal>
+
+
             </div>
-            {isVisible &&
-                <div onClick={scrollToTop}>
-                    <img src='https://i.postimg.cc/44Ytsk8Z/top-arrow-emoj.png' alt='Go to top' />
-                </div>}
 
 
         </div>
