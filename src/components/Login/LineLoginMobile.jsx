@@ -56,16 +56,16 @@ export default function LineLoginMobile() {
         email: "samut.c@ku.th"
     }
 
-    if(email !== ""){
-        const response = login({
-            email
-        })
-            .then(data => {
-                localStorage.setItem('accessToken', data.accessToken);
-                localStorage.setItem('user', JSON.stringify(data.user));
-                window.location.href = "/order";
-            })
-    }
+    // if(email !== ""){
+    //     const response = login({
+    //         email
+    //     })
+    //         .then(data => {
+    //             localStorage.setItem('accessToken', data.accessToken);
+    //             localStorage.setItem('user', JSON.stringify(data.user));
+    //             window.location.href = "/order";
+    //         })
+    // }
 
     useEffect(() => {
 
@@ -102,15 +102,15 @@ export default function LineLoginMobile() {
             console.log(email)
             console.log("no account")
         } else if (isHave !== 0 && typeof isHave !== 'undefined' && typeof email !== 'undefined') {
-            // console.log(email)
-            // const response = login({
-            //     email
-            // })
-            //     .then(data => {
-            //         localStorage.setItem('accessToken', data.accessToken);
-            //         localStorage.setItem('user', JSON.stringify(data.user));
-            //         window.location.href = "/order";
-            //     })
+            console.log(email)
+            const response = login({
+                email
+            })
+                .then(data => {
+                    localStorage.setItem('accessToken', data.accessToken);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    window.location.href = "/order";
+                })
 
         }
 
