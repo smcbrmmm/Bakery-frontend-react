@@ -56,16 +56,16 @@ export default function LineLoginMobile() {
         email: "samut.c@ku.th"
     }
 
-    // if(email !== ""){
-    //     const response = login({
-    //         email
-    //     })
-    //         .then(data => {
-    //             localStorage.setItem('accessToken', data.accessToken);
-    //             localStorage.setItem('user', JSON.stringify(data.user));
-    //             window.location.href = "/order";
-    //         })
-    // }
+    if(email !== ""){
+        const response = login({
+            email
+        })
+            .then(data => {
+                localStorage.setItem('accessToken', data.accessToken);
+                localStorage.setItem('user', JSON.stringify(data.user));
+                window.location.href = "/order";
+            })
+    }
 
     useEffect(() => {
 
