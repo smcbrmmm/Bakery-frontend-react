@@ -103,14 +103,14 @@ export default function LineLoginMobile() {
             console.log("no account")
         } else if (isHave !== 0 && typeof isHave !== 'undefined' && typeof email !== 'undefined') {
             console.log(email)
-            const response = login({
-                email
-            })
-                .then(data => {
-                    localStorage.setItem('accessToken', data.accessToken);
-                    localStorage.setItem('user', JSON.stringify(data.user));
-                    window.location.href = "/order";
-                })
+            // const response = login({
+            //     email
+            // })
+            //     .then(data => {
+            //         localStorage.setItem('accessToken', data.accessToken);
+            //         localStorage.setItem('user', JSON.stringify(data.user));
+            //         window.location.href = "/order";
+            //     })
 
         }
 
