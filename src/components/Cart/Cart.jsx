@@ -194,9 +194,11 @@ const Cart = ({ cart }) => {
                                         ))}
                                     </Form.Select>
 
-                                    <Button className="mt-1" size="small" onClick={() => window.location.href = "/profile"}>
+                                    <Link to="/profile">
+                                    <Button className="mt-1" size="small">
                                         Add your new address.
                                     </Button>
+                                    </Link>
                                 </div>
 
 
