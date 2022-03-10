@@ -7,7 +7,6 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import axios from "axios";
 import Button from '@mui/material/Button';
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -195,11 +194,9 @@ const Cart = ({ cart }) => {
                                         ))}
                                     </Form.Select>
 
-                                    <Link to="/profile">
-                                    <Button className="mt-1" size="small">
+                                    <Button className="mt-1" size="small" onClick={() => window.location.href = "/profile"}>
                                         Add your new address.
                                     </Button>
-                                    </Link>
                                 </div>
 
 

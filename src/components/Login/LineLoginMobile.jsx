@@ -26,7 +26,7 @@ async function isHaveEmail(email) {
 }
 
 async function login(user) {
-    
+
     return fetch('https://e226-2405-9800-b600-698c-6999-9220-373e-e462.ngrok.io/api/user/loginbyline/' + user.email, {
         method: 'GET',
         headers: {
@@ -95,11 +95,11 @@ export default function LineLoginMobile() {
             const response = login({
                 email
             })
-            .then(data => {
-                localStorage.setItem('accessToken', data.accessToken);
-                localStorage.setItem('user', JSON.stringify(data.user));
-                window.location.href = "/order";
-            })
+                .then(data => {
+                    localStorage.setItem('accessToken', data.accessToken);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    window.location.href = "/order";
+                })
 
         }
 
@@ -122,9 +122,13 @@ export default function LineLoginMobile() {
 
                 <div hidden={isHave > 0 ? true : false}>
                     <MediaQuery minWidth={1224}>
-                        <Button onClick={click} hidden={accessToken} > LOGIN </Button>
+                        {/* <Button onClick={click} hidden={accessToken} > LOGIN </Button>
                         <Signup signinModal={signinModal} email={email}>
-                        </Signup>
+                        </Signup> */}
+                        <div hidden={isHave > 0 ? true : false}>
+                            <Signup signinModal={signinModal} email={email}>
+                            </Signup>
+                        </div>
                     </MediaQuery>
 
                     <MediaQuery maxWidth={1224}>

@@ -21,8 +21,6 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import MediaQuery from 'react-responsive'
 
-import { connect } from "react-redux";
-
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -61,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Profile() {
+export default function Profile() {
 
   const user = JSON.parse(localStorage.getItem('user'));
 
@@ -169,7 +167,7 @@ function Profile() {
             <div hidden={edit} >
               <h2> Address <Button color='success' size='large' onClick={() => setSigntinModalShow(true)}> Add <AddLocationIcon /> </Button> </h2>
               {address.map((address) => (
-                <Address key={address.id} address={address} no={no_mobile++} />
+                <Address key={address.id} address={address} no={no++} />
               ))}
             </div>
 
@@ -320,5 +318,3 @@ function Profile() {
     </div >
   );
 }
-
-export default connect(Profile);
