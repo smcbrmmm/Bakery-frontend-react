@@ -7,12 +7,12 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import axios from "axios";
 import Button from '@mui/material/Button';
-
+import { useNavigate } from "react-router-dom";
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-async function order(orderDetail , cart , user) {
+async function order(orderDetail, cart, user) {
     console.log(orderDetail)
     fetch('https://e226-2405-9800-b600-698c-6999-9220-373e-e462.ngrok.io/api/order/save', {
         method: 'POST',
@@ -28,7 +28,7 @@ async function order(orderDetail , cart , user) {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    productId : cart[i].id , productPrice : cart[i].price , productQty : cart[i].qty , userId : orderDetail.userId
+                    productId: cart[i].id, productPrice: cart[i].price, productQty: cart[i].qty, userId: orderDetail.userId
                 })
             })
         }
@@ -58,7 +58,7 @@ const Cart = ({ cart }) => {
             userId,
             addressId,
             status
-        } , cart , user);
+        }, cart, user);
 
         // setTimeout(() => {
         //     window.location.href = "/order";
@@ -145,18 +145,13 @@ const Cart = ({ cart }) => {
             setPostal("")
         }
 
-
-
-        // setAdd(address[indexOfValue].address)
-        // setRecieverName(address[indexOfValue].recieverName)
-        // setRecieverTel(address[indexOfValue].recieverTel)
-        // setHouseNumber(address[indexOfValue].houseNumber)
-        // setProvince(address[indexOfValue].province)
-        // setPostal(address[indexOfValue].postal)
-        // setAddressId(address[indexOfValue].addressId)
-        // setUserId(user.id)
     }
 
+    let navigate = useNavigate();
+    const routeChange = () => {
+        let path = '/profile';
+        navigate(path);
+    }
 
 
     return (
@@ -190,11 +185,11 @@ const Cart = ({ cart }) => {
                                         <option value="default">Choose your shipping place.</option>
 
                                         {address.map((address) => (
-                                            <option value={address.place}  > {address.place} </option>
+                                            <option value={address.place} > {address.place} </option>
                                         ))}
                                     </Form.Select>
 
-                                    <Button className="mt-1" size="small" onClick={() => window.location.href = "/profile"}>
+                                    <Button className="mt-1" size="small" onClick={routeChange}>
                                         Add your new address.
                                     </Button>
                                 </div>
@@ -243,9 +238,6 @@ const Cart = ({ cart }) => {
                                     Checkout
                                 </Button>
 
-                                {/* <button className="main" onClick={() => { handleSubmit(); handleClick() }}>
-                                    Checkout
-                                </button> */}
                             </div>
                         </Col>
                     </Row>
