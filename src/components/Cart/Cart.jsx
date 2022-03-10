@@ -14,7 +14,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 async function order(orderDetail, cart, user) {
     console.log(orderDetail)
-    fetch('https://e226-2405-9800-b600-698c-6999-9220-373e-e462.ngrok.io/api/order/save', {
+    fetch('https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/order/save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ async function order(orderDetail, cart, user) {
         body: JSON.stringify({ userId: user.id, addressId: orderDetail.addressId, status: "Waiting for payment" })
     }).then(() => {
         for (var i = 0; i < cart.length; i++) {
-            fetch('https://e226-2405-9800-b600-698c-6999-9220-373e-e462.ngrok.io/api/orderDetail/save', {
+            fetch('https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/orderDetail/save', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -71,7 +71,7 @@ const Cart = ({ cart }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                'https://e226-2405-9800-b600-698c-6999-9220-373e-e462.ngrok.io/api/address/address/' + user.id,
+                'https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/address/address/' + user.id,
             );
             setAddress(result.data)
             // console.log(result)

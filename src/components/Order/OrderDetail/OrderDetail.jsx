@@ -14,11 +14,11 @@ const OrderDetail = ({ order }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                'https://e226-2405-9800-b600-698c-6999-9220-373e-e462.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
+                'https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
             );
 
             const result2 = await axios(
-                'https://e226-2405-9800-b600-698c-6999-9220-373e-e462.ngrok.io/api/order/getSumPrice/' + order.orderId,
+                'https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/order/getSumPrice/' + order.orderId,
             );
 
             // console.log(result.data)

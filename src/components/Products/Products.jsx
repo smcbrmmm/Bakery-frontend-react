@@ -52,7 +52,7 @@ const Products = ({ products, setProductList }) => {
 
     useEffect(() => {
         // Update the document title using the browser API
-        fetch('https://e226-2405-9800-b600-698c-6999-9220-373e-e462.ngrok.io/api/products/allProducts', {
+        fetch('https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/products/allProducts', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
