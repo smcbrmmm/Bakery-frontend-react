@@ -6,7 +6,15 @@ import axios from "axios";
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import OrderDetail from './OrderDetail/OrderDetail'
 
-export default function Orders() {
+import { connect } from "react-redux";
+
+import {
+    setProductInCart,
+    setProductList
+} from "../../redux/Shopping/shopping-actions";
+
+// const Orders = ({ setProductInCart }) =>
+const Orders = ({ setProductInCart }) => {
     const user = JSON.parse(localStorage.getItem('user'));
 
     const [order, setOrder] = useState([]);
@@ -62,6 +70,16 @@ export default function Orders() {
         </div>
     )
 
-
 }
+
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setProductList: data => dispatch(setProductList(data)),
+        setProductInCart: data => dispatch(setProductInCart(data))
+    }
+}
+
+
+export default connect( mapDispatchToProps)(Orders);
 
