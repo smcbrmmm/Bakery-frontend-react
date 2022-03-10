@@ -14,7 +14,7 @@ import {
 } from "../../redux/Shopping/shopping-actions";
 
 // const Orders = ({ setProductInCart }) =>
-const Orders = ({ setProductInCart }) => {
+const Orders = ({ products, setProductList, setProductInCart }) => {
     const user = JSON.parse(localStorage.getItem('user'));
 
     const [order, setOrder] = useState([]);
@@ -74,6 +74,11 @@ const Orders = ({ setProductInCart }) => {
 
 }
 
+const mapStateToProps = (state) => {
+    return {
+        products: state.shop.products,
+    };
+};
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -83,5 +88,5 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect(mapDispatchToProps)(Orders);
+export default connect(mapStateToProps,mapDispatchToProps)(Orders);
 
