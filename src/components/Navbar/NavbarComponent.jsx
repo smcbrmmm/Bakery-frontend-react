@@ -225,7 +225,7 @@ const NavbarComponent = ({ cart }) => {
                                 </Tooltip>
                             </Link>
                         </Nav>
-                        <Nav hidden={!user}>
+                        <Nav hidden={!user && user.role === "A"}>
                             <Link to="/cart"  >
                                 <Tooltip title="Cart ">
                                     <IconButton aria-label="cart" size="large" className="nav-menu"  >
