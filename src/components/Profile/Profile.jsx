@@ -21,6 +21,8 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import MediaQuery from 'react-responsive'
 
+import { connect } from "react-redux";
+
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -59,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Profile() {
+function Profile() {
 
   const user = JSON.parse(localStorage.getItem('user'));
 
@@ -318,3 +320,5 @@ export default function Profile() {
     </div >
   );
 }
+
+export default connect(Profile);
