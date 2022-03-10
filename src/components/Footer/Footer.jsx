@@ -3,6 +3,11 @@ import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdow
 import './Footer.css'
 
 const Footer = () => {
+
+    if(1==1){
+        console.log("samut")
+    }
+
     return (
         <div className="App">
             <div className="main-footer">
