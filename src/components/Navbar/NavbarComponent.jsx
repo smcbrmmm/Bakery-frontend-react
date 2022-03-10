@@ -273,15 +273,17 @@ const NavbarComponent = ({ cart }) => {
                             </Menu>
                         </Nav>
 
-
-
-                        <Nav hidden={user} onClick={() => setSigntinModalShow(true)}>
+                        
+                        {/* onClick={() => setSigntinModalShow(true)} */}
+                        <Link to="/lineloginmobile" hidden={user}  >
+                        <Nav   >
                             <Tooltip title="Login">
                                 <IconButton aria-label="cart" size="large" className="nav-menu" >
-                                    <LoginIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                    <LoginIcon sx={{ fontSize: 30 }} style={{ fill: "white" }}  />
                                 </IconButton>
                             </Tooltip>
                         </Nav>
+                        </Link>
 
                     </Nav>
                 </Navbar>

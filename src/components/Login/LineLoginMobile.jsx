@@ -91,10 +91,6 @@ export default function LineLoginMobile() {
             console.log(email)
             console.log("no account")
         } else if (isHave !== 0 && typeof isHave !== 'undefined' && typeof email !== 'undefined') {
-            // console.log(isHave)
-            // localStorage.setItem('accessToken', accessToken);
-            // localStorage.setItem('user', JSON.stringify(user));
-            // window.location.href = "/order";
             console.log(email)
             const response = login({
                 email
@@ -105,47 +101,16 @@ export default function LineLoginMobile() {
                 window.location.href = "/order";
             })
 
-            // if ('accessToken' in response) {
-            //     swal("Success", response.message, "success", {
-            //         buttons: false,
-            //         timer: 2000,
-            //     })
-            //         .then((value) => {
-            //             localStorage.setItem('accessToken', response['accessToken']);
-            //             localStorage.setItem('user', JSON.stringify(response['user']));
-            //             window.location.href = "/order";
-            //         });
-            // } else {
-            //     swal("Failed", response.message, "error");
-            // }
         }
 
     }, [accessToken])
-
 
 
     const click = e => {
         setRound(1);
     }
 
-    const redirect = e => {
 
-        window.location.href = "/home";
-
-        setTimeout(() => {
-            window.location.href = "/lineloginmobile";
-        }, 1000);
-
-
-        // localStorage.setItem('accessToken', accessToken);
-        // localStorage.setItem('user', JSON.stringify(user));
-        // window.location.href = "/order";
-
-        // setTimeout(() => {
-        //     window.location.href = "/order";
-        // }, 1000);
-
-    }
 
 
     return (
@@ -170,9 +135,6 @@ export default function LineLoginMobile() {
                         </div>
                     </MediaQuery>
                 </div>
-
-
-
 
             </div>
 
