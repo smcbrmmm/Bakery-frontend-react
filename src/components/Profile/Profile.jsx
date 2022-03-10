@@ -16,7 +16,7 @@ import axios from "axios";
 // import Avatar from '@mui/material/Avatar';
 
 import "./Profile.css"
-import { connect } from "react-redux";
+
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import MediaQuery from 'react-responsive'
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Profile =() => {
+const Profile =()=> {
 
   const user = JSON.parse(localStorage.getItem('user'));
 
@@ -319,4 +319,4 @@ const Profile =() => {
   );
 }
 
-export default connect(Profile);
+export default Profile;
