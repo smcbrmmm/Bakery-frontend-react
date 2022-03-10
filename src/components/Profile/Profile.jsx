@@ -167,7 +167,7 @@ const Profile =()=> {
             <div hidden={edit} >
               <h2> Address <Button color='success' size='large' onClick={() => setSigntinModalShow(true)}> Add <AddLocationIcon /> </Button> </h2>
               {address.map((address) => (
-                <Address key={address.id} address={address} no={no++} />
+                <Address key={address.id} address={address} no={no_mobile++} />
               ))}
             </div>
 
