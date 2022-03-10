@@ -12,9 +12,8 @@ const shopReducer = (state = INITIAL_STATE, action) => {
     case actionTypes.SET_PRODUCTS_LIST:
       return {
         ...state,
-        products : action.payload
+        products: action.payload
       }
-
     case actionTypes.ADD_TO_CART:
       // Great Item data from products array
       const item = state.products.find(
@@ -35,6 +34,12 @@ const shopReducer = (state = INITIAL_STATE, action) => {
           )
           : [...state.cart, { ...item, qty: 1 }],
       };
+    case actionTypes.SET_PRODUCTS_INCART:
+      return {
+        ...state , 
+        cart : action.payload
+      }
+
     case actionTypes.REMOVE_FROM_CART:
       return {
         ...state,

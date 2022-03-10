@@ -1,42 +1,48 @@
 import * as actionTypes from "./shopping-types"
 
 export const setProductList = payload => ({
-    type : actionTypes.SET_PRODUCTS_LIST ,
+    type: actionTypes.SET_PRODUCTS_LIST,
     payload
+})
+
+export const setProductInCart = payload => ({
+    type: actionTypes.SET_PRODUCTS_INCART,
+    payload
+
 })
 
 
 export const addToCart = (itemID) => {
     return {
-        type : actionTypes.ADD_TO_CART,
-        payload : {
-            id : itemID
+        type: actionTypes.ADD_TO_CART,
+        payload: {
+            id: itemID
         }
     }
 }
 
 export const removeFromCart = (itemID) => {
     return {
-        type : actionTypes.REMOVE_FROM_CART,
-        payload : {
-            id : itemID
+        type: actionTypes.REMOVE_FROM_CART,
+        payload: {
+            id: itemID
         }
     }
 }
 
-export const adjustItemQty = (itemID , value) => {
+export const adjustItemQty = (itemID, value) => {
     return {
-        type : actionTypes.ADJUST_ITEM_QTY,
-        payload : {
-            id : itemID,
-            qty : value
+        type: actionTypes.ADJUST_ITEM_QTY,
+        payload: {
+            id: itemID,
+            qty: value
         }
     }
 }
 
 export const loadCurrentItem = (item) => {
     return {
-        type : actionTypes.LOAD_CURRENT_ITEM,
-        payload : item
+        type: actionTypes.LOAD_CURRENT_ITEM,
+        payload: item
     }
 }

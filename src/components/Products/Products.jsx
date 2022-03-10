@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import Product from "./Product/Product";
 
 import {
+    setProductInCart,
     setProductList
 } from "../../redux/Shopping/shopping-actions";
 
@@ -33,7 +34,7 @@ async function addProduct(product) {
 }
 
 
-const Products = ({ products, setProductList }) => {
+const Products = ({ products, setProductList, setProductInCart }) => {
     const user = JSON.parse(localStorage.getItem('user'));
 
     const [pastry, setPastry] = useState(false);
@@ -59,16 +60,20 @@ const Products = ({ products, setProductList }) => {
             }
         })
             .then(data => data.json())
+
             .then(data => setProductList(data))
+        fetch('https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/cart/inCart/23', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(data => data.json())
+            .then(data => setProductInCart(data))
 
         window.addEventListener("scroll", toggleVisibility);
 
     }, []);
-
-
-
-
-
 
     const handleInsertProduct = async e => {
 
@@ -188,7 +193,7 @@ const Products = ({ products, setProductList }) => {
                         </Col>
                         <Col sm={9}>
                             <h2 className="main" style={{ textAlign: 'left', marginBottom: '2rem' }} >  Products
-                                <Button className="button-add" variant="success" style={{ marginLeft: '1rem' }} hidden={user.role ==="C"}
+                                <Button className="button-add" variant="success" style={{ marginLeft: '1rem' }} 
                                     onClick={() => setAddProductModal(true)}> Insert </Button>
                             </h2>
 
@@ -206,7 +211,7 @@ const Products = ({ products, setProductList }) => {
                             </Row>
                             {isVisible &&
                                 <div onClick={scrollToTop}>
-                                    <img src='https://i.postimg.cc/44Ytsk8Z/top-arrow-emoj.png' alt='Go to top' style={{ display :'block' , marginLeft : 'auto' , marginRight: '1rem' }} />
+                                    <img src='https://i.postimg.cc/44Ytsk8Z/top-arrow-emoj.png' alt='Go to top' style={{ display: 'block', marginLeft: 'auto', marginRight: '1rem' }} />
                                 </div>}
                         </Col>
                     </Row>
@@ -308,7 +313,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setProductList: data => dispatch(setProductList(data))
+        setProductList: data => dispatch(setProductList(data)),
+        setProductInCart: data => dispatch(setProductInCart(data))
     }
 }
 

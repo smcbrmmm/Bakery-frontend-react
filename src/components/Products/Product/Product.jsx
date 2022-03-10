@@ -101,8 +101,8 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
           <div style={{ display: 'flex', marginLeft: 'auto', marginRight: '0' }}>
             <div className="button-admin">
-              <Button size="sm" style={{ marginRight: '0.5rem' }} hidden={user.role ==="C"}> Edit </Button>
-              <Button size="sm" variant="danger" onClick={() => setModalShow(true)} hidden={user.role ==="C"}> Remove </Button>
+              <Button size="sm" style={{ marginRight: '0.5rem' }} > Edit </Button>
+              <Button size="sm" variant="danger" onClick={() => setModalShow(true)} > Remove </Button>
             </div>
           </div>
 
