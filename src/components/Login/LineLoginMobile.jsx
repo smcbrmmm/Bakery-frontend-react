@@ -110,9 +110,6 @@ export default function LineLoginMobile() {
         setRound(1);
     }
 
-
-
-
     return (
         <div className="page-container">
 
