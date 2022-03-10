@@ -10,6 +10,7 @@ export default function Orders() {
     const user = JSON.parse(localStorage.getItem('user'));
 
     const [order, setOrder] = useState([]);
+    const [inCart , setInCart] = useState();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,6 +18,13 @@ export default function Orders() {
                 'https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/order/order',
             );
 
+            const result2 = await axios(
+                'https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/cart/inCart/'+ user.id,
+            );
+            
+            console.log(result2.data)
+
+            setInCart(result2.data)
             setOrder(result.data)
         };
 
