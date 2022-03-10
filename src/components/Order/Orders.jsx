@@ -18,7 +18,7 @@ const Orders = ({ setProductInCart }) => {
     const user = JSON.parse(localStorage.getItem('user'));
 
     const [order, setOrder] = useState([]);
-    const [inCart , setInCart] = useState();
+    const [inCart, setInCart] = useState();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -26,13 +26,15 @@ const Orders = ({ setProductInCart }) => {
                 'https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/order/order',
             );
 
-            const result2 = await axios(
-                'https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/cart/inCart/'+ user.id,
-            );
-            
-            console.log(result2.data)
+            fetch('https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/cart/inCart/' + user.id , {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(data => data.json())
+                .then(data => setProductInCart(data))
 
-            setInCart(result2.data)
             setOrder(result.data)
         };
 
@@ -55,15 +57,15 @@ const Orders = ({ setProductInCart }) => {
                 <Container>
                     <h1 className="main" style={{ textAlign: 'center' }}>  Order Status </h1>
 
-                            <h3 className="main" style={{ textAlign: 'center' }}>  Order Detail </h3>
+                    <h3 className="main" style={{ textAlign: 'center' }}>  Order Detail </h3>
 
-                            {order.map((order) => (
-                                user.id === order.userId ?
-                                    <OrderDetail key={order.orderId} order={order} /> 
-                                    : null
-                            ))}
+                    {order.map((order) => (
+                        user.id === order.userId ?
+                            <OrderDetail key={order.orderId} order={order} />
+                            : null
+                    ))}
 
-                            
+
                 </Container>
 
             </div>
@@ -81,5 +83,5 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect( mapDispatchToProps)(Orders);
+export default connect(mapDispatchToProps)(Orders);
 
