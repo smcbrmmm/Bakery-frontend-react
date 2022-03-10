@@ -12,9 +12,7 @@ const Footer = () => {
                             <h3 style={{ textAlign: 'right' }}> Contract Us </h3>
                         </Col>
                         <Col>
-                            <h3 style={{ textAlign: 'left' }}> Tel </h3>
-                            <h3 style={{ textAlign: 'left' }}> Tel </h3>
-                            <h3 style={{ textAlign: 'left' }}> Tel </h3>
+
                         </Col>
                     </Row>
                 </div>

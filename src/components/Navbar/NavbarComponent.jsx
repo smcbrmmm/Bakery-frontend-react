@@ -226,7 +226,8 @@ const NavbarComponent = ({ cart }) => {
                             </Link>
                         </Nav>
                         <Nav hidden={!user}>
-                            <Link to="/cart"  >
+                            <Link to="/cart" >
+                                
                                 <Tooltip title="Cart ">
                                     <IconButton aria-label="cart" size="large" className="nav-menu"  >
                                         <StyledBadge badgeContent={cartCount} color="warning">
