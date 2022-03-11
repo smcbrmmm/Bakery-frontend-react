@@ -63,19 +63,24 @@ const OrderDetail = ({ order }) => {
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
                         Your order information.  #{order.orderId}
-                        <h5> Status :  {order.status} </h5>
+
+                        {order.status === 'Order Cancel' ?
+                            <h5 style={{ color: 'red' }}> Status :  {order.status} </h5>
+                            : <h5> Status :  {order.status} </h5>
+                        }
+
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Row style={{ textAlign: 'center' }}>
                         <Col>
-                            <h4> Menu </h4>
+                            <h5> Menu </h5>
                         </Col>
                         <Col>
-                            <h4>Quantity</h4>
+                            <h5>Quantity</h5>
                         </Col>
                         <Col>
-                            <h4>Price</h4>
+                            <h5>Price</h5>
                         </Col>
                     </Row>
 
@@ -92,7 +97,7 @@ const OrderDetail = ({ order }) => {
                         <Row>
                             <Col >
                                 <h5> Address for Shipping.</h5>
-                                <h5 style={{ fontSize:'16px' }}> {address.place} </h5>
+                                <h5 style={{ fontSize: '16px' }}> {address.place} </h5>
                             </Col>
                             <Col>
                                 <h5> Payment </h5>
@@ -103,7 +108,7 @@ const OrderDetail = ({ order }) => {
                         <Row>
                             <Col >
                                 <h5> Address for Shipping.</h5>
-                                <h4 style={{ fontSize:'16px' }}> {address.place} </h4>
+                                <h4 style={{ fontSize: '16px' }}> {address.place} </h4>
                             </Col>
                         </Row>
                         <Row>
