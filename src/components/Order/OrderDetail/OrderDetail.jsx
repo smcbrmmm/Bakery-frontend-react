@@ -106,7 +106,7 @@ const OrderDetail = ({ order }) => {
 
                         {order.status === 'Order Canceled' ?
                             null :
-                            <Button variant="danger" size="sm" onClick={handleCancelorder}> Cancel </Button>
+                            <Button variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
                         }
 
 
@@ -154,6 +154,7 @@ const OrderDetail = ({ order }) => {
                             </Col>
                             <Col>
                                 <h5> Payment </h5>
+                                <h5 style={{ fontSize: '16px' }}> Bank Transfer : SCB - 28232512845 - Mymom Bakery Store </h5>
                             </Col>
                         </Row>
                     </MediaQuery>
@@ -170,6 +171,7 @@ const OrderDetail = ({ order }) => {
                         <Row>
                             <Col>
                                 <h5> Payment </h5>
+                                <h5 style={{ fontSize: '14px' }}> Bank Transfer : SCB - 28232512845 - Mymom Bakery Store </h5>
                             </Col>
                         </Row>
                     </MediaQuery>
