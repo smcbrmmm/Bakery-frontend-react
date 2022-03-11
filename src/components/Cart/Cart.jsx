@@ -48,14 +48,30 @@ async function order(orderDetail, cart, user) {
 
 }
 
+async function deleteAllItemInCart(cartItem) {
+    console.log(cartItem)
+    return fetch('https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/cart/inCart/deleteAllItem', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userId : cartItem.userId
+      })
+    })
+    // .then(data => data.json())
+  }
+
+
 const Cart = ({ cart , setProductInCart }) => {
 
     const user = JSON.parse(localStorage.getItem('user'));
+    
 
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalItems, setTotalItems] = useState(0);
 
-    const [userId, setUserId] = useState();
+    const [userId , setUserId] = useState(user ? user.id :  100);
     const [addressId, setAddressId] = useState();
     const [status, setStatus] = useState();
 
@@ -72,6 +88,18 @@ const Cart = ({ cart , setProductInCart }) => {
         // }, 1000);
 
     }
+
+    const handleDeletAllItemInCart = async e => {
+
+        const response = await deleteAllItemInCart({
+          userId 
+        });
+    
+        // setTimeout(() => {
+        //   window.location.href = "/products";
+        // }, 1000);
+    
+      }
 
     const [address, setAddress] = useState([]);
 
@@ -250,7 +278,7 @@ const Cart = ({ cart , setProductInCart }) => {
                                     <span>$ {totalPrice}</span>
                                 </div>
 
-                                <Button className="main" onClick={() => { handleSubmit(); handleClick() }} >
+                                <Button className="main" onClick={() => { handleSubmit(); handleClick() ; handleDeletAllItemInCart()}} >
                                     Checkout
                                 </Button>
 
