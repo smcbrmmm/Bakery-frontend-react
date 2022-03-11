@@ -87,16 +87,16 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
 
         <Row>
           <Col style={{ textAlign: 'center' }}>
-            <img className="main" src={item.img} alt={item.title} style={{ width: '60%' , marginBottom:'2px' }} />
+            <img className="main" src={item.img} alt={item.title} style={{ width: '60%' }} />
 
 
             <MediaQuery minWidth={1224}>
-              <h5 className="main" >{item.title}</h5>
+              <h5 className="main" style={{marginTop:'1rem'}} >{item.title}</h5>
               <h5>  {item.price} Baht </h5>
             </MediaQuery>
 
             <MediaQuery maxWidth={1224}>
-              <h5 className="main" style={{ fontSize: '14px' }} >{item.title}</h5>
+              <h5 className="main" style={{ fontSize: '14px' , marginTop : '1rem' }} >{item.title}</h5>
               <h5 style={{ fontSize: '12px' }}>  {item.price} Baht </h5>
             </MediaQuery>
 
