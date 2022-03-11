@@ -86,26 +86,48 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
 
         <Row>
           <Col>
-            <img className="main" src={item.img} alt={item.title} style={{ width: '30%' }} />
-            <h4 className="main" style={{ textAlign: 'center' }}>{item.title}</h4>
+            <img className="main" src={item.img} alt={item.title} style={{ width: '100%' }} />
+            <h5 className="main" style={{ textAlign: 'center' }}>{item.title}</h5>
+            <Button  variant="danger" size="sm" onClick={() => { handleClick(item.id); handleDeletItemInCart() }} > Delete </Button>
           </Col>
           <Col>
-            <Form.Label htmlFor="inputPassword5"> Quantity </Form.Label>
+            <Form.Label htmlFor="inputPassword5"> <h3> Quantity </h3> </Form.Label>
             <Form.Control
               type="number"
               id="inputPassword5"
               aria-describedby="passwordHelpBlock"
               min={1}
+              onChange={onChangeHandler}
+              value={input}
             />
             <h5> $ {item.price} </h5>
           </Col>
-          <Col>
-              <Button onClick={() => { handleClick(item.id); handleDeletItemInCart() }} > Delete </Button>
-          </Col>
+          {/* <Col>
+              <Button  onClick={() => { handleClick(item.id); handleDeletItemInCart() }} > Delete </Button>
+          </Col> */}
 
         </Row>
 
 
+        {/* <div className="main">
+          <div className="main">
+            <label htmlFor="qty">Qty</label>
+            <input
+              min="1"
+              type="number"
+              id="qty"
+              name="qty"
+              value={input}
+              onChange={onChangeHandler}
+            />
+          </div>
+          <button
+            onClick={() => { handleClick(item.id); handleDeletItemInCart() }}
+            className="main"
+          >
+            delete
+          </button>
+        </div> */}
 
         <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
