@@ -54,14 +54,8 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
 
   const user = JSON.parse(localStorage.getItem('user'));
-    
-  if(user){
-    const [userId , setUserId] = useState(user.id);
-    console.log(userId)
-  }else{
-    const [userId , setUserId] = useState(10);
-    console.log(userId)
-  }
+  
+  const [userId , setUserId] = useState(user.id);
 
   const [role, setRole] = useState(1);
 
