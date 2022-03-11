@@ -3,6 +3,8 @@ import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdow
 import './OrderDetail.css'
 import axios from "axios";
 import InfoOfOrderDetail from "./InfoOfOrderDetail/InfoOfOrderDetail"
+import MediaQuery from 'react-responsive'
+
 
 const OrderDetail = ({ order }) => {
 
@@ -85,15 +87,31 @@ const OrderDetail = ({ order }) => {
                         <Col>  <h4 style={{ marginLeft: '3rem' }}> Total :  {order.sumPrice} </h4></Col>
                     </Row>
 
-                    <Row>
-                        <Col >
-                            <h3> Address for Shipping.</h3>
-                            <h4 style={{ textAlign: 'center' }}> {address.place} </h4>
-                        </Col>
-                        <Col>
-                            <h3> Payment </h3>
-                        </Col>
-                    </Row>
+                    <MediaQuery minWidth={1224}>
+                        <Row>
+                            <Col >
+                                <h5> Address for Shipping.</h5>
+                                <h5 style={{ fontSize:'16px' }}> {address.place} </h5>
+                            </Col>
+                            <Col>
+                                <h5> Payment </h5>
+                            </Col>
+                        </Row>
+                    </MediaQuery>
+                    <MediaQuery maxWidth={1224}>
+                        <Row>
+                            <Col >
+                                <h5> Address for Shipping.</h5>
+                                <h4 style={{ fontSize:'16px' }}> {address.place} </h4>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <h5> Payment </h5>
+                            </Col>
+                        </Row>
+                    </MediaQuery>
+
 
                     {/* <Button onClick={check}> Click </Button> */}
                 </Modal.Body>
@@ -103,7 +121,6 @@ const OrderDetail = ({ order }) => {
 
     );
 }
-
 
 
 export default OrderDetail;
