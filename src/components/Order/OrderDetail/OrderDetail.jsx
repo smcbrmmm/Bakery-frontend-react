@@ -56,12 +56,12 @@ const OrderDetail = ({ order }) => {
                 </Modal.Header>
                 <Modal.Body>
                     <Row>
-                        <Col>
+                        <Col sm={9}>
                             {infoOrder.map((infoOrder) => (
                                 <InfoOfOrderDetail key={infoOrder.orderId} infoOrder={infoOrder} />
                             ))}
                         </Col>
-                        <Col>
+                        <Col sm={3}>
                             <h4> {order.sumPrice}</h4>
                         </Col>
                     </Row>
