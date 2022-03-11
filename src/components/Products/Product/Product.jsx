@@ -61,7 +61,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
   //   setUserId(user.id)
   // }
 
-  const [role, setRole] = useState(1);
+  const [role , setRole] = useState(user ? user.role : 'N')
 
   const [open, setOpen] = React.useState(false);
 
@@ -140,8 +140,8 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
           <div style={{ display: 'flex', marginLeft: 'auto', marginRight: '0' }}>
             <div className="button-admin">
-              <Button size="sm" style={{ marginRight: '0.5rem' }} > Edit </Button>
-              <Button size="sm" variant="danger" onClick={() => setModalShow(true)} > Remove </Button>
+              <Button size="sm" style={{ marginRight: '0.5rem' }} hidden={role == 'C' || role =='N'} > Edit </Button>
+              <Button size="sm" variant="danger" onClick={() => setModalShow(true)} hidden={role == 'C' || role =='N'} > Remove </Button>
             </div>
           </div>
 
