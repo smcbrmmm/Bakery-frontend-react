@@ -155,6 +155,12 @@ const OrderDetail = ({ order }) => {
                             <Col>
                                 <h5> Payment </h5>
                                 <h5 style={{ fontSize: '16px' }}> Bank Transfer : SCB - 28232512845 - Mymom Bakery Store </h5>
+
+                                <Form.Group controlId="formFile" className="mb-3">
+                                    <Form.Label> Upload your slip</Form.Label>
+                                    <Form.Control type="file" />
+                                </Form.Group>
+                                
                             </Col>
                         </Row>
                     </MediaQuery>
@@ -172,6 +178,11 @@ const OrderDetail = ({ order }) => {
                             <Col>
                                 <h5> Payment </h5>
                                 <h5 style={{ fontSize: '14px' }}> Bank Transfer : SCB - 28232512845 - Mymom Bakery Store </h5>
+
+                                <Form.Group controlId="formFile" className="mb-3">
+                                    <Form.Label> Upload your slip</Form.Label>
+                                    <Form.Control type="file" />
+                                </Form.Group>
                             </Col>
                         </Row>
                     </MediaQuery>
