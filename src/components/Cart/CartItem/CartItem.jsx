@@ -87,7 +87,7 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
 
         <Row>
           <Col style={{ textAlign: 'center' }}>
-            <img className="main" src={item.img} alt={item.title} style={{ width: '60%' }} />
+            <img className="main" src={item.img} alt={item.title} style={{ width: '60%' , marginBottom:'2px' }} />
 
 
             <MediaQuery minWidth={1224}>
