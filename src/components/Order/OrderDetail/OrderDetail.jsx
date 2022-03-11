@@ -96,7 +96,7 @@ const OrderDetail = ({ order }) => {
 
                         {order.status === 'Order Canceled' ?
                                 null :
-                                <Button variant="Danger" size="sm" onClick={handleCancelorder}> Cancel </Button>
+                                <Button variant="danger" size="sm" onClick={handleCancelorder}> Cancel </Button>
                         }
                         
 
