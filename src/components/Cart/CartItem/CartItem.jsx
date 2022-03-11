@@ -95,22 +95,44 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
             </MediaQuery>
 
             <MediaQuery maxWidth={1224}>
-              <h5 className="main" style={{ fontSize : '14px'}} >{item.title}</h5>
+              <h5 className="main" style={{ fontSize: '14px' }} >{item.title}</h5>
             </MediaQuery>
 
           </Col>
           <Col>
-            <Form.Label htmlFor="inputPassword5"> <h4> Quantity   <Button variant="danger" size="sm" onClick={() => { handleClick(item.id); handleDeletItemInCart() }} > Delete </Button> </h4>   </Form.Label>
-            <Form.Control
-              type="number"
-              id="inputPassword5"
-              aria-describedby="passwordHelpBlock"
-              min={1}
-              onChange={onChangeHandler}
-              value={input}
-              style={{ width: '70%' }}
-            />
-            <h5> $ {item.price} </h5>
+
+            <MediaQuery minWidth={1224}>
+              <Form.Label htmlFor="inputPassword5"> <h4> Quantity   <Button variant="danger" size="sm" onClick={() => { handleClick(item.id); handleDeletItemInCart() }} > Delete </Button> </h4>   </Form.Label>
+              <Form.Control
+                type="number"
+                id="inputPassword5"
+                aria-describedby="passwordHelpBlock"
+                min={1}
+                onChange={onChangeHandler}
+                value={input}
+                style={{ width: '70%' }}
+              />
+              <h5> $ {item.price} </h5>
+            </MediaQuery>
+
+            <MediaQuery maxWidth={1224}>
+              <Form.Label htmlFor="inputPassword5">
+                <h5 style={{fontSize : '14px' }}> Quantity   <Button variant="danger" size="sm" onClick={() => { handleClick(item.id); handleDeletItemInCart() }} > Delete </Button> </h5>
+              </Form.Label>
+              <Form.Control
+                type="number"
+                id="inputPassword5"
+                aria-describedby="passwordHelpBlock"
+                min={1}
+                onChange={onChangeHandler}
+                value={input}
+                style={{ width: '70%' }}
+              />
+              <br></br>
+              <h5> $ {item.price} </h5>
+            </MediaQuery>
+
+
           </Col>
           {/* <Col>
               <Button  onClick={() => { handleClick(item.id); handleDeletItemInCart() }} > Delete </Button>
