@@ -56,15 +56,15 @@ const OrderDetail = ({ order }) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Row>
+                    <Row style={{textAlign:'center'}}>
                         <Col>
-                            <h2> Menu </h2>
+                            <h3> Menu </h3>
                         </Col>
                         <Col>
-                            <h2>Quantity</h2>
+                            <h3>Quantity</h3>
                         </Col>
                         <Col>
-                            <h2>Price</h2>
+                            <h3>Price</h3>
                         </Col>
                     </Row>
 
@@ -74,7 +74,7 @@ const OrderDetail = ({ order }) => {
 
                     <Row>
                         <Col>  </Col>
-                        <Col> {order.sumPrice} </Col>
+                        <Col> Total : <h4> {order.sumPrice} </h4> </Col>
 
                     </Row>
 

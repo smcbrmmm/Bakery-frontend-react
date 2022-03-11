@@ -26,7 +26,7 @@ export default function InfoOfOrderDetail({ infoOrder }) {
 
     return (
 
-        <Row>
+        <Row style={{textAlign:'center'}}>
             <Col>
                 <img src={infoOrder.img} width="30%" />
                 <h5> {infoOrder.title}</h5>
