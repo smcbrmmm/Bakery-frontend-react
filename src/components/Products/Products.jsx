@@ -39,6 +39,8 @@ const Products = ({ products, setProductList, setProductInCart }) => {
 
     const [role , setRole] = useState(user ? user.role : 'N')
 
+    const [userId , setUserId] = useState(user ? user.id : '100')
+
     const [pastry, setPastry] = useState(false);
     const [roastedPastry, setRoastedPastry] = useState(true);
     const [riceCracker, setRiceCracker] = useState(true);
@@ -64,7 +66,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
             .then(data => data.json())
 
             .then(data => setProductList(data))
-        fetch('https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/cart/inCart/23', {
+        fetch('https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/cart/inCart/'+ userId , {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
