@@ -72,9 +72,9 @@ const OrderDetail = ({ order }) => {
                         <InfoOfOrderDetail key={infoOrder.orderId} infoOrder={infoOrder} />
                     ))}
 
-                    <Row>
+                    <Row style={{textAlign:'center'}} >
                         <Col>  </Col>
-                        <Col> Total : <h4> {order.sumPrice} </h4> </Col>
+                        <Col> Total : <h2> {order.sumPrice} </h2> </Col>
 
                     </Row>
 
