@@ -29,7 +29,7 @@ export default function InfoOfOrderDetail({ infoOrder }) {
 
                 <Col>
                     <h4> Menu</h4>
-                    <img src={infoOrder.img} width="40%" />
+                    <img src={infoOrder.img} width="10%" />
                     <h5> {infoOrder.title}</h5>
                 </Col>
                 <Col>
