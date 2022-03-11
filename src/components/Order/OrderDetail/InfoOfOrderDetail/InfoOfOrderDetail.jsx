@@ -16,7 +16,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import axios from "axios";
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-
+import MediaQuery from 'react-responsive'
 
 
 
@@ -26,17 +26,32 @@ export default function InfoOfOrderDetail({ infoOrder }) {
 
     return (
 
-        <Row style={{textAlign:'center'}}>
-            <Col>
-                <img src={infoOrder.img} width="40%" />
-                <h5 style={{fontSize:'14px'}}> {infoOrder.title}</h5>
-            </Col>
-            <Col>
-                <h5 style={{fontSize:'14px'}}> {infoOrder.productQty}  </h5>
-            </Col>
-            <Col>
-                <h5 style={{fontSize:'14px'}}> {infoOrder.productPrice * infoOrder.productQty}  </h5>
-            </Col>
+        <Row style={{ textAlign: 'center' }}>
+            <MediaQuery minWidth={1224}>
+                <Col>
+                    <img src={infoOrder.img} width="40%" />
+                    <h5> {infoOrder.title}</h5>
+                </Col>
+                <Col>
+                    <h5> {infoOrder.productQty}  </h5>
+                </Col>
+                <Col>
+                    <h5> {infoOrder.productPrice * infoOrder.productQty}  </h5>
+                </Col>
+            </MediaQuery>           
+             <MediaQuery maxWidth={1224}>
+                <Col>
+                    <img src={infoOrder.img} width="40%" />
+                    <h5 style={{ fontSize: '14px' }}> {infoOrder.title}</h5>
+                </Col>
+                <Col>
+                    <h5 style={{ fontSize: '14px' }}> {infoOrder.productQty}  </h5>
+                </Col>
+                <Col>
+                    <h5 style={{ fontSize: '14px' }}> {infoOrder.productPrice * infoOrder.productQty}  </h5>
+                </Col>
+            </MediaQuery>
+
         </Row>
 
 

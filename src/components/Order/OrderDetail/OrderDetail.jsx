@@ -64,7 +64,7 @@ const OrderDetail = ({ order }) => {
                     <Modal.Title id="contained-modal-title-vcenter">
                         Your order information.  #{order.orderId}
 
-                        {order.status === 'Order Cancel' ?
+                        {order.status === 'Order Canceled' ?
                             <h5 style={{ color: 'red' }}> Status :  {order.status} </h5>
                             : <h5> Status :  {order.status} </h5>
                         }
