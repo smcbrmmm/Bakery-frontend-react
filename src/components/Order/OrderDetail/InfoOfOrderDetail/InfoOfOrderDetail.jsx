@@ -29,13 +29,13 @@ export default function InfoOfOrderDetail({ infoOrder }) {
         <Row style={{textAlign:'center'}}>
             <Col>
                 <img src={infoOrder.img} width="40%" />
-                <h5> {infoOrder.title}</h5>
+                <h5 style={{fontSize:'14px'}}> {infoOrder.title}</h5>
             </Col>
             <Col>
-                <h5> {infoOrder.productQty}  </h5>
+                <h5 style={{fontSize:'14px'}}> {infoOrder.productQty}  </h5>
             </Col>
             <Col>
-                <h5> {infoOrder.productPrice * infoOrder.productQty}  </h5>
+                <h5 style={{fontSize:'14px'}}> {infoOrder.productPrice * infoOrder.productQty}  </h5>
             </Col>
         </Row>
 

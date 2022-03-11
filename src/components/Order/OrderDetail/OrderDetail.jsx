@@ -63,19 +63,19 @@ const OrderDetail = ({ order }) => {
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
                         Your order information.  #{order.orderId}
-                        <h5> {order.status} </h5>
+                        <h5> Status :  {order.status} </h5>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Row style={{ textAlign: 'center' }}>
                         <Col>
-                            <h3> Menu </h3>
+                            <h4> Menu </h4>
                         </Col>
                         <Col>
-                            <h3>Quantity</h3>
+                            <h4>Quantity</h4>
                         </Col>
                         <Col>
-                            <h3>Price</h3>
+                            <h4>Price</h4>
                         </Col>
                     </Row>
 
