@@ -14,8 +14,27 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
+async function deleteItemInCart(cartItem) {
+  console.log(cartItem)
+  return fetch('https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/cart/inCart/deleteItemInCart', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userId : cartItem.userId , productId : cartItem.productId
+    })
+  })
+  // .then(data => data.json())
+}
+
+
 const CartItem = ({ item, adjustQty, removeFromCart }) => {
   const user = JSON.parse(localStorage.getItem('user'));
+
+  const [userId , setUserId] = useState(user ? user.id :  100);
+  const [productId , setProductId] = useState(item.id);
+
   
   const [input, setInput] = useState(item.qty);
 
@@ -32,6 +51,20 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
       removeFromCart(id)
     },1000)
   };
+
+  const handleDeletItemInCart = async e => {
+
+    const response = await deleteItemInCart({
+      userId , productId
+    });
+
+    // setTimeout(() => {
+    //   window.location.href = "/products";
+    // }, 1000);
+
+  }
+
+
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -74,12 +107,10 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
             />
           </div>
           <button
-            onClick={() => {handleClick(item.id)}}
+            onClick={() => {handleClick(item.id) ; handleDeletItemInCart()}}
             className="main"
           >
-            <img
-              src="https://icons8.com/icon/oLaG9clB6mWZ/delete"
-            />
+            delete
           </button>
         </div>
 

@@ -17,6 +17,8 @@ import {
     setProductList
 } from "../../redux/Shopping/shopping-actions";
 
+
+
 async function order(orderDetail, cart, user) {
     console.log(orderDetail)
     fetch('https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/order/save', {
