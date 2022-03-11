@@ -7,16 +7,16 @@ import MediaQuery from 'react-responsive'
 
 async function cancelOrder(order) {
     return fetch('https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/order/cancel/' + order.orderId, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    //   body: JSON.stringify({
-    //     id: product.productId
-    //   })
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        //   body: JSON.stringify({
+        //     id: product.productId
+        //   })
     })
     // .then(data => data.json())
-  }
+}
 
 const OrderDetail = ({ order }) => {
 
@@ -25,7 +25,7 @@ const OrderDetail = ({ order }) => {
     const [infoOrder, setInfoOrder] = useState([]);
     const [price, setPrice] = useState();
     const [address, setAddress] = useState([]);
-    const [orderId , setOrderId] = useState(order.orderId)
+    const [orderId, setOrderId] = useState(order.orderId)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -66,12 +66,12 @@ const OrderDetail = ({ order }) => {
         const response = await cancelOrder({
             orderId
         });
-    
-        // setTimeout(() => {
-        //   window.location.href = "/order";
-        // }, 1000);
-    
-      }
+
+        setTimeout(() => {
+            window.location.href = "/order";
+        }, 500);
+
+    }
 
     return (
 
@@ -94,7 +94,11 @@ const OrderDetail = ({ order }) => {
                             : <h5> Status :  {order.status} </h5>
                         }
 
-                        <Button variant="Danger" size="sm" onClick={handleCancelorder}> Cancel </Button>
+                        {order.status === 'Order Canceled' ?
+                                null :
+                                <Button variant="Danger" size="sm" onClick={handleCancelorder}> Cancel </Button>
+                        }
+                        
 
                     </Modal.Title>
                 </Modal.Header>
