@@ -9,6 +9,7 @@ import {
 
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import MediaQuery from 'react-responsive'
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -85,13 +86,21 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
       <div className="container">
 
         <Row>
-          <Col>
-            <img className="main" src={item.img} alt={item.title} style={{ width: '70%' , textAlign : 'center' }} />
-            <h5 className="main" style={{ textAlign: 'center' }}>{item.title}</h5>
-            
+          <Col style={{ textAlign: 'center' }}>
+            <img className="main" src={item.img} alt={item.title} style={{ width: '60%' }} />
+
+
+            <MediaQuery minWidth={1224}>
+              <h5 className="main" >{item.title}</h5>
+            </MediaQuery>
+
+            <MediaQuery maxWidth={1224}>
+              <h5 className="main" style={{ fontSize : '14px'}} >{item.title}</h5>
+            </MediaQuery>
+
           </Col>
           <Col>
-            <Form.Label htmlFor="inputPassword5"> <h3> Quantity   <Button  variant="danger" size="sm" onClick={() => { handleClick(item.id); handleDeletItemInCart() }} > Delete </Button> </h3>   </Form.Label>
+            <Form.Label htmlFor="inputPassword5"> <h4> Quantity   <Button variant="danger" size="sm" onClick={() => { handleClick(item.id); handleDeletItemInCart() }} > Delete </Button> </h4>   </Form.Label>
             <Form.Control
               type="number"
               id="inputPassword5"
@@ -99,7 +108,7 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
               min={1}
               onChange={onChangeHandler}
               value={input}
-              style={{width : '70%'}}
+              style={{ width: '70%' }}
             />
             <h5> $ {item.price} </h5>
           </Col>
