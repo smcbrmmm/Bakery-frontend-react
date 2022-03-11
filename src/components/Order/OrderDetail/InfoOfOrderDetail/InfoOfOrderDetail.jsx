@@ -27,7 +27,6 @@ export default function InfoOfOrderDetail({ infoOrder }) {
     return (
         <div className="main">
 
-            <Row style={{textAlign:'center'}}>
                 <Col>
                     <h4> Menu</h4>
                     <img src={infoOrder.img} width="70%" />
@@ -41,14 +40,6 @@ export default function InfoOfOrderDetail({ infoOrder }) {
                     <h4> Price </h4>
                     <h5> {infoOrder.productPrice * infoOrder.productQty}  </h5>
                 </Col>
-
-            </Row>
-
-            {/* <h1> {infoOrder.title}</h1>
-
-            <img src={infoOrder.img} width="30%"/>
-            <br></br> */}
-
 
         </div>
     );

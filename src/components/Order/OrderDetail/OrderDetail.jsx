@@ -9,7 +9,7 @@ const OrderDetail = ({ order }) => {
     const user = JSON.parse(localStorage.getItem('user'));
     const [signinModalShow, setSigntinModalShow] = useState(false);
     const [infoOrder, setInfoOrder] = useState([]);
-    const [price , setPrice] = useState();
+    const [price, setPrice] = useState();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,11 +21,9 @@ const OrderDetail = ({ order }) => {
                 'https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/order/getSumPrice/' + order.orderId,
             );
 
-            // console.log(result.data)
-            console.log(result2)
             setInfoOrder(result.data)
             setPrice(result2)
-            
+
         };
 
         fetchData()
@@ -34,7 +32,7 @@ const OrderDetail = ({ order }) => {
 
     useEffect(() => {
 
-    }, [ infoOrder])
+    }, [infoOrder])
 
     const check = () => {
         // console.log(infoOrder)
@@ -44,11 +42,11 @@ const OrderDetail = ({ order }) => {
 
         <div>
             <h3 className="orderDetail" style={{ textAlign: 'center' }} onClick={() => setSigntinModalShow(true)} > {order.orderId} # {order.status} </h3>
-            
+
             <Modal className="cart-modal" show={signinModalShow}
                 onHide={() => setSigntinModalShow(false)}
                 aria-labelledby="contained-modal-title-vcenter"
-                centered 
+                centered
                 size="lg"
             >
                 <Modal.Header closeButton>
@@ -57,14 +55,22 @@ const OrderDetail = ({ order }) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {infoOrder.map((infoOrder) => (
-                         <InfoOfOrderDetail key={infoOrder.orderId} infoOrder={infoOrder} /> 
-                    ))}
-                    <h4> {order.sumPrice }</h4>
+                    <Row>
+                        <Col>
+                            {infoOrder.map((infoOrder) => (
+                                <InfoOfOrderDetail key={infoOrder.orderId} infoOrder={infoOrder} />
+                            ))}
+                        </Col>
+                        <Col>
+                            <h4> {order.sumPrice}</h4>
+                        </Col>
+                    </Row>
+
+
                     {/* <Button onClick={check}> Click </Button> */}
                 </Modal.Body>
             </Modal>
-   
+
         </div>
 
     );
