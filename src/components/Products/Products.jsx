@@ -37,6 +37,8 @@ async function addProduct(product) {
 const Products = ({ products, setProductList, setProductInCart }) => {
     const user = JSON.parse(localStorage.getItem('user'));
 
+    const [role , setRole] = useState(user ? user.role : 'N')
+
     const [pastry, setPastry] = useState(false);
     const [roastedPastry, setRoastedPastry] = useState(true);
     const [riceCracker, setRiceCracker] = useState(true);
@@ -194,7 +196,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                         <Col sm={9}>
                             <h2 className="main" style={{ textAlign: 'left', marginBottom: '2rem' }} >  Products
                                 <Button className="button-add" variant="success" style={{ marginLeft: '1rem' }} 
-                                    onClick={() => setAddProductModal(true)}> Insert </Button>
+                                    onClick={() => setAddProductModal(true)} hidden={role == 'C' || role =='N'}> Insert </Button>
                             </h2>
 
                             <Row lg={3}>
