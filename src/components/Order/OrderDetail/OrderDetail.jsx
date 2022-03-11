@@ -76,7 +76,7 @@ const OrderDetail = ({ order }) => {
     return (
 
         <div>
-            <h3  style={{ textAlign: 'center' }} onClick={() => setSigntinModalShow(true)} >
+            <h3 style={{ textAlign: 'center' }} onClick={() => setSigntinModalShow(true)} >
 
                 {/* {order.status === 'Order Canceled' ?
                     <h3 style={{ color: 'red' }}> {order.orderId} # {order.status}  </h3>
@@ -131,11 +131,18 @@ const OrderDetail = ({ order }) => {
 
                     <Row style={{ textAlign: 'center' }} >
                         <Col>  </Col>
-                        <Col>  <h4 style={{ marginLeft: '3rem' }}> Total :  {order.sumPrice} </h4></Col>
+                        <MediaQuery minWidth={1224}>
+                            <Col>  <h4 style={{ marginLeft: '3rem' }}> Total :  {order.sumPrice} </h4></Col>
+                        </MediaQuery>
+                        <MediaQuery maxWidth={1224}>
+                            <Col>  <h5 style={{ marginLeft: '3rem' }}> Total :  {order.sumPrice} </h5></Col>
+                        </MediaQuery>
+
+
                     </Row>
 
                     <hr></hr>
-                    
+
                     <MediaQuery minWidth={1224}>
                         <Row>
                             <Col >
