@@ -223,7 +223,7 @@ const Cart = ({ cart , setProductInCart }) => {
                         <Col sm={4}>
                             <div className="mb-4">
                                 <div>
-
+                                    <hr></hr>
                                     <h5> Select your address for shipping.</h5>
                                     <Form.Select aria-label="Default select example" style={{ width: '61%', display: 'flex' }} onChange={handleSelect} required >
                                         <option value="default">Choose your shipping place.</option>
