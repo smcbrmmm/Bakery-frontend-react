@@ -74,7 +74,7 @@ const OrderDetail = ({ order }) => {
 
                     <Row style={{textAlign:'center'}} >
                         <Col>  </Col>
-                        <Col>  <h2 style={{marginLeft:'2rem'}}> Total :  {order.sumPrice} </h2></Col>
+                        <Col>  <h4 style={{marginLeft:'3rem'}}> Total :  {order.sumPrice} </h4></Col>
 
                     </Row>
 
