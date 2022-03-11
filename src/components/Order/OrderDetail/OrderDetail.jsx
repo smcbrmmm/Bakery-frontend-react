@@ -134,8 +134,8 @@ const OrderDetail = ({ order }) => {
                         <Col>  <h4 style={{ marginLeft: '3rem' }}> Total :  {order.sumPrice} </h4></Col>
                     </Row>
 
-                    <br></br>
-
+                    <hr></hr>
+                    
                     <MediaQuery minWidth={1224}>
                         <Row>
                             <Col >
