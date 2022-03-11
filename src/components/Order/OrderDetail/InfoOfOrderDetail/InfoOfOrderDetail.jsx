@@ -26,7 +26,7 @@ export default function InfoOfOrderDetail({ infoOrder }) {
 
     return (
 
-        <Segment>
+        <Row>
             <Col>
                 <h4> Menu</h4>
                 <img src={infoOrder.img} width="30%" />
@@ -40,7 +40,8 @@ export default function InfoOfOrderDetail({ infoOrder }) {
                 <h4> Price </h4>
                 <h5> {infoOrder.productPrice * infoOrder.productQty}  </h5>
             </Col>
-        </Segment>
+        </Row>
+
 
     );
 }
