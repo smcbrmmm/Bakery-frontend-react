@@ -37,7 +37,7 @@ async function deleteProduct(product) {
 async function insertProduct(product) {
   console.log(product)
   return fetch('https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/cart/inCart/insert', {
-    method: 'DELETE',
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -55,7 +55,11 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
   const user = JSON.parse(localStorage.getItem('user'));
   
-  const [userId , setUserId] = useState(user.id);
+  const [userId , setUserId] = useState();
+
+  if(user){
+    setUserId(user.id)
+  }
 
   const [role, setRole] = useState(1);
 
