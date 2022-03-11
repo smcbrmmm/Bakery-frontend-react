@@ -10,7 +10,7 @@ const OrderDetail = ({ order }) => {
     const [signinModalShow, setSigntinModalShow] = useState(false);
     const [infoOrder, setInfoOrder] = useState([]);
     const [price, setPrice] = useState();
-    const [address , setAddress] = useState([]);
+    const [address, setAddress] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,7 +27,7 @@ const OrderDetail = ({ order }) => {
             );
 
             console.log(result3)
-            
+
             setPrice(result2)
             setAddress(result3.data)
             setInfoOrder(result.data)
@@ -64,7 +64,7 @@ const OrderDetail = ({ order }) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Row style={{textAlign:'center'}}>
+                    <Row style={{ textAlign: 'center' }}>
                         <Col>
                             <h3> Menu </h3>
                         </Col>
@@ -80,14 +80,19 @@ const OrderDetail = ({ order }) => {
                         <InfoOfOrderDetail key={infoOrder.orderId} infoOrder={infoOrder} />
                     ))}
 
-                    <Row style={{textAlign:'center'}} >
+                    <Row style={{ textAlign: 'center' }} >
                         <Col>  </Col>
-                        <Col>  <h4 style={{marginLeft:'3rem'}}> Total :  {order.sumPrice} </h4></Col>
+                        <Col>  <h4 style={{ marginLeft: '3rem' }}> Total :  {order.sumPrice} </h4></Col>
                     </Row>
 
                     <Row>
-
-                        {address.place}
+                        <Col >
+                            <h3> Address for Shipping.</h3>
+                            <h4 style={{ textAlign: 'center' }}> {address.place} </h4>
+                        </Col>
+                        <Col>
+                            <h3> Payment </h3>
+                        </Col>
                     </Row>
 
                     {/* <Button onClick={check}> Click </Button> */}
