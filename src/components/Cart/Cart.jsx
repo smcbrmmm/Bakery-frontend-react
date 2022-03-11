@@ -12,6 +12,11 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
+import {
+    setProductInCart,
+    setProductList
+} from "../../redux/Shopping/shopping-actions";
+
 async function order(orderDetail, cart, user) {
     console.log(orderDetail)
     fetch('https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/order/save', {
@@ -41,7 +46,7 @@ async function order(orderDetail, cart, user) {
 
 }
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart , setProductInCart }) => {
 
     const user = JSON.parse(localStorage.getItem('user'));
 
@@ -78,6 +83,15 @@ const Cart = ({ cart }) => {
         };
 
         fetchData();
+
+        fetch('https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/cart/inCart/23', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(data => data.json())
+            .then(data => setProductInCart(data))
 
     }, []);
 
@@ -259,4 +273,12 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(Cart);
+const mapDispatchToProps = dispatch => {
+    return {
+        setProductList: data => dispatch(setProductList(data)),
+        setProductInCart: data => dispatch(setProductInCart(data))
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
