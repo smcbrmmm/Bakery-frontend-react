@@ -58,13 +58,13 @@ const OrderDetail = ({ order }) => {
                 <Modal.Body>
                     <Row>
                         <Col>
-                            Menu
+                            <h2> Menu </h2>
                         </Col>
                         <Col>
-                            Quantity
+                            <h2>Quantity</h2>
                         </Col>
                         <Col>
-                            Price
+                            <h2>Price</h2>
                         </Col>
                     </Row>
 
