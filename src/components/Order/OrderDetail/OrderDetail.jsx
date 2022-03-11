@@ -63,6 +63,7 @@ const OrderDetail = ({ order }) => {
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
                         Your order information.  #{order.orderId}
+                        <h5> {order.status} </h5>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
