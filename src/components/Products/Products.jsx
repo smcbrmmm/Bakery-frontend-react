@@ -19,7 +19,7 @@ import MediaQuery from 'react-responsive'
 
 async function addProduct(product) {
     console.log(product)
-    return fetch('https://e226-2405-9800-b600-698c-6999-9220-373e-e462.ngrok.io/api/products/insert', {
+    return fetch('https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/products/insert', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
