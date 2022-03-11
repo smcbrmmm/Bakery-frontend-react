@@ -10,7 +10,7 @@ const OrderDetail = ({ order }) => {
     const [signinModalShow, setSigntinModalShow] = useState(false);
     const [infoOrder, setInfoOrder] = useState([]);
     const [price, setPrice] = useState();
-    const [address , setAddress] = useState();
+    const [address , setAddress] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,9 +27,10 @@ const OrderDetail = ({ order }) => {
             );
 
             console.log(result3)
-            setInfoOrder(result.data)
+            
             setPrice(result2)
             setAddress(result3.data)
+            setInfoOrder(result.data)
 
         };
 
@@ -38,7 +39,7 @@ const OrderDetail = ({ order }) => {
     }, []);
 
     useEffect(() => {
-
+        console.log(address)
     }, [infoOrder])
 
     const check = () => {
