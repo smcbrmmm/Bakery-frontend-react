@@ -55,7 +55,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
   const user = JSON.parse(localStorage.getItem('user'));
   
-  const [userId , setUserId] = useState(user.id);
+  const [userId , setUserId] = useState(user ? user.id :  100);
 
   // if(user){
   //   setUserId(user.id)
