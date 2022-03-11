@@ -22,7 +22,7 @@ async function deleteItemInCart(cartItem) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      userId : cartItem.userId , productId : cartItem.productId
+      userId: cartItem.userId, productId: cartItem.productId
     })
   })
   // .then(data => data.json())
@@ -32,10 +32,10 @@ async function deleteItemInCart(cartItem) {
 const CartItem = ({ item, adjustQty, removeFromCart }) => {
   const user = JSON.parse(localStorage.getItem('user'));
 
-  const [userId , setUserId] = useState(user ? user.id :  100);
-  const [productId , setProductId] = useState(item.id);
+  const [userId, setUserId] = useState(user ? user.id : 100);
+  const [productId, setProductId] = useState(item.id);
 
-  
+
   const [input, setInput] = useState(item.qty);
 
   const [open, setOpen] = React.useState(false);
@@ -45,17 +45,17 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
   }
 
   const handleClick = (id) => {
-    setTimeout(()=> {
+    setTimeout(() => {
       show()
 
       removeFromCart(id)
-    },1000)
+    }, 1000)
   };
 
   const handleDeletItemInCart = async e => {
 
     const response = await deleteItemInCart({
-      userId , productId
+      userId, productId
     });
 
     // setTimeout(() => {
@@ -83,36 +83,29 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
     <div className="main">
 
       <div className="container">
-        <img
-          className="main"
-          src={item.img}
-          alt={item.title}
-          style={{ width: '30%' }}
-        />
-        <div className="main">
-          <h4 className="main">{item.title}</h4>
-          <p className="main">{item.description}</p>
-          <p className="main">$ {item.price}</p>
-        </div>
-        <div className="main">
-          <div className="main">
-            <label htmlFor="qty">Qty</label>
-            <input
-              min="1"
+
+        <Row>
+          <Col>
+            <img className="main" src={item.img} alt={item.title} style={{ width: '30%' }} />
+            <h4 className="main" style={{ textAlign: 'center' }}>{item.title}</h4>
+          </Col>
+          <Col>
+            <Form.Label htmlFor="inputPassword5"> Quantity </Form.Label>
+            <Form.Control
               type="number"
-              id="qty"
-              name="qty"
-              value={input}
-              onChange={onChangeHandler}
+              id="inputPassword5"
+              aria-describedby="passwordHelpBlock"
+              min={1}
             />
-          </div>
-          <button
-            onClick={() => {handleClick(item.id) ; handleDeletItemInCart()}}
-            className="main"
-          >
-            delete
-          </button>
-        </div>
+            <h5> $ {item.price} </h5>
+          </Col>
+          <Col>
+              <Button onClick={() => { handleClick(item.id); handleDeletItemInCart() }} > Delete </Button>
+          </Col>
+
+        </Row>
+
+
 
         <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
