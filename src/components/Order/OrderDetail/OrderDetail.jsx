@@ -48,7 +48,7 @@ const OrderDetail = ({ order }) => {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
                 size="lg"
-                dialogClassName="modal-90w"
+                // dialogClassName="modal-90w"
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
