@@ -28,16 +28,13 @@ export default function InfoOfOrderDetail({ infoOrder }) {
 
         <Row>
             <Col>
-                <h4> Menu</h4>
                 <img src={infoOrder.img} width="30%" />
                 <h5> {infoOrder.title}</h5>
             </Col>
             <Col>
-                <h4> Quantity </h4>
                 <h5> {infoOrder.productQty}  </h5>
             </Col>
             <Col>
-                <h4> Price </h4>
                 <h5> {infoOrder.productPrice * infoOrder.productQty}  </h5>
             </Col>
         </Row>
