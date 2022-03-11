@@ -298,7 +298,7 @@ const NavbarComponent = ({ cart }) => {
                         navbarScroll>
                         <Navbar.Brand href="#home">
                             <Link to='/' className="linkTo">
-                                <h2 className="nav-menu" style={{ textAlign: 'left', color: 'white', fontSize: '14px' }}> Mymom \nBakery</h2>
+                                <h2 className="nav-menu" style={{ textAlign: 'left', color: 'white', fontSize: '14px' }}> Mymom Bakery</h2>
                             </Link>
                         </Navbar.Brand>
                     </Nav>
