@@ -48,7 +48,7 @@ const OrderDetail = ({ order }) => {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
                 size="lg"
-                // dialogClassName="modal-90w"
+            // dialogClassName="modal-90w"
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
@@ -56,13 +56,24 @@ const OrderDetail = ({ order }) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    
-                        {infoOrder.map((infoOrder) => (
-                            <InfoOfOrderDetail key={infoOrder.orderId} infoOrder={infoOrder} />
-                        ))}
+                    <Row>
+                        <Col>
+                            Menu
+                        </Col>
+                        <Col>
+                            Quantity
+                        </Col>
+                        <Col>
+                            Price
+                        </Col>
+                    </Row>
+
+                    {infoOrder.map((infoOrder) => (
+                        <InfoOfOrderDetail key={infoOrder.orderId} infoOrder={infoOrder} />
+                    ))}
 
                     <Row>
-                        <Col> {order.sumPrice} </Col>
+                        <Col>  </Col>
                         <Col> {order.sumPrice} </Col>
 
                     </Row>
