@@ -37,9 +37,9 @@ async function addProduct(product) {
 const Products = ({ products, setProductList, setProductInCart }) => {
     const user = JSON.parse(localStorage.getItem('user'));
 
-    const [role , setRole] = useState(user ? user.role : 'N')
+    const [role, setRole] = useState(user ? user.role : 'N')
 
-    const [userId , setUserId] = useState(user ? user.id : '100')
+    const [userId, setUserId] = useState(user ? user.id : '100')
 
     const [pastry, setPastry] = useState(false);
     const [roastedPastry, setRoastedPastry] = useState(true);
@@ -66,7 +66,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
             .then(data => data.json())
 
             .then(data => setProductList(data))
-        fetch('https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/cart/inCart/'+ userId , {
+        fetch('https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/cart/inCart/' + userId, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -179,6 +179,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
     };
 
 
+
     return (
         <div className="page-container">
             <NavbarCom />
@@ -190,15 +191,23 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                 <Container style={{ marginTop: '4rem' }}>
                     <Row style={{ marginBottom: '1rem' }}>
                         <Col sm={3}>
-                            <h2 className="main" style={{ marginBottom: '2rem' }}>  Category </h2>
+
+
+                            <MediaQuery minWidth={1224}>
+                                <h2 className="main" style={{ marginBottom: '2rem' }}>  Category </h2>
+                            </MediaQuery>
+                            <MediaQuery maxWidth={1224}>
+                                <h2 className="main" >  Category </h2>
+                            </MediaQuery>
+
                             <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("pastry")} >  Chinese Pastry </h5></a>
                             <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("roastedPastry")}>  Roasted Chinese Pastry </h5></a>
                             <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("riceCracker")}>  Rice Cracker </h5></a>
                         </Col>
                         <Col sm={9}>
                             <h2 className="main" style={{ textAlign: 'left', marginBottom: '2rem' }} >  Products
-                                <Button className="button-add" variant="success" style={{ marginLeft: '1rem' }} 
-                                    onClick={() => setAddProductModal(true)} hidden={role == 'C' || role =='N'}> Insert </Button>
+                                <Button className="button-add" variant="success" style={{ marginLeft: '1rem' }}
+                                    onClick={() => setAddProductModal(true)} hidden={role == 'C' || role == 'N'}> Insert </Button>
                             </h2>
 
                             <Row lg={3}>
