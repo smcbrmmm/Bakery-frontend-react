@@ -10,6 +10,7 @@ const OrderDetail = ({ order }) => {
     const [signinModalShow, setSigntinModalShow] = useState(false);
     const [infoOrder, setInfoOrder] = useState([]);
     const [price, setPrice] = useState();
+    const [address , setAddress] = useState();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,8 +22,13 @@ const OrderDetail = ({ order }) => {
                 'https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/order/getSumPrice/' + order.orderId,
             );
 
+            const result3 = await axios(
+                'https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/address/orderAddress/' + order.addressId,
+            );
+
             setInfoOrder(result.data)
             setPrice(result2)
+            setAddress(result3)
 
         };
 
@@ -75,7 +81,11 @@ const OrderDetail = ({ order }) => {
                     <Row style={{textAlign:'center'}} >
                         <Col>  </Col>
                         <Col>  <h4 style={{marginLeft:'3rem'}}> Total :  {order.sumPrice} </h4></Col>
+                    </Row>
 
+                    <Row>
+
+                        {address.place}
                     </Row>
 
                     {/* <Button onClick={check}> Click </Button> */}
