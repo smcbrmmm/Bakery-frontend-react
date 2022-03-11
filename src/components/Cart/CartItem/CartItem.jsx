@@ -86,8 +86,8 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
 
         <Row>
           <Col>
-            <img className="main" src={item.img} alt={item.title} style={{ width: '80%' }} />
-            <h5 className="main" style={{ textAlign: 'left' }}>{item.title}</h5>
+            <img className="main" src={item.img} alt={item.title} style={{ width: '70%' , textAlign : 'center' }} />
+            <h5 className="main" style={{ textAlign: 'center' }}>{item.title}</h5>
             
           </Col>
           <Col>
