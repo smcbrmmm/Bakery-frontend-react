@@ -34,8 +34,30 @@ async function deleteProduct(product) {
   // .then(data => data.json())
 }
 
+async function insertProduct(product) {
+  console.log(product)
+  return fetch('https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/cart/inCart/insert', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userId : product.userId , productId : product.productId , qty : 1
+    })
+  })
+  // .then(data => data.json())
+}
+
+
 const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
+
+
+
   const user = JSON.parse(localStorage.getItem('user'));
+  
+  if(user){
+    const [userId , setUserId] = useState(user.id);
+  }
 
   const [role, setRole] = useState(1);
 
@@ -78,6 +100,19 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
   }
 
+
+  const handleInserProduct = async e => {
+
+    const response = await insertProduct({
+      userId , productId
+    });
+
+    // setTimeout(() => {
+    //   window.location.href = "/products";
+    // }, 1000);
+
+  }
+
   return (
 
     
@@ -94,8 +129,9 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
           <Card.Title>{product.title}</Card.Title>
           <h5 style={{ fontSize: '14px' }}>{product.tag}</h5>
           <h5 style={{ fontSize: '18px' }}> {product.price} Baht</h5>
-          <Button hidden={!user || product.qty === 0} variant="primary" onClick={() => { addToCart(product.id); handleClickAdd() }}>Add to Cart</Button>
-          <Button hidden={!user || !(product.qty === 0)} disabled variant="secondary" onClick={() => { addToCart(product.id); handleClick() }}>Out of Stock</Button>
+          <Button hidden={!user || product.qty === 0} variant="primary" onClick={() => { addToCart(product.id); handleClickAdd() ; handleInserProduct() }}>Add to Cart</Button>
+          <Button hidden={!user || !(product.qty === 0)} disabled variant="secondary" 
+                    onClick={() => { addToCart(product.id); handleClick() ; handleInserProduct() }}>Out of Stock</Button>
           <h5 className="mt-2" style={{ fontSize: '14px' }}> Remaining : {product.qty}</h5>
 
 
