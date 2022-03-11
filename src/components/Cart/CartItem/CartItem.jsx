@@ -86,12 +86,12 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
 
         <Row>
           <Col>
-            <img className="main" src={item.img} alt={item.title} style={{ width: '100%' }} />
+            <img className="main" src={item.img} alt={item.title} style={{ width: '70%' }} />
             <h5 className="main" style={{ textAlign: 'center' }}>{item.title}</h5>
-            <Button  variant="danger" size="sm" onClick={() => { handleClick(item.id); handleDeletItemInCart() }} > Delete </Button>
+            
           </Col>
           <Col>
-            <Form.Label htmlFor="inputPassword5"> <h3> Quantity </h3> </Form.Label>
+            <Form.Label htmlFor="inputPassword5"> <h3> Quantity </h3> <Button  variant="danger" size="sm" onClick={() => { handleClick(item.id); handleDeletItemInCart() }} > Delete </Button> </Form.Label>
             <Form.Control
               type="number"
               id="inputPassword5"
