@@ -87,7 +87,7 @@ const OrderDetail = ({ order }) => {
 
                     <Row>
 
-                        {/* {address.place} */}
+                        {address.place}
                     </Row>
 
                     {/* <Button onClick={check}> Click </Button> */}
