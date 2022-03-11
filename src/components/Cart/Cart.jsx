@@ -17,7 +17,7 @@ import {
     setProductList
 } from "../../redux/Shopping/shopping-actions";
 
-
+import MediaQuery from 'react-responsive'
 
 async function order(orderDetail, cart, user) {
     console.log(orderDetail)
@@ -51,27 +51,27 @@ async function order(orderDetail, cart, user) {
 async function deleteAllItemInCart(cartItem) {
     console.log(cartItem)
     return fetch('https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/cart/inCart/deleteAllItem', {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        userId : cartItem.userId
-      })
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            userId: cartItem.userId
+        })
     })
     // .then(data => data.json())
-  }
+}
 
 
-const Cart = ({ cart , setProductInCart }) => {
+const Cart = ({ cart, setProductInCart }) => {
 
     const user = JSON.parse(localStorage.getItem('user'));
-    
+
 
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalItems, setTotalItems] = useState(0);
 
-    const [userId , setUserId] = useState(user ? user.id :  100);
+    const [userId, setUserId] = useState(user ? user.id : 100);
     const [addressId, setAddressId] = useState();
     const [status, setStatus] = useState();
 
@@ -92,14 +92,14 @@ const Cart = ({ cart , setProductInCart }) => {
     const handleDeletAllItemInCart = async e => {
 
         const response = await deleteAllItemInCart({
-          userId 
+            userId
         });
-    
+
         // setTimeout(() => {
         //   window.location.href = "/products";
         // }, 1000);
-    
-      }
+
+    }
 
     const [address, setAddress] = useState([]);
 
@@ -223,7 +223,9 @@ const Cart = ({ cart , setProductInCart }) => {
                         <Col sm={4}>
                             <div className="mb-4">
                                 <div>
-                                    <hr></hr>
+                                    <MediaQuery maxWidth={1224}>
+                                        <hr></hr>
+                                    </MediaQuery>
                                     <h5> Select your address for shipping.</h5>
                                     <Form.Select aria-label="Default select example" style={{ width: '61%', display: 'flex' }} onChange={handleSelect} required >
                                         <option value="default">Choose your shipping place.</option>
@@ -278,7 +280,7 @@ const Cart = ({ cart , setProductInCart }) => {
                                     <span>$ {totalPrice}</span>
                                 </div>
 
-                                <Button className="main" onClick={() => { handleSubmit(); handleClick() ; handleDeletAllItemInCart()}} >
+                                <Button className="main" onClick={() => { handleSubmit(); handleClick(); handleDeletAllItemInCart() }} >
                                     Checkout
                                 </Button>
 
