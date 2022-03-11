@@ -55,11 +55,11 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
   const user = JSON.parse(localStorage.getItem('user'));
   
-  const [userId , setUserId] = useState();
+  const [userId , setUserId] = useState(user.id);
 
-  if(user){
-    setUserId(user.id)
-  }
+  // if(user){
+  //   setUserId(user.id)
+  // }
 
   const [role, setRole] = useState(1);
 
