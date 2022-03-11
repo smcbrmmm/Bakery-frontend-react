@@ -128,10 +128,10 @@ const OrderDetail = ({ order }) => {
                         <Row>
                             <Col >
                                 <h5> Address for Shipping.</h5>
-                                <h5 style={{ fontSize: '16px' }}> {address.place} </h5>
-                                <h5> Reciever : {address.recieverName} </h5>
-                                <h5> Reciever Tel : {address.recieverTel} </h5>
-                                <h5> Address : {address.houseNumber} {address.address} {address.province} {address.postal}</h5>
+                                <h5 style={{ fontSize: '18px' }}> {address.place} </h5>
+                                <h5 style={{ fontSize: '16px' }}> Reciever : {address.recieverName} </h5>
+                                <h5 style={{ fontSize: '16px' }}> Reciever Tel : {address.recieverTel} </h5>
+                                <h5 style={{ fontSize: '16px' }}> Address : {address.houseNumber} {address.address} {address.province} {address.postal}</h5>
                             </Col>
                             <Col>
                                 <h5> Payment </h5>
@@ -142,7 +142,7 @@ const OrderDetail = ({ order }) => {
                         <Row>
                             <Col >
                                 <h5> Address for Shipping.</h5>
-                                <h5 style={{ fontSize: '14px' }}> {address.place} </h5>
+                                <h5 style={{ fontSize: '16px' }}> {address.place} </h5>
                                 <h5 style={{ fontSize: '14px' }}> Reciever : {address.recieverName} </h5>
                                 <h5 style={{ fontSize: '14px' }}> Reciever Tel : {address.recieverTel} </h5>
                                 <h5 style={{ fontSize: '14px' }}> Address : {address.houseNumber} {address.address} {address.province} {address.postal}</h5>
