@@ -26,7 +26,7 @@ const OrderDetail = ({ order }) => {
                 'https://9fb4-2405-9800-b600-ae29-3127-e7ab-3721-f252.ngrok.io/api/address/orderAddress/' + order.addressId,
             );
 
-            console.log(result3.data)
+            console.log(result3)
             setInfoOrder(result.data)
             setPrice(result2)
             setAddress(result3.data)
