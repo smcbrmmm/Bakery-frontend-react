@@ -76,13 +76,13 @@ const OrderDetail = ({ order }) => {
     return (
 
         <div>
-            <h3 className="orderDetail" style={{ textAlign: 'center' }} onClick={() => setSigntinModalShow(true)} >
+            <h3  style={{ textAlign: 'center' }} onClick={() => setSigntinModalShow(true)} >
 
                 {/* {order.status === 'Order Canceled' ?
                     <h3 style={{ color: 'red' }}> {order.orderId} # {order.status}  </h3>
                     : <h3 style={{ color: 'blue' }}> {order.orderId} # {order.status}  </h3>
                 } */}
-                <h3> {order.orderId} # {order.status}  </h3>
+                <h3 className="orderDetail" > {order.orderId} # {order.status}  </h3>
 
                 {/* {order.orderId} # {order.status}  */}
 
@@ -133,6 +133,8 @@ const OrderDetail = ({ order }) => {
                         <Col>  </Col>
                         <Col>  <h4 style={{ marginLeft: '3rem' }}> Total :  {order.sumPrice} </h4></Col>
                     </Row>
+
+                    <br></br>
 
                     <MediaQuery minWidth={1224}>
                         <Row>
