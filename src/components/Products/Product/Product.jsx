@@ -87,6 +87,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
     }
 
     setOpen(false);
+    setOpenAddModal(false)
   };
 
 
