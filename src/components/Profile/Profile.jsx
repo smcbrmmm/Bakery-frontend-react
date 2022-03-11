@@ -119,7 +119,7 @@ const Profile =()=> {
 
     setTimeout(() => {
       window.location.href = "/profile";
-    }, 2000);
+    }, 500);
 
   }
 

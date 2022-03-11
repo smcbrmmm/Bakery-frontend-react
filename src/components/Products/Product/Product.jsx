@@ -135,7 +135,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
           <Button hidden={!user || product.qty === 0} variant="primary" onClick={() => { addToCart(product.id); handleClickAdd() ; handleInserProduct() }}>Add to Cart</Button>
           <Button hidden={!user || !(product.qty === 0)} disabled variant="secondary" 
                     onClick={() => { addToCart(product.id); handleClick() ; handleInserProduct() }}>Out of Stock</Button>
-          <h5 className="mt-2" style={{ fontSize: '14px' }}> Remaining : {product.qty}</h5>
+          <h5 className="mt-2" style={{ fontSize: '14px' , color: 'red' }}> Remaining : {product.qty}</h5>
 
 
           <div style={{ display: 'flex', marginLeft: 'auto', marginRight: '0' }}>
