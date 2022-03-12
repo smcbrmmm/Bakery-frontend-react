@@ -47,7 +47,7 @@ const OrderDetail = ({ order }) => {
             );
 
             console.log(result4)
-
+            setPayment(result4.data[0])
             setPrice(result2)
             setAddress(result3.data)
             setInfoOrder(result.data)
@@ -59,7 +59,7 @@ const OrderDetail = ({ order }) => {
     }, []);
 
     useEffect(() => {
-        console.log(address)
+        console.log(payment)
     }, [infoOrder])
 
     const check = () => {
