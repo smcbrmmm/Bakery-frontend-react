@@ -47,7 +47,7 @@ const OrderDetail = ({ order }) => {
             );
 
             console.log(result4)
-            setPayment(result4.data[0])
+            setPayment(result4.data)
             setPrice(result2)
             setAddress(result3.data)
             setInfoOrder(result.data)
