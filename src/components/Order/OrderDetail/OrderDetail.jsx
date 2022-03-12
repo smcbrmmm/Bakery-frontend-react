@@ -18,6 +18,22 @@ async function cancelOrder(order) {
     // .then(data => data.json())
 }
 
+async function updateOrder(order) {
+
+    console.log(order)
+
+    return fetch('https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/payment/upload', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            orderId : order.orderId , userId : order.userId , paymentSlip : order.paymentSlip
+        })
+    })
+    // .then(data => data.json())
+}
+
 const OrderDetail = ({ order }) => {
 
     const user = JSON.parse(localStorage.getItem('user'));
@@ -30,6 +46,8 @@ const OrderDetail = ({ order }) => {
     // const [noPayment , setNoPayment] = useState(0);
     const [isUpload, setIsUpload] = useState(false);
     const [status , setStatus] = useState(order.status)
+    const [userId , setUserId] = useState(user.id)
+    const [paymentSlip , setPaymentSlip] = useState("samut");
 
     useEffect(() => {
         const fetchData = async () => {
@@ -85,6 +103,10 @@ const OrderDetail = ({ order }) => {
     const handleUploadSlip = async e => {
         setIsUpload(true)
         setStatus("Waiting for Confirmation")
+
+        const response = await updateOrder({
+            orderId , userId , paymentSlip
+        });
     }
 
     return (
