@@ -171,7 +171,7 @@ const OrderDetail = ({ order }) => {
 
                                 {order.status === "Order Canceled" ?
                                     null :
-                                    <Form.Group controlId="formFile" className="mb-3" hidden={order.hasPayment !== "no-slip"}>
+                                    <Form.Group controlId="formFile" className="mb-3" hidden={order.hasPayment !== "no-slip" || isUpload}>
                                         <Form.Label> Upload your slip</Form.Label>
                                         <Form.Control type="file" />
                                     </Form.Group>
@@ -211,7 +211,7 @@ const OrderDetail = ({ order }) => {
 
                                 {order.status === "Order Canceled" ?
                                     null :
-                                    <Form.Group controlId="formFile" className="mb-3" hidden={order.hasPayment !== "no-slip"}>
+                                    <Form.Group controlId="formFile" className="mb-3" hidden={order.hasPayment !== "no-slip" || isUpload}>
                                         <Form.Label> Upload your slip</Form.Label>
                                         <Form.Control type="file" />
                                     </Form.Group>
