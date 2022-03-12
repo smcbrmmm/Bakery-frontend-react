@@ -251,10 +251,12 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
         <Modal.Body>
           <Row>
             <Col>
-              1
-
               
-                  <img src={product.img} width="370px" height="370px" />
+
+              <span className="Filename">
+                <img src={product.img} width="370px" height="370px" />
+              </span>
+
 
 
               {/* <h4> Product Photo</h4>

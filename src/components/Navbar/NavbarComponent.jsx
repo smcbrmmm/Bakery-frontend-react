@@ -265,7 +265,7 @@ const NavbarComponent = ({ cart }) => {
                             </Link>
                         </Nav>
 
-                        <Nav hidden={!user || role === 'C'}>
+                        {/* <Nav hidden={!user || role === 'C'}>
                             <Link to="/summarize">
                                 <Tooltip title="Menu">
                                     <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
@@ -274,7 +274,7 @@ const NavbarComponent = ({ cart }) => {
                                 </Tooltip>
 
                             </Link>
-                        </Nav>
+                        </Nav> */}
 
                         <Nav hidden={!user} >
 
@@ -365,6 +365,8 @@ const NavbarComponent = ({ cart }) => {
                                     </IconButton>
                                 </Tooltip>
                             </Link>
+
+                            
 
 
                             <IconButton color="primary" aria-label="upload picture" component="span" id="basic-button"
