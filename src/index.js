@@ -15,6 +15,7 @@ import reportWebVitals from './reportWebVitals';
 import Responsive from './components/Responsive'
 import LineLoginMobile from './components/Login/LineLoginMobile'
 import SingupLine from './components/Signup/SignupLine'
+import Summarize from './components/Summarize/Summarize'
 
 import { BrowserRouter, Router, Route, Link, Routes } from 'react-router-dom'
 import ReactDOM, { render } from 'react-dom';
@@ -39,6 +40,7 @@ ReactDOM.render(
         <Route path="/responsive" element={<Responsive />}></Route>
         <Route path="/lineloginmobile" element={<LineLoginMobile />}></Route>
         <Route path="/signup" element={<SingupLine />}></Route>
+        <Route path="/summarize" element={<Summarize />}></Route>
       </Routes>
     </BrowserRouter>
 

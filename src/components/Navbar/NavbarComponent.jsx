@@ -220,7 +220,7 @@ const NavbarComponent = ({ cart }) => {
                             </Link>
                         </Nav>
                         <Nav hidden={!user || role==='C'}>
-                            <Link to="/products">
+                            <Link to="/summarize">
                                 <Tooltip title="Menu">
                                     <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
                                         <SummarizeIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
