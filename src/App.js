@@ -88,7 +88,7 @@ function App({ setProductList }) {
                   className="d-block w-100"
                   src='https://www.wildgrainsbakery.com/wp-content/uploads/2020/08/Untitled-18.jpg'
                   alt="Second slide"
-                  style={{ maxWidth : '90%' }}
+                  style={{ maxWidth : '100%' }}
                 />
                 <Carousel.Caption>
                   <h3 className="carousel-text" >Mymom bakery II</h3>
@@ -100,7 +100,7 @@ function App({ setProductList }) {
                   className="d-block w-100"
                   src='https://www.wildgrainsbakery.com/wp-content/uploads/2020/08/Untitled-18.jpg'
                   alt="Third slide"
-                  style={{ maxWidth : '90%' }}/>
+                  style={{ maxWidth : '100%' }}/>
 
                 <Carousel.Caption>
                   <h3 className="carousel-text">Mymom bakery III</h3>
