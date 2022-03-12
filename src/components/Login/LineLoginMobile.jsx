@@ -56,7 +56,7 @@ export default function LineLoginMobile() {
             email
         })
             .then(data => {
-                localStorage.setItem('accessToken', data.accessToken);
+                localStorage.setItem('accessToken', accessToken);
                 localStorage.setItem('user', JSON.stringify(data.user));
                 if(data.user.role === 'A'){
                     window.location.href = "/products";
