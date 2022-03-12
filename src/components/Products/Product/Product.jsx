@@ -252,6 +252,11 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
           <Row>
             <Col>
               1
+
+
+                  <img src={product.img} width="370px" height="370px" />
+
+
               {/* <h4> Product Photo</h4>
 
               <div className="Row">

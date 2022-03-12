@@ -70,13 +70,13 @@ function App({ setProductList }) {
 
           <MediaQuery maxWidth={1224}>
             <Carousel className="carousel-home"
-              style={{ width: '100%', justifyContent: 'center', marginLeft: 'auto', marginRight: 'auto', marginTop: '3%' }}>
+              style={{ width: '100%', height : '40%', justifyContent: 'center', marginLeft: 'auto', marginRight: 'auto', marginTop: '3%' }}>
               <Carousel.Item>
                 <img
                   className="d-block w-100"
                   src='https://www.wildgrainsbakery.com/wp-content/uploads/2020/08/Untitled-18.jpg'
                   alt="First slide"
-                  style={{ width: '400px', height: '500px' }}
+                  style={{ width: '300px', height: '400px' }}
                 />
                 <Carousel.Caption>
                   <h3 className="carousel-text">Mymom bakery I</h3>
