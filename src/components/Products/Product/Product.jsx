@@ -43,7 +43,7 @@ async function insertProduct(product) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      userId : product.userId , productId : product.productId , qty : 1
+      userId: product.userId, productId: product.productId, qty: 1
     })
   })
   // .then(data => data.json())
@@ -55,14 +55,14 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
 
   const user = JSON.parse(localStorage.getItem('user'));
-  
-  const [userId , setUserId] = useState(user ? user.id :  100);
+
+  const [userId, setUserId] = useState(user ? user.id : 100);
 
   // if(user){
   //   setUserId(user.id)
   // }
 
-  const [role , setRole] = useState(user ? user.role : 'N')
+  const [role, setRole] = useState(user ? user.role : 'N')
 
   const [open, setOpen] = React.useState(false);
 
@@ -72,9 +72,9 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
   const [productId, setProductId] = useState(product.id);
 
-  const [longText , setLongText] = useState(product.description)
+  const [longText, setLongText] = useState(product.description)
 
-  const [ editProductShow , setEditProductShow] = useState(false);
+  const [editProductShow, setEditProductShow] = useState(false);
 
   const handleClick = () => {
     setOpen(true);
@@ -110,7 +110,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
   const handleInserProduct = async e => {
 
     const response = await insertProduct({
-      userId , productId
+      userId, productId
     });
 
     // setTimeout(() => {
@@ -119,22 +119,71 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
   }
 
-  
+
   const [productName, setProductName] = useState();
   const [price, setPrice] = useState();
   const [tag, setTag] = useState();
   const [description, setDescription] = useState();
   const [qty, setQty] = useState();
 
+
+  const onSelectFile = e => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(undefined)
+      return
+    }
+
+    let allfiles = []
+
+    // I've kept this example simple by using the first image instead of multiple
+    for (let i = 0; i < e.target.files.length; i++) {
+      allfiles.push(e.target.files[i]);
+    }
+    if (allfiles.length > 0) {
+      setFile(allfiles);
+    }
+    console.log(files)
+  }
+
+  const [postImage, setPostImage] = useState({
+    myFile: "",
+  });
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setPostImage({ ...postImage, myFile: base64 });
+    console.log(postImage.myFile.length)
+
+  };
+
+  const [files, setFile] = useState([]);
+
+
+
   return (
 
-    
+
     <Col className="main" hidden={hid}>
       <Card style={{ width: '18rem', display: 'flex', marginBottom: '1rem' }}>
         {/* <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
           src={product.img} /> */}
 
-        <Tooltip title={<h5 style={{fontSize:'16px'}}> {longText} </h5>} placement="bottom">
+        <Tooltip title={<h5 style={{ fontSize: '16px' }}> {longText} </h5>} placement="bottom">
           <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
             src={product.img} />
         </Tooltip>
@@ -142,16 +191,16 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
           <Card.Title>{product.title}</Card.Title>
           <h5 style={{ fontSize: '14px' }}>{product.tag}</h5>
           <h5 style={{ fontSize: '18px' }}> {product.price} Baht</h5>
-          <Button hidden={!user || product.qty === 0} variant="primary" onClick={() => { addToCart(product.id); handleClickAdd() ; handleInserProduct() }}>Add to Cart</Button>
-          <Button hidden={!user || !(product.qty === 0)} disabled variant="secondary" 
-                    onClick={() => { addToCart(product.id); handleClick() ; handleInserProduct() }}>Out of Stock</Button>
-          <h5 className="mt-2" style={{ fontSize: '14px' , color: 'red' }}> Remaining : {product.qty}</h5>
+          <Button hidden={!user || product.qty === 0} variant="primary" onClick={() => { addToCart(product.id); handleClickAdd(); handleInserProduct() }}>Add to Cart</Button>
+          <Button hidden={!user || !(product.qty === 0)} disabled variant="secondary"
+            onClick={() => { addToCart(product.id); handleClick(); handleInserProduct() }}>Out of Stock</Button>
+          <h5 className="mt-2" style={{ fontSize: '14px', color: 'red' }}> Remaining : {product.qty}</h5>
 
 
           <div style={{ display: 'flex', marginLeft: 'auto', marginRight: '0' }}>
             <div className="button-admin">
-              <Button size="sm" style={{ marginRight: '0.5rem' }} hidden={role == 'C' || role =='N'} onClick={() => setEditProductShow(true)} > Edit </Button>
-              <Button size="sm" variant="danger" onClick={() => setModalShow(true)} hidden={role == 'C' || role =='N'} > Remove </Button>
+              <Button size="sm" style={{ marginRight: '0.5rem' }} hidden={role == 'C' || role == 'N'} onClick={() => setEditProductShow(true)} > Edit </Button>
+              <Button size="sm" variant="danger" onClick={() => setModalShow(true)} hidden={role == 'C' || role == 'N'} > Remove </Button>
             </div>
           </div>
 
@@ -188,86 +237,85 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
         </Alert>
       </Snackbar>
 
+
+
       <Modal className="cart-modal" show={editProductShow}
-                onHide={() => setEditProductShow(false)}
-                aria-labelledby="contained-modal-title-vcenter"
-                centered>
-                <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        Edit your address.
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                <Row>
-                            <Col>
-                                {/* <h4> Product Photo</h4>
+        onHide={() => setEditProductShow(false)}
+        aria-labelledby="contained-modal-title-vcenter"
+        centered>
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Edit your address.
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Row>
+            <Col>
+              <h4> Product Photo</h4>
 
-                                <img hidden={files.length != 0} src="https://cdn-icons-png.flaticon.com/512/3342/3342137.png" width="370px" height="370px" ></img>
+              <img hidden={files.length != 0} src="https://cdn-icons-png.flaticon.com/512/3342/3342137.png" width="370px" height="370px" ></img>
 
-                                {files.map((file, key) => {
-                                    return (
-                                        <div key={key} className="Row">
-                                            <span className="Filename">
-                                                <img src={URL.createObjectURL(file)} width="100%" />
-                                            </span>
-                                        </div>
-                                    )
-                                })}
-                                <div className="mt-5">
-                                    
-                                    <input
-                                        type="file"
-                                        label="Image"
-                                        name="myFile"
-                                        accept=".jpeg, .png, .jpg"
-                                        onChange={(e) => { handleFileUpload(e); onSelectFile(e) }}
-                                    />
-                                </div> */}
-                            </Col>
-                            <Col>
-                                <Form className="formSignin" >
-                                    <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
-                                        <Form.Label>Product name</Form.Label>
-                                        <Form.Control type="text" value={product.title} onChange={e => { setProductName(e.target.value) }} />
-                                    </Form.Group>
-                                    <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
-                                        <Form.Label>Price</Form.Label>
-                                        <Form.Control type="number" min={0} value={product.price} onChange={e => { setPrice(e.target.value) }} />
-                                    </Form.Group>
-                                    <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
-                                        <Form.Label>Tag</Form.Label>
-                                        <Form.Select aria-label="Default select example" onChange={e => { setTag(e.target.value) }} >
-                                            <option >Select type</option>
-                                            <option value="Pastry">Chinese Pastry</option>
-                                            <option value="Roasted Pastry">Roasted Chinese Pastry</option>
-                                            <option value="Rice Cracker">Rice Cracker </option>
-                                        </Form.Select>
-                                    </Form.Group>
-                                    <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
-                                        <Form.Label>Description</Form.Label>
-                                        <Form.Control as="textarea" rows={2} value={product.description} onChange={e => { setDescription(e.target.value) }} />
-                                    </Form.Group>
+              <div className="Row">
+                <span className="Filename">
+                  <img src={product.img} width="100%" />
+                </span>
+              </div>
 
-                                    <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
-                                        <Form.Label>Quantity</Form.Label>
-                                        <Form.Control type="number" value={product.qty} onChange={e => { setQty(e.target.value) }} />
-                                    </Form.Group>
+              <div className="mt-5">
 
-                                    <div className="d-grid gap-2">
-                                        <Button variant="primary" size="lg" >
-                                            Insert this product
-                                        </Button>
+                <input
+                  type="file"
+                  label="Image"
+                  name="myFile"
+                  accept=".jpeg, .png, .jpg"
+                  onChange={(e) => { handleFileUpload(e); onSelectFile(e) }}
+                />
+              </div>
+            </Col>
+            <Col>
+              <Form className="formSignin" >
+                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                  <Form.Label>Product name</Form.Label>
+                  <Form.Control type="text" value={product.title} onChange={e => { setProductName(e.target.value) }} />
+                </Form.Group>
+                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                  <Form.Label>Price</Form.Label>
+                  <Form.Control type="number" min={0} value={product.price} onChange={e => { setPrice(e.target.value) }} />
+                </Form.Group>
+                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                  <Form.Label>Tag</Form.Label>
+                  <Form.Select aria-label="Default select example" onChange={e => { setTag(e.target.value) }} >
+                    <option >Select type</option>
+                    <option value="Pastry">Chinese Pastry</option>
+                    <option value="Roasted Pastry">Roasted Chinese Pastry</option>
+                    <option value="Rice Cracker">Rice Cracker </option>
+                  </Form.Select>
+                </Form.Group>
+                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                  <Form.Label>Description</Form.Label>
+                  <Form.Control as="textarea" rows={2} value={product.description} onChange={e => { setDescription(e.target.value) }} />
+                </Form.Group>
 
-                                    </div>
-                                </Form>
-                            </Col>
-                        </Row>
-                </Modal.Body>
-            </Modal>
+                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                  <Form.Label>Quantity</Form.Label>
+                  <Form.Control type="number" value={product.qty} onChange={e => { setQty(e.target.value) }} />
+                </Form.Group>
+
+                <div className="d-grid gap-2">
+                  <Button variant="primary" size="lg" >
+                    Insert this product
+                  </Button>
+
+                </div>
+              </Form>
+            </Col>
+          </Row>
+        </Modal.Body>
+      </Modal>
 
     </Col>
-    
-    
+
+
   );
 };
 
