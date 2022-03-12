@@ -149,6 +149,9 @@ const NavbarComponent = ({ cart }) => {
 
     const [modalShow, setModalShow] = useState(false);
     const user = JSON.parse(localStorage.getItem('user'));
+
+    const [role , setRole] = useState(user ? user.role : "N")
+
     const [signinModalShow, setSigntinModalShow] = useState(false);
     const [signupModalShow, setSignupModalShow] = useState(false);
     const [cartCount, setCartCount] = useState(0);

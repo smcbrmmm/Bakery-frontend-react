@@ -26,6 +26,7 @@ const OrderDetail = ({ order }) => {
     const [price, setPrice] = useState();
     const [address, setAddress] = useState([]);
     const [orderId, setOrderId] = useState(order.orderId)
+    const [payment , setPayment] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -41,7 +42,11 @@ const OrderDetail = ({ order }) => {
                 'https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/address/orderAddress/' + order.addressId,
             );
 
-            console.log(result3)
+            const result4 = await axios(
+                'https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/payment/getPayment/' + order.orderId,
+            );
+
+            console.log(result4)
 
             setPrice(result2)
             setAddress(result3.data)
