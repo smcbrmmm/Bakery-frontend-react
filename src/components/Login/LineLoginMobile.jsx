@@ -50,11 +50,6 @@ export default function LineLoginMobile() {
     const [isHave, setIsHave] = useState();
     const [signinModal, setSigninModal] = useState(false);
 
-    var user = {
-        id: 3,
-        name: "Samut Chouybumrung",
-        email: "samut.c@ku.th"
-    }
 
     if(email !== ""){
         const response = login({
@@ -63,7 +58,12 @@ export default function LineLoginMobile() {
             .then(data => {
                 localStorage.setItem('accessToken', data.accessToken);
                 localStorage.setItem('user', JSON.stringify(data.user));
-                window.location.href = "/order";
+                if(data.user.role === 'A'){
+                    window.location.href = "/products";
+                }else{
+                    window.location.href = "/order";
+                }
+                
             })
     }
 
