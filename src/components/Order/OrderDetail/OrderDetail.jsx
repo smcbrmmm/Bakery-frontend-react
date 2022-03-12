@@ -110,6 +110,19 @@ const OrderDetail = ({ order }) => {
         });
     }
 
+    const convertToBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload = () => {
+                resolve(fileReader.result);
+            };
+            fileReader.onerror = (error) => {
+                reject(error);
+            };
+        });
+    };
+
     const handleFileUpload = async (e) => {
         const file = e.target.files[0];
         const base64 = await convertToBase64(file);
@@ -228,7 +241,7 @@ const OrderDetail = ({ order }) => {
                                     null :
                                     <Form.Group controlId="formFile" className="mb-3" hidden={order.hasPayment !== "no-slip" || isUpload}>
                                         <Form.Label> Upload your slip</Form.Label>
-                                        <Form.Control type="file" onChange={(e) => { handleFileUpload(e); onSelectFile(e) }} />
+                                        <Form.Control type="file" onChange={(e) => { handleFileUpload(e); onSelectFile(e) }}  />
                                     </Form.Group>
                                 }
 
