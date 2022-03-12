@@ -108,7 +108,7 @@ const OrderDetail = ({ order }) => {
 
                         {order.status === 'Order Canceled' ?
                             <h5 style={{ color: 'red' }}> Status :  {order.status} </h5>
-                            : <h5> Status :  {order.status} </h5> 
+                            : <h5> Status :  {order.status} </h5>
                         }
 
                         {order.status === 'Order Canceled' ?
@@ -174,7 +174,7 @@ const OrderDetail = ({ order }) => {
 
                                 {order.status === 'Order Canceled' ?
                                     null :
-                                    <Button  size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                    <Button size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
                                 }
 
                             </Col>
@@ -203,8 +203,13 @@ const OrderDetail = ({ order }) => {
                                         <Form.Control type="file" />
                                     </Form.Group>
                                 }
+                                
+                                {order.status === 'Order Canceled' ?
+                                    null :
+                                    <Button size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                }
 
-                                <Button  size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+
 
                             </Col>
                         </Row>
