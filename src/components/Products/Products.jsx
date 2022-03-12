@@ -192,8 +192,8 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                     <Row style={{ marginBottom: '1rem' }}>
                         <Col sm={3}>
 
-                            <MediaQuery minWidth={1224} style={{marginTop:'4rem'}}>
-                                <h2 className="main" style={{ marginBottom: '2rem' }}>  Category </h2>
+                            <MediaQuery minWidth={1224} >
+                                <h2 className="main" style={{ marginBottom: '2rem', marginTop: '4rem' }}>  Category </h2>
                                 <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("pastry")} >  Chinese Pastry </h5></a>
                                 <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("roastedPastry")}>  Roasted Chinese Pastry </h5></a>
                                 <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("riceCracker")}>  Rice Cracker </h5></a>
@@ -207,10 +207,20 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                             </MediaQuery>
                         </Col>
                         <Col sm={9}>
-                            <h2 className="main" style={{ textAlign: 'left', marginBottom: '2rem' }} >  Products
-                                <Button className="button-add" variant="success" style={{ marginLeft: '1rem' }}
-                                    onClick={() => setAddProductModal(true)} hidden={role == 'C' || role == 'N'}> Insert </Button>
-                            </h2>
+                            <MediaQuery minWidth={1224} >
+                                <h2 className="main" style={{ textAlign: 'left', marginBottom: '2rem' , marginTop:'4rem' }} >  Products
+                                    <Button className="button-add" variant="success" style={{ marginLeft: '1rem' }}
+                                        onClick={() => setAddProductModal(true)} hidden={role == 'C' || role == 'N'}> Insert </Button>
+                                </h2>
+                            </MediaQuery>
+
+                            <MediaQuery maxWidth={1224} >
+                                <h2 className="main" style={{ textAlign: 'left', marginBottom: '2rem' }} >  Products
+                                    <Button className="button-add" variant="success" style={{ marginLeft: '1rem' }}
+                                        onClick={() => setAddProductModal(true)} hidden={role == 'C' || role == 'N'}> Insert </Button>
+                                </h2>
+                            </MediaQuery>
+
 
                             <Row lg={3}>
                                 {products.map((product) => (
