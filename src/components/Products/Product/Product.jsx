@@ -15,6 +15,7 @@ import {
   addToCart,
 } from "../../../redux/Shopping/shopping-actions";
 import { Segment } from "@mui/icons-material";
+import { trusted } from "mongoose";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -149,7 +150,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
           <div style={{ display: 'flex', marginLeft: 'auto', marginRight: '0' }}>
             <div className="button-admin">
-              <Button size="sm" style={{ marginRight: '0.5rem' }} hidden={role == 'C' || role =='N'} > Edit </Button>
+              <Button size="sm" style={{ marginRight: '0.5rem' }} hidden={role == 'C' || role =='N'} onClick={() => setEditProductShow(true)} > Edit </Button>
               <Button size="sm" variant="danger" onClick={() => setModalShow(true)} hidden={role == 'C' || role =='N'} > Remove </Button>
             </div>
           </div>
