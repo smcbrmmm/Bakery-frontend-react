@@ -76,7 +76,7 @@ export default function LineLoginMobile() {
                     const getProfile = liff.getProfile();
                     const getDecodedIDToken = liff.getDecodedIDToken();
                     const getAccessToken = liff.getAccessToken();
-
+                    localStorage.setItem('accessToken', accessToken);
                     setName(liff.getProfile.displayName)
                     setEmail(liff.getDecodedIDToken().email)
 
