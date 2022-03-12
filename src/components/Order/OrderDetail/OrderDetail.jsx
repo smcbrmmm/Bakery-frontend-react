@@ -29,6 +29,7 @@ const OrderDetail = ({ order }) => {
     // const [payment, setPayment] = useState([]);
     // const [noPayment , setNoPayment] = useState(0);
     const [isUpload, setIsUpload] = useState(false);
+    const [status , setStatus] = useState(order.status)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -83,6 +84,7 @@ const OrderDetail = ({ order }) => {
 
     const handleUploadSlip = async e => {
         setIsUpload(true)
+        setStatus("Waiting for Confirmation")
     }
 
     return (
@@ -113,7 +115,7 @@ const OrderDetail = ({ order }) => {
 
                         {order.status === 'Order Canceled' ?
                             <h5 style={{ color: 'red' }}> Status :  {order.status} </h5>
-                            : <h5> Status :  {order.status} </h5>
+                            : <h5> Status :  {status} </h5>
                         }
 
                         {order.status === 'Order Canceled' ?
