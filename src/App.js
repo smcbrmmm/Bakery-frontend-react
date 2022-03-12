@@ -70,13 +70,13 @@ function App({ setProductList }) {
 
           <MediaQuery maxWidth={1224}>
             <Carousel className="carousel-home"
-              style={{ width: '100%', height : '40%', justifyContent: 'center', marginLeft: 'auto', marginRight: 'auto', marginTop: '3%' }}>
+              style={{  maxWidth : '100%' , maxHeight : '30%', justifyContent: 'center', marginLeft: 'auto', marginRight: 'auto', marginTop: '3%' }}>
               <Carousel.Item>
                 <img
                   className="d-block w-100"
                   src='https://www.wildgrainsbakery.com/wp-content/uploads/2020/08/Untitled-18.jpg'
                   alt="First slide"
-                  style={{ width: '300px', height: '400px' }}
+                  style={{ maxWidth : '100%' , margin: "0 0" }}
                 />
                 <Carousel.Caption>
                   <h3 className="carousel-text">Mymom bakery I</h3>
@@ -88,7 +88,7 @@ function App({ setProductList }) {
                   className="d-block w-100"
                   src='https://www.wildgrainsbakery.com/wp-content/uploads/2020/08/Untitled-18.jpg'
                   alt="Second slide"
-                  style={{ width: '400px', height: '500px' }}
+                  style={{ maxWidth : '90%' }}
                 />
                 <Carousel.Caption>
                   <h3 className="carousel-text" >Mymom bakery II</h3>
@@ -100,7 +100,7 @@ function App({ setProductList }) {
                   className="d-block w-100"
                   src='https://www.wildgrainsbakery.com/wp-content/uploads/2020/08/Untitled-18.jpg'
                   alt="Third slide"
-                  style={{ width: '400px' , height: '500px' }}/>
+                  style={{ maxWidth : '90%' }}/>
 
                 <Carousel.Caption>
                   <h3 className="carousel-text">Mymom bakery III</h3>
