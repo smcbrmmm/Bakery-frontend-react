@@ -166,7 +166,7 @@ const OrderDetail = ({ order }) => {
 
                                 {order.status === "Order Canceled" ?
                                     null :
-                                    <Form.Group controlId="formFile" className="mb-3" hidden={order.paymentSlip !== "no-slip"}>
+                                    <Form.Group controlId="formFile" className="mb-3" hidden={order.hasPayment !== "no-slip"}>
                                         <Form.Label> Upload your slip</Form.Label>
                                         <Form.Control type="file" />
                                     </Form.Group>
@@ -174,7 +174,7 @@ const OrderDetail = ({ order }) => {
 
                                 {order.status === 'Order Canceled' ?
                                     null :
-                                    <Button hidden={order.paymentSlip !== "no-slip"} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                    <Button hidden={order.hasPayment !== "no-slip"} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
                                 }
 
                             </Col>
@@ -198,7 +198,7 @@ const OrderDetail = ({ order }) => {
 
                                 {order.status === "Order Canceled" ?
                                     null :
-                                    <Form.Group controlId="formFile" className="mb-3" hidden={order.paymentSlip !== "no-slip"}>
+                                    <Form.Group controlId="formFile" className="mb-3" hidden={order.hasPayment !== "no-slip"}>
                                         <Form.Label> Upload your slip</Form.Label>
                                         <Form.Control type="file" />
                                     </Form.Group>
@@ -206,7 +206,7 @@ const OrderDetail = ({ order }) => {
 
                                 {order.status === 'Order Canceled' ?
                                     null :
-                                    <Button hidden={order.paymentSlip !== "no-slip"} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                    <Button hidden={order.hasPayment !== "no-slip"} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
                                 }
 
 
