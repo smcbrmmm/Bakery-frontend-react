@@ -28,7 +28,7 @@ async function updateOrder(order) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            orderId : order.orderId , userId : order.userId , paymentSlip : order.paymentSlip
+            orderId : order.orderId , userId : order.userId , paymentSlip : order.myFile
         })
     })
     // .then(data => data.json())
@@ -106,7 +106,7 @@ const OrderDetail = ({ order }) => {
         setStatus("Waiting for Confirmation")
 
         const response = await updateOrder({
-            orderId , userId , paymentSlip
+            orderId , userId , postImage
         });
     }
 
