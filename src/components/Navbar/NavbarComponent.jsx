@@ -219,7 +219,9 @@ const NavbarComponent = ({ cart }) => {
                             </Link>
                         </Nav>
 
-                        <Nav>
+
+
+                        <Nav hidden={role==='A'}>
                             <Link to="/contactus">
                                 <Tooltip title="Contract Us">
                                     <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
@@ -228,7 +230,7 @@ const NavbarComponent = ({ cart }) => {
                                 </Tooltip>
                             </Link>
                         </Nav>
-                        <Nav hidden={!user}>
+                        <Nav hidden={!user || role==='A'}>
                             <Link to="/cart" >
                                 
                                 <Tooltip title="Cart ">
@@ -242,7 +244,7 @@ const NavbarComponent = ({ cart }) => {
                         </Nav>
 
 
-                        <Nav hidden={!user}>
+                        <Nav hidden={!user || role==='A'}>
                             <Link to="/order"  >
                                 <Tooltip title="Order Status">
                                     <IconButton aria-label="cart" size="large" className="nav-menu"  >
@@ -271,7 +273,7 @@ const NavbarComponent = ({ cart }) => {
                                     'aria-labelledby': 'basic-button',
                                 }}
                             >
-                                <MenuItem component={Link} onClick={handleClose} to="/profile">Account</MenuItem>
+                                <MenuItem  hidden={role==='A'} component={Link} onClick={handleClose} to="/profile">Account</MenuItem>
                                 {/* <MenuItem component={Link} to="/order" onClick={handleClose}>Order Status</MenuItem> */}
                                 <MenuItem onClick={handleLogout}>Sign out</MenuItem>
                             </Menu>
