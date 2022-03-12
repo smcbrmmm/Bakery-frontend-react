@@ -56,7 +56,7 @@ export default function LineLoginMobile() {
             email
         })
             .then(data => {
-                localStorage.setItem('accessToken', accessToken);
+                localStorage.setItem('accessToken', data.accessToken);
                 localStorage.setItem('user', JSON.stringify(data.user));
                 if(data.user.role === 'A'){
                     window.location.href = "/products";
@@ -76,7 +76,7 @@ export default function LineLoginMobile() {
                     const getProfile = liff.getProfile();
                     const getDecodedIDToken = liff.getDecodedIDToken();
                     const getAccessToken = liff.getAccessToken();
-                    localStorage.setItem('accessToken', accessToken);
+
                     setName(liff.getProfile.displayName)
                     setEmail(liff.getDecodedIDToken().email)
 

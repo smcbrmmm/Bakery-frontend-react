@@ -178,8 +178,6 @@ const Products = ({ products, setProductList, setProductInCart }) => {
         });
     };
 
-
-
     return (
         <div className="page-container">
             <NavbarCom />
@@ -321,6 +319,8 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                         </Row>
                     </Modal.Body>
                 </Modal>
+
+                
 
 
             </div>

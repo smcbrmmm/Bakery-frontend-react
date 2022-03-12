@@ -73,6 +73,8 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
   const [longText , setLongText] = useState(product.description)
 
+  const [ editProductShow , setEditProductShow] = useState(false);
+
   const handleClick = () => {
     setOpen(true);
   };
@@ -115,6 +117,13 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
     // }, 1000);
 
   }
+
+  
+  const [productName, setProductName] = useState();
+  const [price, setPrice] = useState();
+  const [tag, setTag] = useState();
+  const [description, setDescription] = useState();
+  const [qty, setQty] = useState();
 
   return (
 
@@ -177,6 +186,83 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
           Product already added to your cart.
         </Alert>
       </Snackbar>
+
+      <Modal className="cart-modal" show={editProductShow}
+                onHide={() => setEditProductShow(false)}
+                aria-labelledby="contained-modal-title-vcenter"
+                centered>
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        Edit your address.
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                <Row>
+                            <Col>
+                                {/* <h4> Product Photo</h4>
+
+                                <img hidden={files.length != 0} src="https://cdn-icons-png.flaticon.com/512/3342/3342137.png" width="370px" height="370px" ></img>
+
+                                {files.map((file, key) => {
+                                    return (
+                                        <div key={key} className="Row">
+                                            <span className="Filename">
+                                                <img src={URL.createObjectURL(file)} width="100%" />
+                                            </span>
+                                        </div>
+                                    )
+                                })}
+                                <div className="mt-5">
+                                    
+                                    <input
+                                        type="file"
+                                        label="Image"
+                                        name="myFile"
+                                        accept=".jpeg, .png, .jpg"
+                                        onChange={(e) => { handleFileUpload(e); onSelectFile(e) }}
+                                    />
+                                </div> */}
+                            </Col>
+                            <Col>
+                                <Form className="formSignin" >
+                                    <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                                        <Form.Label>Product name</Form.Label>
+                                        <Form.Control type="text" value={product.title} onChange={e => { setProductName(e.target.value) }} />
+                                    </Form.Group>
+                                    <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                                        <Form.Label>Price</Form.Label>
+                                        <Form.Control type="number" min={0} value={product.price} onChange={e => { setPrice(e.target.value) }} />
+                                    </Form.Group>
+                                    <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                                        <Form.Label>Tag</Form.Label>
+                                        <Form.Select aria-label="Default select example" onChange={e => { setTag(e.target.value) }} >
+                                            <option >Select type</option>
+                                            <option value="Pastry">Chinese Pastry</option>
+                                            <option value="Roasted Pastry">Roasted Chinese Pastry</option>
+                                            <option value="Rice Cracker">Rice Cracker </option>
+                                        </Form.Select>
+                                    </Form.Group>
+                                    <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                                        <Form.Label>Description</Form.Label>
+                                        <Form.Control as="textarea" rows={2} value={product.description} onChange={e => { setDescription(e.target.value) }} />
+                                    </Form.Group>
+
+                                    <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                                        <Form.Label>Quantity</Form.Label>
+                                        <Form.Control type="number" value={product.qty} onChange={e => { setQty(e.target.value) }} />
+                                    </Form.Group>
+
+                                    <div className="d-grid gap-2">
+                                        <Button variant="primary" size="lg" >
+                                            Insert this product
+                                        </Button>
+
+                                    </div>
+                                </Form>
+                            </Col>
+                        </Row>
+                </Modal.Body>
+            </Modal>
 
     </Col>
     
