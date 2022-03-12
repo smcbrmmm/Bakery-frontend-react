@@ -28,6 +28,7 @@ const OrderDetail = ({ order }) => {
     const [orderId, setOrderId] = useState(order.orderId)
     // const [payment, setPayment] = useState([]);
     // const [noPayment , setNoPayment] = useState(0);
+    const [isUpload, setIsUpload] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -78,6 +79,10 @@ const OrderDetail = ({ order }) => {
             window.location.href = "/order";
         }, 500);
 
+    }
+
+    const handleUploadSlip = async e => {
+        setIsUpload(true)
     }
 
     return (
@@ -174,7 +179,11 @@ const OrderDetail = ({ order }) => {
 
                                 {order.status === 'Order Canceled' ?
                                     null :
-                                    <Button hidden={order.hasPayment !== "no-slip"} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                    <Button onClick={handleUploadSlip} hidden={order.hasPayment !== "no-slip"} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                }
+
+                                {isUpload ?
+                                    <h5 style={{ fontSize: '14px', color: 'green' }}> You already upload your slip. Please waiting for confirmation.</h5> : null
                                 }
 
                                 {order.status === 'Waiting for Confirmation' ?
@@ -210,7 +219,11 @@ const OrderDetail = ({ order }) => {
 
                                 {order.status === 'Order Canceled' ?
                                     null :
-                                    <Button hidden={order.hasPayment !== "no-slip"} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                    <Button onClick={handleUploadSlip} hidden={order.hasPayment !== "no-slip"} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                }
+
+                                {isUpload ?
+                                    <h5 style={{ fontSize: '14px', color: 'green' }}> You already upload your slip. Please waiting for confirmation.</h5> : null
                                 }
 
                                 {order.status === 'Waiting for Confirmation' ?
