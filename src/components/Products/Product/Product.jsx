@@ -271,8 +271,8 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
               </div> */}
             </Col>
             <Col>
-            2
-              {/* <Form className="formSignin" >
+
+              <Form className="formSignin" >
                 <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                   <Form.Label>Product name</Form.Label>
                   <Form.Control type="text" value={product.title} onChange={e => { setProductName(e.target.value) }} />
@@ -306,7 +306,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
                   </Button>
 
                 </div>
-              </Form> */}
+              </Form>
             </Col>
           </Row>
         </Modal.Body>
