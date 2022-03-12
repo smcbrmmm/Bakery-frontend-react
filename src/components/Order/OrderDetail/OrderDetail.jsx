@@ -177,6 +177,10 @@ const OrderDetail = ({ order }) => {
                                     <Button hidden={order.hasPayment !== "no-slip"} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
                                 }
 
+                                {order.status === 'Waiting for Confirmation' ?
+                                    <h5 style={{ fontSize: '16px', color: 'green' }}> You already upload your slip. Please waiting for confirmation.</h5> : null
+                                }
+
                             </Col>
                         </Row>
                     </MediaQuery>
@@ -207,6 +211,10 @@ const OrderDetail = ({ order }) => {
                                 {order.status === 'Order Canceled' ?
                                     null :
                                     <Button hidden={order.hasPayment !== "no-slip"} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                }
+
+                                {order.status === 'Waiting for Confirmation' ?
+                                    <h5 style={{ fontSize: '14px', color: 'green' }}> You already upload your slip. Please waiting for confirmation.</h5> : null
                                 }
 
 
