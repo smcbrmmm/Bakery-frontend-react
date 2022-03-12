@@ -190,6 +190,8 @@ const OrderDetail = ({ order }) => {
                                     </Form.Group>
                                 }
 
+                                <Button size="sm" variant="info"> Upload </Button>
+
                             </Col>
                         </Row>
                     </MediaQuery>
