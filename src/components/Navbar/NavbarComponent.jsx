@@ -151,7 +151,7 @@ const NavbarComponent = ({ cart }) => {
     const [modalShow, setModalShow] = useState(false);
     const user = JSON.parse(localStorage.getItem('user'));
 
-    const [role , setRole] = useState(user ? user.role : "N")
+    const [role, setRole] = useState(user ? user.role : "N")
 
     const [signinModalShow, setSigntinModalShow] = useState(false);
     const [signupModalShow, setSignupModalShow] = useState(false);
@@ -219,7 +219,7 @@ const NavbarComponent = ({ cart }) => {
 
                             </Link>
                         </Nav>
-                        <Nav hidden={!user || role==='C'}>
+                        <Nav hidden={!user || role === 'C'}>
                             <Link to="/summarize">
                                 <Tooltip title="Menu">
                                     <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
@@ -232,7 +232,7 @@ const NavbarComponent = ({ cart }) => {
 
 
 
-                        <Nav hidden={role==='A'}>
+                        <Nav hidden={role === 'A'}>
                             <Link to="/contactus">
                                 <Tooltip title="Contract Us">
                                     <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
@@ -241,9 +241,9 @@ const NavbarComponent = ({ cart }) => {
                                 </Tooltip>
                             </Link>
                         </Nav>
-                        <Nav hidden={!user || role==='A'}>
+                        <Nav hidden={!user || role === 'A'}>
                             <Link to="/cart" >
-                                
+
                                 <Tooltip title="Cart ">
                                     <IconButton aria-label="cart" size="large" className="nav-menu"  >
                                         <StyledBadge badgeContent={cartCount} color="warning">
@@ -255,13 +255,24 @@ const NavbarComponent = ({ cart }) => {
                         </Nav>
 
 
-                        <Nav hidden={!user || role==='A'}>
+                        <Nav hidden={!user || role === 'A'}>
                             <Link to="/order"  >
                                 <Tooltip title="Order Status">
                                     <IconButton aria-label="cart" size="large" className="nav-menu"  >
                                         <ListAltIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
                                     </IconButton>
                                 </Tooltip>
+                            </Link>
+                        </Nav>
+
+                        <Nav hidden={!user || role === 'C'}>
+                            <Link to="/summarize">
+                                <Tooltip title="Menu">
+                                    <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
+                                        <SummarizeIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                    </IconButton>
+                                </Tooltip>
+
                             </Link>
                         </Nav>
 
@@ -284,22 +295,22 @@ const NavbarComponent = ({ cart }) => {
                                     'aria-labelledby': 'basic-button',
                                 }}
                             >
-                                <MenuItem  hidden={role==='A'} component={Link} onClick={handleClose} to="/profile">Account</MenuItem>
+                                <MenuItem hidden={role === 'A'} component={Link} onClick={handleClose} to="/profile">Account</MenuItem>
                                 {/* <MenuItem component={Link} to="/order" onClick={handleClose}>Order Status</MenuItem> */}
                                 <MenuItem onClick={handleLogout}>Sign out</MenuItem>
                             </Menu>
                         </Nav>
 
-                        
+
                         {/* onClick={() => setSigntinModalShow(true)} */}
                         <Link to="/lineloginmobile" hidden={user}  >
-                        <Nav   >
-                            <Tooltip title="Login">
-                                <IconButton aria-label="cart" size="large" className="nav-menu" >
-                                    <LoginIcon sx={{ fontSize: 30 }} style={{ fill: "white" }}  />
-                                </IconButton>
-                            </Tooltip>
-                        </Nav>
+                            <Nav   >
+                                <Tooltip title="Login">
+                                    <IconButton aria-label="cart" size="large" className="nav-menu" >
+                                        <LoginIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                    </IconButton>
+                                </Tooltip>
+                            </Nav>
                         </Link>
 
                     </Nav>
@@ -320,7 +331,7 @@ const NavbarComponent = ({ cart }) => {
                     </Nav>
                     <Nav className="color-nav" style={{ maxHeight: '100px' }}>
 
-                        <Nav  >
+                        <Nav >
                             <Link to="/products">
                                 <Tooltip title="Menu">
                                     <IconButton color="primary" aria-label="upload picture" component="span" >
@@ -329,16 +340,16 @@ const NavbarComponent = ({ cart }) => {
                                 </Tooltip>
                             </Link>
 
-                            <Link to="/contactus">
+                            <Link to="/contactus" hidden={role === 'C'}>
                                 <Tooltip title="Contract Us">
                                     <IconButton color="primary" aria-label="upload picture" component="span" >
                                         <PermContactCalendarIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
                                     </IconButton>
                                 </Tooltip>
                             </Link>
-                            
 
-                            <Link to="/cart" hidden={!user}  >
+
+                            <Link to="/cart" hidden={!user || role === 'C'}  >
                                 <IconButton color="primary" aria-label="upload picture" component="span" id="basic-button">
                                     <StyledBadge badgeContent={cartCount} color="warning">
                                         <ShoppingCartIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
@@ -347,7 +358,7 @@ const NavbarComponent = ({ cart }) => {
                             </Link>
 
 
-                            <Link to="/order" hidden={!user} >
+                            <Link to="/order" hidden={!user || role === 'C'} >
                                 <Tooltip title="Order Status">
                                     <IconButton color="primary" aria-label="upload picture" component="span" >
                                         <ListAltIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />

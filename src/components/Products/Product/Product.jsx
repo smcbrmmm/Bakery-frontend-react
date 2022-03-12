@@ -251,10 +251,8 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
         <Modal.Body>
           <Row>
             <Col>
-              <h4> Product Photo</h4>
-
-              {/* <img hidden={files.length != 0} src="https://cdn-icons-png.flaticon.com/512/3342/3342137.png" width="370px" height="370px" ></img> */}
-
+              1
+              {/* <h4> Product Photo</h4>
 
               <div className="Row">
                 <span className="Filename">
@@ -263,7 +261,6 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
               </div>
 
               <div className="mt-5">
-
                 <input
                   type="file"
                   label="Image"
@@ -271,10 +268,11 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
                   accept=".jpeg, .png, .jpg"
                   onChange={(e) => { handleFileUpload(e); onSelectFile(e) }}
                 />
-              </div>
+              </div> */}
             </Col>
             <Col>
-              <Form className="formSignin" >
+            2
+              {/* <Form className="formSignin" >
                 <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                   <Form.Label>Product name</Form.Label>
                   <Form.Control type="text" value={product.title} onChange={e => { setProductName(e.target.value) }} />
@@ -308,7 +306,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
                   </Button>
 
                 </div>
-              </Form>
+              </Form> */}
             </Col>
           </Row>
         </Modal.Body>
