@@ -219,7 +219,7 @@ const NavbarComponent = ({ cart }) => {
 
                             </Link>
                         </Nav>
-                        <Nav hidden={role==='C'}>
+                        <Nav hidden={!user || role==='C'}>
                             <Link to="/products">
                                 <Tooltip title="Menu">
                                     <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
