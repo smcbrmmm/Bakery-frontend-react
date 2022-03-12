@@ -123,6 +123,10 @@ const OrderDetail = ({ order }) => {
         });
     };
 
+    const [postImage, setPostImage] = useState({
+        myFile: "",
+    });
+
     const handleFileUpload = async (e) => {
         const file = e.target.files[0];
         const base64 = await convertToBase64(file);
@@ -146,12 +150,9 @@ const OrderDetail = ({ order }) => {
         if (allfiles.length > 0) {
             setFile(allfiles);
         }
-        console.log(files)
+        
     }
 
-    useEffect(() => {
-        console.log(files)
-    } , [files])
 
     return (
 
