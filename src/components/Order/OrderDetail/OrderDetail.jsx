@@ -48,6 +48,7 @@ const OrderDetail = ({ order }) => {
     const [status , setStatus] = useState(order.status)
     const [userId , setUserId] = useState(user.id)
     const [paymentSlip , setPaymentSlip] = useState("samut");
+    const [files, setFile] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -108,6 +109,36 @@ const OrderDetail = ({ order }) => {
             orderId , userId , paymentSlip
         });
     }
+
+    const handleFileUpload = async (e) => {
+        const file = e.target.files[0];
+        const base64 = await convertToBase64(file);
+        setPostImage({ ...postImage, myFile: base64 });
+        console.log(postImage.myFile.length)
+
+    };
+
+    const onSelectFile = e => {
+        if (!e.target.files || e.target.files.length === 0) {
+            setSelectedFile(undefined)
+            return
+        }
+
+        let allfiles = []
+
+        // I've kept this example simple by using the first image instead of multiple
+        for (let i = 0; i < e.target.files.length; i++) {
+            allfiles.push(e.target.files[i]);
+        }
+        if (allfiles.length > 0) {
+            setFile(allfiles);
+        }
+        console.log(files)
+    }
+
+    useEffect(() => {
+        console.log(files)
+    } , [files])
 
     return (
 
@@ -205,7 +236,7 @@ const OrderDetail = ({ order }) => {
                                     <h5 style={{ fontSize: '16px', color: 'red' }}> Your order has been canceled.</h5>  :
                                     <Button  onClick={handleUploadSlip} hidden={order.hasPayment !== "no-slip" || isUpload } size="sm" variant="secondary" 
                                     style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }} 
-                                   
+                                    onChange={(e) => { handleFileUpload(e); onSelectFile(e) }}
                                     > 
                                     Upload </Button>
                                 }
@@ -249,7 +280,9 @@ const OrderDetail = ({ order }) => {
                                     <h5 style={{ fontSize: '14px', color: 'red' }}> Your order has been canceled.</h5> :
                                     <Button onClick={handleUploadSlip} 
                                     hidden={order.hasPayment !== "no-slip" || isUpload} size="sm" variant="secondary" 
-                                    style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> 
+                                    style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}
+                                    onChange={(e) => { handleFileUpload(e); onSelectFile(e) }}
+                                    > 
                                     Upload </Button>
                                 }
 
