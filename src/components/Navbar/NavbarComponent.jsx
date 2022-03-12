@@ -24,6 +24,7 @@ import DehazeIcon from '@mui/icons-material/Dehaze';
 import LineLoginComponent from "../Login/LineLoginComponent";
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import MediaQuery from 'react-responsive'
+import SummarizeIcon from '@mui/icons-material/Summarize';
 
 const liff = window.liff
 
@@ -213,6 +214,16 @@ const NavbarComponent = ({ cart }) => {
                                 <Tooltip title="Menu">
                                     <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
                                         <RestaurantMenuOutlinedIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                    </IconButton>
+                                </Tooltip>
+
+                            </Link>
+                        </Nav>
+                        <Nav hidden={role==='C'}>
+                            <Link to="/products">
+                                <Tooltip title="Menu">
+                                    <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
+                                        <SummarizeIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
                                     </IconButton>
                                 </Tooltip>
 
