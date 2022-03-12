@@ -164,13 +164,13 @@ const OrderDetail = ({ order }) => {
 
                                 {order.status === "Order Canceled" ?
                                     null :
-                                    <Form.Group controlId="formFile" className="mb-3">
+                                    <Form.Group controlId="formFile" className="mb-3" hidden={payment.length === 1}>
                                         <Form.Label> Upload your slip</Form.Label>
                                         <Form.Control type="file" />
                                     </Form.Group>
                                 }
 
-                                <Button size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                <Button hidden={payment.length === 1} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
 
                             </Col>
                         </Row>
@@ -193,13 +193,13 @@ const OrderDetail = ({ order }) => {
 
                                 {order.status === "Order Canceled" ?
                                     null :
-                                    <Form.Group controlId="formFile" className="mb-3">
+                                    <Form.Group controlId="formFile" className="mb-3" hidden={payment.length === 1}>
                                         <Form.Label> Upload your slip</Form.Label>
                                         <Form.Control type="file" />
                                     </Form.Group>
                                 }
 
-                                <Button size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                <Button hidden={payment.length === 1} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
 
                             </Col>
                         </Row>
