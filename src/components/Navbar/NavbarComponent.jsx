@@ -315,7 +315,7 @@ const NavbarComponent = ({ cart }) => {
 
                             <Link to="/contactus">
                                 <Tooltip title="Contract Us">
-                                    <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
+                                    <IconButton color="primary" aria-label="upload picture" component="span" >
                                         <PermContactCalendarIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
                                     </IconButton>
                                 </Tooltip>
