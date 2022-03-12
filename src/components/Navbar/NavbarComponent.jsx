@@ -305,14 +305,22 @@ const NavbarComponent = ({ cart }) => {
                     <Nav className="color-nav" style={{ maxHeight: '100px' }}>
 
                         <Nav  >
-                            <Link to="/products" hidden={!user}>
+                            <Link to="/products">
                                 <Tooltip title="Menu">
                                     <IconButton color="primary" aria-label="upload picture" component="span" >
                                         <RestaurantMenuOutlinedIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
                                     </IconButton>
                                 </Tooltip>
-
                             </Link>
+
+                            <Link to="/contactus">
+                                <Tooltip title="Contract Us">
+                                    <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
+                                        <PermContactCalendarIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                    </IconButton>
+                                </Tooltip>
+                            </Link>
+                            
 
                             <Link to="/cart" hidden={!user}  >
                                 <IconButton color="primary" aria-label="upload picture" component="span" id="basic-button">
@@ -353,7 +361,7 @@ const NavbarComponent = ({ cart }) => {
                                 {/* <MenuItem component={Link} onClick={handleClose} to="/">Home</MenuItem> */}
                                 <MenuItem hidden={user} component={Link} onClick={handleClose} to="/lineloginmobile" >Login</MenuItem>
                                 {/* <MenuItem component={Link} onClick={handleClose} to="/products">Menu</MenuItem> */}
-                                <MenuItem component={Link} onClick={handleClose} to="/contactus">Contact Us</MenuItem>
+                                {/* <MenuItem component={Link} onClick={handleClose} to="/contactus">Contact Us</MenuItem> */}
                                 {/* <MenuItem hidden={!user} component={Link} onClick={handleClose} to="/cart">Cart</MenuItem> */}
                                 <MenuItem hidden={!user} component={Link} onClick={handleClose} to="/profile">Profile</MenuItem>
                                 {/* <MenuItem hidden={!user} component={Link} to="/order" onClick={handleClose}>Order Status</MenuItem> */}
