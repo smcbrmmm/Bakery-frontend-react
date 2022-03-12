@@ -28,7 +28,7 @@ async function updateOrder(order) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            orderId : order.orderId , userId : order.userId , paymentSlip : order.myFile
+            orderId : order.orderId , userId : order.userId , paymentSlip : order.postImage.myFile
         })
     })
     // .then(data => data.json())
