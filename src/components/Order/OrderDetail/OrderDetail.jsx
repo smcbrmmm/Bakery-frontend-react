@@ -26,7 +26,8 @@ const OrderDetail = ({ order }) => {
     const [price, setPrice] = useState();
     const [address, setAddress] = useState([]);
     const [orderId, setOrderId] = useState(order.orderId)
-    const [payment, setPayment] = useState([]);
+    // const [payment, setPayment] = useState([]);
+    // const [noPayment , setNoPayment] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -42,12 +43,12 @@ const OrderDetail = ({ order }) => {
                 'https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/address/orderAddress/' + order.addressId,
             );
 
-            const result4 = await axios(
-                'https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/payment/getPayment/' + order.orderId,
-            );
+            // const result4 = await axios(
+            //     'https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/payment/getPayment/' + order.orderId,
+            // );
 
-            console.log(result4)
-            setPayment(result4.data)
+            // console.log(result4)
+            // setPayment(result4.data)
             setPrice(result2)
             setAddress(result3.data)
             setInfoOrder(result.data)
@@ -59,7 +60,8 @@ const OrderDetail = ({ order }) => {
     }, []);
 
     useEffect(() => {
-        console.log(payment.length)
+        // console.log(payment.length)
+        // setNoPayment(payment.length)
     }, [infoOrder])
 
     const check = () => {
@@ -106,7 +108,7 @@ const OrderDetail = ({ order }) => {
 
                         {order.status === 'Order Canceled' ?
                             <h5 style={{ color: 'red' }}> Status :  {order.status} </h5>
-                            : <h5> Status :  {order.status} </h5>
+                            : <h5> Status :  {order.status} </h5> 
                         }
 
                         {order.status === 'Order Canceled' ?
@@ -164,7 +166,7 @@ const OrderDetail = ({ order }) => {
 
                                 {order.status === "Order Canceled" ?
                                     null :
-                                    <Form.Group controlId="formFile" className="mb-3" hidden={payment.length === 1}>
+                                    <Form.Group controlId="formFile" className="mb-3">
                                         <Form.Label> Upload your slip</Form.Label>
                                         <Form.Control type="file" />
                                     </Form.Group>
@@ -172,9 +174,9 @@ const OrderDetail = ({ order }) => {
 
                                 {order.status === 'Order Canceled' ?
                                     null :
-                                    <Button hidden={payment.length === 1} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                    <Button  size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
                                 }
-                                
+
                             </Col>
                         </Row>
                     </MediaQuery>
@@ -196,13 +198,13 @@ const OrderDetail = ({ order }) => {
 
                                 {order.status === "Order Canceled" ?
                                     null :
-                                    <Form.Group controlId="formFile" className="mb-3" hidden={payment.length === 1}>
+                                    <Form.Group controlId="formFile" className="mb-3" >
                                         <Form.Label> Upload your slip</Form.Label>
                                         <Form.Control type="file" />
                                     </Form.Group>
                                 }
 
-                                <Button hidden={payment.length === 1} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                <Button  size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
 
                             </Col>
                         </Row>
