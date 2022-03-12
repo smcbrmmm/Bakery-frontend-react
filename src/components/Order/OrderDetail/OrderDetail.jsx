@@ -153,6 +153,10 @@ const OrderDetail = ({ order }) => {
         
     }
 
+    useEffect(() => {
+        console.log(postImage)
+    }, [postImage])
+
 
     return (
 
