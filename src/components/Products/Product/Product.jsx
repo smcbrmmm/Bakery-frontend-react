@@ -253,13 +253,11 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
             <Col>
               <h4> Product Photo</h4>
 
-              <img hidden={files.length != 0} src="https://cdn-icons-png.flaticon.com/512/3342/3342137.png" width="370px" height="370px" ></img>
+              {/* <img hidden={files.length != 0} src="https://cdn-icons-png.flaticon.com/512/3342/3342137.png" width="370px" height="370px" ></img> */}
 
-              <div className="Row">
-                <span className="Filename">
-                  <img src={product.img} width="100%" />
-                </span>
-              </div>
+
+              <img src={product.img} width="100%" />
+
 
               <div className="mt-5">
 
