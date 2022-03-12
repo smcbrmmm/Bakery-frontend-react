@@ -202,7 +202,7 @@ const OrderDetail = ({ order }) => {
                                 }
 
                                 {order.status === 'Order Canceled' ?
-                                    <h5 style={{ fontSize: '14px', color: 'red' }}> Your order has been canceled.</h5>  :
+                                    <h5 style={{ fontSize: '16px', color: 'red' }}> Your order has been canceled.</h5>  :
                                     <Button  onClick={handleUploadSlip} hidden={order.hasPayment !== "no-slip" || isUpload } size="sm" variant="secondary" 
                                     style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }} 
                                    
