@@ -179,7 +179,11 @@ const OrderDetail = ({ order }) => {
 
                                 {order.status === 'Order Canceled' ?
                                     null :
-                                    <Button onClick={handleUploadSlip} hidden={order.hasPayment !== "no-slip"} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                    <Button  onClick={handleUploadSlip} hidden={order.hasPayment !== "no-slip" || isUpload } size="sm" variant="secondary" 
+                                    style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }} 
+                                   
+                                    > 
+                                    Upload </Button>
                                 }
 
                                 {isUpload ?
@@ -219,7 +223,10 @@ const OrderDetail = ({ order }) => {
 
                                 {order.status === 'Order Canceled' ?
                                     null :
-                                    <Button onClick={handleUploadSlip} hidden={order.hasPayment !== "no-slip"} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                    <Button onClick={handleUploadSlip} 
+                                    hidden={order.hasPayment !== "no-slip" || isUpload} size="sm" variant="secondary" 
+                                    style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> 
+                                    Upload </Button>
                                 }
 
                                 {isUpload ?
