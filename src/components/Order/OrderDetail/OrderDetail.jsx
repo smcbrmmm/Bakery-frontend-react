@@ -164,6 +164,8 @@ const OrderDetail = ({ order }) => {
                                     </Form.Group>
                                 }
 
+                                <Button size="sm" variant="info" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+
                             </Col>
                         </Row>
                     </MediaQuery>
@@ -190,7 +192,7 @@ const OrderDetail = ({ order }) => {
                                     </Form.Group>
                                 }
 
-                                <Button size="sm" variant="info"> Upload </Button>
+                                <Button size="sm" variant="info" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
 
                             </Col>
                         </Row>
