@@ -26,7 +26,7 @@ const OrderDetail = ({ order }) => {
     const [price, setPrice] = useState();
     const [address, setAddress] = useState([]);
     const [orderId, setOrderId] = useState(order.orderId)
-    const [payment , setPayment] = useState([]);
+    const [payment, setPayment] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -170,8 +170,11 @@ const OrderDetail = ({ order }) => {
                                     </Form.Group>
                                 }
 
-                                <Button hidden={payment.length === 1} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
-
+                                {order.status === 'Order Canceled' ?
+                                    null :
+                                    <Button hidden={payment.length === 1} size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                }
+                                
                             </Col>
                         </Row>
                     </MediaQuery>
