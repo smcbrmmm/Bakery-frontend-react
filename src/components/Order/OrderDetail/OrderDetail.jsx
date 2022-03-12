@@ -43,7 +43,7 @@ const OrderDetail = ({ order }) => {
             );
 
             const result4 = await axios(
-                'https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/payment/getPayment/' + order.orderId,
+                'https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/payment/getPayment/' + 152,
             );
 
             console.log(result4)
