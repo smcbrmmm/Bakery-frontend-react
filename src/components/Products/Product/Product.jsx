@@ -256,8 +256,11 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
               {/* <img hidden={files.length != 0} src="https://cdn-icons-png.flaticon.com/512/3342/3342137.png" width="370px" height="370px" ></img> */}
 
 
-              <img src={product.img} width="100%" />
-
+              <div className="Row">
+                <span className="Filename">
+                  <img src={product.img} width="100%" />
+                </span>
+              </div>
 
               <div className="mt-5">
 
