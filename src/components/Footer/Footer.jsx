@@ -10,7 +10,7 @@ const Footer = () => {
 
     return (
         <div className="App">
-            <div className="main-footer">
+            <div className="main-footer" bg='dark'>
                 <div className="container">
                     <Row>
                         <Col>
