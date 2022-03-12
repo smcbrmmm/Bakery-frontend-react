@@ -154,7 +154,8 @@ const OrderDetail = ({ order }) => {
                             </Col>
                             <Col>
                                 <h5> Payment </h5>
-                                <h5 style={{ fontSize: '16px' }}> Bank Transfer : SCB - 28232512845 - Mymom Bakery Store </h5>
+                                <h5 style={{ fontSize: '16px' }}> Bank Transfer :  </h5>
+                                <h5 style={{ fontSize: '18px' }}> SCB - 28232512845 - Mymom Bakery Store </h5>
 
                                 {order.status === "Order Canceled" ?
                                     null :
@@ -164,7 +165,7 @@ const OrderDetail = ({ order }) => {
                                     </Form.Group>
                                 }
 
-                                <Button size="sm" variant="info" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                <Button size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
 
                             </Col>
                         </Row>
@@ -182,7 +183,8 @@ const OrderDetail = ({ order }) => {
                         <Row>
                             <Col>
                                 <h5> Payment </h5>
-                                <h5 style={{ fontSize: '14px' }}> Bank Transfer : SCB - 28232512845 - Mymom Bakery Store </h5>
+                                <h5 style={{ fontSize: '14px' }}> Bank Transfer :  </h5>
+                                <h5 style={{ fontSize: '16px' }}> SCB - 28232512845 - Mymom Bakery Store </h5>
 
                                 {order.status === "Order Canceled" ?
                                     null :
@@ -192,7 +194,7 @@ const OrderDetail = ({ order }) => {
                                     </Form.Group>
                                 }
 
-                                <Button size="sm" variant="info" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
+                                <Button size="sm" variant="secondary" style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}> Upload </Button>
 
                             </Col>
                         </Row>
