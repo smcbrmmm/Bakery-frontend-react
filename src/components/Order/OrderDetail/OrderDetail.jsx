@@ -27,6 +27,7 @@ const OrderDetail = ({ order }) => {
     const [address, setAddress] = useState([]);
     const [orderId, setOrderId] = useState(order.orderId)
     const [payment , setPayment] = useState([]);
+    const [p , setP] = useState(payment ? payment[0]: null)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -59,7 +60,7 @@ const OrderDetail = ({ order }) => {
     }, []);
 
     useEffect(() => {
-        console.log(payment)
+        console.log(p)
     }, [infoOrder])
 
     const check = () => {
