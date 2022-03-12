@@ -228,7 +228,7 @@ const OrderDetail = ({ order }) => {
                                     null :
                                     <Form.Group controlId="formFile" className="mb-3" hidden={order.hasPayment !== "no-slip" || isUpload}>
                                         <Form.Label> Upload your slip</Form.Label>
-                                        <Form.Control type="file" />
+                                        <Form.Control type="file" onChange={(e) => { handleFileUpload(e); onSelectFile(e) }} />
                                     </Form.Group>
                                 }
 
@@ -236,7 +236,6 @@ const OrderDetail = ({ order }) => {
                                     <h5 style={{ fontSize: '16px', color: 'red' }}> Your order has been canceled.</h5>  :
                                     <Button  onClick={handleUploadSlip} hidden={order.hasPayment !== "no-slip" || isUpload } size="sm" variant="secondary" 
                                     style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }} 
-                                    onChange={(e) => { handleFileUpload(e); onSelectFile(e) }}
                                     > 
                                     Upload </Button>
                                 }
@@ -272,7 +271,7 @@ const OrderDetail = ({ order }) => {
                                     null :
                                     <Form.Group controlId="formFile" className="mb-3" hidden={order.hasPayment !== "no-slip" || isUpload}>
                                         <Form.Label> Upload your slip</Form.Label>
-                                        <Form.Control type="file" />
+                                        <Form.Control type="file" onChange={(e) => { handleFileUpload(e); onSelectFile(e) }} />
                                     </Form.Group>
                                 }
 
@@ -281,7 +280,7 @@ const OrderDetail = ({ order }) => {
                                     <Button onClick={handleUploadSlip} 
                                     hidden={order.hasPayment !== "no-slip" || isUpload} size="sm" variant="secondary" 
                                     style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}
-                                    onChange={(e) => { handleFileUpload(e); onSelectFile(e) }}
+                                    
                                     > 
                                     Upload </Button>
                                 }
