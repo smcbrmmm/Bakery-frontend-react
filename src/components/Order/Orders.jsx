@@ -106,7 +106,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
 
                             {order.map((order) => (
                                 user.id === order.userId ?
-                                    <OrderDetail key={order.orderId} order={order} hid={category} />
+                                    <OrderDetail key={order.orderId} order={order} hid={'All'} />
                                     : null
                             ))}
                         </Row>
