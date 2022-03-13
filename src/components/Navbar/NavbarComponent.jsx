@@ -340,7 +340,7 @@ const NavbarComponent = ({ cart }) => {
                                 </Tooltip>
                             </Link>
 
-                            <Link to="/contactus" hidden={role === 'C'}>
+                            <Link to="/contactus" hidden={role === 'A'}>
                                 <Tooltip title="Contract Us">
                                     <IconButton color="primary" aria-label="upload picture" component="span" >
                                         <PermContactCalendarIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
@@ -349,7 +349,7 @@ const NavbarComponent = ({ cart }) => {
                             </Link>
 
 
-                            <Link to="/cart" hidden={!user || role === 'C'}  >
+                            <Link to="/cart" hidden={!user || role === 'A'}  >
                                 <IconButton color="primary" aria-label="upload picture" component="span" id="basic-button">
                                     <StyledBadge badgeContent={cartCount} color="warning">
                                         <ShoppingCartIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
@@ -358,7 +358,7 @@ const NavbarComponent = ({ cart }) => {
                             </Link>
 
 
-                            <Link to="/order" hidden={!user || role === 'C'} >
+                            <Link to="/order" hidden={!user || role === 'A'} >
                                 <Tooltip title="Order Status">
                                     <IconButton color="primary" aria-label="upload picture" component="span" >
                                         <ListAltIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
