@@ -242,6 +242,8 @@ const OrderSummarize = ({ order }) => {
 
                     </Row>
 
+                    <hr></hr>
+
                     <Row>
                         <Col >
                             <h5> Address for Shipping.</h5>

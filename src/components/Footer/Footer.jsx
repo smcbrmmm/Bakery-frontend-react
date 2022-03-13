@@ -28,7 +28,7 @@ const Footer = () => {
                         </Col>
                         <Col>
                             <h3 style={{ textAlign: 'center' }}> Help </h3>
-                            <h5 style={{ textAlign: 'center', marginBottom: '3rem' }}>  - Contract us  </h5>
+                            <h5 style={{ textAlign: 'center', marginBottom: '3rem' }}>   Contract us  </h5>
                         </Col>
                     </Row>
                 </div>
