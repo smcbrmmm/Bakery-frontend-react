@@ -161,7 +161,7 @@ const OrderDetail = ({ order }) => {
     return (
 
         <div>
-            <h3 style={{ textAlign: 'center' }} onClick={() => setSigntinModalShow(true)} >
+            <h3 style={{ textAlign: 'left' }} onClick={() => setSigntinModalShow(true)} >
 
                 {/* {order.status === 'Order Canceled' ?
                     <h3 style={{ color: 'red' }}> {order.orderId} # {order.status}  </h3>

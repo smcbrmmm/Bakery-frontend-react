@@ -63,7 +63,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
 
                         </Col>
                         <Col>
-                            <h3 className="main" style={{ textAlign: 'center' }}>  Order Detail </h3>
+                            <h3 className="main" style={{ textAlign: 'left' }}>  Order Detail </h3>
 
                             {order.map((order) => (
                                 user.id === order.userId ?
