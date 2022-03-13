@@ -171,15 +171,21 @@ const OrderDetail = ({ order, hid }) => {
                 {/* <h3 className="orderDetail" > {order.orderId} # {status}  </h3> */}
 
                 {hid === 'All' ?
-                    <a href="#" className="cat-menu"><h3 className="orderDetail" >  {order.orderId} # {status}  </h3> </a>: null
+                    <a href="#" className="cat-menu"><h3 className="orderDetail" >  {order.orderId} - {status}  </h3> </a> : null
                 }
 
                 {hid === 'Cancel' ?
                     order.status === 'Order Canceled' ?
-                    <a href="#" className="cat-menu"><h3 className="orderDetail" style={{color:'red'}} >  {order.orderId} # {status}  </h3> </a>: null
-                    :null
+                        <a href="#" className="cat-menu"><h3 className="orderDetail" style={{ color: 'red' }} >  {order.orderId} - {status}  </h3> </a> : null
+                    : null
                 }
-                
+
+                {hid === 'In Process Order' ?
+                    order.status === 'Waiting for Confirmation' || order.status === 'Waiting for payment' ?
+                        <a href="#" className="cat-menu"><h3 className="orderDetail" style={{ color: 'blue' }} >  {order.orderId} - {status}  </h3> </a> : null
+                    : null
+                }
+
 
 
                 {/* {order.orderId} # {order.status}  */}
