@@ -6,6 +6,7 @@ import axios from "axios";
 import MediaQuery from 'react-responsive'
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
+import InfoOfOrderDetail from "../../Order/OrderDetail/InfoOfOrderDetail/InfoOfOrderDetail";
 // async function cancelOrder(order) {
 //     return fetch('https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/order/cancel/' + order.orderId, {
 //         method: 'POST',
@@ -218,7 +219,52 @@ const OrderSummarize = ({ order }) => {
                 </Modal.Header>
                 <Modal.Body>
 
-                    samut
+                    <Row style={{ textAlign: 'center' }}>
+                        <Col>
+                            <h5> Menu </h5>
+                        </Col>
+                        <Col>
+                            <h5>Quantity</h5>
+                        </Col>
+                        <Col>
+                            <h5>Price</h5>
+                        </Col>
+                    </Row>
+
+                    {infoOrder.map((infoOrder) => (
+                        <InfoOfOrderDetail key={infoOrder.orderId} infoOrder={infoOrder} />
+                    ))}
+
+                    <Row style={{ textAlign: 'center' }} >
+                        <Col>  </Col>
+
+                        <Col>  <h4 style={{ marginLeft: '3rem' }}> Total :  {order.sumPrice} </h4></Col>
+
+                    </Row>
+
+                    <Row>
+                        <Col >
+                            <h5> Address for Shipping.</h5>
+                            <h5 style={{ fontSize: '18px' }}> {address.place} </h5>
+                            <h5 style={{ fontSize: '16px' }}> Reciever : {address.recieverName} </h5>
+                            <h5 style={{ fontSize: '16px' }}> Reciever Tel : {address.recieverTel} </h5>
+                            <h5 style={{ fontSize: '16px' }}> Address : {address.houseNumber} {address.address} {address.province} {address.postal}</h5>
+                        </Col>
+                        <Col>
+                            <h5> Payment </h5>
+
+                            {order.hasPayment === 'no-slip' ?
+                                null :
+                                <img src={order.hasPayment} width="100%"></img>
+                            }
+
+                            {order.status === 'Waiting for payment' ?
+                                <h5 style={{ fontSize: '16px', color: 'blue' }}> Waiting for customer upload slip.</h5> : null
+                            }
+
+
+                        </Col>
+                    </Row>
 
                 </Modal.Body>
             </Modal>
