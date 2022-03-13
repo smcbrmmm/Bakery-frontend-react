@@ -5,7 +5,7 @@ import NavbarCom from '../Navbar/NavbarComponent'
 import axios from "axios";
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import OrderDetail from './OrderDetail/OrderDetail'
-
+import MediaQuery from 'react-responsive'
 import { connect } from "react-redux";
 
 import {
@@ -57,21 +57,42 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
                 <Container>
                     <h1 className="main" style={{ textAlign: 'center' }}>  Order Status </h1>
 
-                    <Row>
-                        <Col>
-                            <h3 className="main" style={{ textAlign: 'center' }}>  History </h3>
+                    <MediaQuery minWidth={1224}>
+                        <Row>
+                            <Col>
+                                <h3 className="main" style={{ textAlign: 'center' , marginTop : '2rem' }}>  History </h3>
 
-                        </Col>
-                        <Col>
-                            <h3 className="main" style={{ textAlign: 'left' }}>  Order Detail </h3>
+                            </Col>
+                            <Col>
+                                <h3 className="main" style={{ textAlign: 'left' , marginTop : '2rem' }}>  Order Detail </h3>
+
+                                {order.map((order) => (
+                                    user.id === order.userId ?
+                                        <OrderDetail key={order.orderId} order={order} />
+                                        : null
+                                ))}
+                            </Col>
+                        </Row>
+                    </MediaQuery>
+                    <MediaQuery maxWidth={1224}>
+                        <Row>
+                            <h3 className="main" style={{ textAlign: 'center' }}>  History </h3>
+                        </Row>
+
+                        <hr></hr>
+
+                        <Row>
+                            <h3 className="main" style={{ textAlign: 'center' }}>  Order Detail </h3>
 
                             {order.map((order) => (
                                 user.id === order.userId ?
                                     <OrderDetail key={order.orderId} order={order} />
                                     : null
                             ))}
-                        </Col>
-                    </Row>
+                        </Row>
+                    </MediaQuery>
+
+
 
 
 

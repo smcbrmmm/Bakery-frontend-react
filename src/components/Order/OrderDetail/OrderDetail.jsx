@@ -28,7 +28,7 @@ async function updateOrder(order) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            orderId : order.orderId , userId : order.userId , paymentSlip : order.postImage.myFile
+            orderId: order.orderId, userId: order.userId, paymentSlip: order.postImage.myFile
         })
     })
     // .then(data => data.json())
@@ -45,9 +45,9 @@ const OrderDetail = ({ order }) => {
     // const [payment, setPayment] = useState([]);
     // const [noPayment , setNoPayment] = useState(0);
     const [isUpload, setIsUpload] = useState(false);
-    const [status , setStatus] = useState(order.status)
-    const [userId , setUserId] = useState(user.id)
-    const [paymentSlip , setPaymentSlip] = useState("samut");
+    const [status, setStatus] = useState(order.status)
+    const [userId, setUserId] = useState(user.id)
+    const [paymentSlip, setPaymentSlip] = useState("samut");
     const [files, setFile] = useState([]);
 
     useEffect(() => {
@@ -106,7 +106,7 @@ const OrderDetail = ({ order }) => {
         setStatus("Waiting for Confirmation")
 
         const response = await updateOrder({
-            orderId , userId , postImage
+            orderId, userId, postImage
         });
     }
 
@@ -150,7 +150,7 @@ const OrderDetail = ({ order }) => {
         if (allfiles.length > 0) {
             setFile(allfiles);
         }
-        
+
     }
 
     useEffect(() => {
@@ -161,6 +161,7 @@ const OrderDetail = ({ order }) => {
     return (
 
         <div>
+
             <h3 style={{ textAlign: 'left' }} onClick={() => setSigntinModalShow(true)} >
 
                 {/* {order.status === 'Order Canceled' ?
@@ -246,16 +247,16 @@ const OrderDetail = ({ order }) => {
                                     null :
                                     <Form.Group controlId="formFile" className="mb-3" hidden={order.hasPayment !== "no-slip" || isUpload}>
                                         <Form.Label> Upload your slip</Form.Label>
-                                        <Form.Control type="file" onChange={(e) => { handleFileUpload(e); onSelectFile(e) }}  />
+                                        <Form.Control type="file" onChange={(e) => { handleFileUpload(e); onSelectFile(e) }} />
                                     </Form.Group>
                                 }
 
                                 {order.status === 'Order Canceled' ?
-                                    <h5 style={{ fontSize: '16px', color: 'red' }}> Your order has been canceled.</h5>  :
-                                    <Button  onClick={handleUploadSlip} hidden={order.hasPayment !== "no-slip" || isUpload } size="sm" variant="secondary" 
-                                    style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }} 
-                                    > 
-                                    Upload </Button>
+                                    <h5 style={{ fontSize: '16px', color: 'red' }}> Your order has been canceled.</h5> :
+                                    <Button onClick={handleUploadSlip} hidden={order.hasPayment !== "no-slip" || isUpload} size="sm" variant="secondary"
+                                        style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}
+                                    >
+                                        Upload </Button>
                                 }
 
                                 {isUpload ?
@@ -295,12 +296,12 @@ const OrderDetail = ({ order }) => {
 
                                 {order.status === 'Order Canceled' ?
                                     <h5 style={{ fontSize: '14px', color: 'red' }}> Your order has been canceled.</h5> :
-                                    <Button onClick={handleUploadSlip} 
-                                    hidden={order.hasPayment !== "no-slip" || isUpload} size="sm" variant="secondary" 
-                                    style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}
-                                    
-                                    > 
-                                    Upload </Button>
+                                    <Button onClick={handleUploadSlip}
+                                        hidden={order.hasPayment !== "no-slip" || isUpload} size="sm" variant="secondary"
+                                        style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}
+
+                                    >
+                                        Upload </Button>
                                 }
 
                                 {isUpload ?
