@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
 .main-footer {
-    color: white;
-    background-color:#212529 ;
+    color: black;
+    /* background-color:#212529 ; */
+    background-color:whitesmoke ;
     padding-bottom: 4%;
     position: relative;
     bottom: 1;
