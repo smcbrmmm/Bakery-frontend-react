@@ -184,7 +184,7 @@ const OrderDetail = ({ order, hid }) => {
 
                 {hid === 'All' ?
                     order.status === 'Shipping'
-                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'green' }} >  {order.orderId} - {status} - {order.trackingNo} </h4> </a>) : null
+                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'black' }} >  {order.orderId} - {status} - {order.trackingNo} </h4> </a>) : null
                     : null
                 }
 
@@ -209,6 +209,12 @@ const OrderDetail = ({ order, hid }) => {
                 {hid === 'In Process Order' ?
                     order.status === 'Waiting for payment'
                         ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'blue' }} >  {order.orderId} - {status}  </h4> </a>) : null
+                    : null
+                }
+
+                {hid === 'In Process Order' ?
+                    order.status === 'Shipping'
+                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'black' }} >  {order.orderId} - {status}  </h4> </a>) : null
                     : null
                 }
 
