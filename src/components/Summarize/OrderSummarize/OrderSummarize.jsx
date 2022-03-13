@@ -159,7 +159,7 @@ const OrderSummarize = ({ order }) => {
         console.log(postImage)
     }, [postImage])
 
-    const [orderStatus, setOrderStatus] = useState("");
+    const [orderStatus, setOrderStatus] = useState(order.status);
 
 
     return (
@@ -185,7 +185,7 @@ const OrderSummarize = ({ order }) => {
                 : null
             }
             {order.status === 'Shipping' ?
-                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'black' }}>{order.status} - {order.trackingNo}</TableCell>
+                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'violet' }}>{order.status} - {order.trackingNo}</TableCell>
                 : null
             }
 
@@ -214,6 +214,11 @@ const OrderSummarize = ({ order }) => {
 
                         {order.status === 'Waiting for Confirmation' ?
                             <h5 style={{ color: 'green' }}> Status :  {order.status} </h5>
+                            : null
+                        }
+
+                        {order.status === 'Shipping' ?
+                            <h5 style={{ color: 'violet' }}> Status :  {order.status} - {order.trackingNo}</h5>
                             : null
                         }
 
@@ -269,19 +274,20 @@ const OrderSummarize = ({ order }) => {
                                 <Form.Select aria-label="Default select example" onChange={e => { setOrderStatus(e.target.value) }}>
                                     <option value={order.status}> {order.status} </option>
                                     <option value="Waiting for shipment">Confirm , Waiting for shipping.</option>
-                                    <option value="Shipping">Shipping</option>
+                                    <option value="Shipping" hidden={order.status === 'Shipping'}>Shipping</option>
+                                    <option value="Success">Success</option>
                                     <option value="Cancel">Cancel</option>
                                 </Form.Select>
                             </Form.Group>
                             {orderStatus === 'Shipping' ?
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <Form.Label>Tracking No.</Form.Label>
-                                    <Form.Control type="text" placeholder="Tracking No." />
+                                    <Form.Control type="text" placeholder="Tracking No." value={order.trackingNo} />
                                 </Form.Group> : null
                             }
 
 
-                            <Button hidden={order.status == 'Order Canceled'} variant="success"> Confirm</Button>
+                            <Button hidden={order.status == 'Order Canceled'} variant="success" style={{ display : 'block' , marginLeft:'auto' , marginRight:'0px'}}> Confirm</Button>
 
 
 
