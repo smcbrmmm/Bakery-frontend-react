@@ -165,12 +165,24 @@ const OrderSummarize = ({ order }) => {
         <TableRow
             key={order.orderId}
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}  >
-            <TableCell component="th" scope="row" onClick={() => setSigntinModalShow(true)}>
+            <TableCell component="th" scope="row" onClick={() => setSigntinModalShow(true)} >
                 {order.orderId}
             </TableCell>
-            <TableCell onClick={() => setSigntinModalShow(true)}align="right">{order.userId}</TableCell>
-            <TableCell onClick={() => setSigntinModalShow(true)}align="right">{order.status}</TableCell>
-            <TableCell onClick={() => setSigntinModalShow(true)}  align="right">{order.date}</TableCell>
+            <TableCell onClick={() => setSigntinModalShow(true)} align="right">{order.userId}</TableCell>
+            {order.status === 'Order Canceled' ?
+                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'red' }}>{order.status}</TableCell>
+                : null
+            }
+            {order.status === 'Waiting for payment' ?
+                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'blue' }}>{order.status}</TableCell>
+                : null
+            }
+            {order.status === 'Waiting for Confirmation' ?
+                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'green' }}>{order.status}</TableCell>
+                : null
+            }
+
+            <TableCell onClick={() => setSigntinModalShow(true)} align="right">{order.date}</TableCell>
 
 
             <Modal className="cart-modal" show={signinModalShow}
@@ -181,13 +193,33 @@ const OrderSummarize = ({ order }) => {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                    samut
+                        Your order information.  #{order.orderId}
+
+                        {order.status === 'Order Canceled' ?
+                            <h5 style={{ color: 'red' }}> Status :  {order.status} </h5>
+                            : null
+                        }
+
+                        {order.status === 'Waiting for payment' ?
+                            <h5 style={{ color: 'blue' }}> Status :  {order.status} </h5>
+                            : null
+                        }
+
+                        {order.status === 'Waiting for Confirmation' ?
+                            <h5 style={{ color: 'green' }}> Status :  {order.status} </h5>
+                            : null
+                        }
+
+                        {order.status === 'Order Canceled' ?
+                            null :
+                            <Button hidden={order.hasPayment !== "no-slip" || isUpload} variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
+                        }
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
 
-                       samut
-                    
+                    samut
+
                 </Modal.Body>
             </Modal>
 
