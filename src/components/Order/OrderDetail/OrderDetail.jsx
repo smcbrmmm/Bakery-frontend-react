@@ -30,11 +30,11 @@ async function updateOrder(order) {
         body: JSON.stringify({
             orderId: order.orderId, userId: order.userId, paymentSlip: order.postImage.myFile
         })
-    })
+    }) 
     // .then(data => data.json())
 }
 
-const OrderDetail = ({ order}) => {
+const OrderDetail = ({ order , hid}) => {
 
     const user = JSON.parse(localStorage.getItem('user'));
     const [signinModalShow, setSigntinModalShow] = useState(false);
