@@ -181,13 +181,19 @@ const OrderDetail = ({ order, hid }) => {
                 }
 
                 {hid === 'In Process Order' ?
-                    order.status === 'Waiting for Confirmation' || order.status === 'Waiting for payment'
+                    order.status === 'Waiting for Confirmation'
                         ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'green' }} >  {order.orderId} - {status}  </h4> </a>) : null
-                    :null
+                    : null
+                }
+
+                {hid === 'In Process Order' ?
+                    order.status === 'Waiting for payment'
+                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'blue' }} >  {order.orderId} - {status}  </h4> </a>) : null
+                    : null
                 }
 
 
-
+                
                 {/* {order.orderId} # {order.status}  */}
 
             </h3>
