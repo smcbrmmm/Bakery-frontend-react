@@ -170,7 +170,9 @@ const OrderDetail = ({ order , hid}) => {
                 } */}
                 {/* <h3 className="orderDetail" > {order.orderId} # {status}  </h3> */}
 
-                <h3 className="orderDetail" > {order.orderId} # {status}  </h3> 
+                
+
+                <h3 className="orderDetail" ><h3> {hid} </h3>  {order.orderId} # {status}  </h3> 
 
 
                 {/* {order.orderId} # {order.status}  */}

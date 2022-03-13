@@ -59,9 +59,11 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
     }
 
 
-    const [category , setCategory] = useState("All");
+    const [all , setAll] = useState("All");
+    const [cancel , setCancel] = useState("Order Canceled");
     const [open, setOpen] = useState(true);
     const [showOrderDetail, setShowOrderDetail] = useState(true);
+    const [category , setCategory] = useState("All");
 
     return (
         <div className="page-container">
@@ -106,7 +108,10 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
 
                             {order.map((order) => (
                                 user.id === order.userId ?
-                                    <OrderDetail key={order.orderId} order={order} />
+                                    <OrderDetail key={order.orderId} order={order} hid={category==='All' ? 
+                                    all : category==='Cancel' ?
+                                    cancel : null
+                                } />
                                     : null
                             ))}
                         </Row>
