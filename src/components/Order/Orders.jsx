@@ -26,7 +26,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
                 'https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/order/order',
             );
 
-            fetch('https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/cart/inCart/' + user.id , {
+            fetch('https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/cart/inCart/' + user.id, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -57,13 +57,24 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
                 <Container>
                     <h1 className="main" style={{ textAlign: 'center' }}>  Order Status </h1>
 
-                    <h3 className="main" style={{ textAlign: 'center' }}>  Order Detail </h3>
+                    <Row>
+                        <Col>
+                            <h3 className="main" style={{ textAlign: 'center' }}>  History </h3>
 
-                    {order.map((order) => (
-                        user.id === order.userId ?
-                            <OrderDetail key={order.orderId} order={order} />
-                            : null
-                    ))}
+                        </Col>
+                        <Col>
+                            <h3 className="main" style={{ textAlign: 'center' }}>  Order Detail </h3>
+
+                            {order.map((order) => (
+                                user.id === order.userId ?
+                                    <OrderDetail key={order.orderId} order={order} />
+                                    : null
+                            ))}
+                        </Col>
+                    </Row>
+
+
+
 
 
                 </Container>
@@ -88,5 +99,5 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Orders);
+export default connect(mapStateToProps, mapDispatchToProps)(Orders);
 
