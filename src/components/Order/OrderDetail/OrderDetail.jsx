@@ -183,6 +183,12 @@ const OrderDetail = ({ order, hid }) => {
                 }
 
                 {hid === 'All' ?
+                    order.status === 'Shipping'
+                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'green' }} >  {order.orderId} - {status} - {order.trackingNo} </h4> </a>) : null
+                    : null
+                }
+
+                {hid === 'All' ?
                     order.status === 'Waiting for payment'
                         ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'blue' }} >  {order.orderId} - {status}  </h4> </a>) : null
                     : null

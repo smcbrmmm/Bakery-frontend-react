@@ -159,6 +159,8 @@ const OrderSummarize = ({ order }) => {
         console.log(postImage)
     }, [postImage])
 
+    const [orderStatus, setOrderStatus] = useState("");
+
 
     return (
 
@@ -180,6 +182,10 @@ const OrderSummarize = ({ order }) => {
             }
             {order.status === 'Waiting for Confirmation' ?
                 <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'green' }}>{order.status}</TableCell>
+                : null
+            }
+            {order.status === 'Shipping' ?
+                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'black' }}>{order.status} - {order.trackingNo}</TableCell>
                 : null
             }
 
@@ -215,6 +221,7 @@ const OrderSummarize = ({ order }) => {
                             null :
                             <Button hidden={order.hasPayment !== "no-slip" || isUpload} variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
                         }
+
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -251,6 +258,33 @@ const OrderSummarize = ({ order }) => {
                             <h5 style={{ fontSize: '16px' }}> Reciever : {address.recieverName} </h5>
                             <h5 style={{ fontSize: '16px' }}> Reciever Tel : {address.recieverTel} </h5>
                             <h5 style={{ fontSize: '16px' }}> Address : {address.houseNumber} {address.address} {address.province} {address.postal}</h5>
+
+
+
+                            <br></br>
+                            <br></br>
+                            <hr hidden={order.status == 'Order Canceled'} ></hr>
+                            <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" hidden={order.status == 'Order Canceled'}>
+                                <span><Form.Label> <h5> Update Order Status </h5></Form.Label></span>
+                                <Form.Select aria-label="Default select example" onChange={e => { setOrderStatus(e.target.value) }}>
+                                    <option value={order.status}> {order.status} </option>
+                                    <option value="Waiting for shipment">Confirm , Waiting for shipping.</option>
+                                    <option value="Shipping">Shipping</option>
+                                    <option value="Cancel">Cancel</option>
+                                </Form.Select>
+                            </Form.Group>
+                            {orderStatus === 'Shipping' ?
+                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                    <Form.Label>Tracking No.</Form.Label>
+                                    <Form.Control type="text" placeholder="Tracking No." />
+                                </Form.Group> : null
+                            }
+
+
+                            <Button hidden={order.status == 'Order Canceled'} variant="success"> Confirm</Button>
+
+
+
                         </Col>
                         <Col>
                             <h5> Payment </h5>
@@ -262,6 +296,10 @@ const OrderSummarize = ({ order }) => {
 
                             {order.status === 'Waiting for payment' ?
                                 <h5 style={{ fontSize: '16px', color: 'blue' }}> Waiting for customer upload slip.</h5> : null
+                            }
+
+                            {order.status === 'Order Canceled' ?
+                                <h5 style={{ fontSize: '16px', color: 'red' }}>  Your order has been canceled.</h5> : null
                             }
 
 
