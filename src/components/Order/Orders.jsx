@@ -63,7 +63,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
     const [cancel , setCancel] = useState(false);
     const [open, setOpen] = useState(true);
     const [showOrderDetail, setShowOrderDetail] = useState(true);
-    const [category , setCategory] = useState(false);
+    const [category , setCategory] = useState("Samut");
 
     return (
         <div className="page-container">
