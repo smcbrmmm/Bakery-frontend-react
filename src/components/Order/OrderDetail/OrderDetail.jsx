@@ -168,7 +168,9 @@ const OrderDetail = ({ order , hid }) => {
                     <h3 style={{ color: 'red' }}> {order.orderId} # {order.status}  </h3>
                     : <h3 style={{ color: 'blue' }}> {order.orderId} # {order.status}  </h3>
                 } */}
-                <h3 className="orderDetail" > {order.orderId} # {status}  </h3>
+                {/* <h3 className="orderDetail" > {order.orderId} # {status}  </h3> */}
+
+                { hid }
 
                 {hid === 'All' ? 
                     <h3 className="orderDetail" > {order.orderId} # {status}  </h3> : null
