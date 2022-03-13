@@ -55,16 +55,19 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
 
             <div className='content-wrap'>
                 <Container>
-                    <h1 className="main" style={{ textAlign: 'center' }}>  Order Status </h1>
+                    <h1 className="main" style={{ textAlign: 'Left' }}>  Order Status </h1>
 
                     <MediaQuery minWidth={1224}>
                         <Row>
-                            <Col>
-                                <h3 className="main" style={{ textAlign: 'center' , marginTop : '2rem' }}>  History </h3>
-
+                            <Col sm={4}>
+                                <h3 className="main" style={{ textAlign: 'Left' , marginTop : '2rem' , marginBottom : '2rem'}}>  History </h3>
+                                <a href="#" className="cat-menu"><h5  style={{ textAlign: 'Left' }}>  All Order </h5></a>
+                                <a href="#" className="cat-menu"><h5 style={{ textAlign: 'Left' , color : 'red' }}>  Cancel Order </h5></a>
+                                <a href="#" className="cat-menu"><h5  style={{ textAlign: 'Left' , color : 'blue' }}>  In Process Order </h5></a>
+                                <a href="#" className="cat-menu"><h5  style={{ textAlign: 'Left' , color : 'green' }}>  Success Order </h5></a>
                             </Col>
-                            <Col>
-                                <h3 className="main" style={{ textAlign: 'left' , marginTop : '2rem' }}>  Order Detail </h3>
+                            <Col sm={8}>
+                                <h3 className="main" style={{ textAlign: 'left' , marginTop : '2rem' , marginBottom : '2rem' }}>  History Detail </h3>
 
                                 {order.map((order) => (
                                     user.id === order.userId ?
