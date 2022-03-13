@@ -30,11 +30,11 @@ async function updateOrder(order) {
         body: JSON.stringify({
             orderId: order.orderId, userId: order.userId, paymentSlip: order.postImage.myFile
         })
-    }) 
+    })
     // .then(data => data.json())
 }
 
-const OrderDetail = ({ order , hid}) => {
+const OrderDetail = ({ order, hid }) => {
 
     const user = JSON.parse(localStorage.getItem('user'));
     const [signinModalShow, setSigntinModalShow] = useState(false);
@@ -77,7 +77,7 @@ const OrderDetail = ({ order , hid}) => {
         };
 
         fetchData()
-        
+
     }, []);
 
     useEffect(() => {
@@ -170,9 +170,16 @@ const OrderDetail = ({ order , hid}) => {
                 } */}
                 {/* <h3 className="orderDetail" > {order.orderId} # {status}  </h3> */}
 
-                
+                {hid === 'All' ?
+                    <h3 className="orderDetail" >  {order.orderId} # {status}  </h3> : null
+                }
 
-                <h3 className="orderDetail" ><h3> {hid} </h3>  {order.orderId} # {status}  </h3> 
+                {hid === 'Cancel' ?
+                    order.status === 'Order Canceled' ?
+                    <h3 className="orderDetail" style={{color:'red'}} >  {order.orderId} # {status}  </h3> : null
+                    :null
+                }
+                
 
 
                 {/* {order.orderId} # {order.status}  */}
