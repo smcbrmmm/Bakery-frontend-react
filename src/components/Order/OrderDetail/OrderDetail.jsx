@@ -214,7 +214,7 @@ const OrderDetail = ({ order, hid }) => {
 
                 {hid === 'In Process Order' ?
                     order.status === 'Shipping'
-                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'black' }} >  {order.orderId} - {status}  </h4> </a>) : null
+                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'black' }} >  {order.orderId} - {status} - {order.trackingNo}  </h4> </a>) : null
                     : null
                 }
 
