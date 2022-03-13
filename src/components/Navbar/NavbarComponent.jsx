@@ -408,9 +408,9 @@ const NavbarComponent = ({ cart }) => {
                 onHide={() => setSigntinModalShow(false)}
             />
 
-            <signupModalShow show={signupModalShow}
+            {/* <SignupModalShow show={signupModalShow}
                 onHide={() => setSignupModalShow(false)}
-            />
+            /> */}
         </div >
     )
 
