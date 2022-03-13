@@ -77,7 +77,7 @@ const OrderDetail = ({ order , hid}) => {
         };
 
         fetchData()
-
+        console.log(hid)
     }, []);
 
     useEffect(() => {
