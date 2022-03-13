@@ -42,7 +42,24 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
 
     }, []);
 
+    const categoryFilter = (category) => {
 
+        if (category == "All") {
+            console.log("All")
+        }
+        else if (category == "Cancel") {
+            console.log("Cancel")
+        }
+        else if (category == "InProcessOrder"){
+            console.log("InProcessOrder")
+        }
+        else if (category == "SuccessOrder"){
+            console.log("SuccessOrder")
+        }
+    }
+
+
+    const [category , setCategory] = useState("All");
     const [open, setOpen] = useState(true);
     const [showOrderDetail, setShowOrderDetail] = useState(true);
 
@@ -61,17 +78,17 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
                         <Row>
                             <Col sm={4}>
                                 <h3 className="main" style={{ textAlign: 'Left' , marginTop : '2rem' , marginBottom : '2rem'}}>  History </h3>
-                                <a href="#" className="cat-menu"><h5  style={{ textAlign: 'Left' }}>  All Order </h5></a>
-                                <a href="#" className="cat-menu"><h5 style={{ textAlign: 'Left' , color : 'red' }}>  Cancel Order </h5></a>
-                                <a href="#" className="cat-menu"><h5  style={{ textAlign: 'Left' , color : 'blue' }}>  In Process Order </h5></a>
-                                <a href="#" className="cat-menu"><h5  style={{ textAlign: 'Left' , color : 'green' }}>  Success Order </h5></a>
+                                <a href="#" className="cat-menu"><h4  style={{ textAlign: 'Left' }} onClick={() => setCategory("All")}>  All Order </h4></a>
+                                <a href="#" className="cat-menu"><h4 style={{ textAlign: 'Left'  }} onClick={() => setCategory("Cancel")}>  Cancel Order </h4></a>
+                                <a href="#" className="cat-menu"><h4  style={{ textAlign: 'Left'  }} onClick={() => setCategory("All")}>  In Process Order </h4></a>
+                                <a href="#" className="cat-menu"><h4  style={{ textAlign: 'Left'  }} onClick={() => setCategory("All")}>  Success Order </h4></a>
                             </Col>
                             <Col sm={8}>
                                 <h3 className="main" style={{ textAlign: 'left' , marginTop : '2rem' , marginBottom : '2rem' }}>  History Detail </h3>
 
                                 {order.map((order) => (
                                     user.id === order.userId ?
-                                        <OrderDetail key={order.orderId} order={order} />
+                                        <OrderDetail key={order.orderId} order={order}  />
                                         : null
                                 ))}
                             </Col>
@@ -89,7 +106,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
 
                             {order.map((order) => (
                                 user.id === order.userId ?
-                                    <OrderDetail key={order.orderId} order={order} />
+                                    <OrderDetail key={order.orderId} order={order} hid={category} />
                                     : null
                             ))}
                         </Row>

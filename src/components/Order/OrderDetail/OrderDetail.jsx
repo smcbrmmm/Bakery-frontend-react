@@ -34,7 +34,7 @@ async function updateOrder(order) {
     // .then(data => data.json())
 }
 
-const OrderDetail = ({ order }) => {
+const OrderDetail = ({ order , hid }) => {
 
     const user = JSON.parse(localStorage.getItem('user'));
     const [signinModalShow, setSigntinModalShow] = useState(false);
@@ -169,6 +169,16 @@ const OrderDetail = ({ order }) => {
                     : <h3 style={{ color: 'blue' }}> {order.orderId} # {order.status}  </h3>
                 } */}
                 <h3 className="orderDetail" > {order.orderId} # {status}  </h3>
+
+                {hid === 'All' ? 
+                    <h3 className="orderDetail" > {order.orderId} # {status}  </h3> : null
+                }
+
+                {hid === 'Cancel' ? 
+                    order.status === 'Order Canceled'  ?
+                    <h3 className="orderDetail" > {order.orderId} # {status}  </h3> : null
+                    :null
+            }
 
                 {/* {order.orderId} # {order.status}  */}
 
