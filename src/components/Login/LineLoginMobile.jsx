@@ -54,15 +54,15 @@ export default function LineLoginMobile() {
     if(email !== ""){
         const response = login({
             email
-        })
+        }).then(data => console.log(data))
             .then(data => {
                 localStorage.setItem('accessToken', data.accessToken);
                 localStorage.setItem('user', JSON.stringify(data.user));
-                if(data.user.role === 'A'){
-                    window.location.href = "/products";
-                }else{
-                    window.location.href = "/order";
-                }
+                // if(data.user.role === 'A'){
+                //     window.location.href = "/products";
+                // }else{
+                //     window.location.href = "/order";
+                // }
                 
             })
     }
