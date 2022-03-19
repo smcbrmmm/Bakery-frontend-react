@@ -72,7 +72,7 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-          'https://c762-2405-9800-b600-6272-18c7-23f0-1339-400e.ngrok.io/api/products/getProductQty' + item.id ,
+          'https://c762-2405-9800-b600-6272-18c7-23f0-1339-400e.ngrok.io/api/products/getProductQty/' + item.id ,
       );
       
       console.log(result.data)
