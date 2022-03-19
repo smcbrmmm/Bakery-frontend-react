@@ -13,8 +13,6 @@ import NavCom from "../Navbar/NavbarComponent"
 
 import { connect } from "react-redux";
 
-import { connect } from "react-redux";
-
 import axios from "axios";
 
 

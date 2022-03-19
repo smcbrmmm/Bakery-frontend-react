@@ -1,10 +1,6 @@
 import React from 'react';
 import './index.css';
 import App from './App';
-import Login from './components/Login/LoginComponent'
-import Menu from './components/Menu/MenuComponent'
-import LineLogin from './components/Login/LineLoginComponent'
-import CreateAccount from './components/CreateAccountComponent'
 import ContactUs from './components/ContactUs/ContactUsComponent'
 import OrderStatus from './components/Order/Orders'
 import Profile from './components/Profile/Profile'
@@ -12,7 +8,6 @@ import Products from './components/Products/Products'
 import Cart from './components/Cart/Cart'
 import Footer from './components/Footer/Footer'
 import reportWebVitals from './reportWebVitals';
-import Responsive from './components/Responsive'
 import LineLoginMobile from './components/Login/LineLoginMobile'
 import SingupLine from './components/Signup/SignupLine'
 import Summarize from './components/Summarize/Summarize'
@@ -30,7 +25,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/linelogin" element={<LineLogin />}></Route>
+        
         <Route path="/createaccount" element={<CreateAccount />}></Route>
         <Route path="/contactus" element={<ContactUs />}></Route>
         <Route path="/order" element={<OrderStatus />}></Route>
