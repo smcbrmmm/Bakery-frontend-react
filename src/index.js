@@ -24,15 +24,11 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        
-        <Route path="/createaccount" element={<CreateAccount />}></Route>
         <Route path="/contactus" element={<ContactUs />}></Route>
         <Route path="/order" element={<OrderStatus />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/products" element={<Products />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
-        <Route path="/responsive" element={<Responsive />}></Route>
         <Route path="/lineloginmobile" element={<LineLoginMobile />}></Route>
         <Route path="/signup" element={<SingupLine />}></Route>
         <Route path="/summarize" element={<Summarize />}></Route>
