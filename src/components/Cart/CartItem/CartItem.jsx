@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade, Modal, Row, Col, Dropdown, DropdownButton } from "react-bootstrap";
+
+import {   Form,  Button, Row, Col ,  } from "react-bootstrap";
+
 
 import { connect } from "react-redux";
 import {
@@ -17,7 +19,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 async function deleteItemInCart(cartItem) {
   console.log(cartItem)
-  return fetch('https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/cart/inCart/deleteItemInCart', {
+  return fetch('https://c762-2405-9800-b600-6272-18c7-23f0-1339-400e.ngrok.io/api/cart/inCart/deleteItemInCart', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -35,7 +37,6 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
 
   const [userId, setUserId] = useState(user ? user.id : 100);
   const [productId, setProductId] = useState(item.id);
-
 
   const [input, setInput] = useState(item.qty);
 

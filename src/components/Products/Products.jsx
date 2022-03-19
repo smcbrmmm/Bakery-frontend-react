@@ -19,7 +19,7 @@ import MediaQuery from 'react-responsive'
 
 async function addProduct(product) {
     console.log(product)
-    return fetch('https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/products/insert', {
+    return fetch('https://c762-2405-9800-b600-6272-18c7-23f0-1339-400e.ngrok.io/api/products/insert', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
 
     useEffect(() => {
         // Update the document title using the browser API
-        fetch('https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/products/allProducts', {
+        fetch('https://c762-2405-9800-b600-6272-18c7-23f0-1339-400e.ngrok.io/api/products/allProducts', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
             .then(data => data.json())
 
             .then(data => setProductList(data))
-        fetch('https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/cart/inCart/' + userId, {
+        fetch('https://c762-2405-9800-b600-6272-18c7-23f0-1339-400e.ngrok.io/api/cart/inCart/' + userId, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

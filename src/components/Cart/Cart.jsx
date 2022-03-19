@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from "react";
-import NavCom from "../Navbar/NavbarComponent"
-import { Col, Row, Container, Carousel, Navbar, Form, FormControl, Nav, NavDropdown, Collapse, Modal, Fade } from "react-bootstrap";
-import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { Col, Row, Container, FormControl, Nav, NavDropdown, Collapse, Modal } from "react-bootstrap";
 import CartItem from "./CartItem/CartItem";
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-import axios from "axios";
 import Button from '@mui/material/Button';
-import { useNavigate } from "react-router-dom";
+
+import MediaQuery from 'react-responsive'
+
+import NavCom from "../Navbar/NavbarComponent"
+
+import { connect } from "react-redux";
+
+import { connect } from "react-redux";
+
+import axios from "axios";
+
+
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -17,11 +27,10 @@ import {
     setProductList
 } from "../../redux/Shopping/shopping-actions";
 
-import MediaQuery from 'react-responsive'
 
 async function order(orderDetail, cart, user) {
     console.log(orderDetail)
-    fetch('https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/order/save', {
+    fetch('https://c762-2405-9800-b600-6272-18c7-23f0-1339-400e.ngrok.io/api/order/save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -29,7 +38,7 @@ async function order(orderDetail, cart, user) {
         body: JSON.stringify({ userId: user.id, addressId: orderDetail.addressId, status: "Waiting for payment" })
     }).then(() => {
         for (var i = 0; i < cart.length; i++) {
-            fetch('https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/orderDetail/save', {
+            fetch('https://c762-2405-9800-b600-6272-18c7-23f0-1339-400e.ngrok.io/api/orderDetail/save', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -50,7 +59,7 @@ async function order(orderDetail, cart, user) {
 
 async function deleteAllItemInCart(cartItem) {
     console.log(cartItem)
-    return fetch('https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/cart/inCart/deleteAllItem', {
+    return fetch('https://c762-2405-9800-b600-6272-18c7-23f0-1339-400e.ngrok.io/api/cart/inCart/deleteAllItem', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -106,7 +115,7 @@ const Cart = ({ cart, setProductInCart }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                'https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/address/address/' + user.id,
+                'https://c762-2405-9800-b600-6272-18c7-23f0-1339-400e.ngrok.io/api/address/address/' + user.id,
             );
             setAddress(result.data)
             // console.log(result)
@@ -114,7 +123,7 @@ const Cart = ({ cart, setProductInCart }) => {
 
         fetchData();
 
-        fetch('https://89f8-2405-9800-b600-ae29-bcec-fb42-ab8b-4bcd.ngrok.io/api/cart/inCart/' + userId, {
+        fetch('https://c762-2405-9800-b600-6272-18c7-23f0-1339-400e.ngrok.io/api/cart/inCart/' + userId, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -242,7 +251,7 @@ const Cart = ({ cart, setProductInCart }) => {
 
 
                                 <Form.Group className="signinInput mb-1 mt-3" controlId="formBasicEmail" >
-                                    <Form.Label>Reciever name</Form.Label>
+                                    <Form.Label>Receiver name</Form.Label>
                                     <Form.Control type="text" placeholder="" value={recieverName} disabled />
                                 </Form.Group>
 
