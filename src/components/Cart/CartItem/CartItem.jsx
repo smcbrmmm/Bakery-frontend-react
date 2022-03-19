@@ -32,6 +32,8 @@ async function deleteItemInCart(cartItem) {
 
 
 const CartItem = ({ item, adjustQty, removeFromCart }) => {
+
+
   const user = JSON.parse(localStorage.getItem('user'));
 
   const [userId, setUserId] = useState(user ? user.id : 100);
@@ -64,6 +66,18 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
     // }, 1000);
 
   }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+          'https://c762-2405-9800-b600-6272-18c7-23f0-1339-400e.ngrok.io/api/products/getProductQty' + item.id ,
+      );
+      
+      console.log(result.data)
+  };
+
+    fetchData();
+  }, [])
 
 
 
