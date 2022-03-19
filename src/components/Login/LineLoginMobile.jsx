@@ -54,7 +54,7 @@ export default function LineLoginMobile() {
     if(email !== ""){
         const response = login({
             email
-        }).then(data => console.log(data))
+        })
             .then(data => {
                 localStorage.setItem('accessToken', data.accessToken);
                 localStorage.setItem('user', JSON.stringify(data.user));
