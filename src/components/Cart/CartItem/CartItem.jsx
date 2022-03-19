@@ -45,6 +45,8 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
 
   const [open, setOpen] = React.useState(false);
 
+  const [maxQty , setMaxQty] = useState(false);
+
   const show = () => {
     setOpen(true)
   }
@@ -75,7 +77,8 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
           'https://c762-2405-9800-b600-6272-18c7-23f0-1339-400e.ngrok.io/api/products/getProductQty/' + item.id ,
       );
       
-      console.log(result.data)
+      setMaxQty(result.data)
+      // console.log(result.data)
   };
 
     fetchData();
@@ -126,6 +129,7 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
                 id="inputPassword5"
                 aria-describedby="passwordHelpBlock"
                 min={1}
+                max={maxQty}
                 onChange={onChangeHandler}
                 value={input}
                 style={{ width: '70%' }}
@@ -142,6 +146,7 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
                 id="inputPassword5"
                 aria-describedby="passwordHelpBlock"
                 min={1}
+                max={maxQty}
                 onChange={onChangeHandler}
                 value={input}
                 style={{ width: '70%' }}
