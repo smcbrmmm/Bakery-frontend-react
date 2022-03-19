@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Col, Row, Container, FormControl, Nav, NavDropdown, Collapse, Modal } from "react-bootstrap";
+import { Col, Row, Container, FormControl, Nav, NavDropdown, Collapse, Modal  , Form} from "react-bootstrap";
 import CartItem from "./CartItem/CartItem";
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
-
 import MediaQuery from 'react-responsive'
-
 import NavCom from "../Navbar/NavbarComponent"
-
 import { connect } from "react-redux";
 
 import axios from "axios";
-
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
