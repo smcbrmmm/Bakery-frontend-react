@@ -50,20 +50,20 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
         else if (category == "Cancel") {
             console.log("Cancel")
         }
-        else if (category == "InProcessOrder"){
+        else if (category == "InProcessOrder") {
             console.log("InProcessOrder")
         }
-        else if (category == "SuccessOrder"){
+        else if (category == "SuccessOrder") {
             console.log("SuccessOrder")
         }
     }
 
 
-    const [all , setAll] = useState(false);
-    const [cancel , setCancel] = useState(false);
+    const [all, setAll] = useState(false);
+    const [cancel, setCancel] = useState(false);
     const [open, setOpen] = useState(true);
     const [showOrderDetail, setShowOrderDetail] = useState(true);
-    const [category , setCategory] = useState("All");
+    const [category, setCategory] = useState("All");
 
     return (
         <div className="page-container">
@@ -74,19 +74,18 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
 
             <div className='content-wrap'>
                 <Container>
-                    <h1 className="main" style={{ textAlign: 'Left' }}>  Order Status </h1>
-
                     <MediaQuery minWidth={1224}>
+                        <h1 className="main" style={{ textAlign: 'Left' }}>  Order Status </h1>
                         <Row>
                             <Col sm={4}>
-                                <h2 className="main" style={{ textAlign: 'Left' , marginTop : '2rem' , marginBottom : '2rem'}}>  History </h2>
-                                <a href="#" className="cat-menu"><h4  style={{ textAlign: 'Left' }} onClick={() => setCategory("All")}>  All Order </h4></a>
-                                <a href="#" className="cat-menu"><h4 style={{ textAlign: 'Left'  }} onClick={() => setCategory("Cancel")}>  Cancel Order </h4></a>
-                                <a href="#" className="cat-menu"><h4  style={{ textAlign: 'Left'  }} onClick={() => setCategory("In Process Order")}>  In Process Order </h4></a>
-                                <a href="#" className="cat-menu"><h4  style={{ textAlign: 'Left'  }} onClick={() => setCategory("Success Order")}>  Success Order </h4></a>
+                                <h2 className="main" style={{ textAlign: 'Left', marginTop: '2rem', marginBottom: '2rem' }}>  History </h2>
+                                <a href="#" className="cat-menu"><h4 style={{ textAlign: 'Left' }} onClick={() => setCategory("All")}>  All Order </h4></a>
+                                <a href="#" className="cat-menu"><h4 style={{ textAlign: 'Left' }} onClick={() => setCategory("Cancel")}>  Cancel Order </h4></a>
+                                <a href="#" className="cat-menu"><h4 style={{ textAlign: 'Left' }} onClick={() => setCategory("In Process Order")}>  In Process Order </h4></a>
+                                <a href="#" className="cat-menu"><h4 style={{ textAlign: 'Left' }} onClick={() => setCategory("Success Order")}>  Success Order </h4></a>
                             </Col>
                             <Col sm={8}>
-                                <h2 className="main" style={{ textAlign: 'left' , marginTop : '2rem' , marginBottom : '2rem' }}>  History Detail </h2>
+                                <h2 className="main" style={{ textAlign: 'left', marginTop: '2rem', marginBottom: '2rem' }}>  History Detail </h2>
 
                                 {order.map((order) => (
                                     user.id === order.userId ?
@@ -97,14 +96,15 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
                         </Row>
                     </MediaQuery>
                     <MediaQuery maxWidth={1224}>
+                        <h1 className="main" style={{ textAlign: 'center'  }}>  Order Status </h1>
                         <Row>
-                            <h3 className="main" style={{ textAlign: 'center' }}>  History </h3>
+                            {/* <h3 className="main" style={{ textAlign: 'center' }}>  History </h3> */}
                         </Row>
 
-                        <hr></hr>
+                        {/* <hr></hr> */}
 
                         <Row>
-                            <h3 className="main" style={{ textAlign: 'center' }}>  Order Detail </h3>
+                            {/* <h3 className="main" style={{ textAlign: 'center' }}>  Order Detail </h3> */}
 
                             {order.map((order) => (
                                 user.id === order.userId ?
