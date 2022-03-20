@@ -19,6 +19,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
 
     const [order, setOrder] = useState([]);
     const [inCart, setInCart] = useState();
+    const [sizeOfOrder , setSizeOfOrder] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -36,6 +37,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
                 .then(data => setProductInCart(data))
 
             setOrder(result.data)
+            
         };
 
         fetchData()
@@ -101,16 +103,14 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
                             {/* <h3 className="main" style={{ textAlign: 'center' }}>  History </h3> */}
                         </Row>
 
-                        {/* <hr></hr> */}
-
                         <Row>
-                            {/* <h3 className="main" style={{ textAlign: 'center' }}>  Order Detail </h3> */}
-
+                            
                             {order.map((order) => (
                                 user.id === order.userId ?
                                     (<OrderDetail key={order.orderId} order={order} hid={category} />)
                                     : null
                             ))}
+
                         </Row>
                     </MediaQuery>
 
