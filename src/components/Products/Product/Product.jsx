@@ -10,6 +10,8 @@ import './Product.css'
 
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
+import MediaQuery from 'react-responsive'
+
 import {
   loadCurrentItem,
   addToCart,
@@ -52,7 +54,7 @@ async function insertProduct(product) {
 
 const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
-  
+
   const user = JSON.parse(localStorage.getItem('user'));
 
   const [userId, setUserId] = useState(user ? user.id : 100);
@@ -176,53 +178,106 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
   return (
 
-
     <Col className="main" hidden={hid}>
-      <Card style={{ width: '18rem', display: 'flex', marginBottom: '1rem' }}>
-        {/* <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
+
+
+      <MediaQuery minWidth={1224} >
+        <Card style={{ width: '18rem', display: 'flex', marginBottom: '1rem' }}>
+          {/* <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
           src={product.img} /> */}
 
-        <Tooltip title={<h5 style={{ fontSize: '16px' }}> {longText} </h5>} placement="bottom">
-          <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
-            src={product.img} />
-        </Tooltip>
-        <Card.Body>
-          <Card.Title>{product.title}</Card.Title>
-          <h5 style={{ fontSize: '14px' }}>{product.tag}</h5>
-          <h5 style={{ fontSize: '18px' }}> {product.price} Baht</h5>
-          <Button hidden={!user || product.qty === 0} variant="primary" onClick={() => { addToCart(product.id); handleClickAdd(); handleInserProduct() }}>Add to Cart</Button>
-          <Button hidden={!user || !(product.qty === 0)} disabled variant="secondary"
-            onClick={() => { addToCart(product.id); handleClick(); handleInserProduct() }}>Out of Stock</Button>
-          <h5 className="mt-2" style={{ fontSize: '14px', color: 'red' }}> Remaining : {product.qty}</h5>
+          <Tooltip title={<h5 style={{ fontSize: '16px' }}> {longText} </h5>} placement="bottom">
+            <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
+              src={product.img} />
+          </Tooltip>
+          <Card.Body>
+            <Card.Title>{product.title}</Card.Title>
+            <h5 style={{ fontSize: '14px' }}>{product.tag}</h5>
+            <h5 style={{ fontSize: '18px' }}> {product.price} Baht</h5>
+            <Button hidden={!user || product.qty === 0} variant="primary" onClick={() => { addToCart(product.id); handleClickAdd(); handleInserProduct() }}>Add to Cart</Button>
+            <Button hidden={!user || !(product.qty === 0)} disabled variant="secondary"
+              onClick={() => { addToCart(product.id); handleClick(); handleInserProduct() }}>Out of Stock</Button>
+            <h5 className="mt-2" style={{ fontSize: '14px', color: 'red' }}> Remaining : {product.qty}</h5>
 
 
-          <div style={{ display: 'flex', marginLeft: 'auto', marginRight: '0' }}>
-            <div className="button-admin">
-              <Button size="sm" style={{ marginRight: '0.5rem' }} hidden={role == 'C' || role == 'N'} onClick={() => setEditProductShow(true)} > Edit </Button>
-              <Button size="sm" variant="danger" onClick={() => setModalShow(true)} hidden={role == 'C' || role == 'N'} > Remove </Button>
+            <div style={{ display: 'flex', marginLeft: 'auto', marginRight: '0' }}>
+              <div className="button-admin">
+                <Button size="sm" style={{ marginRight: '0.5rem' }} hidden={role == 'C' || role == 'N'} onClick={() => setEditProductShow(true)} > Edit </Button>
+                <Button size="sm" variant="danger" onClick={() => setModalShow(true)} hidden={role == 'C' || role == 'N'} > Remove </Button>
+              </div>
             </div>
-          </div>
 
-          <Modal className="cart-modal" show={modalShow}
-            onHide={() => setModalShow(false)}
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-          >
-            <Modal.Header closeButton>
-              <Modal.Title id="contained-modal-title-vcenter">
-                Delete your product in store.
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <h5> Are you sure to delete this product.</h5>
+            <Modal className="cart-modal" show={modalShow}
+              onHide={() => setModalShow(false)}
+              aria-labelledby="contained-modal-title-vcenter"
+              centered
+            >
+              <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                  Delete your product in store.
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <h5> Are you sure to delete this product.</h5>
 
-              <Button variant='danger' style={{ display: 'block', marginLeft: 'auto' }} onClick={() => { handleDeleteProduct(); handleClick() }}> Delete</Button>
-            </Modal.Body>
-          </Modal>
+                <Button variant='danger' style={{ display: 'block', marginLeft: 'auto' }} onClick={() => { handleDeleteProduct(); handleClick() }}> Delete</Button>
+              </Modal.Body>
+            </Modal>
 
 
-        </Card.Body>
-      </Card>
+          </Card.Body>
+        </Card>
+      </MediaQuery>
+
+      <MediaQuery maxWidth={1224} >
+        <div style={{  display : 'flex' , justifyContent : 'center'}}>
+          <Card style={{ width: '18rem', display: 'flex', marginBottom: '1rem' }}>
+            {/* <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
+          src={product.img} /> */}
+
+            <Tooltip title={<h5 style={{ fontSize: '16px' }}> {longText} </h5>} placement="bottom">
+              <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
+                src={product.img} />
+            </Tooltip>
+            <Card.Body>
+              <Card.Title>{product.title}</Card.Title>
+              <h5 style={{ fontSize: '14px' }}>{product.tag}</h5>
+              <h5 style={{ fontSize: '18px' }}> {product.price} Baht</h5>
+              <Button hidden={!user || product.qty === 0} variant="primary" onClick={() => { addToCart(product.id); handleClickAdd(); handleInserProduct() }}>Add to Cart</Button>
+              <Button hidden={!user || !(product.qty === 0)} disabled variant="secondary"
+                onClick={() => { addToCart(product.id); handleClick(); handleInserProduct() }}>Out of Stock</Button>
+              <h5 className="mt-2" style={{ fontSize: '14px', color: 'red' }}> Remaining : {product.qty}</h5>
+
+
+              <div style={{ display: 'flex', marginLeft: 'auto', marginRight: '0' }}>
+                <div className="button-admin">
+                  <Button size="sm" style={{ marginRight: '0.5rem' }} hidden={role == 'C' || role == 'N'} onClick={() => setEditProductShow(true)} > Edit </Button>
+                  <Button size="sm" variant="danger" onClick={() => setModalShow(true)} hidden={role == 'C' || role == 'N'} > Remove </Button>
+                </div>
+              </div>
+
+              <Modal className="cart-modal" show={modalShow}
+                onHide={() => setModalShow(false)}
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title id="contained-modal-title-vcenter">
+                    Delete your product in store.
+                  </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <h5> Are you sure to delete this product.</h5>
+
+                  <Button variant='danger' style={{ display: 'block', marginLeft: 'auto' }} onClick={() => { handleDeleteProduct(); handleClick() }}> Delete</Button>
+                </Modal.Body>
+              </Modal>
+
+
+            </Card.Body>
+          </Card>
+        </div>
+      </MediaQuery>
 
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
@@ -250,7 +305,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
         <Modal.Body>
           <Row>
             <Col>
-              
+
 
               <span className="Filename">
                 <img src={product.img} width="370px" height="370px" />

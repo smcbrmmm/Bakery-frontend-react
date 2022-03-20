@@ -2,7 +2,7 @@ import React, { Component, useEffect, useState } from "react";
 import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade, Card, Row, Col, Modal } from "react-bootstrap";
 import './Products.css'
 import NavbarCom from "../Navbar/NavbarComponent"
-
+import Hamburger from 'hamburger-react'
 // Redux
 import { connect } from "react-redux";
 
@@ -53,6 +53,8 @@ const Products = ({ products, setProductList, setProductInCart }) => {
     var no_pastry = 1;
     var no_roastPastry = 1;
     var no_riceCracker = 1;
+
+    const [isOpen, setOpen] = useState(false)
 
 
     useEffect(() => {
@@ -196,27 +198,37 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                                 <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("roastedPastry")}>  Roasted Chinese Pastry </h5></a>
                                 <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("riceCracker")}>  Rice Cracker </h5></a>
                             </MediaQuery>
-                            <MediaQuery maxWidth={1224}>
-                                <h2 className="main" style={{ marginBottom: '2rem' }}>  Category </h2>
+                            {/* <MediaQuery maxWidth={1224}>
+                                <h2 className="main" style={{ marginBottom: '2rem' }}>  Category  </h2>
                                 <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("pastry")} >  Chinese Pastry </h5></a>
                                 <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("roastedPastry")}>  Roasted Chinese Pastry </h5></a>
                                 <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("riceCracker")}>  Rice Cracker </h5></a>
                                 <hr></hr>
-                            </MediaQuery>
+                            </MediaQuery> */}
                         </Col>
                         <Col sm={9}>
                             <MediaQuery minWidth={1224} >
-                                <h2 className="main" style={{ textAlign: 'left', marginBottom: '2rem' , marginTop:'4rem' }} >  Products
+                                <h2 className="main" style={{ textAlign: 'left', marginBottom: '2rem', marginTop: '4rem' }} >  Products
                                     <Button className="button-add" variant="success" style={{ marginLeft: '1rem' }}
                                         onClick={() => setAddProductModal(true)} hidden={role == 'C' || role == 'N'}> Insert </Button>
                                 </h2>
                             </MediaQuery>
 
                             <MediaQuery maxWidth={1224} >
-                                <h2 className="main" style={{ textAlign: 'left', marginBottom: '2rem' }} >  Products
-                                    <Button className="button-add" variant="success" style={{ marginLeft: '1rem' }}
-                                        onClick={() => setAddProductModal(true)} hidden={role == 'C' || role == 'N'}> Insert </Button>
-                                </h2>
+                                <Row>
+                                    <Col >
+                                        <h1 className="main" style={{ textAlign: 'left', marginBottom: '1rem' , marginTop :'1rem' , fontSize : '36px'}} >  Products
+                                            <Button className="button-add" variant="success" style={{ marginLeft: '1rem' }}
+                                                onClick={() => setAddProductModal(true)} hidden={role == 'C' || role == 'N'}> Insert </Button>
+                                        </h1>
+                                    </Col>
+
+                                    <Col>
+                                        <div style={{ display : 'block' , marginLeft:'auto' , marginRight:0 }}>
+                                            {/* <Hamburger toggled={isOpen} toggle={setOpen} /> */}
+                                        </div>
+                                    </Col>
+                                </Row>
                             </MediaQuery>
 
 
@@ -232,10 +244,10 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                                                 : null
                                 ))}
                             </Row>
-                            {isVisible &&
+                            {/* {isVisible &&
                                 <div onClick={scrollToTop}>
                                     <img src='https://i.postimg.cc/44Ytsk8Z/top-arrow-emoj.png' alt='Go to top' style={{ display: 'block', marginLeft: 'auto', marginRight: '1rem' }} />
-                                </div>}
+                                </div>} */}
                         </Col>
                     </Row>
 
@@ -320,7 +332,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                     </Modal.Body>
                 </Modal>
 
-                
+
 
 
             </div>
