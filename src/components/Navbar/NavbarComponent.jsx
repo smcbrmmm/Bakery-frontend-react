@@ -333,7 +333,7 @@ const NavbarComponent = ({ cart }) => {
                             <Link to="/products">
                                 <Tooltip title="Menu">
                                     <IconButton color="primary" aria-label="upload picture" component="span" >
-                                        <RestaurantMenuOutlinedIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                        <RestaurantMenuOutlinedIcon sx={{ fontSize: 24 }} style={{ fill: "white" }} />
                                     </IconButton>
                                 </Tooltip>
                             </Link>
@@ -341,7 +341,7 @@ const NavbarComponent = ({ cart }) => {
                             <Link to="/contactus" hidden={role === 'A'}>
                                 <Tooltip title="Contract Us">
                                     <IconButton color="primary" aria-label="upload picture" component="span" >
-                                        <PermContactCalendarIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                        <PermContactCalendarIcon sx={{ fontSize: 24 }} style={{ fill: "white" }} />
                                     </IconButton>
                                 </Tooltip>
                             </Link>
@@ -349,7 +349,7 @@ const NavbarComponent = ({ cart }) => {
                             <Link to="/cart" hidden={!user || role === 'A'}  >
                                 <IconButton color="primary" aria-label="upload picture" component="span" id="basic-button">
                                     <StyledBadge badgeContent={cartCount} color="warning">
-                                        <ShoppingCartIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                        <ShoppingCartIcon sx={{ fontSize: 24 }} style={{ fill: "white" }} />
                                     </StyledBadge>
                                 </IconButton>
                             </Link>
@@ -357,7 +357,7 @@ const NavbarComponent = ({ cart }) => {
                             <Link to="/order" hidden={!user || role === 'A'} >
                                 <Tooltip title="Order Status">
                                     <IconButton color="primary" aria-label="upload picture" component="span" >
-                                        <ListAltIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                        <ListAltIcon sx={{ fontSize: 24 }} style={{ fill: "white" }} />
                                     </IconButton>
                                 </Tooltip>
                             </Link>
@@ -367,7 +367,7 @@ const NavbarComponent = ({ cart }) => {
                                 aria-haspopup="true"
                                 aria-expanded={open ? 'true' : undefined}
                                 onClick={handleClick}>
-                                <DehazeIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                <DehazeIcon sx={{ fontSize: 24 }} style={{ fill: "white" }} />
                             </IconButton>
 
                             <Menu
