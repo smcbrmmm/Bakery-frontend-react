@@ -184,7 +184,6 @@ const NavbarComponent = ({ cart }) => {
     return (
 
         <div className="App">
-
             <MediaQuery minWidth={1224}>
                 <Navbar className="nav" bg="dark">
                     <Nav
@@ -324,7 +323,7 @@ const NavbarComponent = ({ cart }) => {
                         navbarScroll>
                         <Navbar.Brand href="#home">
                             <Link to='/' className="linkTo">
-                                <h2 className="nav-menu" style={{ textAlign: 'left', color: 'white', fontSize: '14px' }}> Mymom Bakery</h2>
+                                <h2 className="nav-menu" style={{ textAlign: 'left', color: 'white', fontSize: '20px' }}> Mymom  Bakery</h2>
                             </Link>
                         </Navbar.Brand>
                     </Nav>
@@ -347,7 +346,6 @@ const NavbarComponent = ({ cart }) => {
                                 </Tooltip>
                             </Link>
 
-
                             <Link to="/cart" hidden={!user || role === 'A'}  >
                                 <IconButton color="primary" aria-label="upload picture" component="span" id="basic-button">
                                     <StyledBadge badgeContent={cartCount} color="warning">
@@ -356,7 +354,6 @@ const NavbarComponent = ({ cart }) => {
                                 </IconButton>
                             </Link>
 
-
                             <Link to="/order" hidden={!user || role === 'A'} >
                                 <Tooltip title="Order Status">
                                     <IconButton color="primary" aria-label="upload picture" component="span" >
@@ -364,9 +361,6 @@ const NavbarComponent = ({ cart }) => {
                                     </IconButton>
                                 </Tooltip>
                             </Link>
-
-                            
-
 
                             <IconButton color="primary" aria-label="upload picture" component="span" id="basic-button"
                                 aria-controls={open ? 'basic-menu' : undefined}
@@ -383,16 +377,10 @@ const NavbarComponent = ({ cart }) => {
                                 onClose={handleClose}
                                 MenuListProps={{
                                     'aria-labelledby': 'basic-button',
-                                }}
-                            >
+                                }}>
 
-                                {/* <MenuItem component={Link} onClick={handleClose} to="/">Home</MenuItem> */}
                                 <MenuItem hidden={user} component={Link} onClick={handleClose} to="/lineloginmobile" >Login</MenuItem>
-                                {/* <MenuItem component={Link} onClick={handleClose} to="/products">Menu</MenuItem> */}
-                                {/* <MenuItem component={Link} onClick={handleClose} to="/contactus">Contact Us</MenuItem> */}
-                                {/* <MenuItem hidden={!user} component={Link} onClick={handleClose} to="/cart">Cart</MenuItem> */}
                                 <MenuItem hidden={!user} component={Link} onClick={handleClose} to="/profile">Profile</MenuItem>
-                                {/* <MenuItem hidden={!user} component={Link} to="/order" onClick={handleClose}>Order Status</MenuItem> */}
                                 <MenuItem hidden={!user} onClick={handleLogout}>Sign out</MenuItem>
                             </Menu>
                         </Nav>
@@ -406,10 +394,6 @@ const NavbarComponent = ({ cart }) => {
             <SigninModal show={signinModalShow}
                 onHide={() => setSigntinModalShow(false)}
             />
-
-            {/* <SignupModalShow show={signupModalShow}
-                onHide={() => setSignupModalShow(false)}
-            /> */}
         </div >
     )
 
