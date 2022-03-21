@@ -29,9 +29,12 @@ const Summarize = () => {
     const [order, setOrder] = useState([]);
 
     useEffect(() => {
+        console.log(value)
+
+
         const fetchData = async () => {
             const result = await axios(
-                'https://d28e-2405-9800-b600-6272-c9c9-7b42-5f08-2b05.ngrok.io' + value,
+                'https://d28e-2405-9800-b600-6272-c9c9-7b42-5f08-2b05.ngrok.io/api/order/getOrderByDate/' + value,
             );
             console.log(result)
             setOrder(result.data)
