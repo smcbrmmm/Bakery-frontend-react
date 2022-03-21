@@ -74,6 +74,16 @@ const Products = ({ products, setProductList, setProductInCart }) => {
         setAnchorEl(null);
     };
 
+    const [openAddModal, setOpenAddModal] = useState(false);
+
+    const handleCloseSnackBar = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+
+        setOpenAddModal(false)
+      };
+
 
     useEffect(() => {
         // Update the document title using the browser API
@@ -254,9 +264,9 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                                                     'aria-labelledby': 'basic-button',
                                                 }}>
                                                 <div >
-                                                    <MenuItem onClick={() => {categoryFilter("pastry") ; handleClose()}} >Chinese Pastry</MenuItem>
-                                                    <MenuItem onClick={() => {categoryFilter("roastedPastry") , handleClose()}} >Roasted Chinese Pastry </MenuItem>
-                                                    <MenuItem onClick={() => {categoryFilter("riceCracker"), handleClose()}} >Rice Cracker</MenuItem>
+                                                    <MenuItem onClick={() => { categoryFilter("pastry"); handleClose() }} >Chinese Pastry</MenuItem>
+                                                    <MenuItem onClick={() => { categoryFilter("roastedPastry"), handleClose() }} >Roasted Chinese Pastry </MenuItem>
+                                                    <MenuItem onClick={() => { categoryFilter("riceCracker"), handleClose() }} >Rice Cracker</MenuItem>
                                                 </div>
                                             </Menu>
 
@@ -367,6 +377,12 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                         </Row>
                     </Modal.Body>
                 </Modal>
+
+                <Snackbar open={openAddModal} autoHideDuration={3000} onClose={handleCloseSnackBar}>
+                    <Alert onClose={handleCloseSnackBar} severity="success" sx={{ width: '100%' }}>
+                        Product already added to shop.
+                    </Alert>
+                </Snackbar>
 
 
 
