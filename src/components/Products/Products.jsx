@@ -22,6 +22,8 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
+import Snackbar from '@mui/material/Snackbar';
+
 async function addProduct(product) {
     console.log(product)
     return fetch('https://d28e-2405-9800-b600-6272-c9c9-7b42-5f08-2b05.ngrok.io/api/products/insert', {
