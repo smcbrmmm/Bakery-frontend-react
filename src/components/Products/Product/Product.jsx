@@ -195,7 +195,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
             <h5 style={{ fontSize: '14px' }}>{product.tag}</h5>
             <h5 style={{ fontSize: '18px' }}> {product.price} Baht</h5>
             <Button hidden={!user || product.qty === 0 || role === 'A'} variant="primary" onClick={() => { addToCart(product.id); handleClickAdd(); handleInserProduct() }}>Add to Cart</Button>
-            <Button hidden={!user || !(product.qty === 0)} disabled variant="secondary"
+            <Button hidden={!user || !(product.qty === 0) || role === 'A'} disabled variant="secondary"
               onClick={() => { addToCart(product.id); handleClick(); handleInserProduct() }}>Out of Stock</Button>
             <h5 className="mt-2" style={{ fontSize: '14px', color: 'red' }}> Remaining : {product.qty}</h5>
 
