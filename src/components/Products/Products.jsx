@@ -126,9 +126,9 @@ const Products = ({ products, setProductList, setProductInCart }) => {
             productName, price, tag, description, qty, postImage
         });
 
-        setTimeout(() => {
-            window.location.href = "/products";
-        }, 1000);
+        // setTimeout(() => {
+        //     window.location.href = "/products";
+        // }, 1000);
 
     }
 
