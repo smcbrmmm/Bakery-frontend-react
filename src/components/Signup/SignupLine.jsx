@@ -79,14 +79,14 @@ export default function SignupLine({ email, signinModal }) {
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control type="text" onChange={e => { setName(e.target.value) }} />
                             </Form.Group>
-                            <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                            {/* <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" onChange={e => { setPassword(e.target.value) }} />
                             </Form.Group>
                             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                                 <Form.Label>Confirm Password</Form.Label>
                                 <Form.Control type="password" onChange={e => { setCfPassword(e.target.value) }} />
-                            </Form.Group>
+                            </Form.Group> */}
 
 
                             <div className="d-grid gap-2">
