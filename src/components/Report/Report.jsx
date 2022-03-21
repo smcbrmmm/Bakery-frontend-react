@@ -62,8 +62,6 @@ const Report = () => {
 
     };
 
-   
-
     return (
         <div className="page-container">
             <NavbarCom />

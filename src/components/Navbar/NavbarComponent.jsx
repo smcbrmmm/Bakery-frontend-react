@@ -230,7 +230,7 @@ const NavbarComponent = ({ cart }) => {
                         </Nav>
 
                         <Nav hidden={!user || role === 'C'}>
-                            <Link to="/summarize">
+                            <Link to="/report">
                                 <Tooltip title="Report">
                                     <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
                                         <AssessmentIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
