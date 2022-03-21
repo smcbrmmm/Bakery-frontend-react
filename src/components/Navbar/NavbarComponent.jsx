@@ -24,6 +24,7 @@ import DehazeIcon from '@mui/icons-material/Dehaze';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import MediaQuery from 'react-responsive'
 import SummarizeIcon from '@mui/icons-material/Summarize';
+import AssessmentIcon from '@mui/icons-material/Assessment';
 
 const liff = window.liff
 
@@ -219,9 +220,20 @@ const NavbarComponent = ({ cart }) => {
                         </Nav>
                         <Nav hidden={!user || role === 'C'}>
                             <Link to="/summarize">
-                                <Tooltip title="Menu">
+                                <Tooltip title="Summarize">
                                     <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
                                         <SummarizeIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                    </IconButton>
+                                </Tooltip>
+
+                            </Link>
+                        </Nav>
+
+                        <Nav hidden={!user || role === 'C'}>
+                            <Link to="/summarize">
+                                <Tooltip title="Report">
+                                    <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
+                                        <AssessmentIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
                                     </IconButton>
                                 </Tooltip>
 
@@ -262,6 +274,8 @@ const NavbarComponent = ({ cart }) => {
                                 </Tooltip>
                             </Link>
                         </Nav>
+
+                        
 
                         {/* <Nav hidden={!user || role === 'C'}>
                             <Link to="/summarize">
