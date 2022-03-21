@@ -363,7 +363,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
                 <div className="d-grid gap-2">
                   <Button variant="primary" size="lg" >
-                    Insert this product
+                   Edit this product
                   </Button>
 
                 </div>

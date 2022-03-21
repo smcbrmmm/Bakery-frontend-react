@@ -80,6 +80,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
         setAnchorEl(null);
     };
 
+
     const [openAddModal, setOpenAddModal] = useState(false);
 
     const handleCloseSnackBar = (event, reason) => {
@@ -88,6 +89,10 @@ const Products = ({ products, setProductList, setProductInCart }) => {
         }
 
         setOpenAddModal(false)
+      };
+
+      const handleClickSnackBar = () => {
+        setOpenAddModal(true);
       };
 
 
@@ -373,7 +378,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                                     </Form.Group>
 
                                     <div className="d-grid gap-2">
-                                        <Button variant="primary" size="lg" onClick={handleInsertProduct} >
+                                        <Button variant="primary" size="lg" onClick={() => {handleInsertProduct() , handleClickSnackBar()}} >
                                             Insert this product
                                         </Button>
 
