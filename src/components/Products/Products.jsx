@@ -23,10 +23,13 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
+
+  
 
 async function addProduct(product) {
     console.log(product)
@@ -126,9 +129,9 @@ const Products = ({ products, setProductList, setProductInCart }) => {
             productName, price, tag, description, qty, postImage
         });
 
-        // setTimeout(() => {
-        //     window.location.href = "/products";
-        // }, 1000);
+        setTimeout(() => {
+            window.location.href = "/products";
+        }, 1000);
 
     }
 
