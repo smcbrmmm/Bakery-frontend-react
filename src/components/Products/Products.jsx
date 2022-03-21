@@ -17,6 +17,11 @@ import { useMediaQuery } from 'react-responsive'
 
 import MediaQuery from 'react-responsive'
 
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+
 async function addProduct(product) {
     console.log(product)
     return fetch('https://d28e-2405-9800-b600-6272-c9c9-7b42-5f08-2b05.ngrok.io/api/products/insert', {
@@ -41,6 +46,8 @@ const Products = ({ products, setProductList, setProductInCart }) => {
 
     const [userId, setUserId] = useState(user ? user.id : '100')
 
+
+
     const [pastry, setPastry] = useState(false);
     const [roastedPastry, setRoastedPastry] = useState(true);
     const [riceCracker, setRiceCracker] = useState(true);
@@ -55,6 +62,17 @@ const Products = ({ products, setProductList, setProductInCart }) => {
     var no_riceCracker = 1;
 
     const [isOpen, setOpen] = useState(false)
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const open = Boolean(anchorEl);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
 
     useEffect(() => {
@@ -217,16 +235,34 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                             <MediaQuery maxWidth={1224} >
                                 <Row>
                                     <Col >
-                                        <h1 className="main" style={{ textAlign: 'left', marginBottom: '1rem' , marginTop :'1rem' , fontSize : '36px'}} >  Products
+                                        <h1 className="main" style={{ textAlign: 'left', marginBottom: '1rem', marginTop: '1rem', fontSize: '36px' }} >  Products
                                             <Button className="button-add" variant="success" style={{ marginLeft: '1rem' }}
                                                 onClick={() => setAddProductModal(true)} hidden={role == 'C' || role == 'N'}> Insert </Button>
                                         </h1>
                                     </Col>
 
                                     <Col>
-                                        <div style={{ display : 'block' , marginLeft:'auto' , marginRight:0 }}>
-                                            {/* <Hamburger toggled={isOpen} toggle={setOpen} /> */}
+                                        <div style={{ display: 'block', marginLeft: '8rem', marginRight: 0, marginTop: '1.5rem' }}>
+                                            <ArrowDropDownIcon sx={{ fontSize: 30 }} style={{ fill: "black" }} onClick={handleClick} />
+
+                                            <Menu
+                                                id="basic-menu"
+                                                anchorEl={anchorEl}
+                                                open={open}
+                                                onClose={handleClose}
+                                                MenuListProps={{
+                                                    'aria-labelledby': 'basic-button',
+                                                }}>
+                                                <div >
+                                                    <MenuItem onClick={() => {categoryFilter("pastry") ; handleClose()}} >Chinese Pastry</MenuItem>
+                                                    <MenuItem onClick={() => {categoryFilter("roastedPastry") , handleClose()}} >Roasted Chinese Pastry </MenuItem>
+                                                    <MenuItem onClick={() => {categoryFilter("riceCracker"), handleClose()}} >Rice Cracker</MenuItem>
+                                                </div>
+                                            </Menu>
+
                                         </div>
+
+
                                     </Col>
                                 </Row>
                             </MediaQuery>

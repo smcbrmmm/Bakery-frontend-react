@@ -180,7 +180,7 @@ const NavbarComponent = ({ cart }) => {
         setCartCount(count);
     }, [cart, cartCount]);
 
-    const text = "Mymom \n Bakery"
+    const text = "  Mymom \n Bakery"
 
     return (
 
@@ -193,7 +193,7 @@ const NavbarComponent = ({ cart }) => {
                         navbarScroll>
                         <Navbar.Brand href="#home">
                             <Link to='/' className="linkTo">
-                                <h2 className="nav-menu" style={{ textAlign: 'left', color: 'white' }}> {text} </h2>
+                                <h2 className="nav-menu" style={{ textAlign: 'right', color: 'white' , marginLeft:'1rem' }}> {text} </h2>
                             </Link>
                         </Navbar.Brand>
                     </Nav>
@@ -337,7 +337,7 @@ const NavbarComponent = ({ cart }) => {
                         navbarScroll>
                         <Navbar.Brand href="#home">
                             <Link to='/' className="linkTo">
-                                <h2 className="nav-menu" style={{ textAlign: 'left', color: 'white', fontSize: '20px' }}> Mymom  Bakery</h2>
+                                <h2 className="nav-menu" style={{ textAlign: 'left', color: 'white', fontSize: '20px' , marginLeft:'0.5rem' }}> Mymom  Bakery</h2>
                             </Link>
                         </Navbar.Brand>
                     </Nav>
