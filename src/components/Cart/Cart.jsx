@@ -24,7 +24,7 @@ import {
 
 async function order(orderDetail, cart, user) {
     console.log(orderDetail)
-    fetch('https://d28e-2405-9800-b600-6272-c9c9-7b42-5f08-2b05.ngrok.io/api/order/save', {
+    fetch('https://cf31-2405-9800-b600-6272-1023-5056-cc19-5c83.ngrok.io/api/order/save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ async function order(orderDetail, cart, user) {
         body: JSON.stringify({ userId: user.id, addressId: orderDetail.addressId, status: "Waiting for payment" })
     }).then(() => {
         for (var i = 0; i < cart.length; i++) {
-            fetch('https://d28e-2405-9800-b600-6272-c9c9-7b42-5f08-2b05.ngrok.io/api/orderDetail/save', {
+            fetch('https://cf31-2405-9800-b600-6272-1023-5056-cc19-5c83.ngrok.io/api/orderDetail/save', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ async function order(orderDetail, cart, user) {
 
 async function deleteAllItemInCart(cartItem) {
     console.log(cartItem)
-    return fetch('https://d28e-2405-9800-b600-6272-c9c9-7b42-5f08-2b05.ngrok.io/api/cart/inCart/deleteAllItem', {
+    return fetch('https://cf31-2405-9800-b600-6272-1023-5056-cc19-5c83.ngrok.io/api/cart/inCart/deleteAllItem', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -79,12 +79,23 @@ const Cart = ({ cart, setProductInCart }) => {
     const [status, setStatus] = useState();
 
     const handleSubmit = async e => {
+
+        if(place === "no"){
+            console.log("no place")
+        }else{
+            const response = await order({
+                userId,
+                addressId,
+                status
+            }, cart, user);
+        }
+
         // e.preventDefault();
-        const response = await order({
-            userId,
-            addressId,
-            status
-        }, cart, user);
+        // const response = await order({
+        //     userId,
+        //     addressId,
+        //     status
+        // }, cart, user);
 
         // setTimeout(() => {
         //     window.location.href = "/order";
@@ -94,9 +105,11 @@ const Cart = ({ cart, setProductInCart }) => {
 
     const handleDeletAllItemInCart = async e => {
 
-        const response = await deleteAllItemInCart({
-            userId
-        });
+        if(place !== "no"){
+            const response = await deleteAllItemInCart({
+                userId
+            });
+        }
 
         // setTimeout(() => {
         //   window.location.href = "/products";
@@ -109,7 +122,7 @@ const Cart = ({ cart, setProductInCart }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                'https://d28e-2405-9800-b600-6272-c9c9-7b42-5f08-2b05.ngrok.io/api/address/address/' + user.id,
+                'https://cf31-2405-9800-b600-6272-1023-5056-cc19-5c83.ngrok.io/api/address/address/' + user.id,
             );
             setAddress(result.data)
             // console.log(result)
@@ -117,7 +130,7 @@ const Cart = ({ cart, setProductInCart }) => {
 
         fetchData();
 
-        fetch('https://d28e-2405-9800-b600-6272-c9c9-7b42-5f08-2b05.ngrok.io/api/cart/inCart/' + userId, {
+        fetch('https://cf31-2405-9800-b600-6272-1023-5056-cc19-5c83.ngrok.io/api/cart/inCart/' + userId, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -131,7 +144,9 @@ const Cart = ({ cart, setProductInCart }) => {
     const [open, setOpen] = React.useState(false);
 
     const handleClick = () => {
-        setOpen(true);
+        if(place !== "no"){
+            setOpen(true);
+        }
     };
 
     const handleClose = (event, reason) => {
@@ -161,6 +176,7 @@ const Cart = ({ cart, setProductInCart }) => {
     const [houseNumber, setHouseNumber] = useState();
     const [province, setProvince] = useState();
     const [postal, setPostal] = useState();
+    const [place , setPlace] = useState("no");
 
     const handleSelect = (e) => {
         console.log(e.target.value);
@@ -175,6 +191,7 @@ const Cart = ({ cart, setProductInCart }) => {
         console.log(indexOfValue)
 
         if (indexOfValue !== -1) {
+            setPlace(address[indexOfValue].place)
             setAdd(address[indexOfValue].address)
             setRecieverName(address[indexOfValue].recieverName)
             setRecieverTel(address[indexOfValue].recieverTel)
