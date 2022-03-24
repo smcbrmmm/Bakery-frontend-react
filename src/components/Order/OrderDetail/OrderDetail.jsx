@@ -268,10 +268,10 @@ const OrderDetail = ({ order, hid }) => {
                     <Row style={{ textAlign: 'center' }} >
                         <Col>  </Col>
                         <MediaQuery minWidth={1224}>
-                            <Col>  <h4 style={{ marginLeft: '3rem' }}> Total :  {order.sumPrice} </h4></Col>
+                            <Col>  <h4 style={{ marginLeft: '3rem' }}> Total :  {order.sumPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} </h4></Col>
                         </MediaQuery>
                         <MediaQuery maxWidth={1224}>
-                            <Col>  <h5 style={{ marginLeft: '3rem' }}> Total :  {order.sumPrice} </h5></Col>
+                            <Col>  <h5 style={{ marginLeft: '3rem' }}> Total :  {order.sumPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} </h5></Col>
                         </MediaQuery>
 
 
