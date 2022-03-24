@@ -223,7 +223,7 @@ const Cart = ({ cart, setProductInCart }) => {
             swal("Error", "Please select address for shipping.", "error");
             console.log(cart.length)
         }else if(place !=="no" && cart.length=== 0){
-            swal("Error", "No Item in your cart.", "error");
+            swal("Error", "No Items in your cart.", "error");
         }
         else{
             handleSubmit();
