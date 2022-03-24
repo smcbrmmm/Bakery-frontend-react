@@ -217,6 +217,15 @@ const Cart = ({ cart, setProductInCart }) => {
         navigate(path);
     }
 
+    const validationAddress = () => {
+        if(place === "no"){
+            console.log("no item in cart")
+        }else{
+            handleSubmit();
+            handleClick(); 
+            handleDeletAllItemInCart();
+        }
+    }
 
     return (
         <div className="page-container">
@@ -300,7 +309,7 @@ const Cart = ({ cart, setProductInCart }) => {
                                     <span>$ {totalPrice}</span>
                                 </div>
 
-                                <Button className="main" onClick={() => { handleSubmit(); handleClick(); handleDeletAllItemInCart() }} >
+                                <Button className="main" onClick={() => { validationAddress() }} >
                                     Checkout
                                 </Button>
 

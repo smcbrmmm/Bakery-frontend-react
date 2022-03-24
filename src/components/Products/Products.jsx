@@ -259,7 +259,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                             <MediaQuery maxWidth={1224} >
                                 <Row>
                                     <Col >
-                                        <h1 className="main" style={{ textAlign: 'left', marginBottom: '1rem', marginTop: '1rem', fontSize: '36px' }} >  Products
+                                        <h1 className="main" style={{ textAlign: 'left', marginBottom: '1rem', marginTop: '1rem', fontSize: '30px' }} >  Products
                                             <Button className="button-add" variant="success" style={{ marginLeft: '1rem' }}
                                                 onClick={() => setAddProductModal(true)} hidden={role == 'C' || role == 'N'}> Insert </Button>
                                         </h1>
