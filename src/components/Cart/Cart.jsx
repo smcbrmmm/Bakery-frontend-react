@@ -176,7 +176,7 @@ const Cart = ({ cart, setProductInCart }) => {
     const [houseNumber, setHouseNumber] = useState();
     const [province, setProvince] = useState();
     const [postal, setPostal] = useState();
-    const [place , setPlace] = useState("yo");
+    const [place , setPlace] = useState("no");
 
     const handleSelect = (e) => {
         console.log(e.target.value);
