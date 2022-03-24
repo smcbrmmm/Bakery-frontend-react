@@ -176,7 +176,7 @@ const Cart = ({ cart, setProductInCart }) => {
     const [houseNumber, setHouseNumber] = useState();
     const [province, setProvince] = useState();
     const [postal, setPostal] = useState();
-    const [place , setPlace] = useState("no");
+    const [place , setPlace] = useState("yo");
 
     const handleSelect = (e) => {
         console.log(e.target.value);
@@ -220,7 +220,12 @@ const Cart = ({ cart, setProductInCart }) => {
     const validationAddress = () => {
         if(place === "no"){
             console.log("no item in cart")
-        }else{
+            swal("Error", "Please select address for shipping.", "error");
+            console.log(cart.length)
+        }else if(place !=="no" && cart.length=== 0){
+            swal("Error", "No Item in your cart.", "error");
+        }
+        else{
             handleSubmit();
             handleClick(); 
             handleDeletAllItemInCart();
