@@ -95,8 +95,14 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
   };
 
   const onChangeHandler = (e) => {
-    setInput(e.target.value);
-    adjustQty(item.id, e.target.value);
+
+    if(e.target.value > maxQty){
+      swal("Error", "Quantity more than", "error");
+    }else{
+      setInput(e.target.value);
+      adjustQty(item.id, e.target.value);
+    }
+
   };
 
   return (
