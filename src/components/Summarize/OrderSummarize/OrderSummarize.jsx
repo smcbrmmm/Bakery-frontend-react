@@ -7,6 +7,7 @@ import MediaQuery from 'react-responsive'
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import InfoOfOrderDetail from "../../Order/OrderDetail/InfoOfOrderDetail/InfoOfOrderDetail";
+import moment from 'moment';
 // async function cancelOrder(order) {
 //     return fetch('https://cf31-2405-9800-b600-6272-1023-5056-cc19-5c83.ngrok.io/api/order/cancel/' + order.orderId, {
 //         method: 'POST',
@@ -51,6 +52,11 @@ const OrderSummarize = ({ order }) => {
     const [userId, setUserId] = useState(user ? user.id : "100")
     const [paymentSlip, setPaymentSlip] = useState("samut");
     const [files, setFile] = useState([]);
+    const [price2 , setPrice2] = useState(order.sumPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+    // if(price2.length >3){
+    //     console.log(price2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+    // }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -161,6 +167,16 @@ const OrderSummarize = ({ order }) => {
 
     const [orderStatus, setOrderStatus] = useState(order.status);
 
+    const [date , setDate] = useState(moment(order.date).format('YYYY-MM-DD'))
+
+    // const check = () => {
+    //     console.log(order.sumPrice)
+    // }
+
+    const check2 = () => {
+        return "samut";
+    }
+
 
     return (
 
@@ -189,7 +205,7 @@ const OrderSummarize = ({ order }) => {
                 : null
             }
 
-            <TableCell onClick={() => setSigntinModalShow(true)} align="right">{order.date}</TableCell>
+            <TableCell onClick={() => setSigntinModalShow(true)} align="right">{moment(order.date.slice(0,10)).format("D MMMM YYYY")}</TableCell>
 
 
             <Modal className="cart-modal" show={signinModalShow}
@@ -250,7 +266,7 @@ const OrderSummarize = ({ order }) => {
                     <Row style={{ textAlign: 'center' }} >
                         <Col>  </Col>
 
-                        <Col>  <h4 style={{ marginLeft: '3rem' }}> Total :  {order.sumPrice} </h4></Col>
+                        <Col>  <h4 style={{ marginLeft: '3rem' }}> Total : {price2} </h4></Col>
 
                     </Row>
 

@@ -33,10 +33,10 @@ export default function InfoOfOrderDetail({ infoOrder }) {
                     <h5> {infoOrder.title}</h5>
                 </Col>
                 <Col>
-                    <h5> {infoOrder.productQty}  </h5>
+                    <h5> {(infoOrder.productQty).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}  </h5>
                 </Col>
                 <Col>
-                    <h5> {infoOrder.productPrice * infoOrder.productQty}  </h5>
+                    <h5> {(infoOrder.productPrice * infoOrder.productQty).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}  </h5>
                 </Col>
             </MediaQuery>           
              <MediaQuery maxWidth={1224}>
@@ -48,7 +48,7 @@ export default function InfoOfOrderDetail({ infoOrder }) {
                     <h5 style={{ fontSize: '14px' }}> {infoOrder.productQty}  </h5>
                 </Col>
                 <Col>
-                    <h5 style={{ fontSize: '14px' }}> {infoOrder.productPrice * infoOrder.productQty}  </h5>
+                    <h5 style={{ fontSize: '14px' }}> {(infoOrder.productPrice * infoOrder.productQty).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}  </h5>
                 </Col>
             </MediaQuery>
 

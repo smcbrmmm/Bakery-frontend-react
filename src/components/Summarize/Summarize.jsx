@@ -57,6 +57,7 @@ const Summarize = () => {
                 'https://cf31-2405-9800-b600-6272-1023-5056-cc19-5c83.ngrok.io/api/order/getOrderByDate/' + date,
             );
             console.log(result)
+
             setOrder(result.data)
 
         };
@@ -77,12 +78,13 @@ const Summarize = () => {
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DesktopDatePicker
                             label="Date Picker"
-                            inputFormat="MM/dd/yyyy"
+                            inputFormat="dd/MM/yyyy"
                             value={value}
                             onChange={handleChange}
                             renderInput={(params) => <TextField {...params} />
                             } />
                     </LocalizationProvider>
+                   
                 </div>
 
                 {order.length > 0 ?
