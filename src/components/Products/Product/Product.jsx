@@ -61,7 +61,7 @@ async function updateProduct(product) {
     body: JSON.stringify({
       title: product.productName , price: product.price, qty: product.qty
       , img: product.postImage.myFile
-      , description: product.description, tag: product.tag
+      , description: product.description, tag: product.tag , id : product.productId
     })
   })
     .then(data => data.json())
