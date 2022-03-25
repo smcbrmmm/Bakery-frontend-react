@@ -155,11 +155,11 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
   }
 
 
-  const [productName, setProductName] = useState();
-  const [price, setPrice] = useState();
-  const [tag, setTag] = useState();
-  const [description, setDescription] = useState();
-  const [qty, setQty] = useState();
+  const [productName, setProductName] = useState(product.title);
+  const [price, setPrice] = useState(product.price);
+  const [tag, setTag] = useState(product.tag);
+  const [description, setDescription] = useState(product.description);
+  const [qty, setQty] = useState(product.qty);
 
 
   const onSelectFile = e => {
