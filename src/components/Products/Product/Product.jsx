@@ -149,6 +149,10 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
   const [description, setDescription] = useState(product.description);
   const [qty, setQty] = useState(product.qty);
   
+  const [postImage, setPostImage] = useState({
+    myFile: product.img,
+  });
+  
   const handleUpdateProduct = async e => {
 
     const response = await updateProduct({
@@ -182,9 +186,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
     console.log(files)
   }
 
-  const [postImage, setPostImage] = useState({
-    myFile: "",
-  });
+
 
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
