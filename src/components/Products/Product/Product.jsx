@@ -104,7 +104,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
   }
 
   const handleUpdateModal = () => {
-    setOpenUpdateModal(ture)
+    setOpenUpdateModal(true)
   }
 
   const handleClose = (event, reason) => {
