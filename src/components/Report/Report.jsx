@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade, Card, Row, Col } from "react-bootstrap";
+import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade, Card, Row, Col, Spinner } from "react-bootstrap";
 import NavbarCom from '../Navbar/NavbarComponent'
 import axios from "axios";
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
@@ -30,11 +30,15 @@ const Report = () => {
     const [dateTo, setDateTo] = React.useState();
     const [dateFrom, setDateFrom] = React.useState();
     const [order, setOrder] = useState([]);
-    const [total , setTotal] = useState();
+    const [total, setTotal] = useState();
 
+    const [loading, setLoading] = useState(false);
+    const [showLoading, setShowLoading] = useState(true);
 
 
     const handleClick = () => {
+
+        setShowLoading(false)
 
         const fetchData = async () => {
             const result = await axios(
@@ -49,10 +53,13 @@ const Report = () => {
             console.log(result2)
             setOrder(result.data)
             setTotal(result2.data)
+            setLoading(true)
+
 
         };
 
         fetchData();
+        setLoading(false)
 
 
     }
@@ -111,7 +118,52 @@ const Report = () => {
                     <Button onClick={handleClick}> Search </Button>
                 </div>
 
-                {order.length > 0 ?
+                {loading ?
+
+                    order.length > 0 ?
+                        <TableContainer component={Paper} sx={{ width: '60%', marginLeft: 'auto', marginRight: 'auto', marginBottom: '3rem' }} >
+                            <Table sx={{ minWidth: 650 }} style={{ textAlign: 'center' }} aria-label="simple table">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Order ID</TableCell>
+                                        <TableCell align="right">Customer ID</TableCell>
+                                        <TableCell align="right">Status</TableCell>
+                                        <TableCell align="right">Date</TableCell>
+                                        <TableCell align="right">Price (Baht)</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {order.map((order) => (
+
+                                        <ReportSummarize key={order.orderId} order={order} />
+
+
+                                    ))}
+                                    <TableRow>
+                                        <TableCell rowSpan={5} />
+                                        <TableCell colSpan={3} align="right" > Total</TableCell>
+                                        <TableCell align="right"> {(total + "").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} </TableCell>
+                                    </TableRow>
+
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+
+
+                        : <h2 style={{ textAlign: 'center', marginTop: '2rem' }}> No Report</h2>
+
+                    :
+                    <div style={{ textAlign: 'center' , marginTop:'2rem' }}>
+                        <Spinner animation="border" role="status" hidden={showLoading}>
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner>
+                    </div>
+                }
+
+
+                {/* {order.length > 0 ?
+
+
                     <TableContainer component={Paper} sx={{ width: '60%', marginLeft: 'auto', marginRight: 'auto', marginBottom: '3rem' }} >
                         <Table sx={{ minWidth: 650 }} style={{ textAlign: 'center' }} aria-label="simple table">
                             <TableHead>
@@ -133,7 +185,7 @@ const Report = () => {
                                 <TableRow>
                                     <TableCell rowSpan={5} />
                                     <TableCell colSpan={3} align="right" > Total</TableCell>
-                                    <TableCell align="right"> {(total+"").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} </TableCell>
+                                    <TableCell align="right"> {(total + "").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} </TableCell>
                                 </TableRow>
 
                             </TableBody>
@@ -142,7 +194,11 @@ const Report = () => {
 
 
                     : <h2 style={{ textAlign: 'center', marginTop: '2rem' }}> No Report</h2>
-                }
+                } */}
+
+                {/* <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner> */}
 
 
 
