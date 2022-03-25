@@ -59,7 +59,7 @@ async function updateProduct(product) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      title: product.productName, name: product.productName, price: product.price, qty: product.qty
+      title: product.productName , price: product.price, qty: product.qty
       , img: product.postImage.myFile
       , description: product.description, tag: product.tag
     })
@@ -137,6 +137,12 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
   }
 
   const handleUpdateProduct = async e => {
+
+    console.log(title)
+    console.log(price)
+    console.log(qty)
+    console.log(description)
+    console.log(tag)
 
     const response = await updateProduct({
       productName, price, tag, description, qty, postImage
