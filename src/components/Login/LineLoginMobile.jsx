@@ -34,7 +34,7 @@ async function login(user) {
         },
         // body: JSON.stringify({ email: user.email})
     })
-        // .then(data => data.json())
+        .then(data => data.json())
 }
 
 
