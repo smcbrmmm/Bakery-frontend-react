@@ -366,11 +366,11 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
               <Form className="formSignin" >
                 <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                   <Form.Label>Product name</Form.Label>
-                  <Form.Control type="text" value={product.title} onChange={e => { setProductName(e.target.value) }} />
+                  <Form.Control type="text" defaultValue={product.title} onChange={e => { setProductName(e.target.value) }} />
                 </Form.Group>
                 <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                   <Form.Label>Price</Form.Label>
-                  <Form.Control type="number" min={0} value={product.price} onChange={e => { setPrice(e.target.value) }} />
+                  <Form.Control type="number" min={0} defaultValue={product.price} onChange={e => { setPrice(e.target.value) }} />
                 </Form.Group>
                 <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                   <Form.Label>Tag</Form.Label>
@@ -383,12 +383,12 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
                 </Form.Group>
                 <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                   <Form.Label>Description</Form.Label>
-                  <Form.Control as="textarea" rows={2} value={product.description} onChange={e => { setDescription(e.target.value) }} />
+                  <Form.Control as="textarea" rows={2} defaultValue={product.description} onChange={e => { setDescription(e.target.value) }} />
                 </Form.Group>
 
                 <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                   <Form.Label>Quantity</Form.Label>
-                  <Form.Control type="number" value={product.qty} onChange={e => { setQty(e.target.value) }} />
+                  <Form.Control type="number" defaultValue={product.qty} onChange={e => { setQty(e.target.value) }} />
                 </Form.Group>
 
                 <div className="d-grid gap-2">
