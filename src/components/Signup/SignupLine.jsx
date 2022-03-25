@@ -57,7 +57,7 @@ export default function SignupLine({ email, signinModal , accessToken }) {
         } else {
             swal("Failed", response.message, "error");
         }
-        console.log(accessToken)
+        
     }
 
 
