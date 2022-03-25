@@ -24,7 +24,7 @@ export default function SignupLine({ email, signinModal , accessToken }) {
 
 
     const [name, setName] = useState();
-    const [password, setPassword] = useState();
+    const [password, setPassword] = useState("samut123");
     const [cfPassword, setCfPassword] = useState();
 
     // const submit = e => {
@@ -44,19 +44,21 @@ export default function SignupLine({ email, signinModal , accessToken }) {
         const response = await signup({
             email,password,name
         });
-        if ('accessToken' in response) {
-            swal("Success", response.message, "success", {
-                buttons: false,
-                timer: 2000,
-            })
-                .then((value) => {
-                    localStorage.setItem('accessToken', response['accessToken']);
-                    localStorage.setItem('user', JSON.stringify(response['user']));
-                    window.location.href = "/order";
-                });
-        } else {
-            swal("Failed", response.message, "error");
-        }
+
+        console.log(response)
+        // if ('accessToken' in response) {
+        //     swal("Success", response.message, "success", {
+        //         buttons: false,
+        //         timer: 2000,
+        //     })
+        //         .then((value) => {
+        //             localStorage.setItem('accessToken', response['accessToken']);
+        //             localStorage.setItem('user', JSON.stringify(response['user']));
+        //             window.location.href = "/order";
+        //         });
+        // } else {
+        //     swal("Failed", response.message, "error");
+        // }
         
     }
 
