@@ -57,7 +57,7 @@ export default function LineLoginMobile() {
         })
             .then(data => {
                 console.log(data)
-                if(user !== null){
+                if(data.user !== null){
                     localStorage.setItem('accessToken', data.accessToken);
                     localStorage.setItem('user', JSON.stringify(data.user));
                     if(data.user.role === 'A'){
