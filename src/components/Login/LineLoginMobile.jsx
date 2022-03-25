@@ -12,7 +12,7 @@ import { set } from "mongoose";
 const liff = window.liff
 
 async function isHaveEmail(email) {
-    return fetch('https://cf31-2405-9800-b600-6272-1023-5056-cc19-5c83.ngrok.io/api/user/isHave/' + email, {
+    return fetch('https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/user/isHave/' + email, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ async function isHaveEmail(email) {
 
 async function login(user) {
 
-    return fetch('https://cf31-2405-9800-b600-6272-1023-5056-cc19-5c83.ngrok.io/api/user/loginbyline/' + user.email, {
+    return fetch('https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/user/loginbyline/' + user.email, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
