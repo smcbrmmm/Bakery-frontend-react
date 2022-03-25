@@ -85,6 +85,8 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
   const [openAddModal, setOpenAddModal] = useState(false);
 
+  const [openUpdateModal , setOpenUpdateModal] = useState(false);
+
   const [modalShow, setModalShow] = React.useState(false);
 
   const [productId, setProductId] = useState(product.id);
@@ -101,6 +103,10 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
     setOpenAddModal(true);
   }
 
+  const handleUpdateModal = () => {
+    setOpenUpdateModal(ture)
+  }
+
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -108,6 +114,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
     setOpen(false);
     setOpenAddModal(false)
+    setOpenUpdateModal(false)
   };
 
 
@@ -130,9 +137,9 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
       userId, productId
     });
 
-    // setTimeout(() => {
-    //   window.location.href = "/products";
-    // }, 1000);
+    setTimeout(() => {
+      window.location.href = "/products";
+    }, 1000);
 
   }
 
@@ -328,6 +335,12 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
         </Alert>
       </Snackbar>
 
+      <Snackbar open={openUpdateModal} autoHideDuration={3000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="info" sx={{ width: '100%' }}>
+          Product already edited.
+        </Alert>
+      </Snackbar>
+
 
 
       <Modal className="cart-modal" show={editProductShow}
@@ -399,7 +412,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
                 </Form.Group>
 
                 <div className="d-grid gap-2">
-                  <Button variant="primary" size="lg" onClick={handleUpdateProduct}>
+                  <Button variant="primary" size="lg" onClick={() => {handleUpdateProduct() ; handleUpdateModal()}}>
                     Edit this product
                   </Button>
 
