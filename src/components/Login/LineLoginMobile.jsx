@@ -22,7 +22,7 @@ async function isHaveEmail(email) {
         // })
 
     })
-        // .then(data => data.json())
+        .then(data => data.json())
 }
 
 async function login(user) {
