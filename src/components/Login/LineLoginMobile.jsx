@@ -136,7 +136,7 @@ export default function LineLoginMobile() {
                         <Signup signinModal={signinModal} email={email}>
                         </Signup> */}
                         <div hidden={isHave > 0 ? true : false}>
-                            <Signup signinModal={signinModal} email={email}>
+                            <Signup signinModal={signinModal} email={email} accessToken={accessToken}>
                             </Signup>
                         </div>
                     </MediaQuery>
