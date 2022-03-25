@@ -138,7 +138,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
   const handleUpdateProduct = async e => {
 
-    console.log(title)
+    console.log(productName)
     console.log(price)
     console.log(qty)
     console.log(description)
