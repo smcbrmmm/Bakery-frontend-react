@@ -93,7 +93,7 @@ const Summarize = () => {
                             <TableHead>
                                 <TableRow>
                                     <TableCell>Order ID</TableCell>
-                                    <TableCell align="right">User ID</TableCell>
+                                    <TableCell align="right">Customer ID</TableCell>
                                     <TableCell align="right">Status</TableCell>
                                     <TableCell align="right">Date</TableCell>
                                 </TableRow>

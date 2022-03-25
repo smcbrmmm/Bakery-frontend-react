@@ -257,7 +257,7 @@ const OrderDetail = ({ order, hid }) => {
                             <h5>Quantity</h5>
                         </Col>
                         <Col>
-                            <h5>Price</h5>
+                            <h5>Price (Baht)</h5>
                         </Col>
                     </Row>
 

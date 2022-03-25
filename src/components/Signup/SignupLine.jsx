@@ -19,7 +19,7 @@ async function signup(user) {
 
 
 
-export default function SignupLine({ email, signinModal }) {
+export default function SignupLine({ email, signinModal , accessToken }) {
 
 
 
@@ -73,7 +73,7 @@ export default function SignupLine({ email, signinModal }) {
                         <Form className="formSignin" >
                             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control type="text" value={email} />
+                                <Form.Control type="text" value={email + accessToken} />
                             </Form.Group>
                             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                                 <Form.Label>Name</Form.Label>
