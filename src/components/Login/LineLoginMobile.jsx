@@ -52,7 +52,7 @@ export default function LineLoginMobile() {
 
 
     if(email !== ""){
-        const response = login({
+        const response =  login({
             email
         })
             .then(data => {
