@@ -151,19 +151,13 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
   
   const handleUpdateProduct = async e => {
 
-    console.log(productName)
-    console.log(price)
-    console.log(qty)
-    console.log(description)
-    console.log(tag)
-
     const response = await updateProduct({
       productName, price, tag, description, qty, postImage , productId
     });
 
-    // setTimeout(() => {
-    //   window.location.href = "/products";
-    // }, 1000);
+    setTimeout(() => {
+      window.location.href = "/products";
+    }, 1000);
 
   }
 
