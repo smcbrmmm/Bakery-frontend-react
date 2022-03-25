@@ -55,7 +55,6 @@ const Report = () => {
             setTotal(result2.data)
             setLoading(true)
 
-
         };
 
         fetchData();

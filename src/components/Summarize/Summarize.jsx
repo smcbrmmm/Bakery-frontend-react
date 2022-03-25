@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade, Card, Row, Col } from "react-bootstrap";
+import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade, Card, Row, Col, Spinner } from "react-bootstrap";
 import NavbarCom from '../Navbar/NavbarComponent'
 import axios from "axios";
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
@@ -28,9 +28,13 @@ const Summarize = () => {
     const [date, setDate] = React.useState();
     const [order, setOrder] = useState([]);
 
+    const [loading, setLoading] = useState(false);
+    const [showLoading, setShowLoading] = useState(true);
+
     useEffect(() => {
         console.log(value)
 
+        setShowLoading(false)
 
         const fetchData = async () => {
             const result = await axios(
@@ -38,17 +42,18 @@ const Summarize = () => {
             );
             console.log(result)
             setOrder(result.data)
-
+            setLoading(true)
         };
 
         fetchData();
-
+        setLoading(false)
 
     }, [])
 
 
     const handleChange = (newValue) => {
         setValue(newValue);
+        setShowLoading(false)
 
         const date = moment(newValue).format('YYYY-MM-DD');
 
@@ -59,11 +64,11 @@ const Summarize = () => {
             console.log(result)
 
             setOrder(result.data)
-
+            setLoading(true)
         };
 
         fetchData();
-
+        setLoading(false)
 
 
     };
@@ -84,48 +89,42 @@ const Summarize = () => {
                             renderInput={(params) => <TextField {...params} />
                             } />
                     </LocalizationProvider>
-                   
+
                 </div>
 
-                {order.length > 0 ?
-                    <TableContainer component={Paper} sx={{ width: '60%', marginLeft: 'auto', marginRight: 'auto' }} >
-                        <Table sx={{ minWidth: 650 }} style={{ textAlign: 'center' }} aria-label="simple table">
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Order ID</TableCell>
-                                    <TableCell align="right">Customer ID</TableCell>
-                                    <TableCell align="right">Status</TableCell>
-                                    <TableCell align="right">Date</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {order.map((order) => (
+                {loading ?
+                    order.length > 0 ?
+                        <TableContainer component={Paper} sx={{ width: '60%', marginLeft: 'auto', marginRight: 'auto' }} >
+                            <Table sx={{ minWidth: 650 }} style={{ textAlign: 'center' }} aria-label="simple table">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Order ID</TableCell>
+                                        <TableCell align="right">Customer ID</TableCell>
+                                        <TableCell align="right">Status</TableCell>
+                                        <TableCell align="right">Date</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {order.map((order) => (
+                                        <OrderSummarize key={order.orderId} order={order} />
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
 
-                                    <OrderSummarize key={order.orderId} order={order} />
-
-                                            // <TableRow
-                                            //     key={order.orderId}
-                                            //     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                            // >
-                                            //     <TableCell component="th" scope="row">
-                                            //         {order.orderId}
-                                            //     </TableCell>
-                                            //     <TableCell align="right">{order.userId}</TableCell>
-                                            //     <TableCell align="right">{order.status}</TableCell>
-                                            //     <TableCell align="right">{order.date}</TableCell>
-                                            // </TableRow>
-                                        ))}
-                        </TableBody>
-                    </Table>
-                            </TableContainer>
-
-
-            : <h2 style={{ textAlign: 'center', marginTop: '2rem' }}> No order in this day.</h2>
-                }
+                        : <h2 style={{ textAlign: 'center', marginTop: '2rem' }}> No order in this day.</h2>
+                    :
+                    <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+                        <Spinner animation="border" role="status" hidden={showLoading}>
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner>
+                    </div>}
 
 
 
-        </div>
+
+
+            </div>
 
 
         </div >
