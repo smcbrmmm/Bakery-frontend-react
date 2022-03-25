@@ -53,7 +53,7 @@ async function insertProduct(product) {
 
 async function updateProduct(product) {
   console.log(product)
-  return fetch('https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/products/insert', {
+  return fetch('https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/products/update', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
