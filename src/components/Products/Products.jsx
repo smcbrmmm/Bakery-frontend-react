@@ -108,8 +108,8 @@ const Products = ({ products, setProductList, setProductInCart }) => {
             }
         })
             .then(data => data.json())
-
             .then(data => setProductList(data))
+            
         fetch('https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/cart/inCart/' + userId, {
             method: 'GET',
             headers: {
@@ -236,6 +236,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
 
                             <MediaQuery minWidth={1224} >
                                 <h2 className="main" style={{ marginBottom: '2rem', marginTop: '4rem' }}>  Category </h2>
+                                <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("pastry")} >  Popular Product </h5></a>
                                 <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("pastry")} >  Chinese Pastry </h5></a>
                                 <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("roastedPastry")}>  Roasted Chinese Pastry </h5></a>
                                 <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("riceCracker")}>  Rice Cracker </h5></a>

@@ -19,47 +19,58 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 import moment from 'moment';
-// import OrderSummarize from "./OrderSummarize/OrderSummarize";
+import OrderSummarize from "../Summarize/OrderSummarize/OrderSummarize";
+import ReportSummarize from "../Report/ReportSummarize/ReportSummarize"
 
 const Report = () => {
     const user = JSON.parse(localStorage.getItem('user'));
 
-    const [value, setValue] = React.useState(moment().format('YYYY-MM-DD'));
-    const [date, setDate] = React.useState();
+    const [value1, setValue1] = React.useState(moment().format('YYYY-MM-DD'));
+    const [value2, setValue2] = React.useState(moment().format('YYYY-MM-DD'));
+    const [dateTo, setDateTo] = React.useState();
+    const [dateFrom, setDateFrom] = React.useState();
     const [order, setOrder] = useState([]);
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const result = await axios(
-    //             'https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io' + value,
-    //         );
-    //         console.log(result)
-    //         setOrder(result.data)
-
-    //     };
-
-    //     fetchData();
+    const [total , setTotal] = useState();
 
 
-    // }, [])
 
-
-    const handleChange = (newValue) => {
-        setValue(newValue);
-
-        const date = moment(newValue).format('YYYY-MM-DD');
+    const handleClick = () => {
 
         const fetchData = async () => {
             const result = await axios(
-                'https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/order/getOrderByDate/' + date,
+                'https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/order/getOrderForReport/' + dateTo + "/" + dateFrom ,
             );
+
+            const result2 = await axios(
+                'https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/order/getTotalPrice/' + dateTo + "/" + dateFrom ,
+            );
+
             console.log(result)
+            console.log(result2)
             setOrder(result.data)
+            setTotal(result2.data)
 
         };
 
         fetchData();
 
+
+    }
+
+
+    const handleChangeDateTo = (newValue) => {
+
+        setValue1(newValue)
+        const dateTo = moment(newValue).format('YYYY-MM-DD');
+        setDateTo(dateTo)
+    };
+
+
+    const handleChangeDateFrom = (newValue) => {
+
+        setValue2(newValue)
+        const dateFrom = moment(newValue).format('YYYY-MM-DD');
+        setDateFrom(dateFrom)
     };
 
     return (
@@ -74,29 +85,34 @@ const Report = () => {
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DesktopDatePicker
                             label="From"
-                            inputFormat="MM/dd/yyyy"
-                            value={value}
-                            onChange={handleChange}
+                            inputFormat="dd/MM/yyyy"
+                            value={value1}
+                            onChange={handleChangeDateTo}
                             renderInput={(params) => <TextField {...params} />
                             } />
                     </LocalizationProvider>
-                    
-                    
-                    <h5 style={{display : 'inline'}}> To  </h5>
+
+
+                    <h5 style={{ display: 'inline' }}> To  </h5>
 
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DesktopDatePicker
                             label="To"
-                            inputFormat="MM/dd/yyyy"
-                            value={value}
-                            onChange={handleChange}
+                            inputFormat="dd/MM/yyyy"
+                            value={value2}
+                            onChange={handleChangeDateFrom}
+                            minDate={value1}
                             renderInput={(params) => <TextField {...params} />
                             } />
                     </LocalizationProvider>
                 </div>
 
-                {/* {order.length > 0 ?
-                    <TableContainer component={Paper} sx={{ width: '60%', marginLeft: 'auto', marginRight: 'auto' }} >
+                <div style={{ textAlign: 'center', marginTop: '1rem', marginBottom: '1rem' }}>
+                    <Button onClick={handleClick}> Search </Button>
+                </div>
+
+                {order.length > 0 ?
+                    <TableContainer component={Paper} sx={{ width: '60%', marginLeft: 'auto', marginRight: 'auto', marginBottom: '3rem' }} >
                         <Table sx={{ minWidth: 650 }} style={{ textAlign: 'center' }} aria-label="simple table">
                             <TableHead>
                                 <TableRow>
@@ -104,32 +120,29 @@ const Report = () => {
                                     <TableCell align="right">User ID</TableCell>
                                     <TableCell align="right">Status</TableCell>
                                     <TableCell align="right">Date</TableCell>
+                                    <TableCell align="right">Price (Baht)</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {order.map((order) => (
 
-                                    <OrderSummarize key={order.orderId} order={order} />
-
-                                            // <TableRow
-                                            //     key={order.orderId}
-                                            //     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                            // >
-                                            //     <TableCell component="th" scope="row">
-                                            //         {order.orderId}
-                                            //     </TableCell>
-                                            //     <TableCell align="right">{order.userId}</TableCell>
-                                            //     <TableCell align="right">{order.status}</TableCell>
-                                            //     <TableCell align="right">{order.date}</TableCell>
-                                            // </TableRow>
-                                        ))}
-                        </TableBody>
-                    </Table>
-                            </TableContainer>
+                                    <ReportSummarize key={order.orderId} order={order} />
 
 
-            : <h2 style={{ textAlign: 'center', marginTop: '2rem' }}> No order in this day.</h2>
-                } */}
+                                ))}
+                                <TableRow>
+                                    <TableCell rowSpan={5} />
+                                    <TableCell colSpan={3} align="right" > Total</TableCell>
+                                    <TableCell align="right"> {(total+"").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} </TableCell>
+                                </TableRow>
+
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+
+
+                    : <h2 style={{ textAlign: 'center', marginTop: '2rem' }}> No Report</h2>
+                }
 
 
 
@@ -138,19 +151,6 @@ const Report = () => {
     )
 
 }
-
-// const mapStateToProps = (state) => {
-//     return {
-//         products: state.shop.products,
-//     };
-// };
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         setProductList: data => dispatch(setProductList(data)),
-//         setProductInCart: data => dispatch(setProductInCart(data))
-//     }
-// }
 
 export default connect()(Report);
 
