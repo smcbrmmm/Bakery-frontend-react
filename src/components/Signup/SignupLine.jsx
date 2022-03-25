@@ -41,22 +41,22 @@ export default function SignupLine({ email, signinModal , accessToken }) {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        // const response = await signup({
-        //     email,password,name
-        // });
-        // if ('accessToken' in response) {
-        //     swal("Success", response.message, "success", {
-        //         buttons: false,
-        //         timer: 2000,
-        //     })
-        //         .then((value) => {
-        //             localStorage.setItem('accessToken', response['accessToken']);
-        //             localStorage.setItem('user', JSON.stringify(response['user']));
-        //             window.location.href = "/order";
-        //         });
-        // } else {
-        //     swal("Failed", response.message, "error");
-        // }
+        const response = await signup({
+            email,password,name
+        });
+        if ('accessToken' in response) {
+            swal("Success", response.message, "success", {
+                buttons: false,
+                timer: 2000,
+            })
+                .then((value) => {
+                    localStorage.setItem('accessToken', response['accessToken']);
+                    localStorage.setItem('user', JSON.stringify(response['user']));
+                    window.location.href = "/order";
+                });
+        } else {
+            swal("Failed", response.message, "error");
+        }
         console.log(accessToken)
     }
 
