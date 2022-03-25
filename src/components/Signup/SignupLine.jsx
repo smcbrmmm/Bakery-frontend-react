@@ -14,7 +14,7 @@ async function signup(user) {
         },
         body: JSON.stringify({ email: user.email , name : user.name})
     })
-        .then(data => data.json())
+        // .then(data => data.json())
 }
 
 
