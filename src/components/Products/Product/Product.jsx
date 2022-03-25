@@ -51,6 +51,22 @@ async function insertProduct(product) {
   // .then(data => data.json())
 }
 
+async function updateProduct(product) {
+  console.log(product)
+  return fetch('https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/products/insert', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      title: product.productName, name: product.productName, price: product.price, qty: product.qty
+      , img: product.postImage.myFile
+      , description: product.description, tag: product.tag
+    })
+  })
+    .then(data => data.json())
+}
+
 
 const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
@@ -112,6 +128,18 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
     const response = await insertProduct({
       userId, productId
+    });
+
+    // setTimeout(() => {
+    //   window.location.href = "/products";
+    // }, 1000);
+
+  }
+
+  const handleUpdateProduct = async e => {
+
+    const response = await updateProduct({
+      productName, price, tag, description, qty, postImage
     });
 
     // setTimeout(() => {
@@ -230,7 +258,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
       </MediaQuery>
 
       <MediaQuery maxWidth={1224} >
-        <div style={{  display : 'flex' , justifyContent : 'center'}}>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Card style={{ width: '18rem', display: 'flex', marginBottom: '1rem' }}>
             {/* <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
           src={product.img} /> */}
@@ -243,8 +271,8 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
               <Card.Title>{product.title}</Card.Title>
               <h5 style={{ fontSize: '14px' }}>{product.tag}</h5>
               <h5 style={{ fontSize: '18px' }}> {product.price} Baht</h5>
-              <Button hidden={!user || product.qty === 0 || role === 'A'} variant="primary" 
-              onClick={() => { addToCart(product.id); handleClickAdd(); handleInserProduct() }}>
+              <Button hidden={!user || product.qty === 0 || role === 'A'} variant="primary"
+                onClick={() => { addToCart(product.id); handleClickAdd(); handleInserProduct() }}>
                 Add to Cart</Button>
               <Button hidden={!user || !(product.qty === 0)} disabled variant="secondary"
                 onClick={() => { addToCart(product.id); handleClick(); handleInserProduct() }}>Out of Stock</Button>
@@ -364,8 +392,8 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
                 </Form.Group>
 
                 <div className="d-grid gap-2">
-                  <Button variant="primary" size="lg" >
-                   Edit this product
+                  <Button variant="primary" size="lg" onClick={handleUpdateProduct}>
+                    Edit this product
                   </Button>
 
                 </div>

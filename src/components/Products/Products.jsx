@@ -33,15 +33,15 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 async function addProduct(product) {
     console.log(product)
-    return fetch('https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/products/insert', {
+    return fetch('https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/products/update', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            title: product.productName, name: product.productName, price: product.price, qty: product.qty
+            title: product.productName , price: product.price, qty: product.qty
             , img: product.postImage.myFile
-            , description: product.description, tag: product.tag
+            , description: product.description , tag: product.tag
         })
     })
         .then(data => data.json())
@@ -129,11 +129,13 @@ const Products = ({ products, setProductList, setProductInCart }) => {
             productName, price, tag, description, qty, postImage
         });
 
-        setTimeout(() => {
-            window.location.href = "/products";
-        }, 1000);
+        // setTimeout(() => {
+        //     window.location.href = "/products";
+        // }, 1000);
 
     }
+
+
 
 
     const categoryFilter = (category) => {
