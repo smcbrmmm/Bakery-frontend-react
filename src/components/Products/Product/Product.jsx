@@ -136,6 +136,12 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
   }
 
+  const [productName, setProductName] = useState(product.title);
+  const [price, setPrice] = useState(product.price);
+  const [tag, setTag] = useState(product.tag);
+  const [description, setDescription] = useState(product.description);
+  const [qty, setQty] = useState(product.qty);
+  
   const handleUpdateProduct = async e => {
 
     console.log(productName)
@@ -145,7 +151,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
     console.log(tag)
 
     const response = await updateProduct({
-      productName, price, tag, description, qty, postImage
+      productName, price, tag, description, qty, postImage , productId
     });
 
     // setTimeout(() => {
@@ -155,11 +161,6 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
   }
 
 
-  const [productName, setProductName] = useState(product.title);
-  const [price, setPrice] = useState(product.price);
-  const [tag, setTag] = useState(product.tag);
-  const [description, setDescription] = useState(product.description);
-  const [qty, setQty] = useState(product.qty);
 
 
   const onSelectFile = e => {
