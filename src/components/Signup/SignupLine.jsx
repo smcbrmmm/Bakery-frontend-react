@@ -71,25 +71,27 @@ export default function SignupLine({ email, signinModal, accessToken }) {
                     <h1 className="" style={{ textAlign: 'center' }}> Create your account</h1>
 
                     <MediaQuery minWidth={1224} >
-                        <div style={{ width : "40%" , textAlign : 'center' }}>
+                        <div style={{textAlign: 'center'}}>
+                            <div style={{ width: "40%" }}>
 
-                            <Form className="formSignin" >
-                                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
-                                    <Form.Label>Email</Form.Label>
-                                    <Form.Control type="text" value={email} disabled />
-                                </Form.Group>
-                                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
-                                    <Form.Label>Name</Form.Label>
-                                    <Form.Control type="text" onChange={e => { setName(e.target.value) }} />
-                                </Form.Group>
+                                <Form className="formSignin" >
+                                    <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                                        <Form.Label>Email</Form.Label>
+                                        <Form.Control type="text" value={email} disabled />
+                                    </Form.Group>
+                                    <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                                        <Form.Label>Name</Form.Label>
+                                        <Form.Control type="text" onChange={e => { setName(e.target.value) }} />
+                                    </Form.Group>
 
-                                <div className="d-grid gap-2">
-                                    <Button variant="primary" size="lg" onClick={handleSubmit} >
-                                        Sign up
-                                    </Button>
-                                </div>
-                            </Form>
+                                    <div className="d-grid gap-2">
+                                        <Button variant="primary" size="lg" onClick={handleSubmit} >
+                                            Sign up
+                                        </Button>
+                                    </div>
+                                </Form>
 
+                            </div>
                         </div>
                     </MediaQuery>
 
