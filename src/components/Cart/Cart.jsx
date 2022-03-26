@@ -308,13 +308,13 @@ const Cart = ({ cart, setProductInCart }) => {
 
                             </div>
                             <div>
-                                <h4 className="main">Cart Summary</h4>
-                                <div className="main">
+                                <h4 className="main"  style={{fontSize : '26px' , marginBottom : '0.5rem'}}>Cart Summary</h4>
+                                <div className="main" style={{fontSize : '22px' , marginBottom : '0.5rem'}}>
                                     <span>TOTAL: ({totalItems})</span>
-                                    <span>$ {totalPrice}</span>
+                                    <span> {totalPrice} Baht.</span>
                                 </div>
 
-                                <Button className="main" onClick={() => { validationAddress() }} >
+                                <Button className="main" variant="contained" size="large" onClick={() => { validationAddress() }} >
                                     Checkout
                                 </Button>
 

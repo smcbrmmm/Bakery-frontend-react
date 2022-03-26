@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade, Modal, Row, Col, Dropdown, DropdownButton } from "react-bootstrap";
-// import './OrderDetail.css'
 import axios from "axios";
-// import InfoOfOrderDetail from "./InfoOfOrderDetail/InfoOfOrderDetail"
 import MediaQuery from 'react-responsive'
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import InfoOfOrderDetail from "../../Order/OrderDetail/InfoOfOrderDetail/InfoOfOrderDetail";
 import moment from 'moment';
+
 // async function cancelOrder(order) {
 //     return fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/order/cancel/' + order.orderId, {
 //         method: 'POST',
@@ -37,6 +36,19 @@ import moment from 'moment';
 //     // .then(data => data.json())
 // }
 
+async function cancelOrder(order) {
+    return fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/order/cancel/' + order.orderId, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        //   body: JSON.stringify({
+        //     id: product.productId
+        //   })
+    })
+    // .then(data => data.json())
+}
+
 const OrderSummarize = ({ order }) => {
 
     const user = JSON.parse(localStorage.getItem('user'));
@@ -54,9 +66,6 @@ const OrderSummarize = ({ order }) => {
     const [files, setFile] = useState([]);
     const [price2 , setPrice2] = useState(order.sumPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 
-    // if(price2.length >3){
-    //     console.log(price2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-    // }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -76,8 +85,6 @@ const OrderSummarize = ({ order }) => {
             //     'https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/payment/getPayment/' + order.orderId,
             // );
 
-            // console.log(result4)
-            // setPayment(result4.data)
             setPrice(result2)
             setAddress(result3.data)
             setInfoOrder(result.data)
@@ -92,11 +99,7 @@ const OrderSummarize = ({ order }) => {
         // console.log(payment.length)
         // setNoPayment(payment.length)
     }, [infoOrder])
-
-    const check = () => {
-        // console.log(infoOrder)
-    }
-
+    
     const handleCancelorder = async e => {
 
         const response = await cancelOrder({
@@ -104,9 +107,16 @@ const OrderSummarize = ({ order }) => {
         });
 
         setTimeout(() => {
-            window.location.href = "/order";
+            window.location.href = "/summarize";
         }, 500);
 
+    }
+
+    const updateStatus = () => {
+        if(orderStatus === "Cancel"){
+            handleCancelorder();
+        }
+        
     }
 
     const handleUploadSlip = async e => {
@@ -151,7 +161,6 @@ const OrderSummarize = ({ order }) => {
 
         let allfiles = []
 
-        // I've kept this example simple by using the first image instead of multiple
         for (let i = 0; i < e.target.files.length; i++) {
             allfiles.push(e.target.files[i]);
         }
@@ -169,17 +178,13 @@ const OrderSummarize = ({ order }) => {
 
     const [date , setDate] = useState(moment(order.date).format('YYYY-MM-DD'))
 
-    // const check = () => {
-    //     console.log(order.sumPrice)
-    // }
-
     const check2 = () => {
         return "samut";
     }
 
 
-    return (
 
+    return (
 
         <TableRow
             key={order.orderId}
@@ -207,13 +212,11 @@ const OrderSummarize = ({ order }) => {
 
             <TableCell onClick={() => setSigntinModalShow(true)} align="right">{moment(order.date.slice(0,10)).format("D MMMM YYYY")}</TableCell>
 
-
             <Modal className="cart-modal" show={signinModalShow}
                 onHide={() => setSigntinModalShow(false)}
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
-                size="lg"
-            >
+                size="lg">
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
                         Your order information.  #{order.orderId}
@@ -280,8 +283,6 @@ const OrderSummarize = ({ order }) => {
                             <h5 style={{ fontSize: '16px' }}> Reciever Tel : {address.recieverTel} </h5>
                             <h5 style={{ fontSize: '16px' }}> Address : {address.houseNumber} {address.address} {address.province} {address.postal}</h5>
 
-
-
                             <br></br>
                             <br></br>
                             <hr hidden={order.status == 'Order Canceled'} ></hr>
@@ -302,10 +303,12 @@ const OrderSummarize = ({ order }) => {
                                 </Form.Group> : null
                             }
 
-
-                            <Button hidden={order.status == 'Order Canceled'} variant="success" style={{ display : 'block' , marginLeft:'auto' , marginRight:'0px'}}> Confirm</Button>
-
-
+                            <Button hidden={order.status == 'Order Canceled'} variant="success" onClick={updateStatus}
+                            style={{ display : 'block' , marginLeft:'auto' , marginRight:'0px'}}  
+                            
+                            > 
+                                Confirm
+                            </Button>
 
                         </Col>
                         <Col>
@@ -324,17 +327,13 @@ const OrderSummarize = ({ order }) => {
                                 <h5 style={{ fontSize: '16px', color: 'red' }}>  Your order has been canceled.</h5> : null
                             }
 
-
                         </Col>
                     </Row>
 
                 </Modal.Body>
             </Modal>
-
         </TableRow>
-
     );
 }
-
 
 export default OrderSummarize;
