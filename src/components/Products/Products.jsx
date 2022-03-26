@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from "react";
-import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade, Card, Row, Col, Modal } from "react-bootstrap";
+import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade, Card, Row, Col, Modal, Spinner } from "react-bootstrap";
 import './Products.css'
 import NavbarCom from "../Navbar/NavbarComponent"
 import Hamburger from 'hamburger-react'
@@ -27,9 +27,9 @@ import MuiAlert from '@mui/material/Alert';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-  });
+});
 
-  
+import axios from "axios";
 
 async function addProduct(product) {
     console.log(product)
@@ -39,9 +39,9 @@ async function addProduct(product) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            title: product.productName , price: product.price, qty: product.qty
+            title: product.productName, price: product.price, qty: product.qty
             , img: product.postImage.myFile
-            , description: product.description , tag: product.tag
+            , description: product.description, tag: product.tag
         })
     })
         .then(data => data.json())
@@ -55,20 +55,16 @@ const Products = ({ products, setProductList, setProductInCart }) => {
 
     const [userId, setUserId] = useState(user ? user.id : '100')
 
-
-
     const [pastry, setPastry] = useState(false);
     const [roastedPastry, setRoastedPastry] = useState(true);
     const [riceCracker, setRiceCracker] = useState(true);
-    /////////
+    const [productListTemp, setProductListTemp] = useState([]);
+
     const [addProductModal, setAddProductModal] = useState(false);
-    /////////
+
     const [selectedFile, setSelectedFile] = useState()
     const [preview, setPreview] = useState()
     const [files, setFile] = useState([]);
-    var no_pastry = 1;
-    var no_roastPastry = 1;
-    var no_riceCracker = 1;
 
     const [isOpen, setOpen] = useState(false)
 
@@ -83,33 +79,47 @@ const Products = ({ products, setProductList, setProductInCart }) => {
         setAnchorEl(null);
     };
 
-
     const [openAddModal, setOpenAddModal] = useState(false);
 
     const handleCloseSnackBar = (event, reason) => {
         if (reason === 'clickaway') {
-          return;
+            return;
         }
 
         setOpenAddModal(false)
-      };
+    };
 
-      const handleClickSnackBar = () => {
+    const handleClickSnackBar = () => {
         setOpenAddModal(true);
-      };
-
+    };
 
     useEffect(() => {
-        // Update the document title using the browser API
-        fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/products/allProducts', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(data => data.json())
-            .then(data => setProductList(data))
-            
+
+        setShowLoading(false)
+        setLoading(true)
+
+        // fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/products/allProducts', {
+        //     method: 'GET',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // })
+        //     .then(data => data.json())
+        //     .then(data => setProductList(data))
+        //     .then(data => setProductListTemp(data))
+
+            const fetchData = async () => {
+                const result = await axios(
+                    'https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/products/allProducts',
+                );
+                console.log(result)
+                setProductList(result.data)
+                setProductListTemp(result.data)
+                setLoading(true)
+            };
+    
+            fetchData();
+
         fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/cart/inCart/' + userId, {
             method: 'GET',
             headers: {
@@ -119,7 +129,9 @@ const Products = ({ products, setProductList, setProductInCart }) => {
             .then(data => data.json())
             .then(data => setProductInCart(data))
 
+
         window.addEventListener("scroll", toggleVisibility);
+        setLoading(false)
 
     }, []);
 
@@ -134,9 +146,6 @@ const Products = ({ products, setProductList, setProductInCart }) => {
         // }, 1000);
 
     }
-
-
-
 
     const categoryFilter = (category) => {
         setPastry(true)
@@ -161,7 +170,6 @@ const Products = ({ products, setProductList, setProductInCart }) => {
 
         let allfiles = []
 
-        // I've kept this example simple by using the first image instead of multiple
         for (let i = 0; i < e.target.files.length; i++) {
             allfiles.push(e.target.files[i]);
         }
@@ -187,7 +195,6 @@ const Products = ({ products, setProductList, setProductInCart }) => {
             };
         });
     };
-
 
     const handleFileUpload = async (e) => {
         const file = e.target.files[0];
@@ -224,6 +231,9 @@ const Products = ({ products, setProductList, setProductInCart }) => {
         });
     };
 
+    const [loading, setLoading] = useState(false);
+    const [showLoading, setShowLoading] = useState(true);
+
     return (
         <div className="page-container">
             <NavbarCom />
@@ -243,13 +253,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                                 <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("roastedPastry")}>  Roasted Chinese Pastry </h5></a>
                                 <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("riceCracker")}>  Rice Cracker </h5></a>
                             </MediaQuery>
-                            {/* <MediaQuery maxWidth={1224}>
-                                <h2 className="main" style={{ marginBottom: '2rem' }}>  Category  </h2>
-                                <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("pastry")} >  Chinese Pastry </h5></a>
-                                <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("roastedPastry")}>  Roasted Chinese Pastry </h5></a>
-                                <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("riceCracker")}>  Rice Cracker </h5></a>
-                                <hr></hr>
-                            </MediaQuery> */}
+
                         </Col>
                         <Col sm={9}>
                             <MediaQuery minWidth={1224} >
@@ -294,10 +298,8 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                                 </Row>
                             </MediaQuery>
 
-
                             <Row lg={3}>
-                                {products.map((product) => (
-
+                                {/* {products.map((product) => (
                                     product.tag === "Pastry"
                                         ? (<Product key={product.id} product={product} hid={pastry} />)
                                         : product.tag === "Roasted Pastry"
@@ -305,16 +307,30 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                                             : product.tag === "Rice Cracker"
                                                 ? (<Product key={product.id} product={product} hid={riceCracker} />)
                                                 : null
-                                ))}
+                                ))} */}
+
+                                {loading ?
+                                    productListTemp.length > 0 ?
+                                        products.map((product) => (
+                                            product.tag === "Pastry"
+                                                ? (<Product key={product.id} product={product} hid={pastry} />)
+                                                : product.tag === "Roasted Pastry"
+                                                    ? (<Product key={product.id} product={product} hid={roastedPastry} />)
+                                                    : product.tag === "Rice Cracker"
+                                                        ? (<Product key={product.id} product={product} hid={riceCracker} />)
+                                                        : null
+                                        ))
+                                        : <h2 style={{ textAlign: 'center', marginTop: '2rem' }}> No order in this day.</h2>
+                                    :
+                                    <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+                                        <Spinner animation="border" role="status" hidden={showLoading}>
+                                            <span className="visually-hidden">Loading...</span>
+                                        </Spinner>
+                                    </div>}
                             </Row>
-                            {/* {isVisible &&
-                                <div onClick={scrollToTop}>
-                                    <img src='https://i.postimg.cc/44Ytsk8Z/top-arrow-emoj.png' alt='Go to top' style={{ display: 'block', marginLeft: 'auto', marginRight: '1rem' }} />
-                                </div>} */}
+
                         </Col>
                     </Row>
-
-
 
                 </Container>
 
@@ -384,7 +400,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                                     </Form.Group>
 
                                     <div className="d-grid gap-2">
-                                        <Button variant="primary" size="lg" onClick={() => {handleInsertProduct() , handleClickSnackBar()}} >
+                                        <Button variant="primary" size="lg" onClick={() => { handleInsertProduct(), handleClickSnackBar() }} >
                                             Insert this product
                                         </Button>
 
