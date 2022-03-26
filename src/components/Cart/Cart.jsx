@@ -307,7 +307,7 @@ const Cart = ({ cart, setProductInCart }) => {
 
 
                             </div>
-                            <div>
+                            <div style={{marginBottom : '3rem'}}>
                                 <h4 className="main"  style={{fontSize : '26px' , marginBottom : '0.5rem'}}>Cart Summary</h4>
                                 <div className="main" style={{fontSize : '22px' , marginBottom : '0.5rem'}}>
                                     <span>TOTAL: ({totalItems})</span>
