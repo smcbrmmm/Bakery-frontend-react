@@ -42,11 +42,16 @@ async function cancelOrder(order) {
         headers: {
             'Content-Type': 'application/json'
         },
-        //   body: JSON.stringify({
-        //     id: product.productId
-        //   })
     })
-    // .then(data => data.json())
+}
+
+async function updateStatusConfirm(order) {
+    return fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/order/update/status/confirm/' + order.orderId, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
 }
 
 const OrderSummarize = ({ order }) => {
@@ -64,7 +69,7 @@ const OrderSummarize = ({ order }) => {
     const [userId, setUserId] = useState(user ? user.id : "100")
     const [paymentSlip, setPaymentSlip] = useState("samut");
     const [files, setFile] = useState([]);
-    const [price2 , setPrice2] = useState(order.sumPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    const [price2, setPrice2] = useState(order.sumPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 
 
     useEffect(() => {
@@ -99,7 +104,7 @@ const OrderSummarize = ({ order }) => {
         // console.log(payment.length)
         // setNoPayment(payment.length)
     }, [infoOrder])
-    
+
     const handleCancelorder = async e => {
 
         const response = await cancelOrder({
@@ -112,11 +117,25 @@ const OrderSummarize = ({ order }) => {
 
     }
 
+    const handleUpdateStatusConfirm = async e => {
+
+        const response = await updateStatusConfirm({
+            orderId
+        });
+
+        setTimeout(() => {
+            window.location.href = "/summarize";
+        }, 500);
+
+    }
+
     const updateStatus = () => {
-        if(orderStatus === "Cancel"){
+        if (orderStatus === "Cancel") {
             handleCancelorder();
+        }else if(orderStatus === "Waiting for shipment"){
+            handleUpdateStatusConfirm();
         }
-        
+
     }
 
     const handleUploadSlip = async e => {
@@ -176,7 +195,7 @@ const OrderSummarize = ({ order }) => {
 
     const [orderStatus, setOrderStatus] = useState(order.status);
 
-    const [date , setDate] = useState(moment(order.date).format('YYYY-MM-DD'))
+    const [date, setDate] = useState(moment(order.date).format('YYYY-MM-DD'))
 
     const check2 = () => {
         return "samut";
@@ -205,12 +224,18 @@ const OrderSummarize = ({ order }) => {
                 <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'green' }}>{order.status}</TableCell>
                 : null
             }
+
+            {order.status === 'Confirm , Waiting for shipment' ?
+                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'orange' }}>{order.status}</TableCell>
+                : null
+            }
+
             {order.status === 'Shipping' ?
                 <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'violet' }}>{order.status} - {order.trackingNo}</TableCell>
                 : null
             }
 
-            <TableCell onClick={() => setSigntinModalShow(true)} align="right">{moment(order.date.slice(0,10)).format("D MMMM YYYY")}</TableCell>
+            <TableCell onClick={() => setSigntinModalShow(true)} align="right">{moment(order.date.slice(0, 10)).format("D MMMM YYYY")}</TableCell>
 
             <Modal className="cart-modal" show={signinModalShow}
                 onHide={() => setSigntinModalShow(false)}
@@ -236,6 +261,11 @@ const OrderSummarize = ({ order }) => {
                             : null
                         }
 
+                        {order.status === 'Confirm , Waiting for shipment' ?
+                            <h5 style={{ color: 'orange' }}> Status :  {order.status} </h5>
+                            : null
+                        }
+
                         {order.status === 'Shipping' ?
                             <h5 style={{ color: 'violet' }}> Status :  {order.status} - {order.trackingNo}</h5>
                             : null
@@ -243,7 +273,7 @@ const OrderSummarize = ({ order }) => {
 
                         {order.status === 'Order Canceled' ?
                             null :
-                            <Button hidden={order.hasPayment !== "no-slip" || isUpload} variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
+                            <Button hidden={order.hasPayment !== "no-slip" || isUpload || order.status === "Confirm , Waiting for shipment"} variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
                         }
 
                     </Modal.Title>
@@ -304,9 +334,9 @@ const OrderSummarize = ({ order }) => {
                             }
 
                             <Button hidden={order.status == 'Order Canceled'} variant="success" onClick={updateStatus}
-                            style={{ display : 'block' , marginLeft:'auto' , marginRight:'0px'}}  
-                            
-                            > 
+                                style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}
+
+                            >
                                 Confirm
                             </Button>
 

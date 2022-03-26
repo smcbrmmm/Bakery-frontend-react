@@ -182,6 +182,13 @@ const OrderDetail = ({ order, hid }) => {
                     : null
                 }
 
+
+                {hid === 'All' ?
+                    order.status === 'Confirm , Waiting for shipment'
+                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'orange' }} >  {order.orderId} - {status}  </h4> </a>) : null
+                    : null
+                }
+
                 {hid === 'All' ?
                     order.status === 'Shipping'
                         ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'black' }} >  {order.orderId} - {status} - {order.trackingNo} </h4> </a>) : null
@@ -203,6 +210,12 @@ const OrderDetail = ({ order, hid }) => {
                 {hid === 'In Process Order' ?
                     order.status === 'Waiting for Confirmation'
                         ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'green' }} >  {order.orderId} - {status}  </h4> </a>) : null
+                    : null
+                }
+
+                {hid === 'In Process Order' ?
+                    order.status === 'Confirm , Waiting for shipment'
+                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'orange' }} >  {order.orderId} - {status}  </h4> </a>) : null
                     : null
                 }
 
