@@ -52,7 +52,7 @@ export default function SignupLine({ email, signinModal, accessToken }) {
                 .then((value) => {
                     localStorage.setItem('accessToken', response['accessToken']);
                     localStorage.setItem('user', JSON.stringify(response['user']));
-                    window.location.href = "/order";
+                    window.location.href = "/products";
                 });
         } else {
             swal("Failed", response.message, "error");

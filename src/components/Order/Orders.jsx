@@ -17,6 +17,10 @@ import {
 const Orders = ({ products, setProductList, setProductInCart }) => {
     const user = JSON.parse(localStorage.getItem('user'));
 
+    if(!user){
+        window.location.href = "/lineloginmobile";
+    }
+
     const [order, setOrder] = useState([]);
     const [inCart, setInCart] = useState();
     const [sizeOfOrder , setSizeOfOrder] = useState(0);

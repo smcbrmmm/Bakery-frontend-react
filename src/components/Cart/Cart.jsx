@@ -70,6 +70,9 @@ const Cart = ({ cart, setProductInCart }) => {
 
     const user = JSON.parse(localStorage.getItem('user'));
 
+    if(!user){
+        window.location.href = "/lineloginmobile";
+    }
 
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalItems, setTotalItems] = useState(0);
