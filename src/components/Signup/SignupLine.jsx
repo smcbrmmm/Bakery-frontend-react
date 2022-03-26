@@ -68,7 +68,7 @@ export default function SignupLine({ email, signinModal, accessToken }) {
 
             <MediaQuery minWidth={1224}>
                 <Container hidden={!signinModal}>
-                    <h3 className="" style={{ textAlign: 'center' , marginBottom :'2rem'}}> Create your account</h3>
+                    <h2 className="" style={{ textAlign: 'center' , marginBottom :'2rem'}}> Create your account</h2>
 
                     <MediaQuery minWidth={1224} >
                         <div style={{ display : 'flex' , justifyContent:'center' , justifyItems : 'center'}}>
