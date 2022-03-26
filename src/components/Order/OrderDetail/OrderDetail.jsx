@@ -6,7 +6,7 @@ import InfoOfOrderDetail from "./InfoOfOrderDetail/InfoOfOrderDetail"
 import MediaQuery from 'react-responsive'
 
 async function cancelOrder(order) {
-    return fetch('https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/order/cancel/' + order.orderId, {
+    return fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/order/cancel/' + order.orderId, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ async function updateOrder(order) {
 
     console.log(order)
 
-    return fetch('https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/payment/upload', {
+    return fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/payment/upload', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -53,19 +53,19 @@ const OrderDetail = ({ order, hid }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                'https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
+                'https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
             );
 
             const result2 = await axios(
-                'https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/order/getSumPrice/' + order.orderId,
+                'https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/order/getSumPrice/' + order.orderId,
             );
 
             const result3 = await axios(
-                'https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/address/orderAddress/' + order.addressId,
+                'https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/address/orderAddress/' + order.addressId,
             );
 
             // const result4 = await axios(
-            //     'https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/payment/getPayment/' + order.orderId,
+            //     'https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/payment/getPayment/' + order.orderId,
             // );
 
             // console.log(result4)

@@ -33,7 +33,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 async function addProduct(product) {
     console.log(product)
-    return fetch('https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/products/update', {
+    return fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/products/update', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -101,7 +101,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
 
     useEffect(() => {
         // Update the document title using the browser API
-        fetch('https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/products/allProducts', {
+        fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/products/allProducts', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -110,7 +110,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
             .then(data => data.json())
             .then(data => setProductList(data))
             
-        fetch('https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/cart/inCart/' + userId, {
+        fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/cart/inCart/' + userId, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

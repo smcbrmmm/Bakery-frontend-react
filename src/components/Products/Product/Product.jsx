@@ -25,7 +25,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 async function deleteProduct(product) {
   console.log(product)
-  return fetch('https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/products/delete', {
+  return fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/products/delete', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ async function deleteProduct(product) {
 
 async function insertProduct(product) {
   console.log(product)
-  return fetch('https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/cart/inCart/insert', {
+  return fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/cart/inCart/insert', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ async function insertProduct(product) {
 
 async function updateProduct(product) {
   console.log(product)
-  return fetch('https://22ce-2405-9800-b600-6272-c873-ef36-e159-44b6.ngrok.io/api/products/update', {
+  return fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/products/update', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -164,8 +164,6 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
     }, 1000);
 
   }
-
-
 
 
   const onSelectFile = e => {
