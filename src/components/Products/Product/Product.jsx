@@ -137,9 +137,9 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
       userId, productId
     });
 
-    setTimeout(() => {
-      window.location.href = "/products";
-    }, 1000);
+    // setTimeout(() => {
+    //   window.location.href = "/products";
+    // }, 1000);
 
   }
 
