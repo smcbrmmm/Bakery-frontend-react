@@ -12,7 +12,7 @@ async function signup(user) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email: user.email , name : user.name})
+        body: JSON.stringify({ email: user.email , name : user.name , accessToken : user.accessToken})
     })
         .then(data => data.json())
 }
@@ -20,8 +20,6 @@ async function signup(user) {
 
 
 export default function SignupLine({ email, signinModal , accessToken }) {
-
-
 
     const [name, setName] = useState();
     const [password, setPassword] = useState("samut123");
@@ -42,7 +40,7 @@ export default function SignupLine({ email, signinModal , accessToken }) {
     const handleSubmit = async e => {
         e.preventDefault();
         const response = await signup({
-            email,password,name
+            email,password,name , accessToken
         });
 
         
