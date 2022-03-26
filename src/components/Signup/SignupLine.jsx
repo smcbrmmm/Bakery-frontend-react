@@ -12,14 +12,14 @@ async function signup(user) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email: user.email , name : user.name , accessToken : user.accessToken})
+        body: JSON.stringify({ email: user.email, name: user.name, accessToken: user.accessToken })
     })
         .then(data => data.json())
 }
 
 
 
-export default function SignupLine({ email, signinModal , accessToken }) {
+export default function SignupLine({ email, signinModal, accessToken }) {
 
     const [name, setName] = useState();
     const [password, setPassword] = useState("samut123");
@@ -40,10 +40,10 @@ export default function SignupLine({ email, signinModal , accessToken }) {
     const handleSubmit = async e => {
         e.preventDefault();
         const response = await signup({
-            email,password,name , accessToken
+            email, password, name, accessToken
         });
 
-        
+
         if ('accessToken' in response) {
             swal("Success", response.message, "success", {
                 buttons: false,
@@ -57,7 +57,7 @@ export default function SignupLine({ email, signinModal , accessToken }) {
         } else {
             swal("Failed", response.message, "error");
         }
-        
+
     }
 
 
@@ -68,35 +68,54 @@ export default function SignupLine({ email, signinModal , accessToken }) {
 
             <MediaQuery minWidth={1224}>
                 <Container hidden={!signinModal}>
-                    <h1 className=""> Create your Account</h1>
+                    <h1 className="" style={{ textAlign: 'center' }}> Create your account</h1>
 
-                    <div>
-                        <Form className="formSignin" >
-                            <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type="text" value={email} />
-                            </Form.Group>
-                            <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
-                                <Form.Label>Name</Form.Label>
-                                <Form.Control type="text" onChange={e => { setName(e.target.value) }} />
-                            </Form.Group>
-                            {/* <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" onChange={e => { setPassword(e.target.value) }} />
-                            </Form.Group>
-                            <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
-                                <Form.Label>Confirm Password</Form.Label>
-                                <Form.Control type="password" onChange={e => { setCfPassword(e.target.value) }} />
-                            </Form.Group> */}
+                    <MediaQuery minWidth={1224} >
+                        <div style={{ width : "60%"}}>
 
+                            <Form className="formSignin" >
+                                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                                    <Form.Label>Email</Form.Label>
+                                    <Form.Control type="text" value={email} disabled />
+                                </Form.Group>
+                                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                                    <Form.Label>Name</Form.Label>
+                                    <Form.Control type="text" onChange={e => { setName(e.target.value) }} />
+                                </Form.Group>
 
-                            <div className="d-grid gap-2">
-                                <Button variant="primary" size="lg" onClick={handleSubmit} >
-                                    Sign up
-                                </Button>
-                            </div>
-                        </Form>
-                    </div>
+                                <div className="d-grid gap-2">
+                                    <Button variant="primary" size="lg" onClick={handleSubmit} >
+                                        Sign up
+                                    </Button>
+                                </div>
+                            </Form>
+
+                        </div>
+                    </MediaQuery>
+
+                    <MediaQuery maxWidth={1224} >
+                        <div>
+
+                            <Form className="formSignin" >
+                                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                                    <Form.Label>Email</Form.Label>
+                                    <Form.Control type="text" value={email} disabled />
+                                </Form.Group>
+                                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                                    <Form.Label>Name</Form.Label>
+                                    <Form.Control type="text" onChange={e => { setName(e.target.value) }} />
+                                </Form.Group>
+
+                                <div className="d-grid gap-2">
+                                    <Button variant="primary" size="lg" onClick={handleSubmit} >
+                                        Sign up
+                                    </Button>
+                                </div>
+                            </Form>
+
+                        </div>
+                    </MediaQuery>
+
                 </Container>
             </MediaQuery>
 
