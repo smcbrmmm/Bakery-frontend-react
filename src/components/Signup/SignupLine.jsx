@@ -71,7 +71,7 @@ export default function SignupLine({ email, signinModal, accessToken }) {
                     <h1 className="" style={{ textAlign: 'center' }}> Create your account</h1>
 
                     <MediaQuery minWidth={1224} >
-                        <div style={{ width : "60%"}}>
+                        <div style={{ width : "40%" , textAlign : 'center' }}>
 
                             <Form className="formSignin" >
                                 <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
