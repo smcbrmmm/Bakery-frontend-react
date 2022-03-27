@@ -45,10 +45,12 @@ const ContactUsComponent = () => {
                         <GoogleMapReact
                             bootstrapURLKeys={{ key: 'AIzaSyBnEaWzZ7b4BVzDtSiIuJLx2iK6-CH75Yw', language: 'en' }}
                             defaultCenter={{ lat: 13.816659689024158, lng: 100.05297262248749 }}
-                            defaultZoom={17}>
+                            defaultZoom={19}
+                            
+                            >
                             <AnyReactComponent
-                                lat={13.8172596890244}
-                                lng={100.0527726224849}
+                                lat={13.8168493890244}
+                                lng={100.0529027224849}
                                 text="MyMom Bakery"
                             />
                         </GoogleMapReact>
