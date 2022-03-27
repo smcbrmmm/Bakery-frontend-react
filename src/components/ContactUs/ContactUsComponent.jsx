@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Row, Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade } from "react-bootstrap";
 import NavbarCom from '../Navbar/NavbarComponent'
 import GoogleMapReact from 'google-map-react';
+import './ContractUs.css'
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 
 // Redux
 import { connect } from "react-redux";
@@ -21,6 +23,22 @@ const ContactUsComponent = () => {
             <NavbarCom />
             <div className="content-wrap">
                 <h1 className="main" style={{ textAlign: 'center' }}>  Contact us </h1>
+
+
+                <Container>
+                    <div style={{ textAlign: 'center' }}>
+                        {/* <h4  style={{fontSize:'30px'}}> Mymom </h4> */}
+                        {/* <h4 className="main"  style={{fontSize:'26pxpx'}}> LOCATION </h4> */}
+                        <br></br>
+                        <br></br>
+                        <h4 className="thai-font" style={{ fontSize: '24px' }}> อยู่ด้านใน บี.เอ็น คาร์แคร์ </h4>
+                        <h4 className="thai-font" style={{ fontSize: '24px' }}> 132/10 ถ.ราชวิถี ต.พระปฐมเจดีย์ อ.เมือง จ.นครปฐม </h4>
+                        <br></br>
+                        <h4 className="main" style={{ fontSize: '24px' }}> <LocalPhoneIcon></LocalPhoneIcon> Tel : 081-8330125  </h4>
+                        <h4 className="main" style={{ fontSize: '22px' , marginTop : '-0.7rem' }}> K. Nares  </h4>
+                        <br></br>
+                    </div>
+                </Container>
 
                 <MediaQuery minWidth={1224}>
                     <Container style={{ height: '500px', width: '600px' }}>

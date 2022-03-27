@@ -242,10 +242,10 @@ const OrderSummarize = ({ order }) => {
                             : null
                         }
 
-                        {order.status === 'Order Canceled' ?
+                        {/* {order.status === 'Order Canceled' ?
                             null :
                             <Button hidden={order.hasPayment !== "no-slip" || isUpload} variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
-                        }
+                        } */}
 
                     </Modal.Title>
                 </Modal.Header>
