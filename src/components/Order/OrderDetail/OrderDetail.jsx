@@ -401,7 +401,9 @@ const OrderDetail = ({ order, hid }) => {
 
                                 {order.status === "Order Canceled" ?
                                     null :
-                                    <Form.Group controlId="formFile" className="mb-3" hidden={order.hasPayment !== "no-slip" || isUpload}>
+                                    <Form.Group controlId="formFile" className="mb-3" hidden={order.hasPayment !== "no-slip" || isUpload
+                                    || order.status === 'Confirm , Waiting for shipment' || order.status === 'Shipping' || order.status === 'Success'
+                                    }>
                                         <Form.Label> Upload your slip</Form.Label>
                                         <Form.Control type="file" onChange={(e) => { handleFileUpload(e); onSelectFile(e) }} />
                                     </Form.Group>
