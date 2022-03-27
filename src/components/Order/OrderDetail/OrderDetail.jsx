@@ -330,6 +330,10 @@ const OrderDetail = ({ order, hid }) => {
                                     <h5 style={{ fontSize: '16px', color: 'green' }}> You already upload your slip. Please waiting for confirmation.</h5> : null
                                 }
 
+                                {order.status === 'Confirm , Waiting for shipment' ?
+                                    <h5 style={{ fontSize: '14px', color: 'green' }}> Order has been confirmed. Waiting for shipping.</h5> : null
+                                }
+
                             </Col>
                         </Row>
                     </MediaQuery>
@@ -376,10 +380,10 @@ const OrderDetail = ({ order, hid }) => {
                                 }
 
                                 {order.status === 'Confirm , Waiting for shipment' ?
-                                    <h5 style={{ fontSize: '14px', color: 'green' }}> You already upload your slip. Please waiting for confirmation.</h5> : null
+                                    <h5 style={{ fontSize: '14px', color: 'green' }}> Order has been confirmed. Waiting for shipping.</h5> : null
                                 }
 
-                                {order.status}
+
 
 
 
