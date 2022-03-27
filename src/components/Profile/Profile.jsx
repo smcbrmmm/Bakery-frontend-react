@@ -132,6 +132,8 @@ const Profile = () => {
       event.stopPropagation();
     }
 
+    setValidated(true);
+
   };
 
 
