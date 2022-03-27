@@ -44,16 +44,20 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
 
             setOrder(result.data)
 
-            for (var i = 0; i < Object.keys(result.data).length ; i++) {
-                console.log(order[i])
-            }
-           
-
         };
 
         fetchData()
 
     }, []);
+
+
+
+
+    useEffect(() => {
+        for(var i=0; i < order.length ;i ++){
+            console.log(order[i])
+        }
+    } , order)
 
     const categoryFilter = (category) => {
 
