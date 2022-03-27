@@ -321,7 +321,8 @@ const Profile = () => {
               <Form.Control required type="text" onChange={e => { setPostal(e.target.value) }} />
             </Form.Group>
             <div className="d-grid gap-2">
-              <Button variant="primary" size="lg"
+              <Button variant="primary" size="lg" type="submit"
+              // onClick={handleSubmitForm}
               // onClick={() => { handleSubmit(); handleClick() }
               // }
               >
