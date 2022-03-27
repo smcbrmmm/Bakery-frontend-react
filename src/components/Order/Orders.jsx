@@ -55,10 +55,13 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
 
     useEffect(() => {
         for(var i=0; i < order.length ;i ++){
-            if(order[i].userId === user.id){
-                size++;
-            }
+            // if(order[i].userId === user.id){
+            //     size++;
+            // }
+            console.log(typeof order[i].userId)
+            console.log(typeof user.id )
         }
+        console.log(size)
     } , [order])
 
     const categoryFilter = (category) => {
