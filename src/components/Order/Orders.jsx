@@ -17,13 +17,15 @@ import {
 const Orders = ({ products, setProductList, setProductInCart }) => {
     const user = JSON.parse(localStorage.getItem('user'));
 
-    if(!user){
+    if (!user) {
         window.location.href = "/lineloginmobile";
     }
 
     const [order, setOrder] = useState([]);
     const [inCart, setInCart] = useState();
-    const [sizeOfOrder , setSizeOfOrder] = useState(0);
+    const [sizeOfOrder, setSizeOfOrder] = useState(0);
+
+    var size = 0;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -41,7 +43,13 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
                 .then(data => setProductInCart(data))
 
             setOrder(result.data)
-            
+            console.log(result.data)
+            for (var i = 0; i < result.data.lenght; i++) {
+                if (result.data[i].user_id === user.id) {
+                    size += 1;
+                }
+            }
+
         };
 
         fetchData()
@@ -102,18 +110,23 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
                         </Row>
                     </MediaQuery>
                     <MediaQuery maxWidth={1224}>
-                        <h1 className="main" style={{ textAlign: 'center'  }}>  Order Status </h1>
+                        <h1 className="main" style={{ textAlign: 'center' }}>  Order Status </h1>
                         <Row>
                             {/* <h3 className="main" style={{ textAlign: 'center' }}>  History </h3> */}
                         </Row>
 
                         <Row>
-                            
-                            {order.map((order) => (
-                                user.id === order.userId ?
-                                    (<OrderDetail key={order.orderId} order={order} hid={category} />)
-                                    : null
-                            ))}
+
+                            {size === 0 ? "you need to order"
+                                :
+                                order.map((order) => (
+                                    user.id === order.userId ?
+                                        (<OrderDetail key={order.orderId} order={order} hid={category} />)
+                                        : null
+                                ))
+
+
+                            }
 
                         </Row>
                     </MediaQuery>
