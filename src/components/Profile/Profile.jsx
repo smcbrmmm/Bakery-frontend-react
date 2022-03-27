@@ -203,6 +203,7 @@ const Profile = () => {
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Place</Form.Label>
               <Form.Control required type="text" onChange={e => { setPlace(e.target.value) }} />
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Reciever Name</Form.Label>
@@ -226,6 +227,9 @@ const Profile = () => {
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Address</Form.Label>
               <Form.Control required as="textarea" onChange={e => { setAddesses(e.target.value) }} rows={3} />
+              <Form.Control.Feedback type="invalid">
+                Please choose a username.
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Province</Form.Label>
@@ -317,7 +321,7 @@ const Profile = () => {
               <Form.Control required type="text" onChange={e => { setPostal(e.target.value) }} />
             </Form.Group>
             <div className="d-grid gap-2">
-              <Button variant="primary" size="lg" 
+              <Button variant="primary" size="lg"
               // onClick={() => { handleSubmit(); handleClick() }
               // }
               >
