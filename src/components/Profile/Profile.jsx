@@ -135,7 +135,7 @@ const Profile = () => {
       console.log("samut")
     }
 
-    setValidated(true);
+    handleSubmit();
     
     
 
