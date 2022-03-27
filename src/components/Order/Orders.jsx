@@ -57,7 +57,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
         for(var i=0; i < order.length ;i ++){
             console.log(order[i])
         }
-    } , order)
+    } , [order])
 
     const categoryFilter = (category) => {
 
