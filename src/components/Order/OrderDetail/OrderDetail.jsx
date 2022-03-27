@@ -182,6 +182,11 @@ const OrderDetail = ({ order, hid }) => {
                     : null
                 }
 
+                {hid === 'All' ?
+                    order.status === 'Success'
+                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'green' }} >  {order.orderId} - {status}  </h4> </a>) : null
+                    : null
+                }
 
                 {hid === 'All' ?
                     order.status === 'Confirm , Waiting for shipment'
@@ -231,8 +236,13 @@ const OrderDetail = ({ order, hid }) => {
                     : null
                 }
 
+                {hid === 'Success Order' ?
+                    order.status === 'Success'
+                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'green' }} >  {order.orderId} - {status} </h4> </a>) : null
+                    : null
+                }
 
-
+                
                 {/* {order.orderId} # {order.status}  */}
 
             </h3>

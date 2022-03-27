@@ -41,6 +41,16 @@ async function updateStatusShipping(order) {
     })
 }
 
+
+async function updateStatusSuccess(order) {
+    return fetch('https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/order/update/status/success/' + order.orderId, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+}
+
 const OrderSummarize = ({ order }) => {
 
     const user = JSON.parse(localStorage.getItem('user'));
@@ -128,6 +138,18 @@ const OrderSummarize = ({ order }) => {
 
     }
 
+    const handleUpdateStatusSuccess = async e => {
+
+        const response = await updateStatusSuccess({
+            orderId
+        });
+
+        setTimeout(() => {
+            window.location.href = "/summarize";
+        }, 500);
+
+    }
+
 
 
     const updateStatus = () => {
@@ -137,6 +159,8 @@ const OrderSummarize = ({ order }) => {
             handleUpdateStatusConfirm();
         } else if (orderStatus === "Shipping") {
             handleUpdateStatusShipping();
+        } else if (orderStatus === "Success") {
+            handleUpdateStatusSuccess();
         }
 
     }
@@ -247,6 +271,11 @@ const OrderSummarize = ({ order }) => {
                 : null
             }
 
+            {order.status === 'Success' ?
+                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'green' }}>{order.status}</TableCell>
+                : null
+            }
+
             {order.status === 'Shipping' ?
                 <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'violet' }}>{order.status} - {order.trackingNo}</TableCell>
                 : null
@@ -285,6 +314,11 @@ const OrderSummarize = ({ order }) => {
 
                         {order.status === 'Shipping' ?
                             <h5 style={{ color: 'violet' }}> Status :  {order.status} - {order.trackingNo}</h5>
+                            : null
+                        }
+
+                        {order.status === 'Success' ?
+                            <h5 style={{ color: 'green' }}> Status :  {order.status} </h5>
                             : null
                         }
 
@@ -352,7 +386,7 @@ const OrderSummarize = ({ order }) => {
                                 </Form.Group> : null
                             }
 
-                            <Button hidden={order.status == 'Order Canceled'} variant="primary" onClick={() => {updateStatus() , handleClickSnackBar()}}
+                            <Button hidden={order.status == 'Order Canceled'} variant="primary" onClick={() => { updateStatus(), handleClickSnackBar() }}
                                 style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}
 
                             >
