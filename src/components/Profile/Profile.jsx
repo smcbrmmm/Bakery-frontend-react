@@ -133,6 +133,7 @@ const Profile = () => {
     }
 
     setValidated(true);
+    console.log(validated)
 
   };
 
