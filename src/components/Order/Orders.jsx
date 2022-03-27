@@ -44,12 +44,16 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
 
             setOrder(result.data)
             // console.log(result.data)
-            for (var i = 0; i < result.data.lenght; i++) {
-                console.log(result.data[i])
-                if (result.data[i].userId === user.id) {
-                    // console.log(result.data[i])
-                }
+
+            for(ob in result.data){
+                console.log(ob)
             }
+            // for (var i = 0; i < result.data.lenght; i++) {
+            //     console.log(result.data[i])
+            //     if (result.data[i].userId === user.id) {
+            //         // console.log(result.data[i])
+            //     }
+            // }
             console.log(size)
 
         };
