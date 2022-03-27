@@ -45,7 +45,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
             setOrder(result.data)
             // console.log(result.data)
 
-            console.log(typeof result.data)
+            console.log(Object.keys(result.data).length)
 
         };
 
