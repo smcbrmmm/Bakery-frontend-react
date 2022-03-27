@@ -59,7 +59,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
             //     size++;
             // }
             if (order[i].userId === user.id) {
-                setSize(size++)
+                setSize(1)
             }
 
         }
