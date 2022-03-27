@@ -190,32 +190,34 @@ const Profile = () => {
           <Form className="formSignin" >
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Place</Form.Label>
-              <Form.Control type="text" onChange={e => { setPlace(e.target.value) }} />
+              <Form.Control required type="text" onChange={e => { setPlace(e.target.value) }} />
             </Form.Group>
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Reciever Name</Form.Label>
-              <Form.Control type="text" onChange={e => { setRecieverName(e.target.value) }} />
+              <Form.Control required type="text" onChange={e => { setRecieverName(e.target.value) }} />
             </Form.Group>
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Reciever Tel#</Form.Label>
-              <Form.Control type="text" onKeyPress={(event) => {
+              <Form.Control required type="text" onKeyPress={(event) => {
                 if (!/[0-9]/.test(event.key)) {
                   event.preventDefault();
                 }
               }} 
-              onChange={e => { setRecieverTel(e.target.value) }} />
+              onChange={e => { setRecieverTel(e.target.value) }} 
+              maxLength="10"
+              />
             </Form.Group>
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>House Number</Form.Label>
-              <Form.Control type="text" onChange={e => { setHouseNo(e.target.value) }} />
+              <Form.Control required type="text" onChange={e => { setHouseNo(e.target.value) }} />
             </Form.Group>
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Address</Form.Label>
-              <Form.Control as="textarea" onChange={e => { setAddesses(e.target.value) }} rows={3} />
+              <Form.Control required as="textarea" onChange={e => { setAddesses(e.target.value) }} rows={3} />
             </Form.Group>
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Province</Form.Label>
-              <Form.Select aria-label="Default select example" onChange={e => { setProvince(e.target.value) }}>
+              <Form.Select required aria-label="Default select example" onChange={e => { setProvince(e.target.value) }}>
                 <option value="same"></option>
                 <option value="Bangkok">Bangkok</option>
                 <option value="Krabi">Krabi </option>
@@ -300,7 +302,7 @@ const Profile = () => {
 
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Postal</Form.Label>
-              <Form.Control type="text" onChange={e => { setPostal(e.target.value) }} />
+              <Form.Control required type="text" onChange={e => { setPostal(e.target.value) }} />
             </Form.Group>
             <div className="d-grid gap-2">
               <Button variant="primary" size="lg" onClick={() => { handleSubmit(); handleClick() }}>
