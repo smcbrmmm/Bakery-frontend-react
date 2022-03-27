@@ -205,7 +205,7 @@ const Profile = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form className="formSignin" validated={validated} onSubmit={() => { handleSubmit(); handleClick() }} >
+          <Form className="formSignin" validated={validated} onSubmit={() => { handleSubmit(); }} >
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Place</Form.Label>
               <Form.Control required type="text" onChange={e => { setPlace(e.target.value) }} />
@@ -324,7 +324,7 @@ const Profile = () => {
 
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Postal</Form.Label>
-              <Form.Control required type="text" onChange={e => { setPostal(e.target.value) }} />
+              <Form.Control maxLength={5} required type="text" onChange={e => { setPostal(e.target.value) }} />
             </Form.Group>
             <div className="d-grid gap-2">
               <Button variant="primary" size="lg" type="submit"
