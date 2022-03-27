@@ -240,6 +240,7 @@ const Profile = () => {
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Province</Form.Label>
               <Form.Select required aria-label="Default select example" onChange={e => { setProvince(e.target.value) }}>
+                <option >Please select</option>
                 <option value="Bangkok">Bangkok</option>
                 <option value="Krabi">Krabi </option>
                 <option value="Kanchanaburi">Kanchanaburi </option>
