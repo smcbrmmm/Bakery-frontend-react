@@ -25,7 +25,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
     const [inCart, setInCart] = useState();
     const [sizeOfOrder, setSizeOfOrder] = useState(0);
 
-    var size = -1;
+    const [size , setSize] = useState(-1)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -59,7 +59,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
             //     size++;
             // }
             if (order[i].userId === user.id) {
-                size++;
+                setSize(size++)
             }
 
         }
@@ -131,7 +131,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
 
                         <Row>
 
-                            {size === 0 ?
+                            {size < 0 ?
                                 <h2 style={{textAlign:'center'}}> You don't have order.</h2>
                                 :
                                 order.map((order) => (
