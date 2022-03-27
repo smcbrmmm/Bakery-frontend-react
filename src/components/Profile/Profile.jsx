@@ -198,7 +198,7 @@ const Profile =()=> {
             </Form.Group>
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Reciever Tel#</Form.Label>
-              <Form.Control type="text" onChange={e => { setRecieverTel(e.target.value) }} />
+              <Form.Control type="text" pattern='[0-9]*' onChange={e => { setRecieverTel(e.target.value) }} />
             </Form.Group>
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>House Number</Form.Label>
