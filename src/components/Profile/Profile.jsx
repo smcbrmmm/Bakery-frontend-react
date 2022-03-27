@@ -125,20 +125,21 @@ const Profile = () => {
 
   const [validated, setValidated] = useState(false);
 
-  // const handleSubmitForm = async (event) => {
-  //   const form = event.currentTarget;
+  const handleSubmitForm = async (event) => {
+    const form = event.currentTarget;
     
-  //   if (form.checkValidity() === false) {
-  //     event.preventDefault();
-  //     event.stopPropagation();
-      
-  //   }
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }else{
+      console.log("samut")
+    }
 
-  //   setValidated(true);
+    setValidated(true);
     
-  //   handleSubmit();
+    
 
-  // };
+  };
 
 
   return (
@@ -204,7 +205,7 @@ const Profile = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form className="formSignin" validated={true} >
+          <Form className="formSignin" validated={validated} onSubmit={handleSubmitForm} >
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Place</Form.Label>
               <Form.Control required type="text" onChange={e => { setPlace(e.target.value) }} />
@@ -325,7 +326,7 @@ const Profile = () => {
               <Form.Control required type="text" onChange={e => { setPostal(e.target.value) }} />
             </Form.Group>
             <div className="d-grid gap-2">
-              <Button variant="primary" size="lg" 
+              <Button variant="primary" size="lg" type="submit"
               // onClick={handleSubmitForm}
               // onClick={() => { handleSubmit(); handleClick() }}
               >
