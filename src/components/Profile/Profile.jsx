@@ -127,13 +127,14 @@ const Profile = () => {
 
   const handleSubmitForm = async (event) => {
     const form = event.currentTarget;
+    console.log(form)
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
 
     setValidated(true);
-    console.log(validated)
+    
 
   };
 
@@ -236,7 +237,6 @@ const Profile = () => {
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Province</Form.Label>
               <Form.Select required aria-label="Default select example" onChange={e => { setProvince(e.target.value) }}>
-                <option value="same"></option>
                 <option value="Bangkok">Bangkok</option>
                 <option value="Krabi">Krabi </option>
                 <option value="Kanchanaburi">Kanchanaburi </option>
