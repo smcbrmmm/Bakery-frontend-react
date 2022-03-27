@@ -43,9 +43,14 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
                 .then(data => setProductInCart(data))
 
             setOrder(result.data)
-            // console.log(result.data)
 
-            console.log(Object.keys(result.data).length)
+            for (var i = 0; i < Object.keys(result.data).length ; i++) {
+                
+                if (result.data[i].userId === user.id) {
+                    size++;
+                }
+            }
+           
 
         };
 
