@@ -244,6 +244,10 @@ const OrderSummarize = ({ order }) => {
         setOpenAddModal(true);
     };
 
+    const handleClickTracking = () => {
+        window.location.href = "https://track.thailandpost.co.th/";
+    }
+
     return (
 
         <TableRow
@@ -313,7 +317,12 @@ const OrderSummarize = ({ order }) => {
                         }
 
                         {order.status === 'Shipping' ?
-                            <h5 style={{ color: 'violet' }}> Status :  {order.status} - {order.trackingNo}</h5>
+                            (
+                                <div>
+                                    <h5 style={{ color: 'violet' }}> Status :  {order.status} - <a className="trackingNo" onClick={handleClickTracking}>{order.trackingNo}</a></h5>
+                                    
+                                </div>
+                            )
                             : null
                         }
 

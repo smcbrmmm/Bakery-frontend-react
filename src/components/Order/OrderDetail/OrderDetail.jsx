@@ -157,6 +157,10 @@ const OrderDetail = ({ order, hid }) => {
         console.log(postImage)
     }, [postImage])
 
+    const handleClickTracking = () => {
+        window.location.href = "https://track.thailandpost.co.th/";
+    }
+
 
     return (
 
@@ -232,7 +236,7 @@ const OrderDetail = ({ order, hid }) => {
 
                 {hid === 'In Process Order' ?
                     order.status === 'Shipping'
-                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'black' }} >  {order.orderId} - {status} - {order.trackingNo}  </h4> </a>) : null
+                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'black' }} >  {order.orderId} - {status} - <a className="trackingNo" onClick={handleClickTracking}>{order.trackingNo}</a>  </h4> </a>) : null
                     : null
                 }
 
@@ -274,7 +278,7 @@ const OrderDetail = ({ order, hid }) => {
                         }
 
                         {order.status === 'Shipping' ?
-                            <h5 style={{ color: 'violet' }}> Status :  {order.status} </h5>
+                            <h5 style={{ color: 'violet' }}> Status :  {order.status} - <a className="trackingNo" onClick={handleClickTracking}>{order.trackingNo}</a> </h5>
                             : null
                         }
 
