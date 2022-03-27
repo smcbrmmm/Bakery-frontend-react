@@ -111,6 +111,7 @@ const Profile = () => {
 
   const handleSubmit = async e => {
     // e.preventDefault();
+
     const response = await saveAddress({
       userId,
       place,
@@ -127,7 +128,7 @@ const Profile = () => {
 
   // const handleSubmitForm = async (event) => {
   //   const form = event.currentTarget;
-    
+
   //   if (form.checkValidity() === false) {
   //     event.preventDefault();
   //     event.stopPropagation();
@@ -136,8 +137,8 @@ const Profile = () => {
   //   }
 
   //   handleSubmit();
-    
-    
+
+
 
   // };
 
@@ -324,7 +325,14 @@ const Profile = () => {
 
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Postal</Form.Label>
-              <Form.Control maxLength={5} required type="text" onChange={e => { setPostal(e.target.value) }} />
+              <Form.Control maxLength={5} required type="text"
+                onKeyPress={(event) => {
+                  if (!/[0-9]/.test(event.key)) {
+                    event.preventDefault();
+                  }
+                }}
+                onChange={e => { setPostal(e.target.value) }}
+              />
             </Form.Group>
             <div className="d-grid gap-2">
               <Button variant="primary" size="lg" type="submit"
