@@ -253,10 +253,10 @@ const OrderDetail = ({ order, hid }) => {
                             : <h5> Status :  {status} </h5>
                         }
 
-                        {order.status === 'Confirm , Waiting for shipment' ?
+                        {/* {order.status === 'Confirm , Waiting for shipment' ?
                             <h5 style={{ color: 'orange' }}> Status :  {order.status} </h5>
                             : <h5> Status :  {status} </h5>
-                        }
+                        } */}
 
                         {order.status === 'Shipping' ?
                             <h5 style={{ color: 'violet' }}> Status :  {order.status} </h5>
