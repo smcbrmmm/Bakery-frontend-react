@@ -54,17 +54,17 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
 
 
     useEffect(() => {
-        for(var i=0; i < order.length ;i ++){
+        for (var i = 0; i < order.length; i++) {
             // if(order[i].userId === user.id){
             //     size++;
             // }
-            if(order[i].userId === user.id){
+            if (order[i].userId === user.id) {
                 console.log(order[i].userId)
             }
 
         }
         console.log(size)
-    } , [order])
+    }, [order])
 
     const categoryFilter = (category) => {
 
@@ -111,11 +111,15 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
                             <Col sm={8}>
                                 <h2 className="main" style={{ textAlign: 'left', marginTop: '2rem', marginBottom: '2rem' }}>  History Detail </h2>
 
-                                {order.map((order) => (
-                                    user.id === order.userId ?
-                                        (<OrderDetail key={order.orderId} order={order} hid={category} />)
-                                        : null
-                                ))}
+                                {size === 0 ?
+                                    <h2> You don't have order.</h2>
+                                    :
+                                    order.map((order) => (
+                                        user.id === order.userId ?
+                                            (<OrderDetail key={order.orderId} order={order} hid={category} />)
+                                            : null
+                                    ))
+                                }
                             </Col>
                         </Row>
                     </MediaQuery>
@@ -127,16 +131,14 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
 
                         <Row>
 
-                            {size === 0 ? 
-                                <h1> you need to order</h1>
+                            {size === 0 ?
+                                <h2> You don't have order.</h2>
                                 :
                                 order.map((order) => (
                                     user.id === order.userId ?
                                         (<OrderDetail key={order.orderId} order={order} hid={category} />)
                                         : null
                                 ))
-
-
                             }
 
                         </Row>
