@@ -205,7 +205,7 @@ const Profile = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form className="formSignin" validated={validated}  >
+          <Form className="formSignin" validated={validated} onSubmit={() => { handleSubmit(); handleClick() }} >
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Place</Form.Label>
               <Form.Control required type="text" onChange={e => { setPlace(e.target.value) }} />
