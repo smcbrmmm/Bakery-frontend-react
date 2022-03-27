@@ -132,15 +132,6 @@ const Profile = () => {
       event.stopPropagation();
     }
 
-    const response = await saveAddress({
-      userId,
-      place,
-      recieverName, recieverTel, houseNumber, province, postal, addesses
-    });
-
-    setTimeout(() => {
-      window.location.href = "/profile";
-    }, 1000);
   };
 
 
