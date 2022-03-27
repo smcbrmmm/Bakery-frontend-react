@@ -289,7 +289,9 @@ const OrderDetail = ({ order, hid }) => {
 
                         {order.status === 'Order Canceled' ?
                             null :
-                            <Button hidden={order.hasPayment !== "no-slip" || isUpload} variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
+                            <Button hidden={order.hasPayment !== "no-slip" || isUpload || order.status !== 'Confirm , Waiting for shipment' 
+                            || order.status !== 'Shipping' || order.status !== 'Success' 
+                            } variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
                         }
 
 
