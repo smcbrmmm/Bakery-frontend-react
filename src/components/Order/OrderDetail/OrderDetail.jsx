@@ -242,7 +242,7 @@ const OrderDetail = ({ order, hid }) => {
                     : null
                 }
 
-                
+
                 {/* {order.orderId} # {order.status}  */}
 
             </h3>
@@ -411,6 +411,14 @@ const OrderDetail = ({ order, hid }) => {
 
                                 {order.status === 'Confirm , Waiting for shipment' ?
                                     <h5 style={{ fontSize: '14px', color: 'green' }}> Order has been confirmed. Waiting for shipping.</h5> : null
+                                }
+
+                                {order.status === 'Confirm , Waiting for shipment' ?
+                                    <h5 style={{ fontSize: '14px', color: 'green' }}> Order has been shiping.</h5> : null
+                                }
+
+                                {order.status === 'Success' ?
+                                    <h5 style={{ fontSize: '14px', color: 'green' }}> Order has been successed.</h5> : null
                                 }
 
 
