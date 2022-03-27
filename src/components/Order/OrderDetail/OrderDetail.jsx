@@ -250,22 +250,22 @@ const OrderDetail = ({ order, hid }) => {
 
                         {order.status === 'Order Canceled' ?
                             <h5 style={{ color: 'red' }}> Status :  {order.status} </h5>
+                            : null
+                        }
+
+                        {order.status === 'Confirm , Waiting for shipment' ?
+                            <h5 style={{ color: 'orange' }}> Status :  {order.status} </h5>
                             : <h5> Status :  {status} </h5>
                         }
 
-                        {/* {order.status === 'Confirm , Waiting for shipment' ?
-                            <h5 style={{ color: 'orange' }}> Status :  {order.status} </h5>
-                            : <h5> Status :  {status} </h5>
-                        } */}
-
                         {order.status === 'Shipping' ?
                             <h5 style={{ color: 'violet' }}> Status :  {order.status} </h5>
-                            : <h5> Status :  {status} </h5>
+                            : null
                         }
 
                         {order.status === 'Success' ?
                             <h5 style={{ color: 'green' }}> Status :  {order.status} </h5>
-                            : <h5> Status :  {status} </h5>
+                            : null
                         }
 
                         {order.status === 'Order Canceled' ?
