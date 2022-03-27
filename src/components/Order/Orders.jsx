@@ -46,7 +46,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
             // console.log(result.data)
 
             for(var ob in result.data){
-                console.log(ob)
+                console.log(typeof ob)
             }
             // for (var i = 0; i < result.data.lenght; i++) {
             //     console.log(result.data[i])
