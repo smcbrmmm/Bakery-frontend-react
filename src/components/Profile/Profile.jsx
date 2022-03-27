@@ -125,14 +125,22 @@ const Profile = () => {
 
   const [validated, setValidated] = useState(false);
 
-  const handleSubmitForm = (event) => {
+  const handleSubmitForm = async (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
 
-    setValidated(true);
+    const response = await saveAddress({
+      userId,
+      place,
+      recieverName, recieverTel, houseNumber, province, postal, addesses
+    });
+
+    setTimeout(() => {
+      window.location.href = "/profile";
+    }, 1000);
   };
 
 
