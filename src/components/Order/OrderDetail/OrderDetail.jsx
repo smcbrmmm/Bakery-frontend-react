@@ -236,7 +236,7 @@ const OrderDetail = ({ order, hid }) => {
 
                 {hid === 'In Process Order' ?
                     order.status === 'Shipping'
-                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'black' }} >  {order.orderId} - {status} - <a className="trackingNo" onClick={handleClickTracking}>{order.trackingNo}</a>  </h4> </a>) : null
+                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'violet' }} >  {order.orderId} - {status} - <a className="trackingNo" onClick={handleClickTracking}>{order.trackingNo}</a>  </h4> </a>) : null
                     : null
                 }
 
@@ -344,7 +344,8 @@ const OrderDetail = ({ order, hid }) => {
 
                                 {order.status === "Order Canceled" ?
                                     null :
-                                    <Form.Group controlId="formFile" className="mb-3" hidden={order.hasPayment !== "no-slip" || isUpload}>
+                                    <Form.Group controlId="formFile" className="mb-3" hidden={order.hasPayment !== "no-slip" || isUpload 
+                                    || order.status === 'Confirm , Waiting for shipment' || order.status === 'Shipping' || order.status === 'Success'}>
                                         <Form.Label> Upload your slip</Form.Label>
                                         <Form.Control type="file" onChange={(e) => { handleFileUpload(e); onSelectFile(e) }} />
                                     </Form.Group>
@@ -352,7 +353,8 @@ const OrderDetail = ({ order, hid }) => {
 
                                 {order.status === 'Order Canceled' ?
                                     <h5 style={{ fontSize: '16px', color: 'red' }}> Your order has been canceled.</h5> :
-                                    <Button onClick={handleUploadSlip} hidden={order.hasPayment !== "no-slip" || isUpload} size="sm" variant="secondary"
+                                    <Button onClick={handleUploadSlip} hidden={order.hasPayment !== "no-slip" || isUpload
+                                    || order.status === 'Confirm , Waiting for shipment' || order.status === 'Shipping' || order.status === 'Success'} size="sm" variant="secondary"
                                         style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}
                                     >
                                         Upload </Button>
