@@ -25,7 +25,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
     const [inCart, setInCart] = useState();
     const [sizeOfOrder, setSizeOfOrder] = useState(0);
 
-    var size = 0;
+    var size = -1;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -111,7 +111,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
                             <Col sm={8}>
                                 <h2 className="main" style={{ textAlign: 'left', marginTop: '2rem', marginBottom: '2rem' }}>  History Detail </h2>
 
-                                {size === 0 ?
+                                {size < 0 ?
                                     <h2> You don't have order.</h2>
                                     :
                                     order.map((order) => (
