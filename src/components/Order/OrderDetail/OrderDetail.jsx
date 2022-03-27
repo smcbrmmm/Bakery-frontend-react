@@ -253,6 +253,11 @@ const OrderDetail = ({ order, hid }) => {
                             : null
                         }
 
+                        {order.status === 'Waiting for payment' ?
+                            <h5 style={{ color: 'blue' }}> Status :  {order.status} </h5>
+                            : null
+                        }
+
                         {order.status === 'Confirm , Waiting for shipment' ?
                             <h5 style={{ color: 'orange' }}> Status :  {order.status} </h5>
                             : null
