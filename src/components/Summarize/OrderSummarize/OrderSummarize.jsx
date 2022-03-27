@@ -7,37 +7,15 @@ import TableCell from '@mui/material/TableCell';
 import InfoOfOrderDetail from "../../Order/OrderDetail/InfoOfOrderDetail/InfoOfOrderDetail";
 import moment from 'moment';
 
-// async function cancelOrder(order) {
-//     return fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/order/cancel/' + order.orderId, {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         //   body: JSON.stringify({
-//         //     id: product.productId
-//         //   })
-//     })
-//     // .then(data => data.json())
-// }
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
-// async function updateOrder(order) {
-
-//     console.log(order)
-
-//     return fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/payment/upload', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({
-//             orderId : order.orderId , userId : order.userId , paymentSlip : order.postImage.myFile
-//         })
-//     })
-//     // .then(data => data.json())
-// }
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 async function cancelOrder(order) {
-    return fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/order/cancel/' + order.orderId, {
+    return fetch('https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/order/cancel/' + order.orderId, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -46,7 +24,16 @@ async function cancelOrder(order) {
 }
 
 async function updateStatusConfirm(order) {
-    return fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/order/update/status/confirm/' + order.orderId, {
+    return fetch('https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/order/update/status/confirm/' + order.orderId, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+}
+
+async function updateStatusShipping(order) {
+    return fetch('https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/order/update/status/shipping/' + order.orderId + "/" + order.trackingNo, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -75,19 +62,19 @@ const OrderSummarize = ({ order }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                'https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
+                'https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
             );
 
             const result2 = await axios(
-                'https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/order/getSumPrice/' + order.orderId,
+                'https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/order/getSumPrice/' + order.orderId,
             );
 
             const result3 = await axios(
-                'https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/address/orderAddress/' + order.addressId,
+                'https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/address/orderAddress/' + order.addressId,
             );
 
             // const result4 = await axios(
-            //     'https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/payment/getPayment/' + order.orderId,
+            //     'https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/payment/getPayment/' + order.orderId,
             // );
 
             setPrice(result2)
@@ -129,11 +116,27 @@ const OrderSummarize = ({ order }) => {
 
     }
 
+    const handleUpdateStatusShipping = async e => {
+
+        const response = await updateStatusShipping({
+            orderId, trackingNo
+        });
+
+        setTimeout(() => {
+            window.location.href = "/summarize";
+        }, 500);
+
+    }
+
+
+
     const updateStatus = () => {
         if (orderStatus === "Cancel") {
             handleCancelorder();
-        }else if(orderStatus === "Waiting for shipment"){
+        } else if (orderStatus === "Waiting for shipment") {
             handleUpdateStatusConfirm();
+        } else if (orderStatus === "Shipping") {
+            handleUpdateStatusShipping();
         }
 
     }
@@ -201,7 +204,21 @@ const OrderSummarize = ({ order }) => {
         return "samut";
     }
 
+    const [trackingNo, setTrackingNo] = useState();
 
+    const [openAddModal, setOpenAddModal] = useState(false);
+
+    const handleCloseSnackBar = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenAddModal(false)
+    };
+
+    const handleClickSnackBar = () => {
+        setOpenAddModal(true);
+    };
 
     return (
 
@@ -271,10 +288,12 @@ const OrderSummarize = ({ order }) => {
                             : null
                         }
 
-                        {order.status === 'Order Canceled' ?
+                        {/* {order.status === 'Order Canceled' ?
                             null :
-                            <Button hidden={order.hasPayment !== "no-slip" || isUpload || order.status === "Confirm , Waiting for shipment"} variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
-                        }
+                            <Button hidden={order.hasPayment !== "no-slip" || isUpload || order.status === "Confirm , Waiting for shipment"
+                                || order.status === "Shipping"}
+                                variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
+                        } */}
 
                     </Modal.Title>
                 </Modal.Header>
@@ -317,27 +336,27 @@ const OrderSummarize = ({ order }) => {
                             <br></br>
                             <hr hidden={order.status == 'Order Canceled'} ></hr>
                             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" hidden={order.status == 'Order Canceled'}>
-                                <span><Form.Label> <h5> Update Order Status </h5></Form.Label></span>
+                                <span><Form.Label> <h5> Current Order Status </h5></Form.Label></span>
                                 <Form.Select aria-label="Default select example" onChange={e => { setOrderStatus(e.target.value) }}>
                                     <option value={order.status}> {order.status} </option>
-                                    <option value="Waiting for shipment">Confirm , Waiting for shipping.</option>
+                                    <option value="Waiting for shipment" hidden={order.status === 'Confirm , Waiting for shipment'}>Confirm , Waiting for shipping.</option>
                                     <option value="Shipping" hidden={order.status === 'Shipping'}>Shipping</option>
-                                    <option value="Success">Success</option>
-                                    <option value="Cancel">Cancel</option>
+                                    <option value="Success" hidden={order.status === 'Success'}>Success</option>
+                                    <option value="Cancel" hidden={order.status === 'Cancel'}>Cancel</option>
                                 </Form.Select>
                             </Form.Group>
                             {orderStatus === 'Shipping' ?
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <Form.Label>Tracking No.</Form.Label>
-                                    <Form.Control type="text" placeholder="Tracking No." value={order.trackingNo} />
+                                    <Form.Control type="text" placeholder="Tracking No." defaultValue={order.trackingNo} onChange={e => { setTrackingNo(e.target.value) }} />
                                 </Form.Group> : null
                             }
 
-                            <Button hidden={order.status == 'Order Canceled'} variant="success" onClick={updateStatus}
+                            <Button hidden={order.status == 'Order Canceled'} variant="primary" onClick={() => {updateStatus() , handleClickSnackBar()}}
                                 style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}
 
                             >
-                                Confirm
+                                Submit
                             </Button>
 
                         </Col>
@@ -362,6 +381,13 @@ const OrderSummarize = ({ order }) => {
 
                 </Modal.Body>
             </Modal>
+
+            <Snackbar open={openAddModal} autoHideDuration={3000} onClose={handleCloseSnackBar}>
+                <Alert onClose={handleCloseSnackBar} severity="info" sx={{ width: '100%' }}>
+                    Order Status already changed.
+                </Alert>
+            </Snackbar>
+
         </TableRow>
     );
 }

@@ -9,7 +9,7 @@ import TableCell from '@mui/material/TableCell';
 import InfoOfOrderDetail from "../../Order/OrderDetail/InfoOfOrderDetail/InfoOfOrderDetail";
 import moment from 'moment';
 // async function cancelOrder(order) {
-//     return fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/order/cancel/' + order.orderId, {
+//     return fetch('https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/order/cancel/' + order.orderId, {
 //         method: 'POST',
 //         headers: {
 //             'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ import moment from 'moment';
 
 //     console.log(order)
 
-//     return fetch('https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/payment/upload', {
+//     return fetch('https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/payment/upload', {
 //         method: 'POST',
 //         headers: {
 //             'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ const OrderSummarize = ({ order }) => {
     const [userId, setUserId] = useState(user ? user.id : "100")
     const [paymentSlip, setPaymentSlip] = useState("samut");
     const [files, setFile] = useState([]);
-    const [price2 , setPrice2] = useState(order.sumPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    const [price2, setPrice2] = useState(order.sumPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 
     // if(price2.length >3){
     //     console.log(price2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
@@ -61,19 +61,19 @@ const OrderSummarize = ({ order }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                'https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
+                'https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
             );
 
             const result2 = await axios(
-                'https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/order/getSumPrice/' + order.orderId,
+                'https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/order/getSumPrice/' + order.orderId,
             );
 
             const result3 = await axios(
-                'https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/address/orderAddress/' + order.addressId,
+                'https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/address/orderAddress/' + order.addressId,
             );
 
             // const result4 = await axios(
-            //     'https://83b2-2405-9800-b600-6272-154b-d1ba-1f0e-3a84.ngrok.io/api/payment/getPayment/' + order.orderId,
+            //     'https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/payment/getPayment/' + order.orderId,
             // );
 
             // console.log(result4)
@@ -167,7 +167,7 @@ const OrderSummarize = ({ order }) => {
 
     const [orderStatus, setOrderStatus] = useState(order.status);
 
-    const [date , setDate] = useState(moment(order.date).format('YYYY-MM-DD'))
+    const [date, setDate] = useState(moment(order.date).format('YYYY-MM-DD'))
 
     // const check = () => {
     //     console.log(order.sumPrice)
@@ -200,12 +200,16 @@ const OrderSummarize = ({ order }) => {
                 <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'green' }}>{order.status}</TableCell>
                 : null
             }
+            {order.status === 'Confirm , Waiting for shipment' ?
+                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'orange' }}>{order.status}</TableCell>
+                : null
+            }
             {order.status === 'Shipping' ?
                 <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'violet' }}>{order.status} - {order.trackingNo}</TableCell>
                 : null
             }
 
-            <TableCell onClick={() => setSigntinModalShow(true)} align="right">{moment(order.date.slice(0,10)).format("D MMMM YYYY")}</TableCell>
+            <TableCell onClick={() => setSigntinModalShow(true)} align="right">{moment(order.date.slice(0, 10)).format("D MMMM YYYY")}</TableCell>
             <TableCell onClick={() => setSigntinModalShow(true)} align="right"> {order.sumPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} </TableCell>
 
             <Modal className="cart-modal" show={signinModalShow}
