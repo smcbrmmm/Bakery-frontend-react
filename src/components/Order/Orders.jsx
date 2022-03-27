@@ -112,7 +112,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
                                 <h2 className="main" style={{ textAlign: 'left', marginTop: '2rem', marginBottom: '2rem' }}>  History Detail </h2>
 
                                 {size === 0 ?
-                                    <h2 style={{textAlign:'center'}}> You don't have order.</h2>
+                                    <h2> You don't have order.</h2>
                                     :
                                     order.map((order) => (
                                         user.id === order.userId ?
