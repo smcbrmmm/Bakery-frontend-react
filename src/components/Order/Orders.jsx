@@ -58,8 +58,10 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
             // if(order[i].userId === user.id){
             //     size++;
             // }
-            console.log(typeof order[i].userId)
-            console.log(typeof user.id )
+            if(order[i].userId === user.id){
+                console.log(order[i].userId)
+            }
+
         }
         console.log(size)
     } , [order])
