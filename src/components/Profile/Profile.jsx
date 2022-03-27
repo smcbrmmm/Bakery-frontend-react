@@ -125,21 +125,21 @@ const Profile = () => {
 
   const [validated, setValidated] = useState(false);
 
-  const handleSubmitForm = async (event) => {
-    const form = event.currentTarget;
+  // const handleSubmitForm = async (event) => {
+  //   const form = event.currentTarget;
     
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }else{
-      console.log("samut")
-    }
+  //   if (form.checkValidity() === false) {
+  //     event.preventDefault();
+  //     event.stopPropagation();
+  //   }else{
+  //     console.log("samut")
+  //   }
 
-    handleSubmit();
+  //   handleSubmit();
     
     
 
-  };
+  // };
 
 
   return (
@@ -205,7 +205,7 @@ const Profile = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form className="formSignin" validated={validated} onSubmit={handleSubmitForm} >
+          <Form className="formSignin" validated={validated}  >
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Place</Form.Label>
               <Form.Control required type="text" onChange={e => { setPlace(e.target.value) }} />
