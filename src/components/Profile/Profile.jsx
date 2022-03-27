@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Profile =()=> {
+const Profile = () => {
 
   const user = JSON.parse(localStorage.getItem('user'));
 
@@ -198,7 +198,12 @@ const Profile =()=> {
             </Form.Group>
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Reciever Tel#</Form.Label>
-              <Form.Control type="text" pattern='[0-9]*' onChange={e => { setRecieverTel(e.target.value) }} />
+              <Form.Control type="text" onKeyPress={(event) => {
+                if (!/[0-9]/.test(event.key)) {
+                  event.preventDefault();
+                }
+              }} 
+              onChange={e => { setRecieverTel(e.target.value) }} />
             </Form.Group>
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>House Number</Form.Label>
