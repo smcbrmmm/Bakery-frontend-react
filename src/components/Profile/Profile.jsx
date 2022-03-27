@@ -123,6 +123,18 @@ const Profile = () => {
 
   }
 
+  const [validated, setValidated] = useState(false);
+
+  const handleSubmitForm = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
+  };
+
 
   return (
     <div className="page-container">
@@ -187,7 +199,7 @@ const Profile = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form className="formSignin" >
+          <Form className="formSignin" validated={validated} onSubmit={handleSubmitForm}>
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
               <Form.Label>Place</Form.Label>
               <Form.Control required type="text" onChange={e => { setPlace(e.target.value) }} />
@@ -202,9 +214,9 @@ const Profile = () => {
                 if (!/[0-9]/.test(event.key)) {
                   event.preventDefault();
                 }
-              }} 
-              onChange={e => { setRecieverTel(e.target.value) }} 
-              maxLength="10"
+              }}
+                onChange={e => { setRecieverTel(e.target.value) }}
+                maxLength="10"
               />
             </Form.Group>
             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
@@ -305,7 +317,10 @@ const Profile = () => {
               <Form.Control required type="text" onChange={e => { setPostal(e.target.value) }} />
             </Form.Group>
             <div className="d-grid gap-2">
-              <Button variant="primary" size="lg" onClick={() => { handleSubmit(); handleClick() }}>
+              <Button variant="primary" size="lg" 
+              // onClick={() => { handleSubmit(); handleClick() }
+              // }
+              >
                 Confirm.
               </Button>
 
