@@ -45,10 +45,11 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
             setOrder(result.data)
             console.log(result.data)
             for (var i = 0; i < result.data.lenght; i++) {
-                if (result.data[i].user_id === user.id) {
+                if (result.data[i].userId === user.id) {
                     size += 1;
                 }
             }
+            console.log(size)
 
         };
 
