@@ -55,7 +55,9 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
 
     useEffect(() => {
         for(var i=0; i < order.length ;i ++){
-            console.log(order[i])
+            if(order[i].userId === user.id){
+                size++;
+            }
         }
     } , [order])
 
