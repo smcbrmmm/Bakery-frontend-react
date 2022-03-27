@@ -375,6 +375,10 @@ const OrderDetail = ({ order, hid }) => {
                                     <h5 style={{ fontSize: '14px', color: 'green' }}> You already upload your slip. Please waiting for confirmation.</h5> : null
                                 }
 
+                                {order.status === 'Confirm , Waiting for shipment' ?
+                                    <h5 style={{ fontSize: '14px', color: 'green' }}> You already upload your slip. Please waiting for confirmation.</h5> : null
+                                }
+
 
 
                             </Col>
