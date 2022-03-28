@@ -21,7 +21,7 @@ import Paper from '@mui/material/Paper';
 import moment from 'moment';
 import OrderSummarize from "../Summarize/OrderSummarize/OrderSummarize";
 import ReportSummarize from "../Report/ReportSummarize/ReportSummarize"
-
+import SearchIcon from '@mui/icons-material/Search';
 const Report = () => {
     const user = JSON.parse(localStorage.getItem('user'));
 
@@ -88,33 +88,45 @@ const Report = () => {
 
                 <h1 className="main" style={{ textAlign: 'center' }}>  Report Sales </h1>
                 <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <DesktopDatePicker
-                            label="From"
-                            inputFormat="dd/MM/yyyy"
-                            value={value1}
-                            onChange={handleChangeDateTo}
-                            renderInput={(params) => <TextField {...params} />
-                            } />
-                    </LocalizationProvider>
+                    <Row>
+                        <Col sm={5} style={{ textAlign: 'right' , marginRight : '-4rem' , marginLeft:'4rem' }}>
+                            <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                <DesktopDatePicker
+                                    label="From"
+                                    inputFormat="dd/MM/yyyy"
+                                    value={value1}
+                                    onChange={handleChangeDateTo}
+                                    renderInput={(params) => <TextField {...params} />
+                                    } />
+                            </LocalizationProvider>
+                        </Col>
+                        <Col sm={2}>
+                            <div style={{marginTop : '1rem'}}>
+                                <h5 style={{ display: 'inline' }}> To  </h5>
+                            </div>
+                        </Col>
+                        <Col sm={5} style={{ textAlign: 'left' , marginLeft:'-4rem' }}>
+                            <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                <DesktopDatePicker
+                                    label="To"
+                                    inputFormat="dd/MM/yyyy"
+                                    value={value2}
+                                    onChange={handleChangeDateFrom}
+                                    minDate={value1}
+                                    renderInput={(params) => <TextField {...params} />
+                                    } />
+                            </LocalizationProvider>
+                        </Col>
+                    </Row>
 
 
-                    <h5 style={{ display: 'inline' }}> To  </h5>
 
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <DesktopDatePicker
-                            label="To"
-                            inputFormat="dd/MM/yyyy"
-                            value={value2}
-                            onChange={handleChangeDateFrom}
-                            minDate={value1}
-                            renderInput={(params) => <TextField {...params} />
-                            } />
-                    </LocalizationProvider>
+
+
                 </div>
 
                 <div style={{ textAlign: 'center', marginTop: '1rem', marginBottom: '1rem' }}>
-                    <Button onClick={handleClick}> Search </Button>
+                    <Button onClick={handleClick}> <SearchIcon></SearchIcon> </Button>
                 </div>
 
                 {loading ?
@@ -152,7 +164,7 @@ const Report = () => {
                         : <h2 style={{ textAlign: 'center', marginTop: '2rem' }}> No Report</h2>
 
                     :
-                    <div style={{ textAlign: 'center' , marginTop:'2rem' }}>
+                    <div style={{ textAlign: 'center', marginTop: '2rem' }}>
                         <Spinner animation="border" role="status" hidden={showLoading}>
                             <span className="visually-hidden">Loading...</span>
                         </Spinner>
