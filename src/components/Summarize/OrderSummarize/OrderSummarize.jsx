@@ -377,8 +377,8 @@ const OrderSummarize = ({ order }) => {
 
                             <br></br>
                             <br></br>
-                            <hr hidden={order.status == 'Order Canceled'} ></hr>
-                            <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" hidden={order.status == 'Order Canceled'}>
+                            <hr hidden={order.status == 'Order Canceled' || order.status == 'Success'} ></hr>
+                            <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" hidden={order.status == 'Order Canceled' || order.status == 'Success'}>
                                 <span><Form.Label> <h5> Current Order Status </h5></Form.Label></span>
                                 <Form.Select aria-label="Default select example" onChange={e => { setOrderStatus(e.target.value) }}>
                                     <option value={order.status}> {order.status} </option>
@@ -395,7 +395,7 @@ const OrderSummarize = ({ order }) => {
                                 </Form.Group> : null
                             }
 
-                            <Button hidden={order.status == 'Order Canceled'} variant="primary" onClick={() => { updateStatus(), handleClickSnackBar() }}
+                            <Button hidden={order.status == 'Order Canceled' || order.status == 'Success'} variant="primary" onClick={() => { updateStatus(), handleClickSnackBar() }}
                                 style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}
 
                             >

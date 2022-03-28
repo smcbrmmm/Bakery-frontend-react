@@ -197,7 +197,7 @@ const OrderSummarize = ({ order }) => {
                 : null
             }
             {order.status === 'Waiting for Confirmation' ?
-                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'green' }}>{order.status}</TableCell>
+                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'black' }}>{order.status}</TableCell>
                 : null
             }
             {order.status === 'Confirm , Waiting for shipment' ?
@@ -206,6 +206,11 @@ const OrderSummarize = ({ order }) => {
             }
             {order.status === 'Shipping' ?
                 <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'violet' }}>{order.status} - {order.trackingNo}</TableCell>
+                : null
+            }
+
+            {order.status === 'Success' ?
+                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'green' }}>{order.status}</TableCell>
                 : null
             }
 
@@ -237,8 +242,18 @@ const OrderSummarize = ({ order }) => {
                             : null
                         }
 
+                        {order.status === 'Confirm , Waiting for shipment' ?
+                            <h5 style={{ color: 'orange' }}> Status :  {order.status} </h5>
+                            : null
+                        }
+
                         {order.status === 'Shipping' ?
                             <h5 style={{ color: 'violet' }}> Status :  {order.status} - {order.trackingNo}</h5>
+                            : null
+                        }
+
+                        {order.status === 'Success' ?
+                            <h5 style={{ color: 'green' }}> Status :  {order.status} </h5>
                             : null
                         }
 

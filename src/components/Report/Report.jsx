@@ -27,8 +27,8 @@ const Report = () => {
 
     const [value1, setValue1] = React.useState(moment().format('YYYY-MM-DD'));
     const [value2, setValue2] = React.useState(moment().format('YYYY-MM-DD'));
-    const [dateTo, setDateTo] = React.useState();
-    const [dateFrom, setDateFrom] = React.useState();
+    const [dateTo, setDateTo] = React.useState(moment().format('YYYY-MM-DD'));
+    const [dateFrom, setDateFrom] = React.useState(moment().format('YYYY-MM-DD'));
     const [order, setOrder] = useState([]);
     const [total, setTotal] = useState();
 
