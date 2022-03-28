@@ -19,6 +19,9 @@ import {
 import { Segment } from "@mui/icons-material";
 import { trusted } from "mongoose";
 
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -230,7 +233,8 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
             <Card.Title>{product.title}</Card.Title>
             <h5 style={{ fontSize: '14px' }}>{product.tag}</h5>
             <h5 style={{ fontSize: '18px' }}> {product.price} Baht</h5>
-            <Button hidden={!user || product.qty === 0 || role === 'A'} variant="primary" onClick={() => { addToCart(product.id); handleClickAdd(); handleInserProduct() }}>Add to Cart</Button>
+            <Button hidden={!user || product.qty === 0 || role === 'A'} variant="primary" onClick={() => 
+              { addToCart(product.id); handleClickAdd(); handleInserProduct() }}>Add to Cart <AddShoppingCartIcon></AddShoppingCartIcon> </Button>
             <Button hidden={!user || !(product.qty === 0) || role === 'A'} disabled variant="secondary"
               onClick={() => { addToCart(product.id); handleClick(); handleInserProduct() }}>Out of Stock</Button>
             <h5 className="mt-2" style={{ fontSize: '14px', color: 'red' }}> Remaining : {product.qty} Boxes</h5>
@@ -239,7 +243,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
             <div style={{ display: 'flex', marginLeft: 'auto', marginRight: '0' }}>
               <div className="button-admin">
                 <Button size="sm" style={{ marginRight: '0.5rem' }} hidden={role == 'C' || role == 'N'} onClick={() => setEditProductShow(true)} > Edit </Button>
-                <Button size="sm" variant="danger" onClick={() => setModalShow(true)} hidden={role == 'C' || role == 'N'} > Remove </Button>
+                <Button size="sm" variant="danger" onClick={() => setModalShow(true)} hidden={role == 'C' || role == 'N'} > Remove <DeleteOutlineIcon></DeleteOutlineIcon> </Button>
               </div>
             </div>
 
@@ -281,7 +285,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
               <h5 style={{ fontSize: '18px' }}> {product.price} Baht</h5>
               <Button hidden={!user || product.qty === 0 || role === 'A'} variant="primary"
                 onClick={() => { addToCart(product.id); handleClickAdd(); handleInserProduct() }}>
-                Add to Cart</Button>
+                Add to Cart <AddShoppingCartIcon></AddShoppingCartIcon> </Button>
               <Button hidden={!user || !(product.qty === 0)} disabled variant="secondary"
                 onClick={() => { addToCart(product.id); handleClick(); handleInserProduct() }}>Out of Stock</Button>
               <h5 className="mt-2" style={{ fontSize: '14px', color: 'red' }}> Remaining : {product.qty}</h5>
@@ -290,7 +294,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
               <div style={{ display: 'flex', marginLeft: 'auto', marginRight: '0' }}>
                 <div className="button-admin">
                   <Button size="sm" style={{ marginRight: '0.5rem' }} hidden={role == 'C' || role == 'N'} onClick={() => setEditProductShow(true)} > Edit </Button>
-                  <Button size="sm" variant="danger" onClick={() => setModalShow(true)} hidden={role == 'C' || role == 'N'} > Remove </Button>
+                  <Button size="sm" variant="danger" onClick={() => setModalShow(true)} hidden={role == 'C' || role == 'N'} > Remove  <DeleteOutlineIcon> </DeleteOutlineIcon></Button>
                 </div>
               </div>
 
