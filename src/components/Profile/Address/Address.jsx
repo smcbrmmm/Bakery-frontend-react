@@ -139,8 +139,8 @@ export default function Address({ address, no }) {
                             <h5 className='address'> Reciever : {address.recieverName} </h5>
                             <h5 className='address'> Tel : {address.recieverTel} </h5>
                             <h5 className='address'> Address : {address.houseNumber} {address.address} {address.province} {address.postal} </h5>
-                            <Button variant="text" onClick={() => setSigntinModalShow(true)} >Edit <EditIcon /></Button>
-                            <Button variant="text" onClick={() => setModalShow(true)} style={{ color: 'red' }} >Delete <DeleteForeverIcon /></Button>
+                            <Button variant="text" onClick={() => setSigntinModalShow(true)} ><EditIcon /></Button>
+                            <Button variant="text" onClick={() => setModalShow(true)} style={{ color: 'red' }} ><DeleteForeverIcon /></Button>
                         </div>
                     </div>
                 </Collapse>
