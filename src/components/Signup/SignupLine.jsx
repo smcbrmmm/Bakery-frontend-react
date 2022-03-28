@@ -36,6 +36,10 @@ export default function SignupLine({ email, signinModal, accessToken }) {
     //     console.log(cfPassword)
     // }
 
+    useEffect(() => {
+        window.location.reload(false);
+    },[])
+
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -59,6 +63,8 @@ export default function SignupLine({ email, signinModal, accessToken }) {
         }
 
     }
+
+
 
 
     return (
