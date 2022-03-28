@@ -240,17 +240,6 @@ const NavbarComponent = ({ cart }) => {
                             </Link>
                         </Nav>
 
-
-
-                        <Nav hidden={role === 'A'}>
-                            <Link to="/contactus">
-                                <Tooltip title="Contract Us">
-                                    <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
-                                        <PermContactCalendarIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
-                                    </IconButton>
-                                </Tooltip>
-                            </Link>
-                        </Nav>
                         <Nav hidden={!user || role === 'A'}>
                             <Link to="/cart" >
 
@@ -270,6 +259,17 @@ const NavbarComponent = ({ cart }) => {
                                 <Tooltip title="Order Status">
                                     <IconButton aria-label="cart" size="large" className="nav-menu"  >
                                         <ListAltIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
+                                    </IconButton>
+                                </Tooltip>
+                            </Link>
+                        </Nav>
+
+                        
+                        <Nav hidden={role === 'A'}>
+                            <Link to="/contactus">
+                                <Tooltip title="Contract Us">
+                                    <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
+                                        <PermContactCalendarIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
                                     </IconButton>
                                 </Tooltip>
                             </Link>
@@ -352,13 +352,6 @@ const NavbarComponent = ({ cart }) => {
                                 </Tooltip>
                             </Link>
 
-                            <Link to="/contactus" hidden={role === 'A'}>
-                                <Tooltip title="Contract Us">
-                                    <IconButton color="primary" aria-label="upload picture" component="span" >
-                                        <PermContactCalendarIcon sx={{ fontSize: 24 }} style={{ fill: "white" }} />
-                                    </IconButton>
-                                </Tooltip>
-                            </Link>
 
                             <Link to="/cart" hidden={!user || role === 'A'}  >
                                 <IconButton color="primary" aria-label="upload picture" component="span" id="basic-button">
@@ -372,6 +365,14 @@ const NavbarComponent = ({ cart }) => {
                                 <Tooltip title="Order Status">
                                     <IconButton color="primary" aria-label="upload picture" component="span" >
                                         <ListAltIcon sx={{ fontSize: 24 }} style={{ fill: "white" }} />
+                                    </IconButton>
+                                </Tooltip>
+                            </Link>
+
+                            <Link to="/contactus" hidden={role === 'A'}>
+                                <Tooltip title="Contract Us">
+                                    <IconButton color="primary" aria-label="upload picture" component="span" >
+                                        <PermContactCalendarIcon sx={{ fontSize: 24 }} style={{ fill: "white" }} />
                                     </IconButton>
                                 </Tooltip>
                             </Link>
