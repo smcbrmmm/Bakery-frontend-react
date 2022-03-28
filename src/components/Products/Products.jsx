@@ -24,6 +24,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -259,7 +260,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                             <MediaQuery minWidth={1224} >
                                 <h2 className="main" style={{ textAlign: 'left', marginBottom: '2rem', marginTop: '4rem' }} >  Products
                                     <Button className="button-add" variant="success" style={{ marginLeft: '1rem' }}
-                                        onClick={() => setAddProductModal(true)} hidden={role == 'C' || role == 'N'}> Insert </Button>
+                                        onClick={() => setAddProductModal(true)} hidden={role == 'C' || role == 'N'}> <AddCircleIcon></AddCircleIcon> </Button>
                                 </h2>
                             </MediaQuery>
 
