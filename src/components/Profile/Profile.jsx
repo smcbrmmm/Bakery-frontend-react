@@ -164,7 +164,7 @@ const Profile = () => {
               </Col>
               <Col>
                 <div hidden={edit} >
-                  <h2> Address <Button color='success' size='large' onClick={() => setSigntinModalShow(true)}> Add <AddLocationIcon /> </Button> </h2>
+                  <h2> Address <Button color='success' size='large' onClick={() => setSigntinModalShow(true)}> <AddLocationIcon /> </Button> </h2>
                   {address.map((address) => (
                     <Address key={address.id} address={address} no={no++} />
                   ))}
@@ -184,7 +184,7 @@ const Profile = () => {
             <hr className='hr'></hr>
 
             <div hidden={edit} >
-              <h2> Address <Button color='success' size='large' onClick={() => setSigntinModalShow(true)}> Add <AddLocationIcon /> </Button> </h2>
+              <h2> Address <Button color='success' size='large' onClick={() => setSigntinModalShow(true)}> <AddLocationIcon /> </Button> </h2>
               {address.map((address) => (
                 <Address key={address.id} address={address} no={no_mobile++} />
               ))}

@@ -33,7 +33,7 @@ const Summarize = () => {
     const [showLoading, setShowLoading] = useState(true);
 
     const [avSearch, setAvSearch] = useState(false);
-    const [searchOrderId, setSearchOrderId] = useState("no");
+    const [searchOrderId, setSearchOrderId] = useState("");
 
     useEffect(() => {
         console.log(value)
@@ -83,7 +83,7 @@ const Summarize = () => {
         setShowLoading(false)
 
         const date = moment(newValue).format('YYYY-MM-DD');
-
+        setSearchOrderId("")
         const fetchData = async () => {
             const result = await axios(
                 'https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/order/getOrderByDate/' + date,
@@ -167,7 +167,7 @@ const Summarize = () => {
 
                         <div style={{ display: 'flex', justifyContent: 'center', justifyItems: 'center' , marginBottom:'1rem' }}>
                         <div class="custom-search" style={{ width: '19%' }}>
-                            <input type="text" class="custom-search-input" onChange={e => setSearchOrderId(e.target.value)} placeholder="Search OrderId"></input>
+                            <input type="text" class="custom-search-input" value={searchOrderId} onChange={e => setSearchOrderId(e.target.value)} placeholder="Search OrderId"></input>
                                 <button class="custom-search-botton" onClick={ClickSearchForm} > <SearchIcon></SearchIcon> </button>
                         </div>
                         </div>
