@@ -20,6 +20,7 @@ import Paper from '@mui/material/Paper';
 
 import moment from 'moment';
 import OrderSummarize from "./OrderSummarize/OrderSummarize";
+import SearchIcon from '@mui/icons-material/Search';
 
 const Summarize = () => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -30,6 +31,9 @@ const Summarize = () => {
 
     const [loading, setLoading] = useState(false);
     const [showLoading, setShowLoading] = useState(true);
+
+    const [avSearch, setAvSearch] = useState(false);
+    const [searchOrderId, setSearchOrderId] = useState("no");
 
     useEffect(() => {
         console.log(value)
@@ -49,6 +53,29 @@ const Summarize = () => {
         setLoading(false)
 
     }, [])
+
+    // useEffect(() => {
+
+    //     console.log(searchOrderId)
+    //     setShowLoading(false)
+
+        
+
+    //         const fetchData = async () => {
+    //             const result = await axios(
+    //                 'https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/order/getOrderByDateAndOrderId/' + value + "/" + searchOrderId,
+    //             );
+    //             console.log(result)
+    //             setOrder(result.data)
+    //             setLoading(true)
+    //         };
+
+    //         fetchData();
+  
+
+    //     setLoading(false)
+
+    // }, [searchOrderId])
 
 
     const handleChange = (newValue) => {
@@ -73,6 +100,45 @@ const Summarize = () => {
 
     };
 
+    const ClickSearch = () => {
+        setAvSearch(!avSearch)
+        setSearchOrderId("")
+    }
+
+
+    const ClickSearchForm = () => {
+        setShowLoading(false)
+
+        const date = moment(value).format('YYYY-MM-DD');
+        
+        if(searchOrderId.length === 0) {
+            const fetchData = async () => {
+                const result = await axios(
+                    'https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/order/getOrderByDate/' + date,
+                );
+                console.log(result)
+    
+                setOrder(result.data)
+                setLoading(true)
+            };
+    
+            fetchData();
+        }else {
+            const fetchData = async () => {
+                const result = await axios(
+                    'https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/order/getOrderByDateAndOrderId/' + date + "/" + searchOrderId,
+                );
+                console.log(result)
+                setOrder(result.data)
+                setLoading(true)
+            };
+    
+            fetchData();
+        }
+
+    setLoading(false)
+    }
+
     return (
         <div className="page-container">
             <NavbarCom />
@@ -89,6 +155,23 @@ const Summarize = () => {
                             renderInput={(params) => <TextField {...params} />
                             } />
                     </LocalizationProvider>
+                </div>
+                <div style={{ textAlign: 'center', marginLeft: '9rem' }}>
+                    <a className="av-search">
+                        <h5 style={{ fontSize: '14px', marginTop: '2px' }} onClick={ClickSearch}> Advance Search </h5>
+                    </a>
+                </div>
+
+                <div>
+                    {avSearch ?
+
+                        <div style={{ display: 'flex', justifyContent: 'center', justifyItems: 'center' , marginBottom:'1rem' }}>
+                        <div class="custom-search" style={{ width: '19%' }}>
+                            <input type="text" class="custom-search-input" onChange={e => setSearchOrderId(e.target.value)} placeholder="Search OrderId"></input>
+                                <button class="custom-search-botton" onClick={ClickSearchForm} > <SearchIcon></SearchIcon> </button>
+                        </div>
+                        </div>
+                        : null}
 
                 </div>
 

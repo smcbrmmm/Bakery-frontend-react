@@ -130,7 +130,7 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
           <Col>
 
             <MediaQuery minWidth={1224}>
-              <Form.Label htmlFor="inputPassword5"> <h4> Quantity   <Button variant="danger" size="sm" onClick={() => { handleClick(item.id); handleDeletItemInCart() }} > <DeleteForeverIcon></DeleteForeverIcon> </Button> </h4>   </Form.Label>
+              <Form.Label htmlFor="inputPassword5"> <h4> Quantity <Button variant="danger" size="sm" onClick={() => { handleClick(item.id); handleDeletItemInCart() }} > <DeleteForeverIcon></DeleteForeverIcon> </Button> </h4>   </Form.Label>
               <Form.Control
                 type="number"
                 id="inputPassword5"
@@ -146,7 +146,7 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
 
             <MediaQuery maxWidth={1224}>
               <Form.Label htmlFor="inputPassword5">
-                <h5 style={{fontSize : '14px' }}> Quantity   <Button variant="danger" size="sm" onClick={() => { handleClick(item.id); handleDeletItemInCart() }} > <DeleteForeverIcon></DeleteForeverIcon> </Button> </h5>
+                <h5 style={{fontSize : '14px' }}> Quantity <Button variant="danger" size="sm" onClick={() => { handleClick(item.id); handleDeletItemInCart() }} > <DeleteForeverIcon></DeleteForeverIcon> </Button> </h5>
               </Form.Label>
               <Form.Control
                 type="number"
