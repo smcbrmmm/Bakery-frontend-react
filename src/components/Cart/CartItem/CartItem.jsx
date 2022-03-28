@@ -20,7 +20,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 async function deleteItemInCart(cartItem) {
   console.log(cartItem)
-  return fetch('https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/cart/inCart/deleteItemInCart', {
+  return fetch('https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/cart/inCart/deleteItemInCart', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -74,7 +74,7 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-          'https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/products/getProductQty/' + item.id ,
+          'https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/products/getProductQty/' + item.id ,
       );
       
       setMaxQty(result.data)

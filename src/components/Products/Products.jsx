@@ -33,7 +33,7 @@ import axios from "axios";
 
 async function addProduct(product) {
     console.log(product)
-    return fetch('https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/products/update', {
+    return fetch('https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/products/update', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -98,7 +98,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
         setShowLoading(false)
         setLoading(true)
 
-        // fetch('https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/products/allProducts', {
+        // fetch('https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/products/allProducts', {
         //     method: 'GET',
         //     headers: {
         //         'Content-Type': 'application/json'
@@ -110,7 +110,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
 
             const fetchData = async () => {
                 const result = await axios(
-                    'https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/products/allProducts',
+                    'https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/products/allProducts',
                 );
                 console.log(result)
                 setProductList(result.data)
@@ -120,7 +120,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
     
             fetchData();
 
-        fetch('https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/cart/inCart/' + userId, {
+        fetch('https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/cart/inCart/' + userId, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -248,7 +248,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
 
                             <MediaQuery minWidth={1224} >
                                 <h2 className="main" style={{ marginBottom: '2rem', marginTop: '4rem' }}>  Category </h2>
-                                <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("pastry")} >  Popular Product </h5></a>
+                                {/* <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("pastry")} >  Popular Product </h5></a> */}
                                 <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("pastry")} >  Chinese Pastry </h5></a>
                                 <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("roastedPastry")}>  Roasted Chinese Pastry </h5></a>
                                 <a href="#" className="cat-menu"><h5 className="cat-menu" onClick={() => categoryFilter("riceCracker")}>  Rice Cracker </h5></a>

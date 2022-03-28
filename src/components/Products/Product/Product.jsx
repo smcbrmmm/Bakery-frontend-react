@@ -25,7 +25,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 async function deleteProduct(product) {
   console.log(product)
-  return fetch('https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/products/delete', {
+  return fetch('https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/products/delete', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ async function deleteProduct(product) {
 
 async function insertProduct(product) {
   console.log(product)
-  return fetch('https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/cart/inCart/insert', {
+  return fetch('https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/cart/inCart/insert', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ async function insertProduct(product) {
 
 async function updateProduct(product) {
   console.log(product)
-  return fetch('https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/products/update', {
+  return fetch('https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/products/update', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -233,7 +233,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
             <Button hidden={!user || product.qty === 0 || role === 'A'} variant="primary" onClick={() => { addToCart(product.id); handleClickAdd(); handleInserProduct() }}>Add to Cart</Button>
             <Button hidden={!user || !(product.qty === 0) || role === 'A'} disabled variant="secondary"
               onClick={() => { addToCart(product.id); handleClick(); handleInserProduct() }}>Out of Stock</Button>
-            <h5 className="mt-2" style={{ fontSize: '14px', color: 'red' }}> Remaining : {product.qty}</h5>
+            <h5 className="mt-2" style={{ fontSize: '14px', color: 'red' }}> Remaining : {product.qty} Boxes</h5>
 
 
             <div style={{ display: 'flex', marginLeft: 'auto', marginRight: '0' }}>

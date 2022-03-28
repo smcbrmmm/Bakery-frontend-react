@@ -9,7 +9,7 @@ import TableCell from '@mui/material/TableCell';
 import InfoOfOrderDetail from "../../Order/OrderDetail/InfoOfOrderDetail/InfoOfOrderDetail";
 import moment from 'moment';
 // async function cancelOrder(order) {
-//     return fetch('https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/order/cancel/' + order.orderId, {
+//     return fetch('https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/order/cancel/' + order.orderId, {
 //         method: 'POST',
 //         headers: {
 //             'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ import moment from 'moment';
 
 //     console.log(order)
 
-//     return fetch('https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/payment/upload', {
+//     return fetch('https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/payment/upload', {
 //         method: 'POST',
 //         headers: {
 //             'Content-Type': 'application/json'
@@ -61,19 +61,19 @@ const OrderSummarize = ({ order }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                'https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
+                'https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
             );
 
             const result2 = await axios(
-                'https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/order/getSumPrice/' + order.orderId,
+                'https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/order/getSumPrice/' + order.orderId,
             );
 
             const result3 = await axios(
-                'https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/address/orderAddress/' + order.addressId,
+                'https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/address/orderAddress/' + order.addressId,
             );
 
             // const result4 = await axios(
-            //     'https://ed13-2405-9800-b600-6272-128-35b3-4634-6a19.ngrok.io/api/payment/getPayment/' + order.orderId,
+            //     'https://b311-2405-9800-b600-6272-1c50-caaf-f6dc-2e24.ngrok.io/api/payment/getPayment/' + order.orderId,
             // );
 
             // console.log(result4)
