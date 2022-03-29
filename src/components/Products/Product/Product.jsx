@@ -408,10 +408,10 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
                 <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                   <Form.Label>Tag</Form.Label>
                   <Form.Select aria-label="Default select example" onChange={e => { setTag(e.target.value) }} >
-                    <option >Select type</option>
-                    <option value="Pastry">Chinese Pastry</option>
-                    <option value="Roasted Pastry">Roasted Chinese Pastry</option>
-                    <option value="Rice Cracker">Rice Cracker </option>
+                    <option value={product.tag}>{product.tag}</option>
+                    <option value="Pastry" hidden={product.tag === "Pastry"}>Chinese Pastry</option>
+                    <option value="Roasted Pastry" hidden={product.tag === "Roasted Pastry"}>Roasted Chinese Pastry</option>
+                    <option value="Rice Cracker" hidden={product.tag === "Rice Cracker"}>Rice Cracker </option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
