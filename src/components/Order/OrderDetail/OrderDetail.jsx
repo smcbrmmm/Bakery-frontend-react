@@ -109,6 +109,10 @@ const OrderDetail = ({ order, hid }) => {
 
     }
 
+    const handleClick = () => {
+        setOpenAlert(true);
+      };
+
     const handleUploadSlip = async e => {
         setIsUpload(true)
         setStatus("Waiting for Confirmation")
@@ -492,7 +496,7 @@ const OrderDetail = ({ order, hid }) => {
                     <h5> Cancel this order Now !!! </h5>
 
                     <Button variant='danger' style={{ display: 'block', marginLeft: 'auto' }}
-                        onClick={() => { handleCancelorder() ; setOpenAlert(true); }}
+                        onClick={() => { handleCancelorder() ; handleClick() }}
                     > Confirm</Button>
                 </Modal.Body>
             </Modal>
