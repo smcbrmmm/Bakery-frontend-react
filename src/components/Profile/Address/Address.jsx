@@ -125,6 +125,17 @@ export default function Address({ address, no }) {
 
     }
 
+    const validationAddress = () => {
+        if(place === "no"){
+            console.log("no item in cart")
+            swal("Error", "Please select address for shipping.", "error");
+            console.log(cart.length)
+        }
+        else{
+
+        }
+    }
+
 
 
     return (

@@ -126,22 +126,10 @@ const Profile = () => {
 
   const [validated, setValidated] = useState(false);
 
-  // const handleSubmitForm = async (event) => {
-  //   const form = event.currentTarget;
-
-  //   if (form.checkValidity() === false) {
-  //     event.preventDefault();
-  //     event.stopPropagation();
-  //   }else{
-  //     console.log("samut")
-  //   }
-
-  //   handleSubmit();
-
-
-
-  // };
-
+  const validationAddress = () => {
+      
+    
+}
 
   return (
     <div className="page-container">
@@ -160,6 +148,8 @@ const Profile = () => {
                   {/* <Avatar alt="Remy Sharp" src={user.img} sx={{ width: 200, height: 200 }} /> */}
                   <h4> Name : {user.name} </h4>
                   <h4> Email : {user.email} </h4>
+                  <h3> {typeof place}</h3>
+                  <h3> {place}</h3>
                 </div>
               </Col>
               <Col>
