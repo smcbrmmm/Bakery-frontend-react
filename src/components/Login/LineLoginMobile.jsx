@@ -57,6 +57,7 @@ export default function LineLoginMobile() {
             email
         })
             .then(data => {
+                console.log(2)
                 if(data.user !== null){
                     localStorage.setItem('accessToken', data.accessToken);
                     localStorage.setItem('user', JSON.stringify(data.user));
@@ -65,8 +66,6 @@ export default function LineLoginMobile() {
                     }else{
                         window.location.href = "/order";
                     }
-                }else {
-                    window.location.reload()
                 }
             })
     }
@@ -84,7 +83,7 @@ export default function LineLoginMobile() {
                     // setAccessToken(liff.getAccessToken())
                     setName(liff.getProfile.displayName)
                     setEmail(liff.getDecodedIDToken().email)
-                    
+                    console.log(1)
                     // if(email == 'undefined'){
                     //     window.location.reload()
                     // }
