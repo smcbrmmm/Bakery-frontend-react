@@ -33,8 +33,8 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 import axios from "axios";
 
 async function addProduct(product) {
-    console.log(product)
-    return fetch(' https://e4a1-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io/api/products/save', {
+    
+    return fetch(' https://e4a1-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io/api/products/insert', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
