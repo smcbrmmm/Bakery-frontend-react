@@ -31,7 +31,7 @@ const liff = window.liff
 
 async function loginUser(credentials) {
     console.log(credentials)
-    return fetch(' https://e4a1-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/user/login', {
+    return fetch(' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/user/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

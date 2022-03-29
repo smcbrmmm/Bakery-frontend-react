@@ -42,11 +42,11 @@ const Report = () => {
 
         const fetchData = async () => {
             const result = await axios(
-                ' https://e4a1-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/getOrderForReport/' + dateTo + "/" + dateFrom ,
+                ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/getOrderForReport/' + dateTo + "/" + dateFrom ,
             );
 
             const result2 = await axios(
-                ' https://e4a1-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/getTotalPrice/' + dateTo + "/" + dateFrom ,
+                ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/getTotalPrice/' + dateTo + "/" + dateFrom ,
             );
 
             console.log(result)
