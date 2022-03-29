@@ -314,7 +314,7 @@ const Cart = ({ cart, setProductInCart }) => {
                                 <h4 className="main"  style={{fontSize : '26px' , marginBottom : '0.5rem'}}>Cart Summary</h4>
                                 <div className="main" style={{fontSize : '22px' , marginBottom : '0.5rem'}}>
                                     <span>TOTAL: ({totalItems})</span>
-                                    <span> {totalPrice} Baht.</span>
+                                    <span> {(totalPrice+"").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} Baht.</span>
                                 </div>
 
                                 <Button className="main" variant="contained" size="large" onClick={() => { validationAddress() }} >
