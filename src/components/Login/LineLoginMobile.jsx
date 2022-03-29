@@ -87,8 +87,7 @@ export default function LineLoginMobile() {
                     // if(email == 'undefined'){
                     //     window.location.reload()
                     // }
-                    console.log(email)
-
+                
                     isHaveEmail(liff.getDecodedIDToken().email)
                         .then(data => setIsHave(data))
                         .then(() => setAccessToken(liff.getAccessToken))
