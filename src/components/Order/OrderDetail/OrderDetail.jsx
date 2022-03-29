@@ -9,10 +9,6 @@ import moment from 'moment';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
-const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
-
 async function cancelOrder(order) {
     return fetch(' https://e4a1-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/cancel/' + order.orderId, {
         method: 'POST',
@@ -41,6 +37,10 @@ async function updateOrder(order) {
     })
     // .then(data => data.json())
 }
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const OrderDetail = ({ order, hid }) => {
 
@@ -111,7 +111,14 @@ const OrderDetail = ({ order, hid }) => {
 
     const handleClick = () => {
         setOpenAlert(true);
-      };
+    };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpenAlert(false);
+    };
 
     const handleUploadSlip = async e => {
         setIsUpload(true)
@@ -177,13 +184,6 @@ const OrderDetail = ({ order, hid }) => {
 
     const [openAlert, setOpenAlert] = React.useState(false);
 
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-          return;
-        }
-    
-        setOpenAlert(false);
-      };
 
     return (
 
@@ -316,7 +316,7 @@ const OrderDetail = ({ order, hid }) => {
                             null :
                             <Button hidden={order.hasPayment !== "no-slip" || isUpload || order.status === 'Confirm , Waiting for shipment'
                                 || order.status === 'Shipping' || order.status === 'Success'
-                            } variant="danger" size="sm" onClick={() => { handleCancelorder() ; handleClick() }}> Cancel Order </Button>
+                            } variant="danger" size="sm" onClick={() => { handleCancelorder(); handleClick() }}> Cancel Order </Button>
                         }
 
 
@@ -496,7 +496,7 @@ const OrderDetail = ({ order, hid }) => {
                     <h5> Cancel this order Now !!! </h5>
 
                     <Button variant='danger' style={{ display: 'block', marginLeft: 'auto' }}
-                        onClick={() => { handleCancelorder() ; handleClick() }}
+                        onClick={() => { handleCancelorder(); handleClick() }}
                     > Confirm</Button>
                 </Modal.Body>
             </Modal>
