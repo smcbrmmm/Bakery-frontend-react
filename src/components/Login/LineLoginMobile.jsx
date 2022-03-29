@@ -98,7 +98,9 @@ export default function LineLoginMobile() {
             })
             .catch((err) => {
                 console.log(err);
-                console.log(typeof email)
+                if(typeof email === "undefined"){
+                    window.location.reload()
+                }
             })
 
     }, [round])
