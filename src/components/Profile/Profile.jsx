@@ -152,7 +152,7 @@ const Profile = () => {
             <Row>
               <Col>
                 <div hidden={edit} >
-                  <h2> Detail  </h2>
+                  {/* <h2> Detail  </h2> */}
                   {/* <Avatar alt="Remy Sharp" src={user.img} sx={{ width: 200, height: 200 }} /> */}
                   <h4> Name : {user.name} </h4>
                   <h4> Email : {user.email} </h4>

@@ -288,6 +288,8 @@ const OrderDetail = ({ order, hid }) => {
                             : null
                         }
 
+                        <h5 style={{ color: 'grey', fontSize: '16px' }}> Date :  {moment(order.date.slice(0, 10)).format("D MMMM YYYY")} </h5>
+
                         {order.status === 'Order Canceled' ?
                             null :
                             <Button hidden={order.hasPayment !== "no-slip" || isUpload || order.status === 'Confirm , Waiting for shipment'
@@ -295,7 +297,7 @@ const OrderDetail = ({ order, hid }) => {
                             } variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
                         }
 
-                        <h5 style={{ color: 'grey', fontSize: '16px' }}> Date :  {moment(order.date.slice(0, 10)).format("D MMMM YYYY")} </h5>
+
 
 
 
