@@ -52,18 +52,18 @@ export default function LineLoginMobile() {
 
 
 
-    if(email !== ""){
-        const response =  login({
+    if (email !== "") {
+        const response = login({
             email
         })
             .then(data => {
                 console.log(2)
-                if(data.user !== null){
+                if (data.user !== null) {
                     localStorage.setItem('accessToken', data.accessToken);
                     localStorage.setItem('user', JSON.stringify(data.user));
-                    if(data.user.role === 'A'){
+                    if (data.user.role === 'A') {
                         window.location.href = "/products";
-                    }else{
+                    } else {
                         window.location.href = "/order";
                     }
                 }
@@ -97,8 +97,10 @@ export default function LineLoginMobile() {
                 }
             })
             .catch((err) => {
-                console.log(email)
                 console.log(err);
+                if (email == 'undefined') {
+                    window.location.reload()
+                }
             })
 
     }, [round])
