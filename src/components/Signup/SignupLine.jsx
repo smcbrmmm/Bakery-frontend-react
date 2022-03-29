@@ -26,6 +26,7 @@ export default function SignupLine({ email, signinModal, accessToken }) {
     const [cfPassword, setCfPassword] = useState();
 
     if(email === 'undefined'){
+        console.log(email)
         window.location.reload()
     }
 
