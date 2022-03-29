@@ -51,6 +51,7 @@ export default function LineLoginMobile() {
     const [signinModal, setSigninModal] = useState(false);
 
 
+
     if(email !== ""){
         const response =  login({
             email
@@ -83,6 +84,9 @@ export default function LineLoginMobile() {
                     setName(liff.getProfile.displayName)
                     setEmail(liff.getDecodedIDToken().email)
                     
+                    if(email == 'undefined'){
+                        window.location.reload()
+                    }
 
                     isHaveEmail(liff.getDecodedIDToken().email)
                         .then(data => setIsHave(data))
