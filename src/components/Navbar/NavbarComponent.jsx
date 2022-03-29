@@ -25,6 +25,7 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import MediaQuery from 'react-responsive'
 import SummarizeIcon from '@mui/icons-material/Summarize';
 import AssessmentIcon from '@mui/icons-material/Assessment';
+import ContactPageIcon from '@mui/icons-material/ContactPage';
 
 const liff = window.liff
 

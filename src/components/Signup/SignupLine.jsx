@@ -25,21 +25,9 @@ export default function SignupLine({ email, signinModal, accessToken }) {
     const [password, setPassword] = useState("samut123");
     const [cfPassword, setCfPassword] = useState();
 
-    // const submit = e => {
-
-    //     const response = signup({
-    //         email, password, cfPassword
-    //     })
-
-    //     console.log(name)
-    //     console.log(password)
-    //     console.log(cfPassword)
-    // }
-
-    // useEffect(() => {
-    //     window.location.reload(false);
-    // },[])
-
+    useEffect(()=> {
+        console.log(email)
+    },[])
 
     const handleSubmit = async e => {
         e.preventDefault();
