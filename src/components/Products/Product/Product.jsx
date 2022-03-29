@@ -228,7 +228,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
           src={product.img} /> */}
 
           <Tooltip title={<h5 style={{ fontSize: '16px' }}> {longText} </h5>} placement="bottom">
-            <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
+            <Card.Img variant="top" style={{ width: '287px', height: '250px'   }}
               src={product.img} />
           </Tooltip>
           <Card.Body>
@@ -357,7 +357,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
             <Col>
 
 
-              <span className="Filename">
+              <span className="Filename" style={{display: 'flex', justifyContent: 'center', justifyItems: 'center'}}>
                 <img src={product.img} width="370px" height="370px" />
               </span>
 
