@@ -215,6 +215,20 @@ const Products = ({ products, setProductList, setProductInCart }) => {
     const [description, setDescription] = useState();
     const [qty, setQty] = useState();
 
+    const validationAddress = () => {
+        if (typeof productName === "undefined" || typeof price === "undefined" || typeof tag === "undefined" || typeof description === "undefined"
+            || typeof qty === "undefined" 
+            || productName === "" || price === "" || tag === "" || description === "" || qty === "" || postImage.myFile === ""
+        ) {
+            swal("Error", "Please fill your information completely", "error");
+        } else {
+            // handleEdit();
+            // setOpenAlertEdit(true)
+        }
+
+    }
+
+
     const [isVisible, setIsVisible] = useState(false);
 
     const toggleVisibility = () => {
@@ -401,7 +415,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                                     </Form.Group>
 
                                     <div className="d-grid gap-2">
-                                        <Button variant="primary" size="lg" onClick={() => { handleInsertProduct(), handleClickSnackBar() }} >
+                                        <Button variant="primary" size="lg" onClick={() => { validationAddress() }} >
                                             Insert this product
                                         </Button>
 
