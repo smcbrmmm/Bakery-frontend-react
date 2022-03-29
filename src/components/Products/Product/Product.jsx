@@ -356,7 +356,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
 
 
-      <Modal className="cart-modal" show={editProductShow}
+      <Modal className="cart-modal2" show={editProductShow}
         onHide={() => setEditProductShow(false)}
         aria-labelledby="contained-modal-title-vcenter"
         centered>
