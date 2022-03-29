@@ -103,9 +103,9 @@ const OrderDetail = ({ order, hid }) => {
             orderId
         });
 
-        setTimeout(() => {
-            window.location.href = "/order";
-        }, 500);
+        // setTimeout(() => {
+        //     window.location.href = "/order";
+        // }, 500);
 
     }
 
