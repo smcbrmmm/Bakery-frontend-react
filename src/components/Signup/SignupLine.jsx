@@ -25,7 +25,7 @@ export default function SignupLine({ email, signinModal, accessToken }) {
     const [password, setPassword] = useState("samut123");
     const [cfPassword, setCfPassword] = useState();
 
-    if(email === 'undefined'){
+    if(email == 'undefined'){
         console.log(email)
         window.location.reload()
     }

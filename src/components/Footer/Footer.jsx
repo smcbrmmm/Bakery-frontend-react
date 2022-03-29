@@ -6,9 +6,6 @@ import MediaQuery from 'react-responsive'
 
 const Footer = () => {
 
-    if (1 == 1) {
-        console.log("samut")
-    }
 
     return (
         <div className="App">
