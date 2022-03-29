@@ -96,7 +96,8 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
   };
 
   const onChangeHandler = (e) => {
-
+    console.log(maxQty)
+    console.log(e.target.value)
     if(e.target.value > maxQty){
       swal("Error", "Quantity more than max quantity.", "error");
     }else{
