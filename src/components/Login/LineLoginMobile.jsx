@@ -97,7 +97,7 @@ export default function LineLoginMobile() {
                 }
             })
             .catch((err) => {
-                window.location.reload()
+                console.log(email)
                 console.log(err);
             })
 
