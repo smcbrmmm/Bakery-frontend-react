@@ -222,8 +222,8 @@ const Products = ({ products, setProductList, setProductInCart }) => {
         ) {
             swal("Error", "Please fill your information completely", "error");
         } else {
-            // handleEdit();
-            // setOpenAlertEdit(true)
+            handleInsertProduct()
+            handleClickSnackBar()
         }
 
     }
