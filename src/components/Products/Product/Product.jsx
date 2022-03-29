@@ -157,6 +157,19 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
   const [postImage, setPostImage] = useState({
     myFile: product.img,
   });
+
+  const validationEditForm = () => {
+    if (typeof productName === "undefined" || typeof price === "undefined" || typeof tag === "undefined" || typeof description === "undefined"
+        || typeof qty === "undefined" 
+        || productName === "" || price === "" || tag === "" || description === "" || qty === "" || postImage.myFile === ""
+    ) {
+        swal("Error", "Please fill your information completely", "error");
+    } else {
+        handleUpdateProduct()
+        handleUpdateModal()
+    }
+
+}
   
   const handleUpdateProduct = async e => {
 
@@ -412,7 +425,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
                 </Form.Group>
 
                 <div className="d-grid gap-2">
-                  <Button variant="primary" size="lg" onClick={() => {handleUpdateProduct() ; handleUpdateModal()}}>
+                  <Button variant="primary" size="lg" onClick={() => {validationEditForm()}}>
                     Edit this product
                   </Button>
 
