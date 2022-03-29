@@ -278,7 +278,7 @@ const OrderDetail = ({ order, hid }) => {
                         }
 
                         {order.status === 'Shipping' ?
-                            <h5 style={{ color: 'violet' }}> Status :  {order.status} - <a className="trackingNo" onClick={handleClickTracking}>{order.trackingNo}</a> </h5>
+                            <h5 style={{ color: 'black' }}> Status :  {order.status} - <a className="trackingNo" onClick={handleClickTracking}>{order.trackingNo}</a> </h5>
                             : null
                         }
 

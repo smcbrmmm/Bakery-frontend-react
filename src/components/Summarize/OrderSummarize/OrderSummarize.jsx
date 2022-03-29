@@ -281,7 +281,7 @@ const OrderSummarize = ({ order }) => {
             }
 
             {order.status === 'Shipping' ?
-                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'violet' }}>{order.status} - {order.trackingNo}</TableCell>
+                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'black' }}>{order.status} - {order.trackingNo}</TableCell>
                 : null
             }
 
@@ -319,7 +319,7 @@ const OrderSummarize = ({ order }) => {
                         {order.status === 'Shipping' ?
                             (
                                 <div>
-                                    <h5 style={{ color: 'violet' }}> Status :  {order.status} - <a className="trackingNo" onClick={handleClickTracking}>{order.trackingNo}</a></h5>
+                                    <h5 style={{ color: 'black' }}> Status :  {order.status} - <a className="trackingNo" onClick={handleClickTracking}>{order.trackingNo}</a></h5>
                                     
                                 </div>
                             )
