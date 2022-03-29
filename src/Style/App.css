@@ -82,9 +82,13 @@
     text-decoration: none;
 }
 
+.cart-modal2{
+    font-family: 'Poppins', sans-serif;
+    margin-left: 0.7rem;
+}
+
 .cart-modal{
     font-family: 'Poppins', sans-serif;
-    margin-left: 2rem;
 }
 
 .order-detail-cart {

@@ -156,8 +156,6 @@ const Profile = () => {
                   {/* <Avatar alt="Remy Sharp" src={user.img} sx={{ width: 200, height: 200 }} /> */}
                   <h4> Name : {user.name} </h4>
                   <h4> Email : {user.email} </h4>
-                  <h3> {typeof place}</h3>
-                  <h3> {place}</h3>
                 </div>
               </Col>
               <Col>
@@ -193,7 +191,7 @@ const Profile = () => {
       </div>
 
 
-      <Modal className="cart-modal" show={signinModalShow}
+      <Modal className="cart-modal2" show={signinModalShow}
         onHide={() => setSigntinModalShow(false)}
         aria-labelledby="contained-modal-title-vcenter"
         centered
