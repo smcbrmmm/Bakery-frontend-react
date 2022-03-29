@@ -129,6 +129,7 @@ const Profile = () => {
   const validationAddress = () => {
       if(typeof place === "undefined" || typeof recieverName === "undefined" || typeof recieverTel === "undefined" || typeof houseNumber === "undefined" 
       ||  typeof province === "undefined" ||  typeof postal === "undefined" ||  typeof addesses === "undefined" 
+      || place === "" ||  recieverName === "" ||  recieverTel === "" ||  houseNumber === "" ||  province === "" ||  postal === "" ||  place === "" ||  addesses === ""
       ){
         swal("Error", "Please fill your information completely", "error");
       }else{
