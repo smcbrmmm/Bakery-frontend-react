@@ -6,6 +6,13 @@ import InfoOfOrderDetail from "./InfoOfOrderDetail/InfoOfOrderDetail"
 import MediaQuery from 'react-responsive'
 import moment from 'moment';
 
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 async function cancelOrder(order) {
     return fetch(' https://e4a1-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/cancel/' + order.orderId, {
         method: 'POST',
