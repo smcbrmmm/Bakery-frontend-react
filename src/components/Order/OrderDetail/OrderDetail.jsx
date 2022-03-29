@@ -162,6 +162,8 @@ const OrderDetail = ({ order, hid }) => {
         window.location.href = "https://track.thailandpost.co.th/";
     }
 
+    const [modalShowDelete , setModalShowDelete] = useState(false);
+
 
     return (
 
@@ -294,7 +296,7 @@ const OrderDetail = ({ order, hid }) => {
                             null :
                             <Button hidden={order.hasPayment !== "no-slip" || isUpload || order.status === 'Confirm , Waiting for shipment'
                                 || order.status === 'Shipping' || order.status === 'Success'
-                            } variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
+                            } variant="danger" size="sm" onClick={() => setModalShowDelete(true)}> Cancel Order </Button>
                         }
 
 
@@ -457,6 +459,25 @@ const OrderDetail = ({ order, hid }) => {
 
 
                     {/* <Button onClick={check}> Click </Button> */}
+                </Modal.Body>
+            </Modal>
+
+            <Modal className="cart-modal" show={modalShowDelete}
+                onHide={() => setModalShowDelete(false)}
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        Cancel order confirmation.
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <h5> Cancel this order #{infoOrder.orderId}</h5>
+
+                    <Button variant='danger' style={{ display: 'block', marginLeft: 'auto' }}
+                        onClick={() => { handleCancelorder() }}
+                    > Delete</Button>
                 </Modal.Body>
             </Modal>
 
