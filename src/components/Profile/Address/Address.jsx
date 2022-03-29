@@ -126,14 +126,16 @@ export default function Address({ address, no }) {
     }
 
     const validationAddress = () => {
-        if(place === "no"){
-            console.log("no item in cart")
-            swal("Error", "Please select address for shipping.", "error");
-            console.log(cart.length)
+        if (typeof place === "undefined" || typeof recieverName === "undefined" || typeof recieverTel === "undefined" || typeof houseNumber === "undefined"
+            || typeof province === "undefined" || typeof postal === "undefined" || typeof addesses === "undefined"
+            || place === "" || recieverName === "" || recieverTel === "" || houseNumber === "" || province === "" || postal === "" || place === "" || addesses === ""
+        ) {
+            swal("Error", "Please fill your information completely", "error");
+        } else {
+            handleEdit();
+            setOpenAlertEdit(true)
         }
-        else{
 
-        }
     }
 
 
@@ -280,7 +282,7 @@ export default function Address({ address, no }) {
                             <Form.Control type="text" onChange={e => { setPostal(e.target.value) }} defaultValue={conAddress.postal} />
                         </Form.Group>
                         <div className="d-grid gap-2">
-                            <Button variant="primary" size="lg" onClick={() => { handleEdit() ; setOpenAlertEdit(true)}}>
+                            <Button variant="primary" size="lg" onClick={() => { validationAddress() }}>
                                 Confirm.
                             </Button>
 
