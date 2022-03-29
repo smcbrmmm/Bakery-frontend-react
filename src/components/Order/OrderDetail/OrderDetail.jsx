@@ -162,8 +162,17 @@ const OrderDetail = ({ order, hid }) => {
         window.location.href = "https://track.thailandpost.co.th/";
     }
 
-    const [modalShowDelete , setModalShowDelete] = useState(false);
+    const [modalShowDelete, setModalShowDelete] = useState(false);
 
+    const [openAlert, setOpenAlert] = React.useState(false);
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpenAlert(false);
+      };
 
     return (
 
@@ -473,13 +482,19 @@ const OrderDetail = ({ order, hid }) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h5> Cancel this order #{infoOrder.orderId}</h5>
+                    <h5> Cancel this order Now !!! </h5>
 
                     <Button variant='danger' style={{ display: 'block', marginLeft: 'auto' }}
-                        onClick={() => { handleCancelorder() }}
-                    > Delete</Button>
+                        onClick={() => { handleCancelorder() ; setOpenAlert(true); }}
+                    > Confirm</Button>
                 </Modal.Body>
             </Modal>
+
+            <Snackbar open={openAlert} autoHideDuration={3000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="danger" sx={{ width: '100%' }}>
+                    Order already canceled.
+                </Alert>
+            </Snackbar>
 
         </div>
 
