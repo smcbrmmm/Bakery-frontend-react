@@ -30,6 +30,14 @@ export default function SignupLine({ email, signinModal, accessToken }) {
         window.location.reload()
     }
 
+    useEffect(() => {
+        console.log(email)
+        // if(email == 'undefined'){
+        //     console.log(email)
+        //     window.location.reload()
+        // }
+    } , [])
+
     const handleSubmit = async e => {
         e.preventDefault();
         const response = await signup({
