@@ -320,7 +320,7 @@ const OrderSummarize = ({ order }) => {
                             (
                                 <div>
                                     <h5 style={{ color: 'black' }}> Status :  {order.status} - <a className="trackingNo" onClick={handleClickTracking}>{order.trackingNo}</a></h5>
-                                    
+
                                 </div>
                             )
                             : null
@@ -337,6 +337,10 @@ const OrderSummarize = ({ order }) => {
                                 || order.status === "Shipping"}
                                 variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
                         } */}
+
+
+                        <h5 style={{ color: 'grey' , fontSize : '16px'}}> Date :  {moment(order.date.slice(0, 10)).format("D MMMM YYYY")} </h5>
+
 
                     </Modal.Title>
                 </Modal.Header>

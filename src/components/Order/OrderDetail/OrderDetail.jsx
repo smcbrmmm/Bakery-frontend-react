@@ -4,6 +4,7 @@ import './OrderDetail.css'
 import axios from "axios";
 import InfoOfOrderDetail from "./InfoOfOrderDetail/InfoOfOrderDetail"
 import MediaQuery from 'react-responsive'
+import moment from 'moment';
 
 async function cancelOrder(order) {
     return fetch(' https://e4a1-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/cancel/' + order.orderId, {
@@ -293,6 +294,9 @@ const OrderDetail = ({ order, hid }) => {
                                 || order.status === 'Shipping' || order.status === 'Success'
                             } variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
                         }
+
+                        <h5 style={{ color: 'grey', fontSize: '16px' }}> Date :  {moment(order.date.slice(0, 10)).format("D MMMM YYYY")} </h5>
+
 
 
                     </Modal.Title>

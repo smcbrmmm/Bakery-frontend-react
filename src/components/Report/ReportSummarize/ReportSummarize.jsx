@@ -205,7 +205,7 @@ const OrderSummarize = ({ order }) => {
                 : null
             }
             {order.status === 'Shipping' ?
-                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'violet' }}>{order.status} - {order.trackingNo}</TableCell>
+                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'black' }}>{order.status} - {order.trackingNo}</TableCell>
                 : null
             }
 
@@ -216,6 +216,8 @@ const OrderSummarize = ({ order }) => {
 
             <TableCell onClick={() => setSigntinModalShow(true)} align="right">{moment(order.date.slice(0, 10)).format("D MMMM YYYY")}</TableCell>
             <TableCell onClick={() => setSigntinModalShow(true)} align="right"> {order.sumPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} </TableCell>
+
+
 
             <Modal className="cart-modal" show={signinModalShow}
                 onHide={() => setSigntinModalShow(false)}
@@ -261,6 +263,8 @@ const OrderSummarize = ({ order }) => {
                             null :
                             <Button hidden={order.hasPayment !== "no-slip" || isUpload} variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
                         } */}
+
+                        <h5 style={{ color: 'grey', fontSize: '16px' }}> Date :  {moment(order.date.slice(0, 10)).format("D MMMM YYYY")} </h5>
 
                     </Modal.Title>
                 </Modal.Header>

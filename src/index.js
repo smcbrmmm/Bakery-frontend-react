@@ -16,7 +16,6 @@ import Report from './components/Report/Report'
 import { BrowserRouter, Router, Route, Link, Routes } from 'react-router-dom'
 import ReactDOM, { render } from 'react-dom';
 
-
 import { Provider } from 'react-redux'
 import store from "./redux/store"
 
