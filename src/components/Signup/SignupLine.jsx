@@ -31,11 +31,11 @@ export default function SignupLine({ email, signinModal, accessToken }) {
     }
 
     useEffect(() => {
-        console.log(email)
-        // if(email == 'undefined'){
-        //     console.log(email)
-        //     window.location.reload()
-        // }
+        
+        if(email == 'undefined'){
+            window.location.reload()
+        }
+
     } , [])
 
     const handleSubmit = async e => {
