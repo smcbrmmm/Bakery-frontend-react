@@ -127,10 +127,13 @@ const Profile = () => {
   const [validated, setValidated] = useState(false);
 
   const validationAddress = () => {
-      if(typeof place === "undefined" || typeof recieverName === "undefined" || typeof recieverTel === "undefined" || typeof houseNumber === "undefined"){
-        swal("Error", "Please select address for shipping.", "error");
+      if(typeof place === "undefined" || typeof recieverName === "undefined" || typeof recieverTel === "undefined" || typeof houseNumber === "undefined" 
+      ||  typeof province === "undefined" ||  typeof postal === "undefined" ||  typeof addesses === "undefined" 
+      ){
+        swal("Error", "Please fill your information completely", "error");
       }else{
-        swal("Success", "Success", "error");
+        handleSubmit();
+        handleClick();
       }
     
 }
@@ -331,7 +334,7 @@ const Profile = () => {
             <div className="d-grid gap-2">
               <Button variant="primary" size="lg"
               // onClick={handleSubmitForm}
-              onClick={() => { validationAddress(); handleClick() }}
+              onClick={() => { validationAddress()}}
               >
                 Confirm.
               </Button>
