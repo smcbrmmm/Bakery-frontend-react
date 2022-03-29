@@ -103,9 +103,9 @@ const OrderDetail = ({ order, hid }) => {
             orderId
         });
 
-        // setTimeout(() => {
-        //     window.location.href = "/order";
-        // }, 500);
+        setTimeout(() => {
+            window.location.href = "/order";
+        }, 500);
 
     }
 
@@ -316,7 +316,7 @@ const OrderDetail = ({ order, hid }) => {
                             null :
                             <Button hidden={order.hasPayment !== "no-slip" || isUpload || order.status === 'Confirm , Waiting for shipment'
                                 || order.status === 'Shipping' || order.status === 'Success'
-                            } variant="danger" size="sm" onClick={() => setModalShowDelete(true)}> Cancel Order </Button>
+                            } variant="danger" size="sm" onClick={() => { handleCancelorder() ; handleClick() }}> Cancel Order </Button>
                         }
 
 
