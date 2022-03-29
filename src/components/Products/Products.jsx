@@ -34,7 +34,7 @@ import axios from "axios";
 
 async function addProduct(product) {
     console.log(product)
-    return fetch(' https://e4a1-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/products/update', {
+    return fetch(' https://e4a1-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io/api/products/save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -142,9 +142,9 @@ const Products = ({ products, setProductList, setProductInCart }) => {
             productName, price, tag, description, qty, postImage
         });
 
-        // setTimeout(() => {
-        //     window.location.href = "/products";
-        // }, 1000);
+        setTimeout(() => {
+            window.location.href = "/products";
+        }, 1000);
 
     }
 
