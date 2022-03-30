@@ -72,15 +72,15 @@ const OrderSummarize = ({ order }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
+                'https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
             );
 
             const result2 = await axios(
-                ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/order/getSumPrice/' + order.orderId,
+                'https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/order/getSumPrice/' + order.orderId,
             );
 
             const result3 = await axios(
-                ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/address/orderAddress/' + order.addressId,
+                'https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/address/orderAddress/' + order.addressId,
             );
 
             // const result4 = await axios(
