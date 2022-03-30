@@ -24,7 +24,7 @@ const Footer = () => {
 
                                     <h5 style={{ textAlign: 'center' }}> Social Media </h5>
                                     <div style={{ textAlign: 'center' }}>
-                                        <a href="https://www.canva.com/"> <img src="https://img.icons8.com/color/64/000000/facebook-new.png" /> </a>
+                                        <a href="https://www.facebook.com/mixzimize.kub"> <img src="https://img.icons8.com/color/64/000000/facebook-new.png" /> </a>
                                         <a href="https://line.me/R/ti/p/@516qpnpw"><img src="https://img.icons8.com/color/64/000000/line-me.png" /></a>
                                         <a href="https://www.instagram.com/mix_chattarin/"><img src="https://img.icons8.com/fluency/64/000000/instagram-new.png" /></a>
                                     </div>

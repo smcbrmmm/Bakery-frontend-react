@@ -40,7 +40,7 @@ const ContactUsComponent = () => {
                         <h4 className="main" style={{ fontSize: '22px' , marginTop : '0.5rem' }}> <img style={{marginTop : '-0.5rem' , width : '4%'}} 
                         src="https://img.icons8.com/color/64/000000/line-me.png" /> Line: @516qpnpw </h4>
 
-                        <a href="https://www.canva.com/"><img style={{marginTop : '-0.5rem' , width : '20%'}} 
+                        <a href="https://line.me/R/ti/p/@516qpnpw"><img style={{marginTop : '-0.5rem' , width : '20%'}} 
                         src="https://www.img.in.th/images/29ac19727d16702ffbf4c567040235ad.jpg" /> 
                     
                         </a>
