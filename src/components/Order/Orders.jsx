@@ -103,10 +103,10 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
                         <Row>
                             <Col sm={4}>
                                 <h2 className="main" style={{ textAlign: 'Left', marginTop: '2rem', marginBottom: '2rem' }}>  History </h2>
-                                <a href="#" className="cat-menu"><h4 style={{ textAlign: 'Left' }} onClick={() => setCategory("All")}>  All Order </h4></a>
-                                <a href="#" className="cat-menu"><h4 style={{ textAlign: 'Left' }} onClick={() => setCategory("Cancel")}>  Cancel Order </h4></a>
-                                <a href="#" className="cat-menu"><h4 style={{ textAlign: 'Left' }} onClick={() => setCategory("In Process Order")}>  In Process Order </h4></a>
-                                <a href="#" className="cat-menu"><h4 style={{ textAlign: 'Left' }} onClick={() => setCategory("Success Order")}>  Success Order </h4></a>
+                                <a href="#" className="cat-menu"><h4 style={{ textAlign: 'Left' }} onClick={() => setCategory("All")}>  All Order </h4></a>  
+                                <a href="#" className="cat-menu"><h4 style={{ textAlign: 'Left' }} onClick={() => setCategory("In Process Order")}>  In Process </h4></a>
+                                <a href="#" className="cat-menu"><h4 style={{ textAlign: 'Left' }} onClick={() => setCategory("Success Order")}>  Completed  </h4></a>
+                                <a href="#" className="cat-menu"><h4 style={{ textAlign: 'Left' }} onClick={() => setCategory("Cancel")}>  Cancelled </h4></a>
                             </Col>
                             <Col sm={8}>
                                 <h2 className="main" style={{ textAlign: 'left', marginTop: '2rem', marginBottom: '2rem' }}>  History Detail </h2>
