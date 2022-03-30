@@ -36,7 +36,18 @@ const ContactUsComponent = () => {
                         <br></br>
                         <h4 className="main" style={{ fontSize: '24px' }}> <LocalPhoneIcon></LocalPhoneIcon> Tel : 081-8330125  </h4>
                         <h4 className="main" style={{ fontSize: '22px' , marginTop : '-0.7rem' }}> K. Nares  </h4>
-                        <br></br>
+
+                        <h4 className="main" style={{ fontSize: '22px' , marginTop : '0.5rem' }}> <img style={{marginTop : '-0.5rem' , width : '4%'}} 
+                        src="https://img.icons8.com/color/64/000000/line-me.png" /> Line: @516qpnpw </h4>
+
+                        <a href="https://www.canva.com/"><img style={{marginTop : '-0.5rem' , width : '20%'}} 
+                        src="https://www.img.in.th/images/29ac19727d16702ffbf4c567040235ad.jpg" /> 
+                    
+                        </a>
+
+                        <hr></hr>
+                        <h4 className="main" style={{ fontSize: '25px' , marginTop : '1rem' }}> Map   </h4>
+                        
                     </div>
                 </Container>
 
