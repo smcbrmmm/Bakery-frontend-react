@@ -262,7 +262,7 @@ const OrderSummarize = ({ order }) => {
                 : null
             }
             {order.status === 'Waiting for payment' ?
-                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'blue' }}>{order.status}</TableCell>
+                <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'purple' }}>{order.status}</TableCell>
                 : null
             }
             {order.status === 'Waiting for payment approval' ?
@@ -302,7 +302,7 @@ const OrderSummarize = ({ order }) => {
                         }
 
                         {order.status === 'Waiting for payment' ?
-                            <h5 style={{ color: 'blue' }}> Status :  {order.status} </h5>
+                            <h5 style={{ color: 'purple' }}> Status :  {order.status} </h5>
                             : null
                         }
 
@@ -408,7 +408,7 @@ const OrderSummarize = ({ order }) => {
                             }
 
                             {order.status === 'Waiting for payment' ?
-                                <h5 style={{ fontSize: '16px', color: 'blue' }}> Waiting for customer upload slip.</h5> : null
+                                <h5 style={{ fontSize: '16px', color: 'purple' }}> Waiting for customer upload slip.</h5> : null
                             }
 
                             {order.status === 'Cancelled' ?

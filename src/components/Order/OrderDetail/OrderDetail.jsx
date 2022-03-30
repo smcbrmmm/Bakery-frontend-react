@@ -199,7 +199,7 @@ const OrderDetail = ({ order, hid }) => {
 
                 {hid === 'All' ?
                     order.status === 'Waiting for payment approval'
-                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'green' }} >  {order.orderId} - {status}  </h4> </a>) : null
+                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'blue' }} >  {order.orderId} - {status}  </h4> </a>) : null
                     : null
                 }
 
@@ -223,7 +223,7 @@ const OrderDetail = ({ order, hid }) => {
 
                 {hid === 'All' ?
                     order.status === 'Waiting for payment'
-                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'blue' }} >  {order.orderId} - {status}  </h4> </a>) : null
+                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'purple' }} >  {order.orderId} - {status}  </h4> </a>) : null
                     : null
                 }
 
@@ -247,7 +247,7 @@ const OrderDetail = ({ order, hid }) => {
 
                 {hid === 'In Process Order' ?
                     order.status === 'Waiting for payment'
-                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'blue' }} >  {order.orderId} - {status}  </h4> </a>) : null
+                        ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'purple' }} >  {order.orderId} - {status}  </h4> </a>) : null
                     : null
                 }
 
@@ -389,7 +389,7 @@ const OrderDetail = ({ order, hid }) => {
                                 }
 
                                 {order.status === 'Waiting for payment approval' ?
-                                    <h5 style={{ fontSize: '16px', color: 'green' }}> You already upload your slip. Please waiting for confirmation.</h5> : null
+                                    <h5 style={{ fontSize: '16px', color: 'blue' }}> You already upload your slip. Please waiting for confirmation.</h5> : null
                                 }
 
                                 {order.status === 'Confirm , Waiting for shipment' ?
@@ -450,7 +450,7 @@ const OrderDetail = ({ order, hid }) => {
                                 }
 
                                 {order.status === 'Waiting for payment approval' ?
-                                    <h5 style={{ fontSize: '14px', color: 'green' }}> You already upload your slip. Please waiting for confirmation.</h5> : null
+                                    <h5 style={{ fontSize: '14px', color: 'blue' }}> You already upload your slip. Please waiting for confirmation.</h5> : null
                                 }
 
                                 {order.status === 'Confirm , Waiting for shipment' ?
