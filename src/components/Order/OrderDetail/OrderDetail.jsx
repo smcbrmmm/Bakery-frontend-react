@@ -191,26 +191,20 @@ const OrderDetail = ({ order, hid }) => {
 
             <h3 style={{ textAlign: 'left' }} onClick={() => setSigntinModalShow(true)} >
 
-                {/* {order.status === 'Order Canceled' ?
-                    <h3 style={{ color: 'red' }}> {order.orderId} # {order.status}  </h3>
-                    : <h3 style={{ color: 'blue' }}> {order.orderId} # {order.status}  </h3>
-                } */}
-                {/* <h3 className="orderDetail" > {order.orderId} # {status}  </h3> */}
-
                 {hid === 'All' ?
-                    order.status === 'Order Canceled' ?
+                    order.status === 'Cancelled' ?
                         <a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'red' }} >  {order.orderId} - {status}  </h4> </a> : null
                     : null
                 }
 
                 {hid === 'All' ?
-                    order.status === 'Waiting for Confirmation'
+                    order.status === 'Waiting for payment approval'
                         ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'green' }} >  {order.orderId} - {status}  </h4> </a>) : null
                     : null
                 }
 
                 {hid === 'All' ?
-                    order.status === 'Success'
+                    order.status === 'Completed'
                         ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'green' }} >  {order.orderId} - {status}  </h4> </a>) : null
                     : null
                 }
@@ -234,13 +228,13 @@ const OrderDetail = ({ order, hid }) => {
                 }
 
                 {hid === 'Cancel' ?
-                    order.status === 'Order Canceled' ?
+                    order.status === 'Cancelled' ?
                         <a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'red' }} >  {order.orderId} - {status}  </h4> </a> : null
                     : null
                 }
 
                 {hid === 'In Process Order' ?
-                    order.status === 'Waiting for Confirmation'
+                    order.status === 'Waiting for payment approval'
                         ? (<a href="#" className="cat-menu"><h4 className="orderDetail" style={{ color: 'green' }} >  {order.orderId} - {status}  </h4> </a>) : null
                     : null
                 }
@@ -285,7 +279,7 @@ const OrderDetail = ({ order, hid }) => {
                     <Modal.Title id="contained-modal-title-vcenter">
                         Your order information.  #{order.orderId}
 
-                        {order.status === 'Order Canceled' ?
+                        {order.status === 'Cancelled' ?
                             <h5 style={{ color: 'red' }}> Status :  {order.status} </h5>
                             : null
                         }
@@ -312,7 +306,7 @@ const OrderDetail = ({ order, hid }) => {
 
                         <h5 style={{ color: 'grey', fontSize: '16px' }}> Date :  {moment(order.date.slice(0, 10)).format("D MMMM YYYY")} </h5>
 
-                        {order.status === 'Order Canceled' ?
+                        {order.status === 'Cancelled' ?
                             null :
                             <Button hidden={order.hasPayment !== "no-slip" || isUpload || order.status === 'Confirm , Waiting for shipment'
                                 || order.status === 'Shipping' || order.status === 'Success'
@@ -372,7 +366,7 @@ const OrderDetail = ({ order, hid }) => {
 
                                 <img style={{width : '100%'}} src="https://www.img.in.th/images/69ea02dea737ab4cba39501f8d9ba2bf.jpg" />
 
-                                {order.status === "Order Canceled" ?
+                                {order.status === "Cancelled" ?
                                     null :
                                     <Form.Group controlId="formFile" className="mb-3" hidden={order.hasPayment !== "no-slip" || isUpload
                                         || order.status === 'Confirm , Waiting for shipment' || order.status === 'Shipping' || order.status === 'Success'}>
@@ -381,7 +375,7 @@ const OrderDetail = ({ order, hid }) => {
                                     </Form.Group>
                                 }
 
-                                {order.status === 'Order Canceled' ?
+                                {order.status === 'Cancelled' ?
                                     <h5 style={{ fontSize: '16px', color: 'red' }}> Your order has been canceled.</h5> :
                                     <Button onClick={handleUploadSlip} hidden={order.hasPayment !== "no-slip" || isUpload
                                         || order.status === 'Confirm , Waiting for shipment' || order.status === 'Shipping' || order.status === 'Success'} size="sm" variant="secondary"
@@ -429,7 +423,7 @@ const OrderDetail = ({ order, hid }) => {
                                 <h5 style={{ fontSize: '14px' }}> Bank Transfer :  </h5>
                                 <h5 style={{ fontSize: '16px' }}> SCB - 28232512845 - Mymom Bakery Store </h5>
 
-                                {order.status === "Order Canceled" ?
+                                {order.status === "Cancelled" ?
                                     null :
                                     <Form.Group controlId="formFile" className="mb-3" hidden={order.hasPayment !== "no-slip" || isUpload
                                         || order.status === 'Confirm , Waiting for shipment' || order.status === 'Shipping' || order.status === 'Success'
@@ -439,7 +433,7 @@ const OrderDetail = ({ order, hid }) => {
                                     </Form.Group>
                                 }
 
-                                {order.status === 'Order Canceled' ?
+                                {order.status === 'Cancelled' ?
                                     <h5 style={{ fontSize: '14px', color: 'red' }}> Your order has been canceled.</h5> :
                                     <Button onClick={handleUploadSlip}
                                         hidden={order.hasPayment !== "no-slip" || isUpload

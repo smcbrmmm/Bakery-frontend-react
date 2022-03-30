@@ -144,7 +144,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
 
         setTimeout(() => {
             window.location.href = "/products";
-        }, 1000);
+        }, 500);
 
     }
 

@@ -61,15 +61,15 @@ const OrderSummarize = ({ order }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/orderDetail/orderdetail/' + order.orderId,
+                ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
             );
 
             const result2 = await axios(
-                ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/getSumPrice/' + order.orderId,
+                ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/order/getSumPrice/' + order.orderId,
             );
 
             const result3 = await axios(
-                ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/address/orderAddress/' + order.addressId,
+                ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/address/orderAddress/' + order.addressId,
             );
 
             // const result4 = await axios(
@@ -188,7 +188,7 @@ const OrderSummarize = ({ order }) => {
                 {order.orderId}
             </TableCell>
             <TableCell onClick={() => setSigntinModalShow(true)} align="right">{order.userId}</TableCell>
-            {order.status === 'Order Canceled' ?
+            {order.status === 'Cancelled' ?
                 <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'red' }}>{order.status}</TableCell>
                 : null
             }
@@ -209,7 +209,7 @@ const OrderSummarize = ({ order }) => {
                 : null
             }
 
-            {order.status === 'Success' ?
+            {order.status === 'Completed' ?
                 <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'green' }}>{order.status}</TableCell>
                 : null
             }
@@ -229,7 +229,7 @@ const OrderSummarize = ({ order }) => {
                     <Modal.Title id="contained-modal-title-vcenter">
                         Your order information.  #{order.orderId}
 
-                        {order.status === 'Order Canceled' ?
+                        {order.status === 'Cancelled' ?
                             <h5 style={{ color: 'red' }}> Status :  {order.status} </h5>
                             : null
                         }
@@ -254,12 +254,12 @@ const OrderSummarize = ({ order }) => {
                             : null
                         }
 
-                        {order.status === 'Success' ?
+                        {order.status === 'Completed' ?
                             <h5 style={{ color: 'green' }}> Status :  {order.status} </h5>
                             : null
                         }
 
-                        {/* {order.status === 'Order Canceled' ?
+                        {/* {order.status === 'Cancelled' ?
                             null :
                             <Button hidden={order.hasPayment !== "no-slip" || isUpload} variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
                         } */}
@@ -303,33 +303,9 @@ const OrderSummarize = ({ order }) => {
                             <h5 style={{ fontSize: '16px' }}> Reciever Tel : {address.recieverTel} </h5>
                             <h5 style={{ fontSize: '16px' }}> Address : {address.houseNumber} {address.address} {address.province} {address.postal}</h5>
 
-
-
                             <br></br>
                             <br></br>
-                            {/* <hr hidden={order.status == 'Order Canceled'} ></hr>
-                            <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" hidden={order.status == 'Order Canceled'}>
-                                <span><Form.Label> <h5> Update Order Status </h5></Form.Label></span>
-                                <Form.Select aria-label="Default select example" onChange={e => { setOrderStatus(e.target.value) }}>
-                                    <option value={order.status}> {order.status} </option>
-                                    <option value="Waiting for shipment">Confirm , Waiting for shipping.</option>
-                                    <option value="Shipping" hidden={order.status === 'Shipping'}>Shipping</option>
-                                    <option value="Success">Success</option>
-                                    <option value="Cancel">Cancel</option>
-                                </Form.Select>
-                            </Form.Group>
-                            {orderStatus === 'Shipping' ?
-                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                    <Form.Label>Tracking No.</Form.Label>
-                                    <Form.Control type="text" placeholder="Tracking No." value={order.trackingNo} />
-                                </Form.Group> : null
-                            }
-
-
-                            <Button hidden={order.status == 'Order Canceled'} variant="success" style={{ display : 'block' , marginLeft:'auto' , marginRight:'0px'}}> Confirm</Button> */}
-
-
-
+                            
                         </Col>
                         <Col>
                             <h5> Payment </h5>
@@ -343,7 +319,7 @@ const OrderSummarize = ({ order }) => {
                                 <h5 style={{ fontSize: '16px', color: 'blue' }}> Waiting for customer upload slip.</h5> : null
                             }
 
-                            {order.status === 'Order Canceled' ?
+                            {order.status === 'Cancelled' ?
                                 <h5 style={{ fontSize: '16px', color: 'red' }}>  Your order has been canceled.</h5> : null
                             }
 

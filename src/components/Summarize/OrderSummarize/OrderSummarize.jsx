@@ -159,7 +159,7 @@ const OrderSummarize = ({ order }) => {
             handleUpdateStatusConfirm();
         } else if (orderStatus === "Shipping") {
             handleUpdateStatusShipping();
-        } else if (orderStatus === "Success") {
+        } else if (orderStatus === "Completed") {
             handleUpdateStatusSuccess();
         }
 
@@ -257,7 +257,7 @@ const OrderSummarize = ({ order }) => {
                 {order.orderId}
             </TableCell>
             <TableCell onClick={() => setSigntinModalShow(true)} align="right">{order.userId}</TableCell>
-            {order.status === 'Order Canceled' ?
+            {order.status === 'Cancelled' ?
                 <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'red' }}>{order.status}</TableCell>
                 : null
             }
@@ -265,7 +265,7 @@ const OrderSummarize = ({ order }) => {
                 <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'blue' }}>{order.status}</TableCell>
                 : null
             }
-            {order.status === 'Waiting for Confirmation' ?
+            {order.status === 'Waiting for payment approval' ?
                 <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'green' }}>{order.status}</TableCell>
                 : null
             }
@@ -275,7 +275,7 @@ const OrderSummarize = ({ order }) => {
                 : null
             }
 
-            {order.status === 'Success' ?
+            {order.status === 'Completed' ?
                 <TableCell onClick={() => setSigntinModalShow(true)} align="right" style={{ color: 'green' }}>{order.status}</TableCell>
                 : null
             }
@@ -296,7 +296,7 @@ const OrderSummarize = ({ order }) => {
                     <Modal.Title id="contained-modal-title-vcenter">
                         Your order information.  #{order.orderId}
 
-                        {order.status === 'Order Canceled' ?
+                        {order.status === 'Cancelled' ?
                             <h5 style={{ color: 'red' }}> Status :  {order.status} </h5>
                             : null
                         }
@@ -306,7 +306,7 @@ const OrderSummarize = ({ order }) => {
                             : null
                         }
 
-                        {order.status === 'Waiting for Confirmation' ?
+                        {order.status === 'Waiting for payment approval' ?
                             <h5 style={{ color: 'green' }}> Status :  {order.status} </h5>
                             : null
                         }
@@ -326,18 +326,10 @@ const OrderSummarize = ({ order }) => {
                             : null
                         }
 
-                        {order.status === 'Success' ?
+                        {order.status === 'Completed' ?
                             <h5 style={{ color: 'green' }}> Status :  {order.status} </h5>
                             : null
                         }
-
-                        {/* {order.status === 'Order Canceled' ?
-                            null :
-                            <Button hidden={order.hasPayment !== "no-slip" || isUpload || order.status === "Confirm , Waiting for shipment"
-                                || order.status === "Shipping"}
-                                variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
-                        } */}
-
 
                         <h5 style={{ color: 'grey' , fontSize : '16px'}}> Date :  {moment(order.date.slice(0, 10)).format("D MMMM YYYY")} </h5>
 
@@ -381,14 +373,14 @@ const OrderSummarize = ({ order }) => {
 
                             <br></br>
                             <br></br>
-                            <hr hidden={order.status == 'Order Canceled' || order.status == 'Success'} ></hr>
-                            <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" hidden={order.status == 'Order Canceled' || order.status == 'Success'}>
+                            <hr hidden={order.status == 'Cancelled' || order.status == 'Completed'} ></hr>
+                            <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" hidden={order.status == 'Cancelled' || order.status == 'Completed'}>
                                 <span><Form.Label> <h5> Current Order Status </h5></Form.Label></span>
                                 <Form.Select aria-label="Default select example" onChange={e => { setOrderStatus(e.target.value) }}>
                                     <option value={order.status}> {order.status} </option>
-                                    <option value="Waiting for shipment" hidden={order.status === 'Confirm , Waiting for shipment'}>Confirm , Waiting for shipping.</option>
+                                    <option value="Waiting for shipment" hidden={order.status === 'Confirm , Waiting for shipment'}>Confirm , Waiting for shipment.</option>
                                     <option value="Shipping" hidden={order.status === 'Shipping'}>Shipping</option>
-                                    <option value="Success" hidden={order.status === 'Success'}>Success</option>
+                                    <option value="Completed" hidden={order.status === 'Completed'}>Completed</option>
                                     <option value="Cancel" hidden={order.status === 'Cancel'}>Cancel</option>
                                 </Form.Select>
                             </Form.Group>
@@ -399,7 +391,7 @@ const OrderSummarize = ({ order }) => {
                                 </Form.Group> : null
                             }
 
-                            <Button hidden={order.status == 'Order Canceled' || order.status == 'Success'} variant="primary" onClick={() => { updateStatus(), handleClickSnackBar() }}
+                            <Button hidden={order.status == 'Cancelled' || order.status == 'Completed'} variant="primary" onClick={() => { updateStatus(), handleClickSnackBar() }}
                                 style={{ display: 'block', marginLeft: 'auto', marginRight: '0px' }}
 
                             >
@@ -419,7 +411,7 @@ const OrderSummarize = ({ order }) => {
                                 <h5 style={{ fontSize: '16px', color: 'blue' }}> Waiting for customer upload slip.</h5> : null
                             }
 
-                            {order.status === 'Order Canceled' ?
+                            {order.status === 'Cancelled' ?
                                 <h5 style={{ fontSize: '16px', color: 'red' }}>  Your order has been canceled.</h5> : null
                             }
 
