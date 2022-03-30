@@ -370,7 +370,7 @@ const OrderDetail = ({ order, hid }) => {
                                 {/* <h5 style={{ fontSize: '16px' }}> Bank Transfer :  </h5>
                                 <h5 style={{ fontSize: '18px' }}> SCB - 28232512845 - Mymom Bakery Store </h5> */}
 
-                                <img style={{width : '70%'}} src="https://www.img.in.th/images/69ea02dea737ab4cba39501f8d9ba2bf.jpg" />
+                                <img style={{width : '100%'}} src="https://www.img.in.th/images/69ea02dea737ab4cba39501f8d9ba2bf.jpg" />
 
                                 {order.status === "Order Canceled" ?
                                     null :
