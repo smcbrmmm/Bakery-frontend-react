@@ -36,10 +36,13 @@ const Footer = () => {
 
                         </MediaQuery>
                         <MediaQuery maxWidth={1224}>
-                        <h3 style={{ textAlign: 'Left' , fontSize:'15px' }}> Social Media: </h3>
-                            <img src="https://img.icons8.com/color/64/000000/facebook-new.png" style={{maxWidth:'20%' , marginRight:'-2rem'}} />
-                            <img src="https://img.icons8.com/color/64/000000/line-me.png" style={{maxWidth:'20%' , marginRight:'-2rem'}} />
-                            <img src="https://img.icons8.com/fluency/64/000000/instagram-new.png" style={{maxWidth:'20%'}} />
+                        <h3 style={{ textAlign: 'center' , fontSize:'15px' , marginTop:'0.5rem' }}> Social Media: </h3>
+
+                            <div style={{textAlign : 'center'}}>
+                            <a href="https://www.facebook.com/mixzimize.kub"><img  src="https://img.icons8.com/color/64/000000/facebook-new.png" style={{maxWidth:'20%' }} /></a>
+                            <a href="https://line.me/R/ti/p/@516qpnpw"><img  src="https://img.icons8.com/color/64/000000/line-me.png" style={{maxWidth:'20%' }} /></a>
+                            <a href="https://www.instagram.com/mix_chattarin/"><img  src="https://img.icons8.com/fluency/64/000000/instagram-new.png" style={{maxWidth:'20%'}} /></a>
+                            </div>
                         </MediaQuery>
 
                     </Row>
