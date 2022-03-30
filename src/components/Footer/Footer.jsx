@@ -17,13 +17,16 @@ const Footer = () => {
                             
                                 <Container>
                                     <h3 style={{ textAlign: 'center' }}> Contract Us </h3>
-                                    <h5 style={{ textAlign: 'center', marginBottom: '3rem' }}> Contact number : 0922489093 </h5>
+                                    <h5 style={{ textAlign: 'center' }}> Contact number : 0922489093
+                                    
+                                     </h5>
+                                    <h5 style={{ textAlign: 'center', marginBottom: '3rem' }}> K.Nares </h5>
 
                                     <h5 style={{ textAlign: 'center' }}> Social Media </h5>
                                     <div style={{ textAlign: 'center' }}>
                                         <a href="https://www.canva.com/"> <img src="https://img.icons8.com/color/64/000000/facebook-new.png" /> </a>
                                         <a href="https://www.canva.com/"><img src="https://img.icons8.com/color/64/000000/line-me.png" /></a>
-                                        <a href="https://www.canva.com/"><img src="https://img.icons8.com/fluency/64/000000/instagram-new.png" /></a>
+                                        <a href="https://www.instagram.com/mix_chattarin/"><img src="https://img.icons8.com/fluency/64/000000/instagram-new.png" /></a>
                                     </div>
                                 </Container>
 
