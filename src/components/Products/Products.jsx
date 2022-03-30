@@ -34,7 +34,7 @@ import axios from "axios";
 
 async function addProduct(product) {
     
-    return fetch(' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io/api/products/insert', {
+    return fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/products/insert', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
