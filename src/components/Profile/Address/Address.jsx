@@ -26,7 +26,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 async function deleteAddress(addressDetail) {
     console.log(addressDetail)
-    return fetch(' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/address/delete', {
+    return fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/address/delete', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ async function updateAddress(addressDetail) {
 
     console.log(addressDetail)
 
-    return fetch(' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/address/update', {
+    return fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/address/update', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

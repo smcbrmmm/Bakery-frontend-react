@@ -15,7 +15,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 async function cancelOrder(order) {
-    return fetch(' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/cancel/' + order.orderId, {
+    return fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/order/cancel/' + order.orderId, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ async function cancelOrder(order) {
 }
 
 async function updateStatusConfirm(order) {
-    return fetch(' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/update/status/confirm/' + order.orderId, {
+    return fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/order/update/status/confirm/' + order.orderId, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ async function updateStatusConfirm(order) {
 }
 
 async function updateStatusShipping(order) {
-    return fetch(' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/update/status/shipping/' + order.orderId + "/" + order.trackingNo, {
+    return fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/order/update/status/shipping/' + order.orderId + "/" + order.trackingNo, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ async function updateStatusShipping(order) {
 
 
 async function updateStatusSuccess(order) {
-    return fetch(' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/update/status/success/' + order.orderId, {
+    return fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/order/update/status/success/' + order.orderId, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -72,19 +72,19 @@ const OrderSummarize = ({ order }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/orderDetail/orderdetail/' + order.orderId,
+                ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
             );
 
             const result2 = await axios(
-                ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/getSumPrice/' + order.orderId,
+                ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/order/getSumPrice/' + order.orderId,
             );
 
             const result3 = await axios(
-                ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/address/orderAddress/' + order.addressId,
+                ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/address/orderAddress/' + order.addressId,
             );
 
             // const result4 = await axios(
-            //     ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/payment/getPayment/' + order.orderId,
+            //     ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/payment/getPayment/' + order.orderId,
             // );
 
             setPrice(result2)

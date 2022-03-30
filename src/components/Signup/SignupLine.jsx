@@ -7,7 +7,7 @@ import MediaQuery from 'react-responsive'
 
 async function signup(user) {
     console.log(user)
-    return fetch(' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/user/register', {
+    return fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/user/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

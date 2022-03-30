@@ -30,10 +30,10 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/order',
+                ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/order/order',
             );
 
-            fetch(' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/cart/inCart/' + user.id, {
+            fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/cart/inCart/' + user.id, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

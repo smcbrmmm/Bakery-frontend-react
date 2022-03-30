@@ -86,7 +86,7 @@ const Summarize = () => {
         setSearchOrderId("")
         const fetchData = async () => {
             const result = await axios(
-                ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/getOrderByDate/' + date,
+                ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/order/getOrderByDate/' + date,
             );
             console.log(result)
 
@@ -114,7 +114,7 @@ const Summarize = () => {
         if(searchOrderId.length === 0) {
             const fetchData = async () => {
                 const result = await axios(
-                    ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/getOrderByDate/' + date,
+                    'https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/order/getOrderByDate/' + date,
                 );
                 console.log(result)
     
@@ -126,7 +126,7 @@ const Summarize = () => {
         }else {
             const fetchData = async () => {
                 const result = await axios(
-                    ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/getOrderByDateAndOrderId/' + date + "/" + searchOrderId,
+                    'https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/order/getOrderByDateAndOrderId/' + date + "/" + searchOrderId,
                 );
                 console.log(result)
                 setOrder(result.data)

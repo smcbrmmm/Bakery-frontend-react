@@ -10,7 +10,7 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
 async function cancelOrder(order) {
-    return fetch(' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/cancel/' + order.orderId, {
+    return fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/order/cancel/' + order.orderId, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ async function updateOrder(order) {
 
     console.log(order)
 
-    return fetch(' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/payment/upload', {
+    return fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/payment/upload', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -61,19 +61,19 @@ const OrderDetail = ({ order, hid }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/orderDetail/orderdetail/' + order.orderId,
+                ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
             );
 
             const result2 = await axios(
-                ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/order/getSumPrice/' + order.orderId,
+                ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/order/getSumPrice/' + order.orderId,
             );
 
             const result3 = await axios(
-                ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/address/orderAddress/' + order.addressId,
+                ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/address/orderAddress/' + order.addressId,
             );
 
             // const result4 = await axios(
-            //     ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/payment/getPayment/' + order.orderId,
+            //     ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/payment/getPayment/' + order.orderId,
             // );
 
             // console.log(result4)
@@ -367,8 +367,10 @@ const OrderDetail = ({ order, hid }) => {
                             </Col>
                             <Col>
                                 <h5> Payment </h5>
-                                <h5 style={{ fontSize: '16px' }}> Bank Transfer :  </h5>
-                                <h5 style={{ fontSize: '18px' }}> SCB - 28232512845 - Mymom Bakery Store </h5>
+                                {/* <h5 style={{ fontSize: '16px' }}> Bank Transfer :  </h5>
+                                <h5 style={{ fontSize: '18px' }}> SCB - 28232512845 - Mymom Bakery Store </h5> */}
+
+                                <img style={{width : '40%'}} src="https://www.img.in.th/images/69ea02dea737ab4cba39501f8d9ba2bf.jpg" />
 
                                 {order.status === "Order Canceled" ?
                                     null :
