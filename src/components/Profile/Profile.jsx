@@ -1,46 +1,65 @@
-import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Col, Row, Container, Carousel, Navbar, Form, FormControl, Nav, NavDropdown, Fade, Modal, Button } from "react-bootstrap";
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Address from './Address/Address'
-import AddLocationIcon from '@mui/icons-material/AddLocation';
-import NavbarCom from '../Navbar/NavbarComponent'
+import React, { useEffect, useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Col,
+  Row,
+  Container,
+  Carousel,
+  Navbar,
+  Form,
+  FormControl,
+  Nav,
+  NavDropdown,
+  Fade,
+  Modal,
+  Button,
+} from "react-bootstrap";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Address from "./Address/Address";
+import AddLocationIcon from "@mui/icons-material/AddLocation";
+import NavbarCom from "../Navbar/NavbarComponent";
 import axios from "axios";
 // import Avatar from '@mui/material/Avatar';
 
-import "./Profile.css"
-import MediaQuery from 'react-responsive'
+import "./Profile.css";
+import MediaQuery from "react-responsive";
 
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 async function saveAddress(addressDetail) {
-  console.log(addressDetail)
-  return fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/address/save', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      userId: addressDetail.userId, place: addressDetail.place
-      , houseNumber: addressDetail.houseNumber, address: addressDetail.addesses,
-      recieverName: addressDetail.recieverName, recieverTel: addressDetail.recieverTel,
-      province: addressDetail.province, postal: addressDetail.postal
-    })
-  })
+  console.log(addressDetail);
+  return fetch(
+    " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/address/save",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: addressDetail.userId,
+        place: addressDetail.place,
+        houseNumber: addressDetail.houseNumber,
+        address: addressDetail.addesses,
+        recieverName: addressDetail.recieverName,
+        recieverTel: addressDetail.recieverTel,
+        province: addressDetail.province,
+        postal: addressDetail.postal,
+      }),
+    }
+  );
   // .then(data => data.json())
-
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -60,8 +79,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Profile = () => {
-
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const [address, setAddress] = useState([]);
   const [signinModalShow, setSigntinModalShow] = useState(false);
@@ -69,14 +87,14 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/address/address/' + user.id,
+        " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/address/address/" +
+          user.id
       );
-      setAddress(result.data)
-      console.log(result)
+      setAddress(result.data);
+      console.log(result);
     };
 
     fetchData();
-
   }, []);
 
   const [edit, showEdit] = useState(false);
@@ -85,14 +103,14 @@ const Profile = () => {
   let no = 1;
   let no_mobile = 1;
 
-  const [place, setPlace] = useState(address.place)
-  const [recieverName, setRecieverName] = useState(address.recieverName)
-  const [recieverTel, setRecieverTel] = useState(address.recieverTel)
-  const [houseNumber, setHouseNo] = useState(address.houseNumber)
-  const [province, setProvince] = useState(address.province)
-  const [postal, setPostal] = useState(address.postal)
-  const [addesses, setAddesses] = useState(address.address)
-  const [userId, setUserId] = useState(user.id)
+  const [place, setPlace] = useState(address.place);
+  const [recieverName, setRecieverName] = useState(address.recieverName);
+  const [recieverTel, setRecieverTel] = useState(address.recieverTel);
+  const [houseNumber, setHouseNo] = useState(address.houseNumber);
+  const [province, setProvince] = useState(address.province);
+  const [postal, setPostal] = useState(address.postal);
+  const [addesses, setAddesses] = useState(address.address);
+  const [userId, setUserId] = useState(user.id);
 
   const [openAlert, setOpenAlert] = React.useState(false);
 
@@ -101,57 +119,71 @@ const Profile = () => {
   };
 
   const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
     setOpenAlert(false);
   };
 
-
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     // e.preventDefault();
 
     const response = await saveAddress({
       userId,
       place,
-      recieverName, recieverTel, houseNumber, province, postal, addesses
+      recieverName,
+      recieverTel,
+      houseNumber,
+      province,
+      postal,
+      addesses,
     });
 
     setTimeout(() => {
       window.location.href = "/profile";
     }, 1000);
-
-  }
+  };
 
   const [validated, setValidated] = useState(false);
 
   const validationAddress = () => {
-    if (typeof place === "undefined" || typeof recieverName === "undefined" || typeof recieverTel === "undefined" || typeof houseNumber === "undefined"
-      || typeof province === "undefined" || typeof postal === "undefined" || typeof addesses === "undefined"
-      || place === "" || recieverName === "" || recieverTel === "" || houseNumber === "" || province === "" || postal === "" || place === "" || addesses === ""
+    if (
+      typeof place === "undefined" ||
+      typeof recieverName === "undefined" ||
+      typeof recieverTel === "undefined" ||
+      typeof houseNumber === "undefined" ||
+      typeof province === "undefined" ||
+      typeof postal === "undefined" ||
+      typeof addesses === "undefined" ||
+      place === "" ||
+      recieverName === "" ||
+      recieverTel === "" ||
+      houseNumber === "" ||
+      province === "" ||
+      postal === "" ||
+      place === "" ||
+      addesses === ""
     ) {
       swal("Error", "Please fill your information completely", "error");
     } else {
       handleSubmit();
       handleClick();
     }
-
-  }
+  };
 
   return (
     <div className="page-container">
-
       <NavbarCom />
 
-      <div className='content-wrap'>
-        <div className='container'>
-          <h1> Profile  </h1>
+      <div className="content-wrap">
+        <div className="container">
+          <h1> Profile </h1>
 
           <MediaQuery minWidth={1224}>
             <Row>
               <Col>
-                <div hidden={edit} >
+                <div hidden={edit}>
                   {/* <h2> Detail  </h2> */}
                   {/* <Avatar alt="Remy Sharp" src={user.img} sx={{ width: 200, height: 200 }} /> */}
                   <h4> Name : {user.name} </h4>
@@ -159,8 +191,19 @@ const Profile = () => {
                 </div>
               </Col>
               <Col>
-                <div hidden={edit} >
-                  <h2> Address <Button color='success' size='large' onClick={() => setSigntinModalShow(true)}> <AddLocationIcon /> </Button> </h2>
+                <div hidden={edit}>
+                  <h2>
+                    {" "}
+                    Address{" "}
+                    <Button
+                      color="success"
+                      size="large"
+                      onClick={() => setSigntinModalShow(true)}
+                    >
+                      {" "}
+                      <AddLocationIcon />{" "}
+                    </Button>{" "}
+                  </h2>
                   {address.map((address) => (
                     <Address key={address.id} address={address} no={no++} />
                   ))}
@@ -170,29 +213,39 @@ const Profile = () => {
           </MediaQuery>
 
           <MediaQuery maxWidth={1224}>
-
-            <div hidden={edit} >
+            <div hidden={edit}>
               {/* <h2> Detail  </h2> */}
               {/* <Avatar alt="Remy Sharp" src={user.img} sx={{ width: 200, height: 200 }} /> */}
               <h4> Name : {user.name} </h4>
               <h4> Email : {user.email} </h4>
             </div>
-            <hr className='hr'></hr>
+            <hr className="hr"></hr>
 
-            <div hidden={edit} >
-              <h2> Address <Button color='success' size='large' onClick={() => setSigntinModalShow(true)}> <AddLocationIcon /> </Button> </h2>
+            <div hidden={edit}>
+              <h2>
+                {" "}
+                Address{" "}
+                <Button
+                  color="success"
+                  size="large"
+                  onClick={() => setSigntinModalShow(true)}
+                >
+                  {" "}
+                  <AddLocationIcon />{" "}
+                </Button>{" "}
+              </h2>
               {address.map((address) => (
                 <Address key={address.id} address={address} no={no_mobile++} />
               ))}
             </div>
-
           </MediaQuery>
         </div>
       </div>
 
       <MediaQuery maxWidth={1224}>
-
-        <Modal className="cart-modal" show={signinModalShow}
+        <Modal
+          className="cart-modal"
+          show={signinModalShow}
           onHide={() => setSigntinModalShow(false)}
           aria-labelledby="contained-modal-title-vcenter"
           centered
@@ -203,42 +256,96 @@ const Profile = () => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form className="formSignin" validated={validated} >
-              <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+            <Form className="formSignin" validated={validated}>
+              <Form.Group
+                className="signinInput mb-3"
+                controlId="fromBasicPlace"
+              >
                 <Form.Label>Place</Form.Label>
-                <Form.Control required type="text" onChange={e => { setPlace(e.target.value) }} />
+                <Form.Control
+                  required
+                  type="text"
+                  onChange={(e) => {
+                    setPlace(e.target.value);
+                  }}
+                />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
-              <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+              <Form.Group
+                className="signinInput mb-3"
+                controlId="fromBasicPlace"
+              >
                 <Form.Label>Reciever Name</Form.Label>
-                <Form.Control required type="text" onChange={e => { setRecieverName(e.target.value) }} />
+                <Form.Control
+                  required
+                  type="text"
+                  onChange={(e) => {
+                    setRecieverName(e.target.value);
+                  }}
+                />
               </Form.Group>
-              <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+              <Form.Group
+                className="signinInput mb-3"
+                controlId="fromBasicPlace"
+              >
                 <Form.Label>Reciever Tel#</Form.Label>
-                <Form.Control required type="text" onKeyPress={(event) => {
-                  if (!/[0-9]/.test(event.key)) {
-                    event.preventDefault();
-                  }
-                }}
-                  onChange={e => { setRecieverTel(e.target.value) }}
+                <Form.Control
+                  required
+                  type="text"
+                  onKeyPress={(event) => {
+                    if (!/[0-9]/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
+                  onChange={(e) => {
+                    setRecieverTel(e.target.value);
+                  }}
                   maxLength="10"
                 />
               </Form.Group>
-              <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+              <Form.Group
+                className="signinInput mb-3"
+                controlId="fromBasicPlace"
+              >
                 <Form.Label>House Number</Form.Label>
-                <Form.Control required type="text" onChange={e => { setHouseNo(e.target.value) }} />
+                <Form.Control
+                  required
+                  type="text"
+                  onChange={(e) => {
+                    setHouseNo(e.target.value);
+                  }}
+                />
               </Form.Group>
-              <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+              <Form.Group
+                className="signinInput mb-3"
+                controlId="fromBasicPlace"
+              >
                 <Form.Label>Address</Form.Label>
-                <Form.Control required as="textarea" onChange={e => { setAddesses(e.target.value) }} rows={3} />
+                <Form.Control
+                  required
+                  as="textarea"
+                  onChange={(e) => {
+                    setAddesses(e.target.value);
+                  }}
+                  rows={3}
+                />
                 <Form.Control.Feedback type="invalid">
                   Please choose a username.
                 </Form.Control.Feedback>
               </Form.Group>
-              <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+              <Form.Group
+                className="signinInput mb-3"
+                controlId="fromBasicPlace"
+              >
                 <Form.Label>Province</Form.Label>
-                <Form.Select required aria-label="Default select example" onChange={e => { setProvince(e.target.value) }}>
-                  <option >Please select</option>
+                <Form.Select
+                  required
+                  aria-label="Default select example"
+                  onChange={(e) => {
+                    setProvince(e.target.value);
+                  }}
+                >
+                  <option>Please select</option>
                   <option value="Bangkok">Bangkok</option>
                   <option value="Krabi">Krabi </option>
                   <option value="Kanchanaburi">Kanchanaburi </option>
@@ -260,19 +367,25 @@ const Profile = () => {
                   <option value="Nakhon Pathom">Nakhon Pathom </option>
                   <option value="Nakhon Phanom">Nakhon Phanom </option>
                   <option value="Nakhon Ratchasima">Nakhon Ratchasima </option>
-                  <option value="Nakhon Si Thammarat">Nakhon Si Thammarat </option>
+                  <option value="Nakhon Si Thammarat">
+                    Nakhon Si Thammarat{" "}
+                  </option>
                   <option value="Nakhon Sawan">Nakhon Sawan </option>
                   <option value="Narathiwat">Narathiwat </option>
                   <option value="Nan">Nan </option>
                   <option value="Nonthaburi">Nonthaburi </option>
                   <option value="Bueng Kan">Bueng Kan</option>
                   <option value="Buriram">Buriram</option>
-                  <option value="Prachuap Khiri Khan">Prachuap Khiri Khan </option>
+                  <option value="Prachuap Khiri Khan">
+                    Prachuap Khiri Khan{" "}
+                  </option>
                   <option value="Pathum Thani">Pathum Thani </option>
                   <option value="Prachinburi">Prachinburi </option>
                   <option value="Pattani">Pattani </option>
                   <option value="Phayao">Phayao </option>
-                  <option value="Phra Nakhon Si Ayutthaya">Phra Nakhon Si Ayutthaya </option>
+                  <option value="Phra Nakhon Si Ayutthaya">
+                    Phra Nakhon Si Ayutthaya{" "}
+                  </option>
                   <option value="Phang Nga">Phang Nga </option>
                   <option value="Phichit">Phichit </option>
                   <option value="Phitsanulok">Phitsanulok </option>
@@ -316,29 +429,39 @@ const Profile = () => {
                   <option value="Uthai Thani">Uthai Thani </option>
                   <option value="Ubon Ratchathani">Ubon Ratchathani</option>
                   <option value="Ang Thong">Ang Thong </option>
-
                 </Form.Select>
               </Form.Group>
 
-              <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+              <Form.Group
+                className="signinInput mb-3"
+                controlId="fromBasicPlace"
+              >
                 <Form.Label>Postal</Form.Label>
-                <Form.Control maxLength={5} required type="text"
+                <Form.Control
+                  maxLength={5}
+                  required
+                  type="text"
                   onKeyPress={(event) => {
                     if (!/[0-9]/.test(event.key)) {
                       event.preventDefault();
                     }
                   }}
-                  onChange={e => { setPostal(e.target.value) }}
+                  onChange={(e) => {
+                    setPostal(e.target.value);
+                  }}
                 />
               </Form.Group>
               <div className="d-grid gap-2">
-                <Button variant="primary" size="lg"
+                <Button
+                  variant="primary"
+                  size="lg"
                   // onClick={handleSubmitForm}
-                  onClick={() => { validationAddress() }}
+                  onClick={() => {
+                    validationAddress();
+                  }}
                 >
                   Confirm.
                 </Button>
-
               </div>
             </Form>
           </Modal.Body>
@@ -346,8 +469,9 @@ const Profile = () => {
       </MediaQuery>
 
       <MediaQuery minWidth={1224}>
-
-        <Modal className="cart-modal2" show={signinModalShow}
+        <Modal
+          className="cart-modal2"
+          show={signinModalShow}
           onHide={() => setSigntinModalShow(false)}
           aria-labelledby="contained-modal-title-vcenter"
           centered
@@ -358,42 +482,96 @@ const Profile = () => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form className="formSignin" validated={validated} >
-              <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+            <Form className="formSignin" validated={validated}>
+              <Form.Group
+                className="signinInput mb-3"
+                controlId="fromBasicPlace"
+              >
                 <Form.Label>Place</Form.Label>
-                <Form.Control required type="text" onChange={e => { setPlace(e.target.value) }} />
+                <Form.Control
+                  required
+                  type="text"
+                  onChange={(e) => {
+                    setPlace(e.target.value);
+                  }}
+                />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
-              <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+              <Form.Group
+                className="signinInput mb-3"
+                controlId="fromBasicPlace"
+              >
                 <Form.Label>Reciever Name</Form.Label>
-                <Form.Control required type="text" onChange={e => { setRecieverName(e.target.value) }} />
+                <Form.Control
+                  required
+                  type="text"
+                  onChange={(e) => {
+                    setRecieverName(e.target.value);
+                  }}
+                />
               </Form.Group>
-              <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+              <Form.Group
+                className="signinInput mb-3"
+                controlId="fromBasicPlace"
+              >
                 <Form.Label>Reciever Tel#</Form.Label>
-                <Form.Control required type="text" onKeyPress={(event) => {
-                  if (!/[0-9]/.test(event.key)) {
-                    event.preventDefault();
-                  }
-                }}
-                  onChange={e => { setRecieverTel(e.target.value) }}
+                <Form.Control
+                  required
+                  type="text"
+                  onKeyPress={(event) => {
+                    if (!/[0-9]/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
+                  onChange={(e) => {
+                    setRecieverTel(e.target.value);
+                  }}
                   maxLength="10"
                 />
               </Form.Group>
-              <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+              <Form.Group
+                className="signinInput mb-3"
+                controlId="fromBasicPlace"
+              >
                 <Form.Label>House Number</Form.Label>
-                <Form.Control required type="text" onChange={e => { setHouseNo(e.target.value) }} />
+                <Form.Control
+                  required
+                  type="text"
+                  onChange={(e) => {
+                    setHouseNo(e.target.value);
+                  }}
+                />
               </Form.Group>
-              <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+              <Form.Group
+                className="signinInput mb-3"
+                controlId="fromBasicPlace"
+              >
                 <Form.Label>Address</Form.Label>
-                <Form.Control required as="textarea" onChange={e => { setAddesses(e.target.value) }} rows={3} />
+                <Form.Control
+                  required
+                  as="textarea"
+                  onChange={(e) => {
+                    setAddesses(e.target.value);
+                  }}
+                  rows={3}
+                />
                 <Form.Control.Feedback type="invalid">
                   Please choose a username.
                 </Form.Control.Feedback>
               </Form.Group>
-              <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+              <Form.Group
+                className="signinInput mb-3"
+                controlId="fromBasicPlace"
+              >
                 <Form.Label>Province</Form.Label>
-                <Form.Select required aria-label="Default select example" onChange={e => { setProvince(e.target.value) }}>
-                  <option >Please select</option>
+                <Form.Select
+                  required
+                  aria-label="Default select example"
+                  onChange={(e) => {
+                    setProvince(e.target.value);
+                  }}
+                >
+                  <option>Please select</option>
                   <option value="Bangkok">Bangkok</option>
                   <option value="Krabi">Krabi </option>
                   <option value="Kanchanaburi">Kanchanaburi </option>
@@ -415,19 +593,25 @@ const Profile = () => {
                   <option value="Nakhon Pathom">Nakhon Pathom </option>
                   <option value="Nakhon Phanom">Nakhon Phanom </option>
                   <option value="Nakhon Ratchasima">Nakhon Ratchasima </option>
-                  <option value="Nakhon Si Thammarat">Nakhon Si Thammarat </option>
+                  <option value="Nakhon Si Thammarat">
+                    Nakhon Si Thammarat{" "}
+                  </option>
                   <option value="Nakhon Sawan">Nakhon Sawan </option>
                   <option value="Narathiwat">Narathiwat </option>
                   <option value="Nan">Nan </option>
                   <option value="Nonthaburi">Nonthaburi </option>
                   <option value="Bueng Kan">Bueng Kan</option>
                   <option value="Buriram">Buriram</option>
-                  <option value="Prachuap Khiri Khan">Prachuap Khiri Khan </option>
+                  <option value="Prachuap Khiri Khan">
+                    Prachuap Khiri Khan{" "}
+                  </option>
                   <option value="Pathum Thani">Pathum Thani </option>
                   <option value="Prachinburi">Prachinburi </option>
                   <option value="Pattani">Pattani </option>
                   <option value="Phayao">Phayao </option>
-                  <option value="Phra Nakhon Si Ayutthaya">Phra Nakhon Si Ayutthaya </option>
+                  <option value="Phra Nakhon Si Ayutthaya">
+                    Phra Nakhon Si Ayutthaya{" "}
+                  </option>
                   <option value="Phang Nga">Phang Nga </option>
                   <option value="Phichit">Phichit </option>
                   <option value="Phitsanulok">Phitsanulok </option>
@@ -471,45 +655,52 @@ const Profile = () => {
                   <option value="Uthai Thani">Uthai Thani </option>
                   <option value="Ubon Ratchathani">Ubon Ratchathani</option>
                   <option value="Ang Thong">Ang Thong </option>
-
                 </Form.Select>
               </Form.Group>
 
-              <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+              <Form.Group
+                className="signinInput mb-3"
+                controlId="fromBasicPlace"
+              >
                 <Form.Label>Postal</Form.Label>
-                <Form.Control maxLength={5} required type="text"
+                <Form.Control
+                  maxLength={5}
+                  required
+                  type="text"
                   onKeyPress={(event) => {
                     if (!/[0-9]/.test(event.key)) {
                       event.preventDefault();
                     }
                   }}
-                  onChange={e => { setPostal(e.target.value) }}
+                  onChange={(e) => {
+                    setPostal(e.target.value);
+                  }}
                 />
               </Form.Group>
               <div className="d-grid gap-2">
-                <Button variant="primary" size="lg"
+                <Button
+                  variant="primary"
+                  size="lg"
                   // onClick={handleSubmitForm}
-                  onClick={() => { validationAddress() }}
+                  onClick={() => {
+                    validationAddress();
+                  }}
                 >
                   Confirm.
                 </Button>
-
               </div>
             </Form>
           </Modal.Body>
         </Modal>
-
       </MediaQuery>
 
       <Snackbar open={openAlert} autoHideDuration={3000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
           Address already added.
         </Alert>
       </Snackbar>
-
-
-    </div >
+    </div>
   );
-}
+};
 
 export default Profile;

@@ -1,16 +1,30 @@
 import React, { Component, useEffect, useState } from "react";
-import { Container, Carousel, Navbar, Form, FormControl, Button, Nav, NavDropdown, Fade, Card, Row, Col, Modal } from "react-bootstrap";
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
+import {
+  Container,
+  Carousel,
+  Navbar,
+  Form,
+  FormControl,
+  Button,
+  Nav,
+  NavDropdown,
+  Fade,
+  Card,
+  Row,
+  Col,
+  Modal,
+} from "react-bootstrap";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 // Redux
 import { connect } from "react-redux";
 
-import ButtonMat from '@mui/material/Button';
-import './Product.css'
+import ButtonMat from "@mui/material/Button";
+import "./Product.css";
 
-import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 
-import MediaQuery from 'react-responsive'
+import MediaQuery from "react-responsive";
 
 import {
   loadCurrentItem,
@@ -19,64 +33,75 @@ import {
 import { Segment } from "@mui/icons-material";
 import { trusted } from "mongoose";
 
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import EditIcon from '@mui/icons-material/Edit';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import EditIcon from "@mui/icons-material/Edit";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 async function deleteProduct(product) {
-  console.log(product)
-  return fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/products/delete', {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      id: product.productId
-    })
-  })
+  console.log(product);
+  return fetch(
+    " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/products/delete",
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: product.productId,
+      }),
+    }
+  );
   // .then(data => data.json())
 }
 
 async function insertProduct(product) {
-  console.log(product)
-  return fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/cart/inCart/insert', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      userId: product.userId, productId: product.productId, qty: 1
-    })
-  })
+  console.log(product);
+  return fetch(
+    " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/cart/inCart/insert",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: product.userId,
+        productId: product.productId,
+        qty: 1,
+      }),
+    }
+  );
   // .then(data => data.json())
 }
 
 async function updateProduct(product) {
-  console.log(product)
-  return fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/products/update', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      title: product.productName , price: product.price, qty: product.qty
-      , img: product.postImage.myFile
-      , description: product.description, tag: product.tag , id : product.productId
-    })
-  })
-    .then(data => data.json())
+  console.log(product);
+  return fetch(
+    " http://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/products/update",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: product.productName,
+        price: product.price,
+        qty: product.qty,
+        img: product.postImage.myFile,
+        description: product.description,
+        tag: product.tag,
+        id: product.productId,
+      }),
+    }
+  ).then((data) => data.json());
 }
 
-
 const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
-
-
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const [userId, setUserId] = useState(user ? user.id : 100);
 
@@ -84,19 +109,19 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
   //   setUserId(user.id)
   // }
 
-  const [role, setRole] = useState(user ? user.role : 'N')
+  const [role, setRole] = useState(user ? user.role : "N");
 
   const [open, setOpen] = React.useState(false);
 
   const [openAddModal, setOpenAddModal] = useState(false);
 
-  const [openUpdateModal , setOpenUpdateModal] = useState(false);
+  const [openUpdateModal, setOpenUpdateModal] = useState(false);
 
   const [modalShow, setModalShow] = React.useState(false);
 
   const [productId, setProductId] = useState(product.id);
 
-  const [longText, setLongText] = useState(product.description)
+  const [longText, setLongText] = useState(product.description);
 
   const [editProductShow, setEditProductShow] = useState(false);
 
@@ -106,91 +131,97 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
   const handleClickAdd = () => {
     setOpenAddModal(true);
-  }
+  };
 
   const handleUpdateModal = () => {
-    setOpenUpdateModal(true)
-  }
+    setOpenUpdateModal(true);
+  };
 
   const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
     setOpen(false);
-    setOpenAddModal(false)
-    setOpenUpdateModal(false)
+    setOpenAddModal(false);
+    setOpenUpdateModal(false);
   };
 
-
-  const handleDeleteProduct = async e => {
-
+  const handleDeleteProduct = async (e) => {
     const response = await deleteProduct({
-      productId
+      productId,
     });
 
     setTimeout(() => {
       window.location.href = "/products";
     }, 1000);
+  };
 
-  }
-
-
-  const handleInserProduct = async e => {
-
+  const handleInserProduct = async (e) => {
     const response = await insertProduct({
-      userId, productId
+      userId,
+      productId,
     });
 
     // setTimeout(() => {
     //   window.location.href = "/products";
     // }, 1000);
-
-  }
+  };
 
   const [productName, setProductName] = useState(product.title);
   const [price, setPrice] = useState(product.price);
   const [tag, setTag] = useState(product.tag);
   const [description, setDescription] = useState(product.description);
   const [qty, setQty] = useState(product.qty);
-  
+
   const [postImage, setPostImage] = useState({
     myFile: product.img,
   });
 
   const validationEditForm = () => {
-    if (typeof productName === "undefined" || typeof price === "undefined" || typeof tag === "undefined" || typeof description === "undefined"
-        || typeof qty === "undefined" 
-        || productName === "" || price === "" || tag === "" || description === "" || qty === "" || postImage.myFile === ""
+    if (
+      typeof productName === "undefined" ||
+      typeof price === "undefined" ||
+      typeof tag === "undefined" ||
+      typeof description === "undefined" ||
+      typeof qty === "undefined" ||
+      productName === "" ||
+      price === "" ||
+      tag === "" ||
+      description === "" ||
+      qty === "" ||
+      postImage.myFile === ""
     ) {
-        swal("Error", "Please fill your information completely", "error");
+      swal("Error", "Please fill your information completely", "error");
     } else {
-        handleUpdateProduct()
-        handleUpdateModal()
+      handleUpdateProduct();
+      handleUpdateModal();
     }
+  };
 
-}
-  
-  const handleUpdateProduct = async e => {
-
+  const handleUpdateProduct = async (e) => {
     const response = await updateProduct({
-      productName, price, tag, description, qty, postImage , productId
+      productName,
+      price,
+      tag,
+      description,
+      qty,
+      postImage,
+      productId,
     });
 
     setTimeout(() => {
       window.location.href = "/products";
     }, 1000);
+  };
 
-  }
-
-
-  const onSelectFile = e => {
+  const onSelectFile = (e) => {
     if (!e.target.files || e.target.files.length === 0) {
-      setSelectedFile(undefined)
-      return
+      setSelectedFile(undefined);
+      return;
     }
 
-    let allfiles = []
+    let allfiles = [];
 
     // I've kept this example simple by using the first image instead of multiple
     for (let i = 0; i < e.target.files.length; i++) {
@@ -199,10 +230,8 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
     if (allfiles.length > 0) {
       setFile(allfiles);
     }
-    console.log(files)
-  }
-
-
+    console.log(files);
+  };
 
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -217,52 +246,92 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
     });
   };
 
-
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
     setPostImage({ ...postImage, myFile: base64 });
-    console.log(postImage.myFile.length)
-
+    console.log(postImage.myFile.length);
   };
 
   const [files, setFile] = useState([]);
 
-
-
   return (
-
     <Col className="main" hidden={hid}>
-
-
-      <MediaQuery minWidth={1224} >
-        <Card style={{ width: '18rem', display: 'flex', marginBottom: '1rem' }}>
+      <MediaQuery minWidth={1224}>
+        <Card style={{ width: "18rem", display: "flex", marginBottom: "1rem" }}>
           {/* <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
           src={product.img} /> */}
 
-          <Tooltip title={<h5 style={{ fontSize: '16px' }}> {longText} </h5>} placement="bottom">
-            <Card.Img variant="top" style={{ width: '287px', height: '250px'   }}
-              src={product.img} />
+          <Tooltip
+            title={<h5 style={{ fontSize: "16px" }}> {longText} </h5>}
+            placement="bottom"
+          >
+            <Card.Img
+              variant="top"
+              style={{ width: "287px", height: "250px" }}
+              src={product.img}
+            />
           </Tooltip>
           <Card.Body>
             <Card.Title>{product.title}</Card.Title>
-            <h5 style={{ fontSize: '14px' }}>{product.tag}</h5>
-            <h5 style={{ fontSize: '18px' }}> {product.price} Baht</h5>
-            <Button hidden={!user || product.qty === 0 || role === 'A'} variant="primary" onClick={() => 
-              { addToCart(product.id); handleClickAdd(); handleInserProduct() }}>Add to Cart <AddShoppingCartIcon></AddShoppingCartIcon> </Button>
-            <Button hidden={!user || !(product.qty === 0) || role === 'A'} disabled variant="secondary"
-              onClick={() => { addToCart(product.id); handleClick(); handleInserProduct() }}>Out of Stock</Button>
-            <h5 className="mt-2" style={{ fontSize: '14px', color: 'red' }}> Remaining : {product.qty} Boxes</h5>
+            <h5 style={{ fontSize: "14px" }}>{product.tag}</h5>
+            <h5 style={{ fontSize: "18px" }}> {product.price} Baht</h5>
+            <Button
+              hidden={!user || product.qty === 0 || role === "A"}
+              variant="primary"
+              onClick={() => {
+                addToCart(product.id);
+                handleClickAdd();
+                handleInserProduct();
+              }}
+            >
+              Add to Cart <AddShoppingCartIcon></AddShoppingCartIcon>{" "}
+            </Button>
+            <Button
+              hidden={!user || !(product.qty === 0) || role === "A"}
+              disabled
+              variant="secondary"
+              onClick={() => {
+                addToCart(product.id);
+                handleClick();
+                handleInserProduct();
+              }}
+            >
+              Out of Stock
+            </Button>
+            <h5 className="mt-2" style={{ fontSize: "14px", color: "red" }}>
+              {" "}
+              Remaining : {product.qty} Boxes
+            </h5>
 
-
-            <div style={{ display: 'flex', marginLeft: 'auto', marginRight: '0' }}>
+            <div
+              style={{ display: "flex", marginLeft: "auto", marginRight: "0" }}
+            >
               <div className="button-admin">
-                <Button size="sm" style={{ marginRight: '0.5rem' }} hidden={role == 'C' || role == 'N'} onClick={() => setEditProductShow(true)} > <EditIcon></EditIcon> </Button>
-                <Button size="sm" variant="danger" onClick={() => setModalShow(true)} hidden={role == 'C' || role == 'N'} > <DeleteOutlineIcon></DeleteOutlineIcon> </Button>
+                <Button
+                  size="sm"
+                  style={{ marginRight: "0.5rem" }}
+                  hidden={role == "C" || role == "N"}
+                  onClick={() => setEditProductShow(true)}
+                >
+                  {" "}
+                  <EditIcon></EditIcon>{" "}
+                </Button>
+                <Button
+                  size="sm"
+                  variant="danger"
+                  onClick={() => setModalShow(true)}
+                  hidden={role == "C" || role == "N"}
+                >
+                  {" "}
+                  <DeleteOutlineIcon></DeleteOutlineIcon>{" "}
+                </Button>
               </div>
             </div>
 
-            <Modal className="cart-modal" show={modalShow}
+            <Modal
+              className="cart-modal"
+              show={modalShow}
               onHide={() => setModalShow(false)}
               aria-labelledby="contained-modal-title-vcenter"
               centered
@@ -275,45 +344,105 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
               <Modal.Body>
                 <h5> Are you sure to delete this product.</h5>
 
-                <Button variant='danger' style={{ display: 'block', marginLeft: 'auto' }} onClick={() => { handleDeleteProduct(); handleClick() }}> Delete</Button>
+                <Button
+                  variant="danger"
+                  style={{ display: "block", marginLeft: "auto" }}
+                  onClick={() => {
+                    handleDeleteProduct();
+                    handleClick();
+                  }}
+                >
+                  {" "}
+                  Delete
+                </Button>
               </Modal.Body>
             </Modal>
-
-
           </Card.Body>
         </Card>
       </MediaQuery>
 
-      <MediaQuery maxWidth={1224} >
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <Card style={{ width: '18rem', display: 'flex', marginBottom: '1rem' }}>
+      <MediaQuery maxWidth={1224}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Card
+            style={{ width: "18rem", display: "flex", marginBottom: "1rem" }}
+          >
             {/* <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
           src={product.img} /> */}
 
-            <Tooltip title={<h5 style={{ fontSize: '16px' }}> {longText} </h5>} placement="bottom">
-              <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
-                src={product.img} />
+            <Tooltip
+              title={<h5 style={{ fontSize: "16px" }}> {longText} </h5>}
+              placement="bottom"
+            >
+              <Card.Img
+                variant="top"
+                style={{ width: "287px", height: "250px" }}
+                src={product.img}
+              />
             </Tooltip>
             <Card.Body>
               <Card.Title>{product.title}</Card.Title>
-              <h5 style={{ fontSize: '14px' }}>{product.tag}</h5>
-              <h5 style={{ fontSize: '18px' }}> {product.price} Baht</h5>
-              <Button hidden={!user || product.qty === 0 || role === 'A'} variant="primary"
-                onClick={() => { addToCart(product.id); handleClickAdd(); handleInserProduct() }}>
-                Add to Cart <AddShoppingCartIcon></AddShoppingCartIcon> </Button>
-              <Button hidden={!user || !(product.qty === 0)} disabled variant="secondary"
-                onClick={() => { addToCart(product.id); handleClick(); handleInserProduct() }}>Out of Stock</Button>
-              <h5 className="mt-2" style={{ fontSize: '14px', color: 'red' }}> Remaining : {product.qty}</h5>
+              <h5 style={{ fontSize: "14px" }}>{product.tag}</h5>
+              <h5 style={{ fontSize: "18px" }}> {product.price} Baht</h5>
+              <Button
+                hidden={!user || product.qty === 0 || role === "A"}
+                variant="primary"
+                onClick={() => {
+                  addToCart(product.id);
+                  handleClickAdd();
+                  handleInserProduct();
+                }}
+              >
+                Add to Cart <AddShoppingCartIcon></AddShoppingCartIcon>{" "}
+              </Button>
+              <Button
+                hidden={!user || !(product.qty === 0)}
+                disabled
+                variant="secondary"
+                onClick={() => {
+                  addToCart(product.id);
+                  handleClick();
+                  handleInserProduct();
+                }}
+              >
+                Out of Stock
+              </Button>
+              <h5 className="mt-2" style={{ fontSize: "14px", color: "red" }}>
+                {" "}
+                Remaining : {product.qty}
+              </h5>
 
-
-              <div style={{ display: 'flex', marginLeft: 'auto', marginRight: '0' }}>
+              <div
+                style={{
+                  display: "flex",
+                  marginLeft: "auto",
+                  marginRight: "0",
+                }}
+              >
                 <div className="button-admin">
-                  <Button size="sm" style={{ marginRight: '0.5rem' }} hidden={role == 'C' || role == 'N'} onClick={() => setEditProductShow(true)} > <EditIcon></EditIcon> </Button>
-                  <Button size="sm" variant="danger" onClick={() => setModalShow(true)} hidden={role == 'C' || role == 'N'} > <DeleteOutlineIcon> </DeleteOutlineIcon></Button>
+                  <Button
+                    size="sm"
+                    style={{ marginRight: "0.5rem" }}
+                    hidden={role == "C" || role == "N"}
+                    onClick={() => setEditProductShow(true)}
+                  >
+                    {" "}
+                    <EditIcon></EditIcon>{" "}
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="danger"
+                    onClick={() => setModalShow(true)}
+                    hidden={role == "C" || role == "N"}
+                  >
+                    {" "}
+                    <DeleteOutlineIcon> </DeleteOutlineIcon>
+                  </Button>
                 </div>
               </div>
 
-              <Modal className="cart-modal" show={modalShow}
+              <Modal
+                className="cart-modal"
+                show={modalShow}
                 onHide={() => setModalShow(false)}
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
@@ -326,40 +455,57 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
                 <Modal.Body>
                   <h5> Are you sure to delete this product.</h5>
 
-                  <Button variant='danger' style={{ display: 'block', marginLeft: 'auto' }} onClick={() => { handleDeleteProduct(); handleClick() }}> Delete</Button>
+                  <Button
+                    variant="danger"
+                    style={{ display: "block", marginLeft: "auto" }}
+                    onClick={() => {
+                      handleDeleteProduct();
+                      handleClick();
+                    }}
+                  >
+                    {" "}
+                    Delete
+                  </Button>
                 </Modal.Body>
               </Modal>
-
-
             </Card.Body>
           </Card>
         </div>
       </MediaQuery>
 
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
           Product already deleted from your shop.
         </Alert>
       </Snackbar>
 
-      <Snackbar open={openAddModal} autoHideDuration={3000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+      <Snackbar
+        open={openAddModal}
+        autoHideDuration={3000}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
           Product already added to your cart.
         </Alert>
       </Snackbar>
 
-      <Snackbar open={openUpdateModal} autoHideDuration={3000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="info" sx={{ width: '100%' }}>
+      <Snackbar
+        open={openUpdateModal}
+        autoHideDuration={3000}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity="info" sx={{ width: "100%" }}>
           Product already edited.
         </Alert>
       </Snackbar>
 
-
-
-      <Modal className="cart-modal2" show={editProductShow}
+      <Modal
+        className="cart-modal2"
+        show={editProductShow}
         onHide={() => setEditProductShow(false)}
         aria-labelledby="contained-modal-title-vcenter"
-        centered>
+        centered
+      >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
             Edit your address.
@@ -368,13 +514,16 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
         <Modal.Body>
           <Row>
             <Col>
-
-
-              <span className="Filename" style={{display: 'flex', justifyContent: 'center', justifyItems: 'center'}}>
+              <span
+                className="Filename"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  justifyItems: "center",
+                }}
+              >
                 <img src={product.img} width="370px" height="370px" />
               </span>
-
-
 
               {/* <h4> Product Photo</h4>
 
@@ -395,50 +544,109 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
               </div> */}
             </Col>
             <Col>
-
-              <Form className="formSignin" >
-                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+              <Form className="formSignin">
+                <Form.Group
+                  className="signinInput mb-3"
+                  controlId="fromBasicPlace"
+                >
                   <Form.Label>Product name</Form.Label>
-                  <Form.Control type="text" defaultValue={product.title} onChange={e => { setProductName(e.target.value) }} />
+                  <Form.Control
+                    type="text"
+                    defaultValue={product.title}
+                    onChange={(e) => {
+                      setProductName(e.target.value);
+                    }}
+                  />
                 </Form.Group>
-                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                <Form.Group
+                  className="signinInput mb-3"
+                  controlId="fromBasicPlace"
+                >
                   <Form.Label>Price</Form.Label>
-                  <Form.Control type="number" min={0} defaultValue={product.price} onChange={e => { setPrice(e.target.value) }} />
+                  <Form.Control
+                    type="number"
+                    min={0}
+                    defaultValue={product.price}
+                    onChange={(e) => {
+                      setPrice(e.target.value);
+                    }}
+                  />
                 </Form.Group>
-                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                <Form.Group
+                  className="signinInput mb-3"
+                  controlId="fromBasicPlace"
+                >
                   <Form.Label>Tag</Form.Label>
-                  <Form.Select aria-label="Default select example" onChange={e => { setTag(e.target.value) }} >
+                  <Form.Select
+                    aria-label="Default select example"
+                    onChange={(e) => {
+                      setTag(e.target.value);
+                    }}
+                  >
                     <option value={product.tag}>{product.tag}</option>
-                    <option value="Pastry" hidden={product.tag === "Pastry"}>Chinese Pastry</option>
-                    <option value="Roasted Pastry" hidden={product.tag === "Roasted Pastry"}>Roasted Chinese Pastry</option>
-                    <option value="Rice Cracker" hidden={product.tag === "Rice Cracker"}>Rice Cracker </option>
+                    <option value="Pastry" hidden={product.tag === "Pastry"}>
+                      Chinese Pastry
+                    </option>
+                    <option
+                      value="Roasted Pastry"
+                      hidden={product.tag === "Roasted Pastry"}
+                    >
+                      Roasted Chinese Pastry
+                    </option>
+                    <option
+                      value="Rice Cracker"
+                      hidden={product.tag === "Rice Cracker"}
+                    >
+                      Rice Cracker{" "}
+                    </option>
                   </Form.Select>
                 </Form.Group>
-                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                <Form.Group
+                  className="signinInput mb-3"
+                  controlId="fromBasicPlace"
+                >
                   <Form.Label>Description</Form.Label>
-                  <Form.Control as="textarea" rows={2} defaultValue={product.description} onChange={e => { setDescription(e.target.value) }} />
+                  <Form.Control
+                    as="textarea"
+                    rows={2}
+                    defaultValue={product.description}
+                    onChange={(e) => {
+                      setDescription(e.target.value);
+                    }}
+                  />
                 </Form.Group>
 
-                <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
+                <Form.Group
+                  className="signinInput mb-3"
+                  controlId="fromBasicPlace"
+                >
                   <Form.Label>Quantity</Form.Label>
-                  <Form.Control type="number" defaultValue={product.qty} onChange={e => { setQty(e.target.value) }} />
+                  <Form.Control
+                    type="number"
+                    defaultValue={product.qty}
+                    onChange={(e) => {
+                      setQty(e.target.value);
+                    }}
+                  />
                 </Form.Group>
 
                 <div className="d-grid gap-2">
-                  <Button variant="primary" size="lg" onClick={() => {validationEditForm()}}>
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    onClick={() => {
+                      validationEditForm();
+                    }}
+                  >
                     Edit this product
                   </Button>
-
                 </div>
               </Form>
             </Col>
           </Row>
         </Modal.Body>
       </Modal>
-
     </Col>
-
-
   );
 };
 
