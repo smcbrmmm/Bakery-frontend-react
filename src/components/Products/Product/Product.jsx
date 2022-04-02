@@ -45,7 +45,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 async function deleteProduct(product) {
   console.log(product);
   return fetch(
-    " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/products/delete",
+    " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/products/delete",
     {
       method: "DELETE",
       headers: {
@@ -62,7 +62,7 @@ async function deleteProduct(product) {
 async function insertProduct(product) {
   console.log(product);
   return fetch(
-    " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/cart/inCart/insert",
+    " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/cart/inCart/insert",
     {
       method: "POST",
       headers: {
@@ -81,7 +81,7 @@ async function insertProduct(product) {
 async function updateProduct(product) {
   console.log(product);
   return fetch(
-    " http://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/products/update",
+    " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/products/update",
     {
       method: "POST",
       headers: {

@@ -41,7 +41,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 async function saveAddress(addressDetail) {
   console.log(addressDetail);
   return fetch(
-    " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/address/save",
+    " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/address/save",
     {
       method: "POST",
       headers: {
@@ -87,7 +87,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/address/address/" +
+        " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/address/address/" +
           user.id
       );
       setAddress(result.data);

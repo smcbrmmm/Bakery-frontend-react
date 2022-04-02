@@ -44,11 +44,11 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/order/order"
+        " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/order/order"
       );
 
       fetch(
-        " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/cart/inCart/" +
+        " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/cart/inCart/" +
           user.id,
         {
           method: "GET",

@@ -24,7 +24,7 @@ const liff = window.liff;
 
 async function isHaveEmail(email) {
   return fetch(
-    " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/user/isHave/" +
+    " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/user/isHave/" +
       email,
     {
       method: "GET",
@@ -40,7 +40,7 @@ async function isHaveEmail(email) {
 
 async function login(user) {
   return fetch(
-    " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/user/loginbyline/" +
+    " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/user/loginbyline/" +
       user.email,
     {
       method: "GET",

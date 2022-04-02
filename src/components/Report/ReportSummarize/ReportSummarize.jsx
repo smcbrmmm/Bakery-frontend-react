@@ -77,17 +77,17 @@ const OrderSummarize = ({ order }) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/orderDetail/orderdetail/" +
+        " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/orderDetail/orderdetail/" +
           order.orderId
       );
 
       const result2 = await axios(
-        " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/order/getSumPrice/" +
+        " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/order/getSumPrice/" +
           order.orderId
       );
 
       const result3 = await axios(
-        " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/address/orderAddress/" +
+        " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/address/orderAddress/" +
           order.addressId
       );
 

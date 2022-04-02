@@ -34,7 +34,7 @@ import {
 async function order(orderDetail, cart, user) {
   console.log(orderDetail);
   fetch(
-    " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/order/save",
+    " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/order/save",
     {
       method: "POST",
       headers: {
@@ -50,7 +50,7 @@ async function order(orderDetail, cart, user) {
     .then(() => {
       for (var i = 0; i < cart.length; i++) {
         fetch(
-          " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/orderDetail/save",
+          " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/orderDetail/save",
           {
             method: "POST",
             headers: {
@@ -76,7 +76,7 @@ async function order(orderDetail, cart, user) {
 async function deleteAllItemInCart(cartItem) {
   console.log(cartItem);
   return fetch(
-    " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/cart/inCart/deleteAllItem",
+    " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/cart/inCart/deleteAllItem",
     {
       method: "DELETE",
       headers: {
@@ -148,7 +148,7 @@ const Cart = ({ cart, setProductInCart }) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/address/address/" +
+        " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/address/address/" +
           user.id
       );
       setAddress(result.data);
@@ -158,7 +158,7 @@ const Cart = ({ cart, setProductInCart }) => {
     fetchData();
 
     fetch(
-      " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/cart/inCart/" +
+      " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/cart/inCart/" +
         userId,
       {
         method: "GET",

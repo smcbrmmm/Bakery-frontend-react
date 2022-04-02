@@ -22,7 +22,7 @@ import MediaQuery from "react-responsive";
 async function signup(user) {
   console.log(user);
   return fetch(
-    " https://df54-2405-9800-b840-ee03-84dc-3a08-d5a0-96ce.ngrok.io/api/user/register",
+    " https://4593-2405-9800-b840-ee03-95f4-56b1-ae06-3678.ngrok.io/api/user/register",
     {
       method: "POST",
       headers: {
