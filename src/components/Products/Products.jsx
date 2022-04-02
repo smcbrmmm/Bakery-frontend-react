@@ -34,7 +34,7 @@ import axios from "axios";
 
 async function addProduct(product) {
     
-    return fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/products/insert', {
+    return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/products/insert', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -99,7 +99,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
         setShowLoading(false)
         setLoading(true)
 
-        // fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/products/allProducts', {
+        // fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/products/allProducts', {
         //     method: 'GET',
         //     headers: {
         //         'Content-Type': 'application/json'
@@ -111,7 +111,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
 
             const fetchData = async () => {
                 const result = await axios(
-                    ' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/products/allProducts',
+                    ' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/products/allProducts',
                 );
                 console.log(result)
                 setProductList(result.data)
@@ -121,7 +121,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
     
             fetchData();
 
-        fetch(' https://355f-2405-9800-b600-11e1-1c15-f868-bef3-b9eb.ngrok.io/api/cart/inCart/' + userId, {
+        fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/cart/inCart/' + userId, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
