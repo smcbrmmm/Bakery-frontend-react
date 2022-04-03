@@ -15,11 +15,9 @@ async function cancelOrder(order) {
         headers: {
             'Content-Type': 'application/json'
         },
-        //   body: JSON.stringify({
-        //     id: product.productId
-        //   })
+
     })
-    // .then(data => data.json())
+    
 }
 
 async function updateOrder(order) {
@@ -35,7 +33,7 @@ async function updateOrder(order) {
             orderId: order.orderId, userId: order.userId, paymentSlip: order.postImage.myFile
         })
     })
-    // .then(data => data.json())
+    
 }
 
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -50,8 +48,6 @@ const OrderDetail = ({ order, hid }) => {
     const [price, setPrice] = useState();
     const [address, setAddress] = useState([]);
     const [orderId, setOrderId] = useState(order.orderId)
-    // const [payment, setPayment] = useState([]);
-    // const [noPayment , setNoPayment] = useState(0);
     const [isUpload, setIsUpload] = useState(false);
     const [status, setStatus] = useState(order.status)
     const [userId, setUserId] = useState(user.id)
@@ -72,12 +68,6 @@ const OrderDetail = ({ order, hid }) => {
                 ' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/address/orderAddress/' + order.addressId,
             );
 
-            // const result4 = await axios(
-            //     ' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/payment/getPayment/' + order.orderId,
-            // );
-
-            // console.log(result4)
-            // setPayment(result4.data)
             setPrice(result2)
             setAddress(result3.data)
             setInfoOrder(result.data)
@@ -89,12 +79,11 @@ const OrderDetail = ({ order, hid }) => {
     }, []);
 
     useEffect(() => {
-        // console.log(payment.length)
-        // setNoPayment(payment.length)
+
     }, [infoOrder])
 
     const check = () => {
-        // console.log(infoOrder)
+        
     }
 
     const handleCancelorder = async e => {
@@ -162,7 +151,6 @@ const OrderDetail = ({ order, hid }) => {
 
         let allfiles = []
 
-        // I've kept this example simple by using the first image instead of multiple
         for (let i = 0; i < e.target.files.length; i++) {
             allfiles.push(e.target.files[i]);
         }
@@ -264,7 +252,7 @@ const OrderDetail = ({ order, hid }) => {
                 }
 
 
-                {/* {order.orderId} # {order.status}  */}
+                
 
             </h3>
 
@@ -273,7 +261,7 @@ const OrderDetail = ({ order, hid }) => {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
                 size="lg"
-            // dialogClassName="modal-90w"
+            
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
@@ -361,8 +349,6 @@ const OrderDetail = ({ order, hid }) => {
                             </Col>
                             <Col>
                                 <h5> Payment </h5>
-                                {/* <h5 style={{ fontSize: '16px' }}> Bank Transfer :  </h5>
-                                <h5 style={{ fontSize: '18px' }}> SCB - 28232512845 - Mymom Bakery Store </h5> */}
 
                                 <img style={{width : '100%'}} src="https://www.img.in.th/images/69ea02dea737ab4cba39501f8d9ba2bf.jpg" />
 
@@ -473,8 +459,6 @@ const OrderDetail = ({ order, hid }) => {
                         </Row>
                     </MediaQuery>
 
-
-                    {/* <Button onClick={check}> Click </Button> */}
                 </Modal.Body>
             </Modal>
 

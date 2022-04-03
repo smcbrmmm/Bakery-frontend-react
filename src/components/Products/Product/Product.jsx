@@ -29,7 +29,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 async function deleteProduct(product) {
-  console.log(product)
+  
   return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/products/delete', {
     method: 'DELETE',
     headers: {
@@ -39,11 +39,11 @@ async function deleteProduct(product) {
       id: product.productId
     })
   })
-  // .then(data => data.json())
+
 }
 
 async function insertProduct(product) {
-  console.log(product)
+  
   return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/cart/inCart/insert', {
     method: 'POST',
     headers: {
@@ -53,20 +53,20 @@ async function insertProduct(product) {
       userId: product.userId, productId: product.productId, qty: 1
     })
   })
-  // .then(data => data.json())
+
 }
 
 async function updateProduct(product) {
-  console.log(product)
+  
   return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/products/update', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      title: product.productName , price: product.price, qty: product.qty
+      title: product.productName, price: product.price, qty: product.qty
       , img: product.postImage.myFile
-      , description: product.description, tag: product.tag , id : product.productId
+      , description: product.description, tag: product.tag, id: product.productId
     })
   })
     .then(data => data.json())
@@ -80,17 +80,13 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
   const [userId, setUserId] = useState(user ? user.id : 100);
 
-  // if(user){
-  //   setUserId(user.id)
-  // }
-
   const [role, setRole] = useState(user ? user.role : 'N')
 
   const [open, setOpen] = React.useState(false);
 
   const [openAddModal, setOpenAddModal] = useState(false);
 
-  const [openUpdateModal , setOpenUpdateModal] = useState(false);
+  const [openUpdateModal, setOpenUpdateModal] = useState(false);
 
   const [modalShow, setModalShow] = React.useState(false);
 
@@ -142,10 +138,6 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
       userId, productId
     });
 
-    // setTimeout(() => {
-    //   window.location.href = "/products";
-    // }, 1000);
-
   }
 
   const [productName, setProductName] = useState(product.title);
@@ -153,28 +145,28 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
   const [tag, setTag] = useState(product.tag);
   const [description, setDescription] = useState(product.description);
   const [qty, setQty] = useState(product.qty);
-  
+
   const [postImage, setPostImage] = useState({
     myFile: product.img,
   });
 
   const validationEditForm = () => {
     if (typeof productName === "undefined" || typeof price === "undefined" || typeof tag === "undefined" || typeof description === "undefined"
-        || typeof qty === "undefined" 
-        || productName === "" || price === "" || tag === "" || description === "" || qty === "" || postImage.myFile === ""
+      || typeof qty === "undefined"
+      || productName === "" || price === "" || tag === "" || description === "" || qty === "" || postImage.myFile === ""
     ) {
-        swal("Error", "Please fill your information completely", "error");
+      swal("Error", "Please fill your information completely", "error");
     } else {
-        handleUpdateProduct()
-        handleUpdateModal()
+      handleUpdateProduct()
+      handleUpdateModal()
     }
 
-}
-  
+  }
+
   const handleUpdateProduct = async e => {
 
     const response = await updateProduct({
-      productName, price, tag, description, qty, postImage , productId
+      productName, price, tag, description, qty, postImage, productId
     });
 
     setTimeout(() => {
@@ -192,7 +184,6 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
     let allfiles = []
 
-    // I've kept this example simple by using the first image instead of multiple
     for (let i = 0; i < e.target.files.length; i++) {
       allfiles.push(e.target.files[i]);
     }
@@ -234,22 +225,19 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
     <Col className="main" hidden={hid}>
 
-
       <MediaQuery minWidth={1224} >
-        <Card style={{ width: '18rem', display: 'flex', marginBottom: '1rem' }}>
-          {/* <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
-          src={product.img} /> */}
 
+        <Card style={{ width: '18rem', display: 'flex', marginBottom: '1rem' }}>
           <Tooltip title={<h5 style={{ fontSize: '16px' }}> {longText} </h5>} placement="bottom">
-            <Card.Img variant="top" style={{ width: '287px', height: '250px'   }}
+            <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
               src={product.img} />
           </Tooltip>
           <Card.Body>
             <Card.Title>{product.title}</Card.Title>
             <h5 style={{ fontSize: '14px' }}>{product.tag}</h5>
             <h5 style={{ fontSize: '18px' }}> {product.price} Baht</h5>
-            <Button hidden={!user || product.qty === 0 || role === 'A'} variant="primary" onClick={() => 
-              { addToCart(product.id); handleClickAdd(); handleInserProduct() }}>Add to Cart <AddShoppingCartIcon></AddShoppingCartIcon> </Button>
+            <Button hidden={!user || product.qty === 0 || role === 'A'} variant="primary" 
+            onClick={() => { addToCart(product.id); handleClickAdd(); handleInserProduct() }}>Add to Cart <AddShoppingCartIcon></AddShoppingCartIcon> </Button>
             <Button hidden={!user || !(product.qty === 0) || role === 'A'} disabled variant="secondary"
               onClick={() => { addToCart(product.id); handleClick(); handleInserProduct() }}>Out of Stock</Button>
             <h5 className="mt-2" style={{ fontSize: '14px', color: 'red' }}> Remaining : {product.qty} Boxes</h5>
@@ -257,8 +245,10 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
             <div style={{ display: 'flex', marginLeft: 'auto', marginRight: '0' }}>
               <div className="button-admin">
-                <Button size="sm" style={{ marginRight: '0.5rem' }} hidden={role == 'C' || role == 'N'} onClick={() => setEditProductShow(true)} > <EditIcon></EditIcon> </Button>
-                <Button size="sm" variant="danger" onClick={() => setModalShow(true)} hidden={role == 'C' || role == 'N'} > <DeleteOutlineIcon></DeleteOutlineIcon> </Button>
+                <Button size="sm" style={{ marginRight: '0.5rem' }} hidden={role == 'C' || role == 'N'} 
+                onClick={() => setEditProductShow(true)} > <EditIcon></EditIcon> </Button>
+                <Button size="sm" variant="danger" onClick={() => setModalShow(true)} 
+                hidden={role == 'C' || role == 'N'} > <DeleteOutlineIcon></DeleteOutlineIcon> </Button>
               </div>
             </div>
 
@@ -282,13 +272,12 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
           </Card.Body>
         </Card>
+
       </MediaQuery>
 
       <MediaQuery maxWidth={1224} >
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Card style={{ width: '18rem', display: 'flex', marginBottom: '1rem' }}>
-            {/* <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
-          src={product.img} /> */}
 
             <Tooltip title={<h5 style={{ fontSize: '16px' }}> {longText} </h5>} placement="bottom">
               <Card.Img variant="top" style={{ width: '287px', height: '250px' }}
@@ -370,29 +359,10 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
             <Col>
 
 
-              <span className="Filename" style={{display: 'flex', justifyContent: 'center', justifyItems: 'center'}}>
+              <span className="Filename" style={{ display: 'flex', justifyContent: 'center', justifyItems: 'center' }}>
                 <img src={product.img} width="370px" height="370px" />
               </span>
 
-
-
-              {/* <h4> Product Photo</h4>
-
-              <div className="Row">
-                <span className="Filename">
-                  <img src={product.img} width="100%" />
-                </span>
-              </div>
-
-              <div className="mt-5">
-                <input
-                  type="file"
-                  label="Image"
-                  name="myFile"
-                  accept=".jpeg, .png, .jpg"
-                  onChange={(e) => { handleFileUpload(e); onSelectFile(e) }}
-                />
-              </div> */}
             </Col>
             <Col>
 
@@ -425,7 +395,7 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
                 </Form.Group>
 
                 <div className="d-grid gap-2">
-                  <Button variant="primary" size="lg" onClick={() => {validationEditForm()}}>
+                  <Button variant="primary" size="lg" onClick={() => { validationEditForm() }}>
                     Edit this product
                   </Button>
 

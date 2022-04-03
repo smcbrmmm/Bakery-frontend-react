@@ -61,9 +61,6 @@ export default function SignupLine({ email, signinModal, accessToken }) {
 
     }
 
-
-
-
     return (
 
         <div>
@@ -74,6 +71,7 @@ export default function SignupLine({ email, signinModal, accessToken }) {
                     <h2 className="" style={{ textAlign: 'center' , marginBottom :'2rem'}}> Create your account</h2>
 
                     <MediaQuery minWidth={1224} >
+
                         <div style={{ display : 'flex' , justifyContent:'center' , justifyItems : 'center'}}>
                             <div style={{ width: "40%" }}>
 
@@ -96,6 +94,7 @@ export default function SignupLine({ email, signinModal, accessToken }) {
 
                             </div>
                         </div>
+                        
                     </MediaQuery>
 
                     <MediaQuery maxWidth={1224} >
@@ -138,15 +137,6 @@ export default function SignupLine({ email, signinModal, accessToken }) {
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control type="text" onChange={e => { setName(e.target.value) }} />
                             </Form.Group>
-                            {/* <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" onChange={e => { setPassword(e.target.value) }} />
-                            </Form.Group>
-                            <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
-                                <Form.Label>Confirm Password</Form.Label>
-                                <Form.Control type="password" onChange={e => { setCfPassword(e.target.value) }} />
-                            </Form.Group> */}
-
 
                             <div className="d-grid gap-2">
                                 <Button variant="primary" size="lg" onClick={handleSubmit} >

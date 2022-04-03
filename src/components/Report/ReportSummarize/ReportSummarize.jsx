@@ -72,12 +72,7 @@ const OrderSummarize = ({ order }) => {
                 ' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/address/orderAddress/' + order.addressId,
             );
 
-            // const result4 = await axios(
-            //     ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io\/api/payment/getPayment/' + order.orderId,
-            // );
 
-            // console.log(result4)
-            // setPayment(result4.data)
             setPrice(result2)
             setAddress(result3.data)
             setInfoOrder(result.data)
@@ -89,12 +84,11 @@ const OrderSummarize = ({ order }) => {
     }, []);
 
     useEffect(() => {
-        // console.log(payment.length)
-        // setNoPayment(payment.length)
+
     }, [infoOrder])
 
     const check = () => {
-        // console.log(infoOrder)
+        
     }
 
     const handleCancelorder = async e => {
@@ -151,7 +145,6 @@ const OrderSummarize = ({ order }) => {
 
         let allfiles = []
 
-        // I've kept this example simple by using the first image instead of multiple
         for (let i = 0; i < e.target.files.length; i++) {
             allfiles.push(e.target.files[i]);
         }
@@ -168,10 +161,6 @@ const OrderSummarize = ({ order }) => {
     const [orderStatus, setOrderStatus] = useState(order.status);
 
     const [date, setDate] = useState(moment(order.date).format('YYYY-MM-DD'))
-
-    // const check = () => {
-    //     console.log(order.sumPrice)
-    // }
 
     const check2 = () => {
         return "samut";
@@ -258,11 +247,6 @@ const OrderSummarize = ({ order }) => {
                             <h5 style={{ color: 'green' }}> Status :  {order.status} </h5>
                             : null
                         }
-
-                        {/* {order.status === 'Cancelled' ?
-                            null :
-                            <Button hidden={order.hasPayment !== "no-slip" || isUpload} variant="danger" size="sm" onClick={handleCancelorder}> Cancel Order </Button>
-                        } */}
 
                         <h5 style={{ color: 'grey', fontSize: '16px' }}> Date :  {moment(order.date.slice(0, 10)).format("D MMMM YYYY")} </h5>
 

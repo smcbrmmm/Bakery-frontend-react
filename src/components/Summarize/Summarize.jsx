@@ -9,7 +9,6 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import { connect } from "react-redux";
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 import TextField from '@mui/material/TextField';
-// const Orders = ({ setProductInCart }) =>
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -36,8 +35,7 @@ const Summarize = () => {
     const [searchOrderId, setSearchOrderId] = useState("");
 
     useEffect(() => {
-        console.log(value)
-
+        
         setShowLoading(false)
 
         const fetchData = async () => {
@@ -54,36 +52,13 @@ const Summarize = () => {
 
     }, [])
 
-    // useEffect(() => {
-
-    //     console.log(searchOrderId)
-    //     setShowLoading(false)
-
-        
-
-    //         const fetchData = async () => {
-    //             const result = await axios(
-    //                 ' https://67b7-2405-9800-b600-6272-78c8-6ba8-7835-6aca.ngrok.io/api/order/getOrderByDateAndOrderId/' + value + "/" + searchOrderId,
-    //             );
-    //             console.log(result)
-    //             setOrder(result.data)
-    //             setLoading(true)
-    //         };
-
-    //         fetchData();
-  
-
-    //     setLoading(false)
-
-    // }, [searchOrderId])
-
-
     const handleChange = (newValue) => {
         setValue(newValue);
         setShowLoading(false)
 
         const date = moment(newValue).format('YYYY-MM-DD');
         setSearchOrderId("")
+
         const fetchData = async () => {
             const result = await axios(
                 'https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/order/getOrderByDate/' + date,
@@ -145,6 +120,7 @@ const Summarize = () => {
 
             <div className='container'>
                 <h1 className="main" style={{ textAlign: 'center' }}>  Order Check </h1>
+
                 <div style={{ textAlign: 'center', marginTop: '2rem' }}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DesktopDatePicker
@@ -214,19 +190,6 @@ const Summarize = () => {
     )
 
 }
-
-// const mapStateToProps = (state) => {
-//     return {
-//         products: state.shop.products,
-//     };
-// };
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         setProductList: data => dispatch(setProductList(data)),
-//         setProductInCart: data => dispatch(setProductInCart(data))
-//     }
-// }
 
 const SummarizeConnect = connect()(Summarize);
 

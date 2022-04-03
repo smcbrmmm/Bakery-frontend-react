@@ -49,8 +49,6 @@ const Report = () => {
                 ' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/order/getTotalPrice/' + dateTo + "/" + dateFrom ,
             );
 
-            console.log(result)
-            console.log(result2)
             setOrder(result.data)
             setTotal(result2.data)
             setLoading(true)
@@ -59,8 +57,6 @@ const Report = () => {
 
         fetchData();
         setLoading(false)
-
-
     }
 
 
@@ -84,9 +80,10 @@ const Report = () => {
             <NavbarCom />
 
             <div className='container'>
-                {/* <h1 className="main" style={{ textAlign: 'center' }}>  Report </h1> */}
+               
 
                 <h1 className="main" style={{ textAlign: 'center' }}>  Report Sales </h1>
+
                 <div style={{ textAlign: 'center', marginTop: '2rem' }}>
                     <Row>
                         <Col sm={5} style={{ textAlign: 'right' , marginRight : '-4rem' , marginLeft:'4rem' }}>
@@ -118,10 +115,6 @@ const Report = () => {
                             </LocalizationProvider>
                         </Col>
                     </Row>
-
-
-
-
 
                 </div>
 
@@ -170,48 +163,6 @@ const Report = () => {
                         </Spinner>
                     </div>
                 }
-
-
-                {/* {order.length > 0 ?
-
-
-                    <TableContainer component={Paper} sx={{ width: '60%', marginLeft: 'auto', marginRight: 'auto', marginBottom: '3rem' }} >
-                        <Table sx={{ minWidth: 650 }} style={{ textAlign: 'center' }} aria-label="simple table">
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Order ID</TableCell>
-                                    <TableCell align="right">Customer ID</TableCell>
-                                    <TableCell align="right">Status</TableCell>
-                                    <TableCell align="right">Date</TableCell>
-                                    <TableCell align="right">Price (Baht)</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {order.map((order) => (
-
-                                    <ReportSummarize key={order.orderId} order={order} />
-
-
-                                ))}
-                                <TableRow>
-                                    <TableCell rowSpan={5} />
-                                    <TableCell colSpan={3} align="right" > Total</TableCell>
-                                    <TableCell align="right"> {(total + "").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} </TableCell>
-                                </TableRow>
-
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-
-
-                    : <h2 style={{ textAlign: 'center', marginTop: '2rem' }}> No Report</h2>
-                } */}
-
-                {/* <Spinner animation="border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </Spinner> */}
-
-
 
             </div>
         </div >

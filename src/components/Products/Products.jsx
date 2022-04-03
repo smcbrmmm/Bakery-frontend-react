@@ -99,16 +99,6 @@ const Products = ({ products, setProductList, setProductInCart }) => {
         setShowLoading(false)
         setLoading(true)
 
-        // fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/products/allProducts', {
-        //     method: 'GET',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // })
-        //     .then(data => data.json())
-        //     .then(data => setProductList(data))
-        //     .then(data => setProductListTemp(data))
-
             const fetchData = async () => {
                 const result = await axios(
                     ' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/products/allProducts',
@@ -253,9 +243,6 @@ const Products = ({ products, setProductList, setProductInCart }) => {
         <div className="page-container">
             <NavbarCom />
             <div className="content-wrap">
-                {/* <Container>
-                    <h1 className="main" style={{ textAlign: 'center' }}>  Mymom Bakery's Menu </h1>
-                </Container> */}
 
                 <Container >
                     <Row style={{ marginBottom: '1rem' }}>
@@ -314,17 +301,9 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                             </MediaQuery>
 
                             <Row lg={3}>
-                                {/* {products.map((product) => (
-                                    product.tag === "Pastry"
-                                        ? (<Product key={product.id} product={product} hid={pastry} />)
-                                        : product.tag === "Roasted Pastry"
-                                            ? (<Product key={product.id} product={product} hid={roastedPastry} />)
-                                            : product.tag === "Rice Cracker"
-                                                ? (<Product key={product.id} product={product} hid={riceCracker} />)
-                                                : null
-                                ))} */}
 
                                 {loading ?
+
                                     productListTemp.length > 0 ?
                                         products.map((product) => (
                                             product.tag === "Pastry"
@@ -336,12 +315,14 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                                                         : null
                                         ))
                                         : <h2 style={{ textAlign: 'center', marginTop: '2rem' }}> No order in this day.</h2>
-                                    :
+                                    
+                                        :
                                     <div style={{ textAlign: 'center', marginTop: '2rem' }}>
                                         <Spinner animation="border" role="status" hidden={showLoading}>
                                             <span className="visually-hidden">Loading...</span>
                                         </Spinner>
                                     </div>}
+
                             </Row>
 
                         </Col>

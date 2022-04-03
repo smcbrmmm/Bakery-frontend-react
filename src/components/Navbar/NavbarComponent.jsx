@@ -227,7 +227,7 @@ const NavbarComponent = ({ cart }) => {
             </Navbar.Brand>
           </Nav>
           <Nav className="color-nav" style={{ maxHeight: "100px" }}>
-            {/* <Nav.Link href="/">  <h4 className="nav-menu">Home</h4>  </Nav.Link> */}
+            
             <Nav>
               <Link to="/">
                 <Tooltip title="Home">
@@ -349,17 +349,6 @@ const NavbarComponent = ({ cart }) => {
               </Link>
             </Nav>
 
-            {/* <Nav hidden={!user || role === 'C'}>
-                            <Link to="/summarize">
-                                <Tooltip title="Menu">
-                                    <IconButton color="primary" aria-label="upload picture" component="span" style={{ marginTop: '5px' }} >
-                                        <SummarizeIcon sx={{ fontSize: 30 }} style={{ fill: "white" }} />
-                                    </IconButton>
-                                </Tooltip>
-
-                            </Link>
-                        </Nav> */}
-
             <Nav hidden={!user}>
               <IconButton
                 color="primary"
@@ -394,12 +383,11 @@ const NavbarComponent = ({ cart }) => {
                 >
                   Account
                 </MenuItem>
-                {/* <MenuItem component={Link} to="/order" onClick={handleClose}>Order Status</MenuItem> */}
+                
                 <MenuItem onClick={handleLogout}>Sign out</MenuItem>
               </Menu>
             </Nav>
 
-            {/* onClick={() => setSigntinModalShow(true)} */}
             <Link to="/lineloginmobile" hidden={user}>
               <Nav>
                 <Tooltip title="Login">

@@ -39,8 +39,6 @@ async function saveAddress(addressDetail) {
       province: addressDetail.province, postal: addressDetail.postal
     })
   })
-  // .then(data => data.json())
-
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -152,8 +150,7 @@ const Profile = () => {
             <Row>
               <Col>
                 <div hidden={edit} >
-                  {/* <h2> Detail  </h2> */}
-                  {/* <Avatar alt="Remy Sharp" src={user.img} sx={{ width: 200, height: 200 }} /> */}
+
                   <h4> Name : {user.name} </h4>
                   <h4> Email : {user.email} </h4>
                 </div>
@@ -172,8 +169,7 @@ const Profile = () => {
           <MediaQuery maxWidth={1224}>
 
             <div hidden={edit} >
-              {/* <h2> Detail  </h2> */}
-              {/* <Avatar alt="Remy Sharp" src={user.img} sx={{ width: 200, height: 200 }} /> */}
+
               <h4> Name : {user.name} </h4>
               <h4> Email : {user.email} </h4>
             </div>
@@ -333,7 +329,7 @@ const Profile = () => {
               </Form.Group>
               <div className="d-grid gap-2">
                 <Button variant="primary" size="lg"
-                  // onClick={handleSubmitForm}
+                  
                   onClick={() => { validationAddress() }}
                 >
                   Confirm.
@@ -358,6 +354,7 @@ const Profile = () => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
+
             <Form className="formSignin" validated={validated} >
               <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                 <Form.Label>Place</Form.Label>
@@ -488,7 +485,6 @@ const Profile = () => {
               </Form.Group>
               <div className="d-grid gap-2">
                 <Button variant="primary" size="lg"
-                  // onClick={handleSubmitForm}
                   onClick={() => { validationAddress() }}
                 >
                   Confirm.

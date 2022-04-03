@@ -59,8 +59,6 @@ const OrderSummarize = ({ order }) => {
     const [price, setPrice] = useState();
     const [address, setAddress] = useState([]);
     const [orderId, setOrderId] = useState(order.orderId)
-    // const [payment, setPayment] = useState([]);
-    // const [noPayment , setNoPayment] = useState(0);
     const [isUpload, setIsUpload] = useState(false);
     const [status, setStatus] = useState(order.status)
     const [userId, setUserId] = useState(user ? user.id : "100")
@@ -83,10 +81,6 @@ const OrderSummarize = ({ order }) => {
                 'https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/address/orderAddress/' + order.addressId,
             );
 
-            // const result4 = await axios(
-            //     ' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/payment/getPayment/' + order.orderId,
-            // );
-
             setPrice(result2)
             setAddress(result3.data)
             setInfoOrder(result.data)
@@ -98,8 +92,7 @@ const OrderSummarize = ({ order }) => {
     }, []);
 
     useEffect(() => {
-        // console.log(payment.length)
-        // setNoPayment(payment.length)
+
     }, [infoOrder])
 
     const handleCancelorder = async e => {
@@ -149,8 +142,6 @@ const OrderSummarize = ({ order }) => {
         }, 500);
 
     }
-
-
 
     const updateStatus = () => {
         if (orderStatus === "Cancel") {

@@ -30,10 +30,6 @@ const Footer = () => {
                                     </div>
                                 </Container>
 
-
-                                {/* <h3 style={{ textAlign: 'center' }}> Help </h3>
-                                <h5 style={{ textAlign: 'center', marginBottom: '3rem' }}>   Contract us  </h5> */}
-
                         </MediaQuery>
                         <MediaQuery maxWidth={1224}>
                         <h3 style={{ textAlign: 'center' , fontSize:'15px' , marginTop:'0.5rem' }}> Social Media: </h3>

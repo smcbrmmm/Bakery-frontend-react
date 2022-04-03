@@ -30,7 +30,7 @@ async function deleteItemInCart(cartItem) {
       userId: cartItem.userId, productId: cartItem.productId
     })
   })
-  // .then(data => data.json())
+  
 }
 
 
@@ -66,10 +66,6 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
       userId, productId
     });
 
-    // setTimeout(() => {
-    //   window.location.href = "/products";
-    // }, 1000);
-
   }
 
   useEffect(() => {
@@ -77,11 +73,8 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
       const result = await axios(
           ' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/products/getProductQty/' + item.id ,
       );
-      
       setMaxQty(result.data)
-      // console.log(result.data)
   };
-
     fetchData();
   }, [])
 
@@ -91,13 +84,11 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
     if (reason === 'clickaway') {
       return;
     }
-
     setOpen(false);
   };
 
   const onChangeHandler = (e) => {
-    console.log(maxQty)
-    console.log(e.target.value)
+
     if(e.target.value > maxQty){
       swal("Error", "Quantity more than max quantity.", "error");
     }else{
@@ -109,13 +100,11 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
 
   return (
     <div className="main">
-
       <div className="container">
-
         <Row>
           <Col style={{ textAlign: 'center' }}>
-            <img className="main" src={item.img} alt={item.title} style={{ width: '60%' }} />
 
+            <img className="main" src={item.img} alt={item.title} style={{ width: '60%' }} />
 
             <MediaQuery minWidth={1224}>
               <h5 className="main" style={{marginTop:'1rem'}} >{item.title}</h5>
@@ -162,34 +151,8 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
               <br></br>
               
             </MediaQuery>
-
           </Col>
-          {/* <Col>
-              <Button  onClick={() => { handleClick(item.id); handleDeletItemInCart() }} > Delete </Button>
-          </Col> */}
-
         </Row>
-
-
-        {/* <div className="main">
-          <div className="main">
-            <label htmlFor="qty">Qty</label>
-            <input
-              min="1"
-              type="number"
-              id="qty"
-              name="qty"
-              value={input}
-              onChange={onChangeHandler}
-            />
-          </div>
-          <button
-            onClick={() => { handleClick(item.id); handleDeletItemInCart() }}
-            className="main"
-          >
-            delete
-          </button>
-        </div> */}
 
         <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>

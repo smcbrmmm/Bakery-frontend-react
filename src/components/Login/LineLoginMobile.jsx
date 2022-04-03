@@ -23,29 +23,26 @@ import { set } from "mongoose";
 const liff = window.liff;
 
 async function isHaveEmail(email) {
-    return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/user/isHave/' + email, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        // body: JSON.stringify({ 
-        //   userId: user.id, addressId: orderDetail.addressId, status: "Waiting for payment" 
-        // })
+  return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/user/isHave/' + email, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
 
-    })
-        .then(data => data.json())
+  })
+    .then(data => data.json())
 }
 
 async function login(user) {
 
-    return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/user/loginbyline/' + user.email, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        // body: JSON.stringify({ email: user.email})
-    })
-        .then(data => data.json())
+  return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/user/loginbyline/' + user.email, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+
+  })
+    .then(data => data.json())
 }
 
 export default function LineLoginMobile() {
@@ -63,7 +60,6 @@ export default function LineLoginMobile() {
     const response = login({
       email,
     }).then((data) => {
-      console.log(2);
       if (data.user !== null) {
         localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("user", JSON.stringify(data.user));
@@ -85,13 +81,8 @@ export default function LineLoginMobile() {
           const getDecodedIDToken = liff.getDecodedIDToken();
           const getAccessToken = liff.getAccessToken();
 
-          // setAccessToken(liff.getAccessToken())
           setName(liff.getProfile.displayName);
           setEmail(liff.getDecodedIDToken().email);
-          console.log(1);
-          // if(email == 'undefined'){
-          //     window.location.reload()
-          // }
 
           isHaveEmail(liff.getDecodedIDToken().email)
             .then((data) => setIsHave(data))
@@ -116,14 +107,7 @@ export default function LineLoginMobile() {
       typeof email !== "undefined"
     ) {
       console.log(email);
-      // const response = login({
-      //     email
-      // })
-      //     .then(data => {
-      //         localStorage.setItem('accessToken', data.accessToken);
-      //         localStorage.setItem('user', JSON.stringify(data.user));
-      //         window.location.href = "/order";
-      //     })
+
     }
   }, [accessToken]);
 
@@ -138,9 +122,7 @@ export default function LineLoginMobile() {
       <div className="content-wrap">
         <div hidden={isHave > 0 ? true : false}>
           <MediaQuery minWidth={1224}>
-            {/* <Button onClick={click} hidden={accessToken} > LOGIN </Button>
-                        <Signup signinModal={signinModal} email={email}>
-                        </Signup> */}
+
             <div hidden={isHave > 0 ? true : false}>
               <Signup
                 signinModal={signinModal}
@@ -151,7 +133,7 @@ export default function LineLoginMobile() {
           </MediaQuery>
 
           <MediaQuery maxWidth={1224}>
-            {/* <Button onClick={click} hidden={accessToken} > Create your account. </Button> */}
+
             <div hidden={isHave > 0 ? true : false}>
               <Signup
                 signinModal={signinModal}

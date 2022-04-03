@@ -30,7 +30,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                ' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/order/order',
+                'https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/order/order',
             );
 
             fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/cart/inCart/' + user.id, {
@@ -55,9 +55,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
 
     useEffect(() => {
         for (var i = 0; i < order.length; i++) {
-            // if(order[i].userId === user.id){
-            //     size++;
-            // }
+
             if (order[i].userId === user.id) {
                 setSize(1)
             }
@@ -93,9 +91,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
         <div className="page-container">
             <NavbarCom />
 
-            {/* <Button onClick={() => console.log(order)}> but  </Button> */}
-
-
+        
             <div className='content-wrap'>
                 <Container>
                     <MediaQuery minWidth={1224}>
@@ -126,7 +122,7 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
                     <MediaQuery maxWidth={1224}>
                         <h1 className="main" style={{ textAlign: 'center' }}>  Order Status </h1>
                         <Row>
-                            {/* <h3 className="main" style={{ textAlign: 'center' }}>  History </h3> */}
+                            
                         </Row>
 
                         <Row>
@@ -143,12 +139,6 @@ const Orders = ({ products, setProductList, setProductInCart }) => {
 
                         </Row>
                     </MediaQuery>
-
-
-
-
-
-
 
                 </Container>
 

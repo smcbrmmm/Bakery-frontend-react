@@ -25,7 +25,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 async function deleteAddress(addressDetail) {
-    console.log(addressDetail)
+    
     return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/address/delete', {
         method: 'POST',
         headers: {
@@ -35,12 +35,10 @@ async function deleteAddress(addressDetail) {
             addressId: addressDetail.addressId
         })
     })
-    // .then(data => data.json())
+    
 }
 
 async function updateAddress(addressDetail) {
-
-    console.log(addressDetail)
 
     return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/address/update', {
         method: 'PUT',
@@ -53,7 +51,7 @@ async function updateAddress(addressDetail) {
             province: addressDetail.province, postal: addressDetail.postal, addressId: addressDetail.addressId
         })
     })
-    // .then(data => data.json())
+    
 }
 
 export default function Address({ address, no }) {
@@ -102,7 +100,7 @@ export default function Address({ address, no }) {
     }
 
     const handleSubmit = async e => {
-        // e.preventDefault();
+        
         const response = await deleteAddress({
             addressId
         });
@@ -171,6 +169,7 @@ export default function Address({ address, no }) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+
                     <Form className="formSignin" >
                         <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                             <Form.Label>Place</Form.Label>
@@ -285,8 +284,8 @@ export default function Address({ address, no }) {
                             <Button variant="primary" size="lg" onClick={() => { validationAddress() }}>
                                 Confirm.
                             </Button>
-
                         </div>
+
                     </Form>
                 </Modal.Body>
             </Modal>

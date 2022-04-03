@@ -23,7 +23,6 @@ import {
 
 
 async function order(orderDetail, cart, user) {
-    console.log(orderDetail)
     fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/order/save', {
         method: 'POST',
         headers: {
@@ -48,11 +47,9 @@ async function order(orderDetail, cart, user) {
         }, 1000);
     })
 
-
 }
 
 async function deleteAllItemInCart(cartItem) {
-    console.log(cartItem)
     return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/cart/inCart/deleteAllItem', {
         method: 'DELETE',
         headers: {
@@ -62,9 +59,7 @@ async function deleteAllItemInCart(cartItem) {
             userId: cartItem.userId
         })
     })
-    // .then(data => data.json())
 }
-
 
 const Cart = ({ cart, setProductInCart }) => {
 
@@ -93,17 +88,6 @@ const Cart = ({ cart, setProductInCart }) => {
             }, cart, user);
         }
 
-        // e.preventDefault();
-        // const response = await order({
-        //     userId,
-        //     addressId,
-        //     status
-        // }, cart, user);
-
-        // setTimeout(() => {
-        //     window.location.href = "/order";
-        // }, 1000);
-
     }
 
     const handleDeletAllItemInCart = async e => {
@@ -113,10 +97,6 @@ const Cart = ({ cart, setProductInCart }) => {
                 userId
             });
         }
-
-        // setTimeout(() => {
-        //   window.location.href = "/products";
-        // }, 1000);
 
     }
 
@@ -128,7 +108,7 @@ const Cart = ({ cart, setProductInCart }) => {
                 ' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/address/address/' + user.id,
             );
             setAddress(result.data)
-            // console.log(result)
+            
         };
 
         fetchData();
@@ -241,7 +221,6 @@ const Cart = ({ cart, setProductInCart }) => {
             <NavCom />
 
             <div className="content-wrap">
-
                 <Container>
 
                     <h1 style={{ textAlign: 'center', marginBottom: '5%' }}> Your Cart.</h1>
@@ -277,7 +256,6 @@ const Cart = ({ cart, setProductInCart }) => {
                                     </Button>
                                 </div>
 
-
                                 <Form.Group className="signinInput mb-1 mt-3" controlId="formBasicEmail" >
                                     <Form.Label>Receiver name</Form.Label>
                                     <Form.Control type="text" placeholder="" value={recieverName} disabled />
@@ -307,7 +285,6 @@ const Cart = ({ cart, setProductInCart }) => {
                                     <Form.Label>Postal</Form.Label>
                                     <Form.Control type="textarea" placeholder="" value={postal} disabled />
                                 </Form.Group>
-
 
                             </div>
                             <div style={{marginBottom : '3rem'}}>
@@ -348,6 +325,5 @@ const mapDispatchToProps = dispatch => {
         setProductInCart: data => dispatch(setProductInCart(data))
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
