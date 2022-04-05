@@ -46,7 +46,7 @@ const liff = window.liff;
 
 async function loginUser(credentials) {
     console.log(credentials)
-    return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/user/login', {
+    return fetch(' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/user/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -91,7 +91,7 @@ function SigninModal(props) {
 
   const handleLineLogin = () => {
     if (liff.isLoggedIn()) {
-      console.log("login already");
+      console.log("login has been");
     } else {
       liff.login();
     }

@@ -27,7 +27,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 async function saveAddress(addressDetail) {
   console.log(addressDetail)
-  return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/address/save', {
+  return fetch(' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/address/save', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        ' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/address/address/' + user.id,
+        ' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/address/address/' + user.id,
       );
       setAddress(result.data)
       console.log(result)
@@ -499,7 +499,7 @@ const Profile = () => {
 
       <Snackbar open={openAlert} autoHideDuration={3000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-          Address already added.
+          Address has been added.
         </Alert>
       </Snackbar>
 

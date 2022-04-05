@@ -34,7 +34,7 @@ import axios from "axios";
 
 async function addProduct(product) {
     
-    return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/products/insert', {
+    return fetch(' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/products/insert', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -101,7 +101,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
 
             const fetchData = async () => {
                 const result = await axios(
-                    ' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/products/allProducts',
+                    ' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/products/allProducts',
                 );
                 console.log(result)
                 setProductList(result.data)
@@ -111,7 +111,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
     
             fetchData();
 
-        fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/cart/inCart/' + userId, {
+        fetch(' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/cart/inCart/' + userId, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -270,7 +270,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                                     <Col >
                                         <h1 className="main" style={{ textAlign: 'left', marginBottom: '1rem', marginTop: '1rem', fontSize: '30px' }} >  Products
                                             <Button className="button-add" variant="success" style={{ marginLeft: '1rem' }}
-                                                onClick={() => setAddProductModal(true)} hidden={role == 'C' || role == 'N'}> Insert </Button>
+                                                onClick={() => setAddProductModal(true)} hidden={role == 'C' || role == 'N'}> Add </Button>
                                         </h1>
                                     </Col>
 
@@ -336,7 +336,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
                     centered size="lg">
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Insert your product
+                            Add your product
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -397,7 +397,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
 
                                     <div className="d-grid gap-2">
                                         <Button variant="primary" size="lg" onClick={() => { validationAddress() }} >
-                                            Insert this product
+                                            Add this product
                                         </Button>
 
                                     </div>
@@ -409,7 +409,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
 
                 <Snackbar open={openAddModal} autoHideDuration={3000} onClose={handleCloseSnackBar}>
                     <Alert onClose={handleCloseSnackBar} severity="success" sx={{ width: '100%' }}>
-                        Product already added to shop.
+                        Product has been added to shop.
                     </Alert>
                 </Snackbar>
 

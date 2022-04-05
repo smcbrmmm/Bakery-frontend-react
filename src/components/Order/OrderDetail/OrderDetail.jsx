@@ -10,7 +10,7 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
 async function cancelOrder(order) {
-    return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/order/cancel/' + order.orderId, {
+    return fetch(' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/order/cancel/' + order.orderId, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ async function updateOrder(order) {
 
     console.log(order)
 
-    return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/payment/upload', {
+    return fetch(' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/payment/upload', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -57,15 +57,15 @@ const OrderDetail = ({ order, hid }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                ' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
+                ' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
             );
 
             const result2 = await axios(
-                ' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/order/getSumPrice/' + order.orderId,
+                ' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/order/getSumPrice/' + order.orderId,
             );
 
             const result3 = await axios(
-                ' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/address/orderAddress/' + order.addressId,
+                ' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/address/orderAddress/' + order.addressId,
             );
 
             setPrice(result2)
@@ -371,11 +371,11 @@ const OrderDetail = ({ order, hid }) => {
                                 }
 
                                 {isUpload ?
-                                    <h5 style={{ fontSize: '14px', color: 'green' }}> You already upload your slip. Please waiting for confirmation.</h5> : null
+                                    <h5 style={{ fontSize: '14px', color: 'green' }}> You has been upload your slip. Please waiting for confirmation.</h5> : null
                                 }
 
                                 {order.status === 'Waiting for payment approval' ?
-                                    <h5 style={{ fontSize: '16px', color: 'blue' }}> You already upload your slip. Please waiting for confirmation.</h5> : null
+                                    <h5 style={{ fontSize: '16px', color: 'blue' }}> You has been upload your slip. Please waiting for confirmation.</h5> : null
                                 }
 
                                 {order.status === 'Confirm , Waiting for shipment' ?
@@ -432,11 +432,11 @@ const OrderDetail = ({ order, hid }) => {
                                 }
 
                                 {isUpload ?
-                                    <h5 style={{ fontSize: '14px', color: 'green' }}> You already upload your slip. Please waiting for confirmation.</h5> : null
+                                    <h5 style={{ fontSize: '14px', color: 'green' }}> You has been upload your slip. Please waiting for confirmation.</h5> : null
                                 }
 
                                 {order.status === 'Waiting for payment approval' ?
-                                    <h5 style={{ fontSize: '14px', color: 'blue' }}> You already upload your slip. Please waiting for confirmation.</h5> : null
+                                    <h5 style={{ fontSize: '14px', color: 'blue' }}> You has been upload your slip. Please waiting for confirmation.</h5> : null
                                 }
 
                                 {order.status === 'Confirm , Waiting for shipment' ?
@@ -483,7 +483,7 @@ const OrderDetail = ({ order, hid }) => {
 
             <Snackbar open={openAlert} autoHideDuration={3000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="danger" sx={{ width: '100%' }}>
-                    Order already canceled.
+                    Order has been canceled.
                 </Alert>
             </Snackbar>
 

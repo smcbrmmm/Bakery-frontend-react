@@ -26,7 +26,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 async function deleteAddress(addressDetail) {
     
-    return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/address/delete', {
+    return fetch(' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/address/delete', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -40,7 +40,7 @@ async function deleteAddress(addressDetail) {
 
 async function updateAddress(addressDetail) {
 
-    return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/address/update', {
+    return fetch(' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/address/update', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -311,13 +311,13 @@ export default function Address({ address, no }) {
 
             <Snackbar open={openAlert} autoHideDuration={3000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
-                    Address already deleted.
+                    Address has been deleted.
                 </Alert>
             </Snackbar>
 
             <Snackbar open={openAlertEdit} autoHideDuration={3000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="info" sx={{ width: '100%' }}>
-                    Address already edited.
+                    Address has been edited.
                 </Alert>
             </Snackbar>
 

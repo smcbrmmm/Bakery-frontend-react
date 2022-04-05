@@ -21,7 +21,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 async function deleteItemInCart(cartItem) {
   console.log(cartItem)
-  return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/cart/inCart/deleteItemInCart', {
+  return fetch(' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/cart/inCart/deleteItemInCart', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -71,7 +71,7 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-          ' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/products/getProductQty/' + item.id ,
+          ' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/products/getProductQty/' + item.id ,
       );
       setMaxQty(result.data)
   };
@@ -156,7 +156,7 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
 
         <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
-            Product already remove from your cart.
+            Product has been removed from your cart.
           </Alert>
         </Snackbar>
       </div>

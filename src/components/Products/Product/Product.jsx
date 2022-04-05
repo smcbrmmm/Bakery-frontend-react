@@ -30,7 +30,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 async function deleteProduct(product) {
   
-  return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/products/delete', {
+  return fetch(' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/products/delete', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ async function deleteProduct(product) {
 
 async function insertProduct(product) {
   
-  return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/cart/inCart/insert', {
+  return fetch(' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/cart/inCart/insert', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ async function insertProduct(product) {
 
 async function updateProduct(product) {
   
-  return fetch(' https://f67f-2405-9800-b600-11e1-3034-f407-f03a-2103.ngrok.io/api/products/update', {
+  return fetch(' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/products/update', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -327,19 +327,19 @@ const Product = ({ product, addToCart, loadCurrentItem, hid }) => {
 
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
-          Product already deleted from your shop.
+          Product has been deleted from your shop.
         </Alert>
       </Snackbar>
 
       <Snackbar open={openAddModal} autoHideDuration={3000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-          Product already added to your cart.
+          Product has been added to your cart.
         </Alert>
       </Snackbar>
 
       <Snackbar open={openUpdateModal} autoHideDuration={3000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="info" sx={{ width: '100%' }}>
-          Product already edited.
+          Product has been edited.
         </Alert>
       </Snackbar>
 
