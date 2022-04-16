@@ -15,7 +15,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 async function cancelOrder(order) {
-    return fetch(' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/order/cancel/' + order.orderId, {
+    return fetch(' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/order/cancel/' + order.orderId, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ async function cancelOrder(order) {
 }
 
 async function updateStatusConfirm(order) {
-    return fetch(' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/order/update/status/confirm/' + order.orderId, {
+    return fetch(' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/order/update/status/confirm/' + order.orderId, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ async function updateStatusConfirm(order) {
 }
 
 async function updateStatusShipping(order) {
-    return fetch(' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/order/update/status/shipping/' + order.orderId + "/" + order.trackingNo, {
+    return fetch(' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/order/update/status/shipping/' + order.orderId + "/" + order.trackingNo, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ async function updateStatusShipping(order) {
 
 
 async function updateStatusSuccess(order) {
-    return fetch(' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/order/update/status/success/' + order.orderId, {
+    return fetch(' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/order/update/status/success/' + order.orderId, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -70,15 +70,15 @@ const OrderSummarize = ({ order }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                'https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
+                'https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
             );
 
             const result2 = await axios(
-                'https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/order/getSumPrice/' + order.orderId,
+                'https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/order/getSumPrice/' + order.orderId,
             );
 
             const result3 = await axios(
-                'https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/address/orderAddress/' + order.addressId,
+                'https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/address/orderAddress/' + order.addressId,
             );
 
             setPrice(result2)

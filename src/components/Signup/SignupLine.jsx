@@ -7,7 +7,7 @@ import MediaQuery from 'react-responsive'
 
 async function signup(user) {
     console.log(user)
-    return fetch(' https://c722-2405-9800-b600-11e1-3c6f-c524-59e0-ee1f.ngrok.io/api/user/register', {
+    return fetch(' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/user/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -25,18 +25,18 @@ export default function SignupLine({ email, signinModal, accessToken }) {
     const [password, setPassword] = useState("samut123");
     const [cfPassword, setCfPassword] = useState();
 
-    if(email == 'undefined'){
+    if (email == 'undefined') {
         console.log(email)
         window.location.reload()
     }
 
     useEffect(() => {
-        
-        if(email == 'undefined'){
+
+        if (email == 'undefined') {
             window.location.reload()
         }
 
-    } , [])
+    }, [])
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -68,11 +68,11 @@ export default function SignupLine({ email, signinModal, accessToken }) {
 
             <MediaQuery minWidth={1224}>
                 <Container hidden={!signinModal}>
-                    <h2 className="" style={{ textAlign: 'center' , marginBottom :'2rem'}}> Create your account</h2>
+                    <h2 className="" style={{ textAlign: 'center', marginBottom: '2rem' }}> Create your account</h2>
 
                     <MediaQuery minWidth={1224} >
 
-                        <div style={{ display : 'flex' , justifyContent:'center' , justifyItems : 'center'}}>
+                        <div style={{ display: 'flex', justifyContent: 'center', justifyItems: 'center' }}>
                             <div style={{ width: "40%" }}>
 
                                 <Form className="formSignin" >
@@ -94,7 +94,7 @@ export default function SignupLine({ email, signinModal, accessToken }) {
 
                             </div>
                         </div>
-                        
+
                     </MediaQuery>
 
                     <MediaQuery maxWidth={1224} >
@@ -131,7 +131,7 @@ export default function SignupLine({ email, signinModal, accessToken }) {
                         <Form className="formSignin" >
                             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control type="text" value={email}  disabled/>
+                                <Form.Control type="text" value={email} disabled />
                             </Form.Group>
                             <Form.Group className="signinInput mb-3" controlId="fromBasicPlace" >
                                 <Form.Label>Name</Form.Label>
