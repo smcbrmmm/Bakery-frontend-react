@@ -40,7 +40,7 @@ const Summarize = () => {
 
         const fetchData = async () => {
             const result = await axios(
-                'https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/order/getOrderByDate/' + value,
+                'https://34de-2405-9800-b600-90d4-fcf2-b249-79ac-955f.ngrok.io/api/order/getOrderByDate/' + value,
             );
             console.log(result)
             setOrder(result.data)
@@ -61,7 +61,7 @@ const Summarize = () => {
 
         const fetchData = async () => {
             const result = await axios(
-                'https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/order/getOrderByDate/' + date,
+                'https://34de-2405-9800-b600-90d4-fcf2-b249-79ac-955f.ngrok.io/api/order/getOrderByDate/' + date,
             );
             console.log(result)
 
@@ -89,7 +89,7 @@ const Summarize = () => {
         if(searchOrderId.length === 0) {
             const fetchData = async () => {
                 const result = await axios(
-                    'https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/order/getOrderByDate/' + date,
+                    'https://34de-2405-9800-b600-90d4-fcf2-b249-79ac-955f.ngrok.io/api/order/getOrderByDate/' + date,
                 );
                 console.log(result)
     
@@ -101,7 +101,7 @@ const Summarize = () => {
         }else {
             const fetchData = async () => {
                 const result = await axios(
-                    'https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/order/getOrderByDateAndOrderId/' + date + "/" + searchOrderId,
+                    'https://34de-2405-9800-b600-90d4-fcf2-b249-79ac-955f.ngrok.io/api/order/getOrderByDateAndOrderId/' + date + "/" + searchOrderId,
                 );
                 console.log(result)
                 setOrder(result.data)

@@ -10,7 +10,7 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
 async function cancelOrder(order) {
-    return fetch(' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/order/cancel/' + order.orderId, {
+    return fetch(' https://34de-2405-9800-b600-90d4-fcf2-b249-79ac-955f.ngrok.io/api/order/cancel/' + order.orderId, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ async function updateOrder(order) {
 
     console.log(order)
 
-    return fetch(' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/payment/upload', {
+    return fetch(' https://34de-2405-9800-b600-90d4-fcf2-b249-79ac-955f.ngrok.io/api/payment/upload', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -57,15 +57,15 @@ const OrderDetail = ({ order, hid }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                ' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
+                ' https://34de-2405-9800-b600-90d4-fcf2-b249-79ac-955f.ngrok.io/api/orderDetail/orderdetail/' + order.orderId,
             );
 
             const result2 = await axios(
-                ' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/order/getSumPrice/' + order.orderId,
+                ' https://34de-2405-9800-b600-90d4-fcf2-b249-79ac-955f.ngrok.io/api/order/getSumPrice/' + order.orderId,
             );
 
             const result3 = await axios(
-                ' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/address/orderAddress/' + order.addressId,
+                ' https://34de-2405-9800-b600-90d4-fcf2-b249-79ac-955f.ngrok.io/api/address/orderAddress/' + order.addressId,
             );
 
             setPrice(result2)

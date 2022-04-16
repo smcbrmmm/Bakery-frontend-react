@@ -34,7 +34,7 @@ import axios from "axios";
 
 async function addProduct(product) {
     
-    return fetch(' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/products/insert', {
+    return fetch(' https://34de-2405-9800-b600-90d4-fcf2-b249-79ac-955f.ngrok.io/api/products/insert', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -101,7 +101,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
 
             const fetchData = async () => {
                 const result = await axios(
-                    ' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/products/allProducts',
+                    ' https://34de-2405-9800-b600-90d4-fcf2-b249-79ac-955f.ngrok.io/api/products/allProducts',
                 );
                 console.log(result)
                 setProductList(result.data)
@@ -111,7 +111,7 @@ const Products = ({ products, setProductList, setProductInCart }) => {
     
             fetchData();
 
-        fetch(' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/cart/inCart/' + userId, {
+        fetch(' https://34de-2405-9800-b600-90d4-fcf2-b249-79ac-955f.ngrok.io/api/cart/inCart/' + userId, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

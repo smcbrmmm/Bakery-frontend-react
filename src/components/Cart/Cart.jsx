@@ -23,7 +23,7 @@ import {
 
 
 async function order(orderDetail, cart, user) {
-    fetch(' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/order/save', {
+    fetch(' https://34de-2405-9800-b600-90d4-fcf2-b249-79ac-955f.ngrok.io/api/order/save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ async function order(orderDetail, cart, user) {
         body: JSON.stringify({ userId: user.id, addressId: orderDetail.addressId, status: "Waiting for payment" })
     }).then(() => {
         for (var i = 0; i < cart.length; i++) {
-            fetch(' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/orderDetail/save', {
+            fetch(' https://34de-2405-9800-b600-90d4-fcf2-b249-79ac-955f.ngrok.io/api/orderDetail/save', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ async function order(orderDetail, cart, user) {
 }
 
 async function deleteAllItemInCart(cartItem) {
-    return fetch(' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/cart/inCart/deleteAllItem', {
+    return fetch(' https://34de-2405-9800-b600-90d4-fcf2-b249-79ac-955f.ngrok.io/api/cart/inCart/deleteAllItem', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -105,7 +105,7 @@ const Cart = ({ cart, setProductInCart }) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                ' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/address/address/' + user.id,
+                ' https://34de-2405-9800-b600-90d4-fcf2-b249-79ac-955f.ngrok.io/api/address/address/' + user.id,
             );
             setAddress(result.data)
             
@@ -113,7 +113,7 @@ const Cart = ({ cart, setProductInCart }) => {
 
         fetchData();
 
-        fetch(' https://ed76-2405-9800-b600-90d4-9c7a-c8e4-37c5-e22f.ngrok.io/api/cart/inCart/' + userId, {
+        fetch(' https://34de-2405-9800-b600-90d4-fcf2-b249-79ac-955f.ngrok.io/api/cart/inCart/' + userId, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
