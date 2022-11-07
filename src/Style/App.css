@@ -21,7 +21,7 @@
 .createAccount {
     border: rgba(223, 209, 209, 0.986);
     border-style: solid;
-    border-width: 1px;
+    border-width: 12px;
 }
 
 .formSignin {
